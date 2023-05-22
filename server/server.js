@@ -1,3 +1,3 @@
-import connectDB from './server/backend/database.js'
+import connectDB from './database.js'
 
 connectDB()

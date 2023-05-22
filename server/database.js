@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
-import User from './server/models/userModel.js'
+// import { User } from './userModel.js'
 
 const connectDB = async () => {
     try {
         const databaseName = 'FunLanguage';
-        const con = await mongoose.connect(`mongodb://localhost:27017/${databaseName}`, { 
+        const con = await mongoose.connect(`mongodb://127.0.0.1:27017/${databaseName}`, { 
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true
+        // useCreateIndex: true
     });
         console.log(`Connection successful : ${con.connection.host}`)
     } catch (error) {
