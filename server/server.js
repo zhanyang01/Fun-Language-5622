@@ -1,6 +1,5 @@
-import express from "express";
-import connectDB from './server/backend/database.js';
+import connectDB from './database.js'
 
+connectDB()
 const app = express();
 connectDB();
-
