@@ -62,3 +62,5 @@ app.post("/Register", (req, res) => {
 
 //Express js listen method to run project
 app.listen(PORT, console.log("Server started"));
+
+// link for debugging purposes (copy paste): localhost:6969/api/users
