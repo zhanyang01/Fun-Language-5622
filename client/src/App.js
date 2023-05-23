@@ -2,7 +2,7 @@ import React from "react";
 import './App.css';
 import Homepage from "./homepage"
 import Login from "./login"
-import Register from "./register"
+import Register from "./register";
 import {
   Routes, 
   Route
@@ -16,10 +16,9 @@ function App() {
   return (
     <div className="App">
 <Routes>
-  <Route exact path="/" element = { user && user._id ? <Homepage/>:<Login/>} >
-    </Route>
-  <Route path="/Login" element = {<Login setLoginUser={setLoginUser}/> }></Route>
-  <Route path="/Register" element = {<Register/>}></Route>
+  <Route exact path="/" element = { user && user._id ? <Homepage/>:<Login/>} />
+  <Route exact path="/login" element = {<Login setLoginUser={setLoginUser}/> }/>
+  <Route exact path="/register" element = {<Register/>} />
 </Routes>
     </div>
   );

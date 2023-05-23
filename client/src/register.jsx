@@ -1,4 +1,5 @@
 import React , {useState} from 'react'
+import {Link} from "react-router-dom"
 import axios from "axios";
 const Register = () => {
     const [user,setUser] = useState({
@@ -7,6 +8,7 @@ const Register = () => {
         email:"",
         password: ""
     })
+    
     const handleChange = e =>{
     const {name,value} = e.target
     setUser({
@@ -14,17 +16,22 @@ const Register = () => {
     [name]:value
     })
     }
+    
 //register function 
-   const egister = ()=>{
-   const {name,username,email,password} = user
-   if (name && username && email && password){
-    axios.post("http://localhost:6969/Register",user )
-    .then(res=>console.log(res))
+   const registerAccount = ()=>{
+    if (name && username && email && password){
+        axios.post("http://localhost:6969/Register",user )
+        .then(res=>console.log(res))
+       }
+       else{
+           alert("invalid input")
+       };
    }
-   else{
-       alert("invalid input")
-   };
+   const {name,username,email,password} = user
+
+
     return (
+        
         <>    
 <div class="flex flex-col max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
     <div class="self-center mb-2 text-xl font-light text-gray-800 sm:text-2xl dark:text-white">
@@ -32,9 +39,9 @@ const Register = () => {
     </div>
     <span class="justify-center text-sm text-center text-gray-500 flex-items-center dark:text-gray-400">
         Already have an account ?
-        <a href="#" target="_blank" class="text-sm text-blue-500 underline hover:text-blue-700">
+        <Link to="/login" class="text-sm text-blue-500 underline hover:text-blue-700">
             Sign in
-        </a>
+        </Link>
     </span>
     <div class="p-6 mt-8">
         <form action="#">
@@ -60,7 +67,7 @@ const Register = () => {
                                     </div>
                                 </div>
                                 <div class="flex w-full my-4">
-                                    <button type="submit" class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={egister} >
+                                    <button type="submit" class="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={registerAccount} >
                                         Register
                                     </button>
                                 </div>
@@ -71,7 +78,8 @@ const Register = () => {
                                                         </div>
 
         </>
+        
     )
-}
+    
 }
 export default Register

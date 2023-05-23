@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 const Login = ({setLoginUser}) => {
 const history = useNavigate()
     const [user,setUser] = useState({
@@ -15,19 +15,15 @@ const history = useNavigate()
     })
     }
 
-    /*const login =()=>{
+    const login =()=>{
         axios.post("http://localhost:6969/Login",user)
         .then(res=>{alert(res.data.message)
         setLoginUser(res.data.user)
     history.push("/")})
-    }c
-    */
-   const login = ()=>{
-    
-   }
+    }
     return (
         <>
-<div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
+        <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
     <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
         Login To Your Account
     </div>
@@ -70,11 +66,12 @@ const history = useNavigate()
                 </form>
             </div>
             <div className="flex items-center justify-center mt-6">
-                <a href="#" target="_blank" className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"  onClick={ () =>{history.push("/Register")} }>
+                <Link to="/register" className="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white"  
+                >
                     <span className="ml-2">
                         You don&#x27;t have an account?
                     </span>
-                </a>
+                </Link>
             </div>
         </div>
 
