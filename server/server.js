@@ -19,7 +19,7 @@ app.use(express.urlencoded());
 app.use(cors());
 */
 
-//Create API for user
+// Create API for user
 app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 6969
@@ -60,7 +60,7 @@ app.post("/Register", (req, res) => {
 });
 */
 
-//Express js listen method to run project
+// Express js listen method to run project
 app.listen(PORT, console.log("Server started"));
 
 // link for debugging purposes (copy paste): localhost:6969/api/users
