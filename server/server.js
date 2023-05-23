@@ -23,9 +23,6 @@ app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5000
 
-//Express js listen method to run project on http://localhost:5000
-app.listen(PORT, console.log("Server started"));
-
 /*
 app.post("/Login", (req, res) => {
     const {email, password} = req.body;
@@ -61,3 +58,6 @@ app.post("/Register", (req, res) => {
     })
 });
 */
+
+//Express js listen method to run project on http://localhost:5000
+app.listen(PORT, console.log("Server started"));
