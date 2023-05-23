@@ -2,12 +2,12 @@ import connectDB from './database.js';
 import userRoutes from './userRoute.js';
 import express from 'express';
 // import User from './userModel.js';
-// import dotenv  from 'dotenv';
+import dotenv  from 'dotenv';
 // import cors from 'cors';
 
 connectDB();
 
-// dotenv.config();
+dotenv.config();
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(cors());
 //Create API for user
 app.use('/api/users', userRoutes);
 
-// const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000
 
 /*
 app.post("/Login", (req, res) => {
@@ -61,4 +61,4 @@ app.post("/Register", (req, res) => {
 */
 
 //Express js listen method to run project
-app.listen(5000, console.log("Server started"));
+app.listen(PORT, console.log("Server started"));
