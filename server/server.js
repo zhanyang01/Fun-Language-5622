@@ -1,6 +1,7 @@
 import connectDB from './database.js';
 import userRoutes from './userRoute.js';
 import express from 'express';
+// import User from './userModel.js';
 // import dotenv  from 'dotenv';
 // import cors from 'cors';
 
