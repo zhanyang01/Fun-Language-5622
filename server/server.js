@@ -22,7 +22,7 @@ app.use(cors());
 //Create API for user
 app.use('/api/users', userRoutes);
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 6969
 
 /*
 app.post("/Login", (req, res) => {
