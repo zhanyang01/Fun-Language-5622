@@ -1,8 +1,7 @@
-
-import login from './login'
-import register from './register'
-import homepage from './homepage'
 import './App.css';
+import Homepage from "./homepage"
+import Login from "./login"
+import Register from "./register"
 import {
   BrowserRouter as Router, 
   Switch, 
@@ -10,7 +9,6 @@ import {
 
 } from "react-router-dom";
 import {useState} from 'react';
-
 function App() {
   const [user,setLoginUser] = useState({
 
@@ -21,10 +19,10 @@ function App() {
 <Switch>
   <Route exact path="/">
     {
-      user && user._id ? <homepage/>:<login/>
-    }<homepage/></Route>
-  <Route path="/Login"><login setLoginUser={setLoginUser}/></Route>
-  <Route path="/Register"><register/></Route>
+      user && user._id ? <Homepage/>:<Login/>
+    }<Homepage/></Route>
+  <Route path="/Login"><Login setLoginUser={setLoginUser}/></Route>
+  <Route path="/Register"><Register/></Route>
 </Switch>
 
       </Router>
