@@ -59,5 +59,5 @@ app.post("/Register", (req, res) => {
 });
 */
 
-//Express js listen method to run project on http://localhost:5000
+//Express js listen method to run project
 app.listen(PORT, console.log("Server started"));
