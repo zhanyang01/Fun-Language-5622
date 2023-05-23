@@ -1,10 +1,10 @@
+import React from "react";
 import './App.css';
 import Homepage from "./homepage"
 import Login from "./login"
 import Register from "./register"
 import {
-  BrowserRouter as Router, 
-  Switch, 
+  Routes, 
   Route
 
 } from "react-router-dom";
@@ -15,18 +15,12 @@ function App() {
   })
   return (
     <div className="App">
-      <Router>
-<Switch>
-  <Route exact path="/">
-    {
-      user && user._id ? <Homepage/>:<Login/>
-    }<Homepage/></Route>
-  <Route path="/Login"><Login setLoginUser={setLoginUser}/></Route>
-  <Route path="/Register"><Register/></Route>
-</Switch>
-
-      </Router>
-
+<Routes>
+  <Route exact path="/" element = { user && user._id ? <Homepage/>:<Login/>} >
+    </Route>
+  <Route path="/Login" element = {<Login setLoginUser={setLoginUser}/> }></Route>
+  <Route path="/Register" element = {<Register/>}></Route>
+</Routes>
     </div>
   );
 }
