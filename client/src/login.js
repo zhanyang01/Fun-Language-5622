@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom"
 const Login = ({setLoginUser}) => {
 const history = useHistory()
     const [user,setUser] = useState({
-        name:"",
+        email:"",
         password: ""
     })
     const handleChange = e =>{
