@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 6969
 
 app.post("/Login", (req, res) => {
     const {email, password} = req.body;
-    User.findOne({email: email}, (err, user) => {
+    User.find().then({email: email}, (err, user) => {
         if (user) {
             if (password === user.password) {
                 res.send({message: "login success", user: user});
@@ -40,7 +40,7 @@ app.post("/Login", (req, res) => {
 app.post("/Register", (req, res) => {
     console.log(req.body);
     const {name, userName, email, password} = req.body;
-    User.findOne({email: email}, (err, user) => {
+    User.find().then({email: email}, (err, user) => {
         if (user) {
             res.send({message: "user already exists"});
         } else {
