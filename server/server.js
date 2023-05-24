@@ -24,13 +24,13 @@ const PORT = process.env.PORT || 6969
 
 app.post("/Login", (req, res) => {
     const {email, password} = req.body;
-    User.find().then({email: email}, (err, user) => {
+    User.find({email: email}).then((err, user) => {
         if (user) {
             if (password === user.password) {
                 res.send({message: "login success", user: user});
             } else {
-            res.send({message: "wrong credentials"});
-        }
+                res.send({message: "wrong credentials"});
+            }
         } else {
             res.send("not register");
         }
@@ -40,18 +40,18 @@ app.post("/Login", (req, res) => {
 app.post("/Register", (req, res) => {
     console.log(req.body);
     const {name, userName, email, password} = req.body;
-    User.find().then({email: email}, (err, user) => {
+    User.find({email: email}).then((err, user) => {
         if (user) {
             res.send({message: "user already exists"});
         } else {
-            const user = new User({name, userName, email, password});
-            user.save(err => {
+            // const user = new User({name, userName, email, password});
+            const newUser = User.insertMany([{name, userName, email, password}]).then(err => {
                 if (err) {
                     res.send(err);
                 } else {
-                    res.send({message: "successful"});
+                    res.send({message: "successful"})
                 }
-            })
+            });
         }
     })
 });
