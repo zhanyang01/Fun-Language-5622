@@ -1,8 +1,8 @@
 import React from "react";
 import './App.css';
-import Homepage from "./homepage"
-import Login from "./login"
-import Register from "./register";
+import Homepage from "./homepage.jsx"
+import Login from "./login.jsx"
+import Register from "./register.jsx";
 import {
   Routes, 
   Route

@@ -1,7 +1,7 @@
 import connectDB from './database.js';
 import userRoutes from './userRoute.js';
 import express from 'express';
-// import User from './userModel.js';
+import User from './userModel.js';
 import dotenv  from 'dotenv';
 // import cors from 'cors';
 
@@ -24,7 +24,6 @@ app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 6969
 
-/*
 app.post("/Login", (req, res) => {
     const {email, password} = req.body;
     User.findOne({email: email}, (err, user) => {
@@ -58,7 +57,6 @@ app.post("/Register", (req, res) => {
         }
     })
 });
-*/
 
 // Express js listen method to run project
 app.listen(PORT, console.log("Server started"));
