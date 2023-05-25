@@ -44,7 +44,7 @@ app.post("/Register", async(req, res) => {
     if (user) {
         res.send({message: "user already exists"});
     } else {
-        User.insertMany([data]);
+        User.create([data]);
         res.send({message: "successful"});
     }
 });
