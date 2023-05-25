@@ -22,32 +22,31 @@ app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 6969
 
-app.post("/Login", (req, res) => {
+app.post("/Login", async(req, res) => {
     const {email, password} = req.body;
-    User.find({email: email}).then((err, user) => {;
-        if (user) {
-            if (password === user.password) {
-                res.send({message: "login success", user: user});
-            } else {
-                res.send({message: "wrong credentials"});
-            }
+    const user = User.findOne({email: email});
+    if (user) {
+        if (password === user.password) {
+            res.send({message: "login success", user: user});
         } else {
-            res.send("not registered");
+            res.send({message: "wrong credentials"});
         }
-    })
+    } else {
+        res.send("not registered");
+    }
 });
 
-app.post("/Register", (req, res) => {
+app.post("/Register", async(req, res) => {
     console.log(req.body);
     const {name, userName, email, password} = req.body;
-    User.find({email: email}).then((err, user) => {;
-        if (user) {
-            res.send({message: "user already exists"});
-        } else {
-            User.insertMany([{name, userName, email, password}]);
-            res.send({message: "successful"})
-        }
-    })
+    const user = User.findOne({email: email});
+    if (user) {
+        res.send({message: "user already exists"});
+    } else {
+        const data = {name, userName, email, password};
+        User.insertMany([data]);
+        res.send({message: "successful"});
+    }
 });
 
 // Express js listen method to run project
