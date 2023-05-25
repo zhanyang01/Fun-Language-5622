@@ -39,12 +39,12 @@ app.post("/Login", async(req, res) => {
 app.post("/Register", async(req, res) => {
     console.log(req.body);
     const {name, userName, email, password} = req.body;
-    const user = User.findOne({email: email});
     const data = {name, userName, email, password};
+    const user = User.findOne({email: email});
     if (user) {
         res.send({message: "user already exists"});
     } else {
-        await User.insertMany([data]);
+        User.insertMany([data]);
         res.send({message: "successful"});
     }
 });
