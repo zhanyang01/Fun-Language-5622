@@ -24,28 +24,30 @@ const PORT = process.env.PORT || 6969
 
 app.post("/Login", (req, res) => {
     const {email, password} = req.body;
-    const user = User.find({email: email});
-    if (user) {
-        if (password === user.password) {
-            res.send({message: "login success", user: user});
+    User.find({email: email}).then((err, user) => {;
+        if (user) {
+            if (password === user.password) {
+                res.send({message: "login success", user: user});
+            } else {
+                res.send({message: "wrong credentials"});
+            }
         } else {
-            res.send({message: "wrong credentials"});
+            res.send("not registered");
         }
-    } else {
-        res.send("not registered");
-    }
+    })
 });
 
 app.post("/Register", (req, res) => {
     console.log(req.body);
     const {name, userName, email, password} = req.body;
-    const user = User.find({email: email});
-    if (user) {
-        res.send({message: "user already exists"});
-    } else {
-        User.insertMany([{name, userName, email, password}]);
-        res.send({message: "successful"})
-    }
+    User.find({email: email}).then((err, user) => {;
+        if (user) {
+            res.send({message: "user already exists"});
+        } else {
+            User.insertMany([{name, userName, email, password}]);
+            res.send({message: "successful"})
+        }
+    })
 });
 
 // Express js listen method to run project
