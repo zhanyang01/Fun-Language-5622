@@ -44,7 +44,7 @@ app.post("/Register", async(req, res) => {
         res.send({message: "user already exists"});
     } else {
         const data = {name, userName, email, password};
-        User.insertMany([data]);
+        await User.insertMany([data]);
         res.send({message: "successful"});
     }
 });
