@@ -30,13 +30,15 @@ app.post("/Login", async(req, res) => {
     const user = User.findOne({email: data.email});
     try {
         if (user) {
-            if (bcrypt.compare(data.password, user.password)) {
-                const payload = {name: user.name, userName: user.userName, email: user.email};
-                const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
-                res.send({message: "login success", user: token});
-            } else {
-                res.send({message: "wrong credentials"});
-            }
+            bcrypt.compare(data.password, user.password).then(isCorrect => {
+                if (isCorrect) {
+                    const payload = {name: user.name, userName: user.userName, email: user.email};
+                    const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
+                    res.send({message: "login success", user: token});
+                } else {
+                    res.send({message: "wrong credentials"});
+                }
+            });
         } else {
             res.send("not registered");
         }
