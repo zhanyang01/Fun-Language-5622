@@ -4,6 +4,8 @@ import express from 'express';
 import User from './userModel.js';
 import dotenv from 'dotenv';
 import cors from "cors";
+import jwt from 'jsonwebtoken';
+import bcrypt from "bcrypt";
 
 connectDB();
 
@@ -24,11 +26,14 @@ const PORT = process.env.PORT || 6969
 
 app.post("/Login", async(req, res) => {
     const {email, password} = req.body;
-    const user = User.findOne({email: email});
+    const data = {email, password};
+    const user = User.findOne({email: data.email});
     try {
         if (user) {
-            if (password === user.password) {
-                res.send({message: "login success", user: user});
+            if (bcrypt.compare(data.password, user.password)) {
+                const payload = {name: user.name, userName: user.userName, email: user.email};
+                const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
+                res.send({message: "login success", user: token});
             } else {
                 res.send({message: "wrong credentials"});
             }
@@ -44,11 +49,12 @@ app.post("/Register", async(req, res) => {
     console.log(req.body);
     const {name, userName, email, password} = req.body;
     const data = {name, userName, email, password};
-    const user = User.findOne({email: email});
+    const user = User.findOne({email: data.email});
     try {
         if (user) {
             res.send({message: "user already exists"});
         } else {
+            user.password = await bcrypt.hash(data.password, 10);
             await User.insertMany([data]);
             res.send({message: "successful"});
         }
