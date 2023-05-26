@@ -30,17 +30,16 @@ app.post("/Login", async(req, res) => {
     const user = User.findOne({email: data.email});
     try {
         if (user) {
-            bcrypt.compare(data.password, user.password).then(isCorrect => {
-                if (isCorrect) {
-                    const payload = {name: user.name, userName: user.userName, email: user.email};
-                    const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
-                    res.send({message: "login success", user: token});
-                } else {
-                    res.send({message: "wrong credentials"});
-                }
-            });
+            const isCorrect = await bcrypt.compare(data.password, user.password);
+            if (isCorrect) {
+                const payload = {name: user.name, userName: user.userName, email: user.email};
+                const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
+                res.send({message: "login success", user: token});
+            } else {
+                res.send({message: "wrong credentials"})
+            }
         } else {
-            res.send("not registered");
+            res.send({message: "not registered"});
         }
     } catch(e) {
         console.log(e);
@@ -57,7 +56,7 @@ app.post("/Register", async(req, res) => {
             res.send({message: "user already exists"});
         } else {
             user.password = await bcrypt.hash(data.password, 10);
-            await User.insertMany([data]);
+            await User.insertMany(data);
             res.send({message: "successful"});
         }
     } catch(e) {
