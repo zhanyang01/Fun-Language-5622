@@ -25,12 +25,10 @@ app.use('/api/users', userRoutes);
 const PORT = process.env.PORT || 6969
 
 app.post("/Login", async(req, res) => {
-    const {email, password} = req.body;
-    const data = {email, password};
-    const user = User.findOne({email: data.email});
+    const user = User.findOne({email: req.body.email});
     try {
         if (user) {
-            const isCorrect = await bcrypt.compare(data.password, user.password);
+            const isCorrect = await bcrypt.compare(req.body.password, user.password);
             if (isCorrect) {
                 res.send({message: "login success"});
                 /*
@@ -45,13 +43,13 @@ app.post("/Login", async(req, res) => {
                 */
             } else {
                 res.status(404).json({message: "wrong credentials"});
-                res.status(404);
-                throw new Error("wrong credentials");
+                // res.status(404);
+                // throw new Error("wrong credentials");
             }
         } else {
             res.status(404).json({message: "not registered"});
-            res.status(404);
-            throw new Error("not registered");
+            // res.status(404);
+            // throw new Error("not registered");
         }
     } catch(e) {
         console.log(e);
@@ -60,17 +58,15 @@ app.post("/Login", async(req, res) => {
 
 app.post("/Register", async(req, res) => {
     console.log(req.body);
-    const {name, userName, email, password} = req.body;
-    const data = {name, userName, email, password};
-    const user = User.findOne({email: data.email});
+    const user = User.findOne({email: req.body.email});
     try {
         if (user) {
             res.status(404).json({message: "user already exists"});
-            res.status(404);
-            throw new Error("user already exists");
+            // res.status(404);
+            // throw new Error("user already exists");
         } else {
-            user.password = await bcrypt.hash(data.password, 10);
-            await User.insertMany([data]);
+            user.password = await bcrypt.hash(req.body.password, 10);
+            await User.insertMany([req.body]);
             res.send({message: "successful"});
         }
     } catch(e) {
