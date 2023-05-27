@@ -60,9 +60,9 @@ app.post("/Login", async(req, res) => {
 });
 
 app.post("/Register", async(req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const user = User.findOne({email: req.body.email});
-    // console.log(user);
+    console.log(user);
     try {
         if (user) {
             res.status(404).json({message: "user already exists"});
