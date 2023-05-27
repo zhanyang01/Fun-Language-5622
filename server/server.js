@@ -4,7 +4,7 @@ import express from 'express';
 import User from './userModel.js';
 import dotenv from 'dotenv';
 import cors from "cors";
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 import bcrypt from "bcrypt";
 
 connectDB();
@@ -30,17 +30,28 @@ app.post("/Login", async(req, res) => {
     const user = User.findOne({email: data.email});
     try {
         if (user) {
-            bcrypt.compare(data.password, user.password).then(isCorrect => {
-                if (isCorrect) {
-                    const payload = {name: user.name, userName: user.userName, email: user.email};
-                    const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
-                    res.send({message: "login success", user: token});
+            const isCorrect = await bcrypt.compare(data.password, user.password);
+            if (isCorrect) {
+                res.send({message: "login success"});
+                /*
+                const payload = {name: user.name, userName: user.userName, email: user.email};
+                const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
+                const valid = jwt.verify(token, process.env.TOKEN_KEY);
+                if (valid) {
+                    res.send({message: "login success"})
                 } else {
-                    res.send({message: "wrong credentials"});
+                    res.send({message: "invalid login"})
                 }
-            });
+                */
+            } else {
+                res.status(404).json({message: "wrong credentials"});
+                res.status(404);
+                throw new Error("wrong credentials");
+            }
         } else {
-            res.send("not registered");
+            res.status(404).json({message: "not registered"});
+            res.status(404);
+            throw new Error("not registered");
         }
     } catch(e) {
         console.log(e);
@@ -54,7 +65,9 @@ app.post("/Register", async(req, res) => {
     const user = User.findOne({email: data.email});
     try {
         if (user) {
-            res.send({message: "user already exists"});
+            res.status(404).json({message: "user already exists"});
+            res.status(404);
+            throw new Error("user already exists");
         } else {
             user.password = await bcrypt.hash(data.password, 10);
             await User.insertMany([data]);
