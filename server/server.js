@@ -44,10 +44,14 @@ app.post("/Login", async(req, res) => {
                 }
                 */
             } else {
-                res.send({message: "wrong credentials"});
+                res.status(404).json({message: "wrong credentials"});
+                res.status(404);
+                throw new Error("wrong credentials");
             }
         } else {
-            res.send({message: "not registered"});
+            res.status(404).json({message: "not registered"});
+            res.status(404);
+            throw new Error("not registered");
         }
     } catch(e) {
         console.log(e);
@@ -61,7 +65,9 @@ app.post("/Register", async(req, res) => {
     const user = User.findOne({email: data.email});
     try {
         if (user) {
-            res.send({message: "user already exists"});
+            res.status(404).json({message: "user already exists"});
+            res.status(404);
+            throw new Error("user already exists");
         } else {
             user.password = await bcrypt.hash(data.password, 10);
             await User.insertMany([data]);
