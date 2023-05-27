@@ -31,6 +31,7 @@ app.post("/Login", async(req, res) => {
             const isCorrect = await bcrypt.compare(req.body.password, user.password);
             if (isCorrect) {
                 res.send({message: "login success"});
+                console.log("login success");
                 /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
@@ -43,11 +44,13 @@ app.post("/Login", async(req, res) => {
                 */
             } else {
                 res.status(404).json({message: "wrong credentials"});
+                console.log("wrong credentials");
                 // res.status(404);
                 // throw new Error("wrong credentials");
             }
         } else {
             res.status(404).json({message: "not registered"});
+            console.log("not registered");
             // res.status(404);
             // throw new Error("not registered");
         }
@@ -59,13 +62,15 @@ app.post("/Login", async(req, res) => {
 app.post("/Register", async(req, res) => {
     console.log(req.body);
     const user = User.findOne({email: req.body.email});
+    // console.log(user);
     try {
         if (user) {
             res.status(404).json({message: "user already exists"});
+            console.log("user already exists");
             // res.status(404);
             // throw new Error("user already exists");
         } else {
-            user.password = await bcrypt.hash(req.body.password, 10);
+            // const newPassword = await bcrypt.hash(req.body.password, 10);
             await User.insertMany([req.body]);
             res.send({message: "successful"});
         }
