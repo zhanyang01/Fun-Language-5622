@@ -37,9 +37,9 @@ app.post("/Login", async(req, res) => {
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
                 const valid = jwt.verify(token, process.env.TOKEN_KEY);
                 if (valid) {
-                    res.send({message: "login success"})
+                    res.send({message: "login success"});
                 } else {
-                    res.send({message: "invalid login"})
+                    res.send({message: "invalid login"});
                 }
                 */
             } else {
@@ -70,9 +70,16 @@ app.post("/Register", async(req, res) => {
             // res.status(404);
             // throw new Error("user already exists");
         } else {
+            let newDocument = {
+                name: req.body.name, 
+                userName: req.body.userName, 
+                email: req.body.email,
+                password: req.body.password
+            };
             // const newPassword = await bcrypt.hash(req.body.password, 10);
-            await User.insertMany([req.body]);
-            res.send({message: "successful"});
+            let result = await User.insertMany([newDocument]);
+            res.send(result);
+            console.log("registration success");
         }
     } catch(e) {
         console.log(e);
