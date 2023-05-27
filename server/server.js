@@ -63,7 +63,6 @@ app.post("/Register", async(req, res) => {
             user.password = await bcrypt.hash(data.password, 10);
             await User.insertMany([data]);
             res.send({message: "successful"});
-            // console.log(User);
         }
     } catch(e) {
         console.log(e);
