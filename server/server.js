@@ -34,8 +34,8 @@ app.post("/Login", async(req, res) => {
             if (isCorrect) {
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
-                res.send({message: "login success", user: token});
-                // console.log("logged in");
+                res.send({message: "login success"});
+                // console.log(token);
             } else {
                 res.send({message: "wrong credentials"});
             }
