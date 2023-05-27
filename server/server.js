@@ -35,8 +35,9 @@ app.post("/Login", async(req, res) => {
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
                 res.send({message: "login success", user: token});
+                // console.log("logged in");
             } else {
-                res.send({message: "wrong credentials"})
+                res.send({message: "wrong credentials"});
             }
         } else {
             res.send({message: "not registered"});
@@ -56,8 +57,9 @@ app.post("/Register", async(req, res) => {
             res.send({message: "user already exists"});
         } else {
             user.password = await bcrypt.hash(data.password, 10);
-            await User.insertMany(data);
+            await User.insertMany([data]);
             res.send({message: "successful"});
+            // console.log(User);
         }
     } catch(e) {
         console.log(e);
