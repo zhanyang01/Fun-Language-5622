@@ -4,7 +4,7 @@ import express from 'express';
 import User from './userModel.js';
 import dotenv from 'dotenv';
 import cors from "cors";
-import jwt from 'jsonwebtoken';
+// import jwt from 'jsonwebtoken';
 import bcrypt from "bcrypt";
 
 connectDB();
@@ -32,6 +32,8 @@ app.post("/Login", async(req, res) => {
         if (user) {
             const isCorrect = await bcrypt.compare(data.password, user.password);
             if (isCorrect) {
+                res.send({message: "login success"});
+                /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
                 const valid = jwt.verify(token, process.env.TOKEN_KEY);
@@ -40,6 +42,7 @@ app.post("/Login", async(req, res) => {
                 } else {
                     res.send({message: "invalid login"})
                 }
+                */
             } else {
                 res.send({message: "wrong credentials"});
             }
