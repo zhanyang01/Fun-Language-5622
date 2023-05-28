@@ -8,22 +8,22 @@ Assessment comprises of oral and written components (practice written test paper
 Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
 Resources for references  
 
-Scope of Project:
+## Scope of Project:  
 The Fun Language App allows for users to have a fun experience learning a new language of interest.
 
-Features to be completed by mid-June:
-Courses for the various languages.
-Gamification feature.
-Implement the website and some of their core features, such as the login credentials, user profile creation, web-based forum to allow for communication between students and teachers.
+## Features to be completed by mid-June:
+Courses for the various languages.  
+Gamification feature.  
+Implement the website and some of their core features, such as the login credentials, user profile creation, web-based forum to allow for communication between students and teachers.  
 
-Features to be completed by mid-July:
-Pronunciation check.
-Create the assessment & marking system.
-Certificate of achievements.
-Improve on gamification (user needs to complete current task to unlock higher levels).
-Mobile Application to allow users to be able to learn the languages they want to learn even when they are not at home, hence making learning much more convenient.
-Interface to allow the users to be able to access the courses with ease at the comfort of their homes with others taking the same courses to allow them to discuss and learn from each other.
-Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning
+## Features to be completed by mid-July:
+Pronunciation check.  
+Create the assessment & marking system.  
+Certificate of achievements.  
+Improve on gamification (user needs to complete current task to unlock higher levels).  
+Mobile Application to allow users to be able to learn the languages they want to learn even when they are not at home, hence making learning much more convenient.  
+Interface to allow the users to be able to access the courses with ease at the comfort of their homes with others taking the same courses to allow them to discuss and learn from each other.  
+Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning  
 
 Techstack (MERN stack):
 MongoDB (Database),
