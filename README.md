@@ -1,12 +1,12 @@
 # Fun-Language-5622
-User Stories:
-User selects which language they want to learn
-Enroll for courses on the language of choice varying in terms of difficulty (beginner, intermediate, expert)
-If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course to determine whether they are able to enroll for the course of choice (otherwise enroll for beginner)
-After completing the courses, user can unlock the proficiency assessment and attempt it (can do practice tests before attempting the test)
-Assessment comprises of oral and written components (practice written test papers available)
-Certificate of achievement sent to their email if they pass the assessment for the enrolled course
-Resources for references
+## User Stories:  
+User selects which language they want to learn  
+Enroll for courses on the language of choice varying in terms of difficulty (beginner, intermediate, expert)  
+If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course to determine whether they are able to enroll for the course of choice (otherwise enroll for beginner)  
+After completing the courses, user can unlock the proficiency assessment and attempt it (can do practice tests before attempting the test)  
+Assessment comprises of oral and written components (practice written test papers available)  
+Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
+Resources for references  
 
 Scope of Project:
 The Fun Language App allows for users to have a fun experience learning a new language of interest.
