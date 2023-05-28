@@ -9,7 +9,7 @@ function App() {
   const [user, setLoginUser] = useState({});
   return (
     <div className="App">
-      //need to have routes to make it work for every single webpage
+      {/* need to ensure that  every route is here this might be one of the problems */}
       <Routes>
         <Route exact path="/" element={user && user._id ? <Homepage /> : <Login />} />
         <Route exact path="/login" element={<Login setLoginUser={setLoginUser} />} />
