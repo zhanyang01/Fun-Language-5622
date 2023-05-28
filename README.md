@@ -73,5 +73,5 @@ Node.js (Backend)
 * 3rd week of July: Extend to mobile app, include another language (e.g. Chinese)  
 
 ## Technical Proof:
-
+<img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/25c3d34a-259a-4c1a-880d-cdad54fbb511">
 
