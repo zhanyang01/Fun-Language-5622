@@ -17,7 +17,7 @@ Gamification feature.
 Implement the website and some of their core features, such as the login credentials, user profile creation, web-based forum to allow for communication between students and teachers.
 
 Features to be completed by mid-July:
-Pronunciation check.\n
+Pronunciation check.
 Create the assessment & marking system.
 Certificate of achievements.
 Improve on gamification (user needs to complete current task to unlock higher levels).
@@ -38,7 +38,7 @@ Interactive interface,
 Web-based forum
 
 Development Plan:
-2nd week of May: Finalize project ideas and create poster and video for liftoff
+2nd week of May: Finalize project ideas and create poster and video for liftoff \n
 3rd week of May: Pick up necessary technologies (MongoDB, ExpressJS, ReactJS, NodeJS)
 4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting with database
 1st week of June: Create English course for app
