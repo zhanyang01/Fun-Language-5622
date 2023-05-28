@@ -76,7 +76,7 @@ app.post("/Register", async(req, res) => {
                 email: req.body.email,
                 password: req.body.password
             };
-            // const newPassword = await bcrypt.hash(req.body.password, 10);
+            const encryptedPass = await bcrypt.hash(req.body.password, 10);
             let result = await User.insertMany([newDocument]);
             res.send(result);
             console.log("registration success");
