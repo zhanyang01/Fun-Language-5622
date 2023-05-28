@@ -73,9 +73,9 @@ Node.js (Backend)
 * 3rd week of July: Extend to mobile app, include another language (e.g. Chinese)  
 
 ## Technical Proof:
-<img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/25c3d34a-259a-4c1a-880d-cdad54fbb511">
+<img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/25c3d34a-259a-4c1a-880d-cdad54fbb511">  
 Successful integration of frontend and backend leads to log in page.  
-A new user can create his or her account in the register page. The user will be directed back to the login page after successful registration.  
+A new user can create his or her account in the register page. The user will be directed back to the login page after successful registration.   
 After Edmund has registered, his records are reflected in the database and the password is encrypted.  
 Successful login directs the user to the homepage, which does not have much at the moment except for a welcome to the users  
 
