@@ -25,30 +25,30 @@ Mobile Application to allow users to be able to learn the languages they want to
 Interface to allow the users to be able to access the courses with ease at the comfort of their homes with others taking the same courses to allow them to discuss and learn from each other.  
 Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning  
 
-Techstack (MERN stack):
+## Techstack (MERN stack):
 MongoDB (Database),
 Express.js (Framework),
 React.js (Frontend),
 Node.js (Backend)
 
 
-Distinctive Features:
-Gamification,
-Interactive interface,
-Web-based forum
+## Distinctive Features:
+Gamification  
+Interactive interface  
+Web-based forum  
 
-Development Plan:
-2nd week of May: Finalize project ideas and create poster and video for liftoff 
-3rd week of May: Pick up necessary technologies (MongoDB, ExpressJS, ReactJS, NodeJS)
-4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting with database
-1st week of June: Create English course for app
-2nd week of June: Create levels of difficulty
-3rd week of June: Implement gamification feature
-1st week of July: Create assessment and marking system
-2nd week of July: Include certificate of achievements and web-based forum
-3rd week of July: Extend to mobile app, include another language (e.g. Chinese)
+## Development Plan:
+2nd week of May: Finalize project ideas and create poster and video for liftoff   
+3rd week of May: Pick up necessary technologies (MongoDB, ExpressJS, ReactJS, NodeJS)  
+4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting with database  
+1st week of June: Create English course for app  
+2nd week of June: Create levels of difficulty  
+3rd week of June: Implement gamification feature  
+1st week of July: Create assessment and marking system  
+2nd week of July: Include certificate of achievements and web-based forum  
+3rd week of July: Extend to mobile app, include another language (e.g. Chinese)  
 
-Mockup (?):
+## Mockup (?):  
 
-Technical Proof:
+## Technical Proof:
 
