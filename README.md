@@ -12,7 +12,7 @@
 
 6. Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
 
-Resources for references  
+7. Resources for reference
 
 ## Scope of Project:  
 The Fun Language App allows for users to have a fun experience learning a new language of interest.
