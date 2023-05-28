@@ -17,7 +17,7 @@ Gamification feature.
 Implement the website and some of their core features, such as the login credentials, user profile creation, web-based forum to allow for communication between students and teachers.
 
 Features to be completed by mid-July:
-Pronunciation check.
+Pronunciation check.\n
 Create the assessment & marking system.
 Certificate of achievements.
 Improve on gamification (user needs to complete current task to unlock higher levels).
