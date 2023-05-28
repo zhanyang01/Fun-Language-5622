@@ -72,7 +72,6 @@ Node.js (Backend)
 
 * 3rd week of July: Extend to mobile app, include another language (e.g. Chinese)  
 
-## Mockup (?):  
-
 ## Technical Proof:
+
 
