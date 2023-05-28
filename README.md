@@ -76,6 +76,7 @@ Node.js (Backend)
 <img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/25c3d34a-259a-4c1a-880d-cdad54fbb511">  
 
 Successful integration of frontend and backend leads to log in page.  
+
 <img width="960" alt="register" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/3da4a3d0-0c67-4902-980d-7c02d0afb1db">
 
 A new user can create his or her account in the register page. The user will be directed back to the login page after successful registration.   
