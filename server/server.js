@@ -31,7 +31,6 @@ app.post("/Login", async(req, res) => {
             const isCorrect = await bcrypt.compare(req.body.password, user.password);
             if (isCorrect) {
                 res.send({message: "login success"});
-                console.log("login success");
                 /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
@@ -43,13 +42,13 @@ app.post("/Login", async(req, res) => {
                 }
                 */
             } else {
-                res.status(404).json({message: "wrong credentials"});
+                res.send({message: "wrong credentials"});
                 console.log("wrong credentials");
                 // res.status(404);
                 // throw new Error("wrong credentials");
             }
         } else {
-            res.status(404).json({message: "not registered"});
+            res.send({message: "not registered"});
             console.log("not registered");
             // res.status(404);
             // throw new Error("not registered");
@@ -62,6 +61,7 @@ app.post("/Login", async(req, res) => {
 app.post("/Register", async(req, res) => {
     // console.log(req.body);
     const user = User.findOne({email: req.body.email});
+    const { name, username, password, email } = req.body;
     console.log(user);
     try {
         if (user) {
@@ -70,15 +70,20 @@ app.post("/Register", async(req, res) => {
             // res.status(404);
             // throw new Error("user already exists");
         } else {
+            /*
             let newDocument = {
                 name: req.body.name, 
                 userName: req.body.userName, 
                 email: req.body.email,
                 password: req.body.password
             };
+            */
             const encryptedPass = await bcrypt.hash(req.body.password, 10);
-            let result = await User.insertMany([newDocument]);
-            res.send(result);
+            const newUser = new User({ name, username, password: encryptedPass, email});
+            await User.create(newUser).then(() => {
+                res.send({message: "successful"});
+            });
+            // res.send(result);
             console.log("registration success");
         }
     } catch(e) {
