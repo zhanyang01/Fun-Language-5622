@@ -1,8 +1,8 @@
-import connectDB from './database.js';
-import userRoutes from './userRoute.js';
-import express from 'express';
-import User from './userModel.js';
-import dotenv from 'dotenv';
+import connectDB from "./database.js";
+import userRoutes from "./userRoute.js";
+import express from "express";
+import User from "./userModel.js";
+import dotenv from "dotenv";
 import cors from "cors";
 // import jwt from 'jsonwebtoken';
 import bcrypt from "bcrypt";
@@ -20,9 +20,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 // Create API for user
-app.use('/api/users', userRoutes);
+app.use("/api/users", userRoutes);
 
-const PORT = process.env.PORT || 6969
+const PORT = process.env.PORT || 6969;
 
 app.post("/Login", async(req, res) => {
     const user = User.findOne({email: req.body.email});
@@ -57,7 +57,7 @@ app.post("/Login", async(req, res) => {
     } catch(e) {
         console.log(e);
     }
-});
+  });
 
 app.post("/Register", async(req, res) => {
     // console.log(req.body);
@@ -84,7 +84,7 @@ app.post("/Register", async(req, res) => {
     } catch(e) {
         console.log(e);
     }
-});
+  });
 
 // Express js listen method to run project
 app.listen(PORT, console.log("Server started"));
