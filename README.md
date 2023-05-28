@@ -38,7 +38,7 @@ Interactive interface,
 Web-based forum
 
 Development Plan:
-2nd week of May: Finalize project ideas and create poster and video for liftoff \n
+2nd week of May: Finalize project ideas and create poster and video for liftoff 
 3rd week of May: Pick up necessary technologies (MongoDB, ExpressJS, ReactJS, NodeJS)
 4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting with database
 1st week of June: Create English course for app
