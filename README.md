@@ -80,6 +80,7 @@ Successful integration of frontend and backend leads to log in page.
 <img width="960" alt="register" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/3da4a3d0-0c67-4902-980d-7c02d0afb1db">   
 
 A new user can create his or her account in the register page. The user will be directed back to the login page after successful registration.   
+
 <img width="960" alt="Screenshot 2023-05-28 222759" src="https://github.com/zhanyang01/Fun-Language-5622/assets/95852686/1822c687-4a67-40bc-b293-a15818dfc2a1">  
 
 After Edmund has registered, his records are reflected in the database and the password is encrypted.  
