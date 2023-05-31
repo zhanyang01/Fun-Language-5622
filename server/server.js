@@ -66,7 +66,7 @@ app.post("/Register", async(req, res) => {
     console.log(user);
     try {
         if (user) {
-            res.status(404).json({message: "user already exists"});
+            res.send({message: "user already exists"});
             console.log("user already exists");
             // res.status(404);
             // throw new Error("user already exists");
