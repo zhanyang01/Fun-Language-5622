@@ -22,7 +22,8 @@ app.use(cors());
 // Create API for user
 app.use("/api/users", userRoutes);
 
-const PORT = process.env.PORT || 6969;
+// const PORT = process.env.PORT || 6969;
+const PORT = 6969;
 
 app.post("/Login", async(req, res) => {
     const user = User.findOne({email: req.body.email});
@@ -78,7 +79,7 @@ app.post("/Register", async(req, res) => {
                 password: req.body.password
             };
             */
-            const encryptedPass = await bcrypt.hash(req.body.password, 10);
+            const encryptedPass = await bcrypt.hash(password, 10);
             const newUser = new User({ name, username, password: encryptedPass, email});
             await User.create(newUser).then(() => {
                 res.send({message: "successful"});
