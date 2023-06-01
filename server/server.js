@@ -43,14 +43,14 @@ app.post("/Login", async(req, res) => {
                 }
                 */
             } else {
-                Login();
+                // Login();
                 res.send({message: "wrong credentials"});
                 console.log("wrong credentials");
                 // res.status(404);
                 // throw new Error("wrong credentials");
             }
         } else {
-            Login();
+            // Login();
             res.send({message: "not registered"});
             console.log("not registered");
             // res.status(404);
@@ -68,7 +68,7 @@ app.post("/Register", async(req, res) => {
     console.log(user);
     try {
         if (user) {
-            Register();
+            // Register();
             res.send({message: "user already exists"});
             console.log("user already exists");
             // res.status(404);
