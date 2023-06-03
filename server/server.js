@@ -26,12 +26,13 @@ app.use("/api/users", userRoutes);
 const PORT = 6969;
 
 app.post("/Login", async(req, res) => {
-    const user = User.findOne({email: req.body.email});
+    // const user = User.findOne({email: req.body.email});
     try {
+        const user = await User.findOne({email: req.body.email});
         if (user) {
             const isCorrect = await bcrypt.compare(req.body.password, user.password);
             if (isCorrect) {
-                res.send({message: "login success"});
+                return res.status(404).json({message: "login success"});
                 /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
@@ -44,15 +45,15 @@ app.post("/Login", async(req, res) => {
                 */
             } else {
                 // Login();
-                res.send({message: "wrong credentials"});
-                console.log("wrong credentials");
+                return res.status(404).json({message: "wrong credentials"});
+                // console.log("wrong credentials");
                 // res.status(404);
                 // throw new Error("wrong credentials");
             }
         } else {
             // Login();
-            res.send({message: "not registered"});
-            console.log("not registered");
+            return res.status(404).json({message: "not registered"});
+            // console.log("not registered");
             // res.status(404);
             // throw new Error("not registered");
         }
@@ -63,14 +64,17 @@ app.post("/Login", async(req, res) => {
 
 app.post("/Register", async(req, res) => {
     // console.log(req.body);
-    const user = User.findOne({email: req.body.email});
-    const { name, username, password, email } = req.body;
-    console.log(user);
+    // const { name, username, password, email } = req.body;
+    // const user = User.findOne({email: req.body.email});
+    // console.log(user);
     try {
+        const { name, username, password, email } = req.body;
+        const user = await User.findOne({email: req.body.email});
+        // const { name, username, password, email } = req.body;
         if (user) {
             // Register();
-            res.send({message: "user already exists"});
-            console.log("user already exists");
+            return res.status(404).json({message: "user already exists"});
+            // console.log("user already exists");
             // res.status(404);
             // throw new Error("user already exists");
         } else {
@@ -85,7 +89,7 @@ app.post("/Register", async(req, res) => {
             const encryptedPass = await bcrypt.hash(password, 10);
             const newUser = new User({ name, username, password: encryptedPass, email});
             await User.create(newUser).then(() => {
-                res.send({message: "successful"});
+                return res.status(404).json({message: "successful"});
             });
             // res.send(result);
             console.log("registration success");
