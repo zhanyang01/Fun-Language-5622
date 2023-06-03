@@ -21,6 +21,7 @@ const history = useNavigate()
         .then(res=>{alert(res.data.message)
         setLoginUser(res.data.user)
     history.push("/")})
+    alert("login success")
         } else {
             alert("invalid input");
         }
