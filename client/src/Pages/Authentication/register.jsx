@@ -22,8 +22,7 @@ const Register = () => {
     if (name && username && email && password){
         axios.post("http://localhost:6969/Register",user )
         .then(res=>console.log(res))
-       }
-       else{
+       } else {
            alert("invalid input")
        };
    }
