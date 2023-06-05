@@ -1,1 +1,14 @@
-{"scripts":{"test":"echo \"Error: no test specified\" && exit 1","start":"nodemon server/server","client":"npm start --prefix client","dev":"concurrently \"npm start\" \"npm run client\""},"devDependencies":{"concurrently":"^8.0.1"},"dependencies":{"nodemon":"^2.0.22"}}
+{
+    "scripts": {
+        "test":"echo \"Error: no test specified\" && exit 1",
+        "start":"nodemon server/server",
+        "client":"npm start --prefix client",
+        "dev":"concurrently \"npm start\" \"npm run client\""
+    },
+        "devDependencies":{
+            "concurrently":"^8.0.1"
+        },
+        "dependencies":{
+            "nodemon":"^2.0.22"
+        }
+    }
