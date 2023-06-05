@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/login" element={<Login setLoginUser={setLoginUser} />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/homepage" element={<Homepage />} />
-        <Route exact path="/EnglishLanguage" element = {<EnglishLanguage />} />
+        <Route exact path="/english" element = {<EnglishLanguage />} />
       </Routes>
     </div>
   );
