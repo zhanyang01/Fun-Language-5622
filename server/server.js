@@ -32,7 +32,7 @@ app.post("/Login", async(req, res) => {
         if (user) {
             const isCorrect = await bcrypt.compare(req.body.password, user.password);
             if (isCorrect) {
-                return res.status(404).json({message: "login success"});
+                res.send({message: "login success"});
                 /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
@@ -45,17 +45,15 @@ app.post("/Login", async(req, res) => {
                 */
             } else {
                 // Login();
-                return res.status(404).json({message: "wrong credentials"});
+                res.send({message: "wrong credentials"});
                 // console.log("wrong credentials");
                 // res.status(404);
-                // throw new Error("wrong credentials");
             }
         } else {
             // Login();
-            return res.status(404).json({message: "not registered"});
+            res.send({message: "not registered"});
             // console.log("not registered");
             // res.status(404);
-            // throw new Error("not registered");
         }
     } catch(e) {
         console.log(e);
@@ -73,10 +71,9 @@ app.post("/Register", async(req, res) => {
         // const { name, username, password, email } = req.body;
         if (user) {
             // Register();
-            return res.status(404).json({message: "user already exists"});
+            res.send({message: "user already exists"});
             // console.log("user already exists");
             // res.status(404);
-            // throw new Error("user already exists");
         } else {
             /*
             let newDocument = {
@@ -86,12 +83,11 @@ app.post("/Register", async(req, res) => {
                 password: req.body.password
             };
             */
-            const encryptedPass = await bcrypt.hash(password, 10);
-            const newUser = new User({ name, username, password: encryptedPass, email});
+            // const encryptedPass = await bcrypt.hash(password, 10);
+            const newUser = new User({ name, username, password, email});
             await User.create(newUser).then(() => {
-                return res.status(404).json({message: "successful"});
+                res.send({message: "successful"});
             });
-            // res.send(result);
             console.log("registration success");
         }
     } catch(e) {

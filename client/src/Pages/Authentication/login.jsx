@@ -16,15 +16,19 @@ const history = useNavigate()
     }
 
     const login =()=>{
-        if (user.email && user.password) {
+        // if (user.email && user.password) {
         axios.post("http://localhost:6969/Login",user)
-        .then(res=>{alert(res.data.message)
-        setLoginUser(res.data.user)
-    history.push("/")})
+        .then(res=>{
+            alert(res.data.message)
+            setLoginUser(res.data.user)
+            history("/homepage")
+        })
+    /*
     alert("login success")
         } else {
             alert("invalid input");
         }
+        */
     }
     return (
         <>
