@@ -5,6 +5,7 @@ import Login from "./Pages/Authentication/login";
 import Register from "./Pages/Authentication/register";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import EnglishLanguage from "./Pages/english";
 function App() {
   const [user, setLoginUser] = useState({});
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/login" element={<Login setLoginUser={setLoginUser} />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/homepage" element={<Homepage />} />
+        <Route exact path="/EnglishLanguage" element = {<EnglishLanguage />} />
       </Routes>
     </div>
   );
