@@ -19,11 +19,13 @@ const history = useNavigate()
         if (user.email && user.password) {
         axios.post("http://localhost:6969/Login",user)
         .then(res=>{
+            console.log(res)
             alert(res.data.message)
             setLoginUser(res.data.user)
             history("/homepage");
         })
         } else {
+            console.log("invalid input")
             alert("invalid input");
             // history("/login");
         }

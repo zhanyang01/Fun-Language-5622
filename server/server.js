@@ -30,7 +30,7 @@ app.post("/Login", async(req, res) => {
         const user = await User.findOne({email: req.body.email});
         if (user) {
             // const isCorrect = await bcrypt.compare(req.body.password, user.password);
-            if (req.body.password == user.password) {
+            if (req.body.password === user.password) {
                 res.send({message: "login success"});
                 console.log("login success");
                 // res.status(200).json({message: "login success"});
