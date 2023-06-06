@@ -21,8 +21,10 @@ const Register = () => {
    const registerAccount = ()=>{
     if (name && username && email && password){
         axios.post("http://localhost:6969/Register",user )
-        .then(res=>console.log(res))
-        alert("registration successful")
+        .then(res=> {
+            console.log(res)
+            alert(res.data.message)
+        })
        } else {
            alert("invalid input")
        };

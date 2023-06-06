@@ -5,7 +5,7 @@ import User from "./userModel.js";
 import dotenv from "dotenv";
 import cors from "cors";
 // import jwt from 'jsonwebtoken';
-import bcrypt from "bcrypt";
+// import bcrypt from "bcrypt";
 
 connectDB();
 
@@ -26,13 +26,14 @@ app.use("/api/users", userRoutes);
 const PORT = 6969;
 
 app.post("/Login", async(req, res) => {
-    // const user = User.findOne({email: req.body.email});
     try {
         const user = await User.findOne({email: req.body.email});
         if (user) {
-            const isCorrect = await bcrypt.compare(req.body.password, user.password);
-            if (isCorrect) {
+            // const isCorrect = await bcrypt.compare(req.body.password, user.password);
+            if (req.body.password == user.password) {
                 res.send({message: "login success"});
+                console.log("login success");
+                // res.status(200).json({message: "login success"});
                 /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
@@ -44,16 +45,13 @@ app.post("/Login", async(req, res) => {
                 }
                 */
             } else {
-                // Login();
+                // res.status(400).json({message: "wrong credentials"})
                 res.send({message: "wrong credentials"});
-                // console.log("wrong credentials");
-                // res.status(404);
+                console.log("wrong credentials");
             }
         } else {
-            // Login();
             res.send({message: "not registered"});
-            // console.log("not registered");
-            // res.status(404);
+            console.log("not registered");
         }
     } catch(e) {
         console.log(e);
@@ -61,19 +59,12 @@ app.post("/Login", async(req, res) => {
   });
 
 app.post("/Register", async(req, res) => {
-    // console.log(req.body);
-    // const { name, username, password, email } = req.body;
-    // const user = User.findOne({email: req.body.email});
-    // console.log(user);
     try {
         const { name, username, password, email } = req.body;
         const user = await User.findOne({email: req.body.email});
-        // const { name, username, password, email } = req.body;
         if (user) {
-            // Register();
             res.send({message: "user already exists"});
-            // console.log("user already exists");
-            // res.status(404);
+            console.log("user already exists");
         } else {
             /*
             let newDocument = {
@@ -87,8 +78,8 @@ app.post("/Register", async(req, res) => {
             const newUser = new User({ name, username, password, email});
             await User.create(newUser).then(() => {
                 res.send({message: "successful"});
+                console.log("registration success");
             });
-            console.log("registration success");
         }
     } catch(e) {
         console.log(e);
