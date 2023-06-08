@@ -15,20 +15,20 @@ const history = useNavigate()
     })
     }
 
-    const login =()=>{
-        // if (user.email && user.password) {
-        axios.post("http://localhost:6969/Login",user)
+    const login =()=> {
+        if (user.email && user.password) {
+        axios.post("http://localhost:6969/Login", user)
         .then(res=>{
+            console.log(res)
             alert(res.data.message)
             setLoginUser(res.data.user)
-            history("/homepage")
+            history("/homepage");
         })
-    /*
-    alert("login success")
         } else {
+            console.log("invalid input")
             alert("invalid input");
+            // history("/login");
         }
-        */
     }
     return (
         <>
@@ -69,7 +69,7 @@ const history = useNavigate()
                     </div>
                     <div className="flex w-full">
                         <Link to="/homepage">
-                            <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={login}>
+                            <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={() => login}>
                                 Login
                             </button>
                         </Link>
