@@ -1,7 +1,24 @@
 import User from "./userModel.js";
 import asyncHandler from "express-async-handler";
-//import jwt from “jsonwebtoken”
+import jwt from "jsonwebtoken";
 //import bcrypt from "bcryptjs";
+
+// ==================== helper functions====================
+
+//generate jwt token
+const generateJWT = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "180d",
+  });
+};
+
+//test for validity for email
+const validEmail = (email) => {
+  const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  return email.match(emailReged);
+};
+
+// ==================== main functions====================
 
 // Get all users
 export const getUsers = asyncHandler(async (req, res) => {
