@@ -5,12 +5,12 @@ import Login from "./Pages/Authentication/login";
 import Register from "./Pages/Authentication/register";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import EnglishLanguage from "./Pages/languages/english";
-import EnglishAssessment from "./Pages/languages/englishassessment";
-import EnglishCourses from "./Pages/languages/englishcourses";
-import EnglishBasic from "./Pages/languages/englishbasic";
-import EnglishIntermediate from "./Pages/languages/englishintermediate";
-import EnglishAdvanced from "./Pages/languages/englishadvanced";
+import EnglishLanguage from "./Pages/languages/english/English";
+import EnglishAssessment from "./Pages/languages/english/englishassessment";
+import EnglishCourses from "./Pages/languages/english/englishcourses";
+import EnglishBasic from "./Pages/languages/english/englishbasic";
+import EnglishIntermediate from "./Pages/languages/english/englishintermediate";
+import EnglishAdvanced from "./Pages/languages/english/englishadvanced";
 import Profile from "./Pages/profile";
 
 function App() {
