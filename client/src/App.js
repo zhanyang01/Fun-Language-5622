@@ -5,13 +5,15 @@ import Login from "./Pages/Authentication/login";
 import Register from "./Pages/Authentication/register";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import EnglishLanguage from "./Pages/english";
+import EnglishLanguage from "./Pages/languages/english";
+/*
 import EnglishAssessment from "./Pages/englishassessment";
 import EnglishCourses from "./Pages/englishcourses";
 import EnglishBasic from "./Pages/englishbasic";
 import EnglishIntermediate from "./Pages/englishintermediate";
 import EnglishAdvanced from "./Pages/englishadvanced";
 import Profile from "./Pages/profile";
+*/
 
 function App() {
   const [user, setLoginUser] = useState({});
@@ -24,12 +26,6 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/homepage" element={<Homepage />} />
         <Route exact path="/english" element={<EnglishLanguage />} />
-        <Route exact path="/englishassessment" element={<EnglishAssessment />} />
-        <Route exact path="/englishcourses" element={<EnglishCourses />} />
-        <Route exact path="/englishbasic" element={<EnglishBasic />} />
-        <Route exact path="/englishintermediate" element={<EnglishIntermediate />} />
-        <Route exact path="/englishadvanced" element={<EnglishAdvanced />} />
-        <Route exact path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
