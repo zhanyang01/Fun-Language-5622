@@ -5,7 +5,7 @@ import User from "./userModel.js";
 import dotenv from "dotenv";
 import cors from "cors";
 // import jwt from 'jsonwebtoken';
-// import bcrypt from "bcrypt";
+import bcrypt from "bcrypt";
 
 connectDB();
 
@@ -29,7 +29,7 @@ app.post("/Login", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (user) {
-      // const isCorrect = await bcrypt.compare(req.body.password, user.password);
+      const isCorrect = await bcrypt.compare(req.body.password, user.password);
       if (req.body.password === user.password) {
         res.send({ message: "login success" });
         console.log("login success");
@@ -74,8 +74,8 @@ app.post("/Register", async (req, res) => {
                 password: req.body.password
             };
             */
-      // const encryptedPass = await bcrypt.hash(password, 10);
-      const newUser = new User({ name, username, password, email });
+      const encryptedPass = await bcrypt.hash(password, 10);
+      const newUser = new User({ name, username, password: encryptedPass, email });
       await User.create(newUser).then(() => {
         res.send({ message: "successful" });
         console.log("registration success");
