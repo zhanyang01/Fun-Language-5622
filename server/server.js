@@ -33,21 +33,20 @@ app.post("/Login", async (req, res) => {
       if (req.body.password === user.password) {
         res.send({ message: "login success" });
         console.log("login success");
-        // res.status(200).json({message: "login success"});
-        /*
-                const payload = {name: user.name, userName: user.userName, email: user.email};
-                const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
-                const valid = jwt.verify(token, process.env.TOKEN_KEY);
-                if (valid) {
-                    res.send({message: "login success"});
-                } else {
-                    res.send({message: "invalid login"});
-                }
-                */
+        //res.status(200).json({ message: "login success" });
+
+        const payload = { name: user.name, userName: user.userName, email: user.email };
+        const token = jwt.sign(payload, process.env.TOKEN_KEY, { expiresIn: 86400 });
+        const valid = jwt.verify(token, process.env.TOKEN_KEY);
+        if (valid) {
+          res.send({ message: "login success" });
+        } else {
+          res.send({ message: "invalid login" });
+        }
       } else {
-        // res.status(400).json({message: "wrong credentials"})
         res.send({ message: "wrong credentials" });
         console.log("wrong credentials");
+        // res.status(400).json({message: "wrong credentials"})
       }
     } else {
       res.send({ message: "not registered" });
@@ -60,7 +59,7 @@ app.post("/Login", async (req, res) => {
 
 app.post("/Register", async (req, res) => {
   try {
-    const { name, username, password, email, confirmPassword } = req.body;
+    const { name, username, password, email } = req.body;
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       res.send({ message: "user already exists" });

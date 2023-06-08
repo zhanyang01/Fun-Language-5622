@@ -1,5 +1,7 @@
 import User from "./userModel.js";
 import asyncHandler from "express-async-handler";
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 // Get all users
 export const getUsers = asyncHandler(async (req, res) => {
