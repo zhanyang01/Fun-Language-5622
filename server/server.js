@@ -60,7 +60,7 @@ app.post("/Login", async (req, res) => {
 
 app.post("/Register", async (req, res) => {
   try {
-    const { name, username, password, email } = req.body;
+    const { name, username, password, email, confirmPassword } = req.body;
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       res.send({ message: "user already exists" });
@@ -72,7 +72,6 @@ app.post("/Register", async (req, res) => {
                 userName: req.body.userName, 
                 email: req.body.email,
                 password: req.body.password
-                confirmpassword = req.body.confirmpassword
             };
             */
       // const encryptedPass = await bcrypt.hash(password, 10);
