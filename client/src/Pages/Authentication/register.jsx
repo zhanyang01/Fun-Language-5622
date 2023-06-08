@@ -6,7 +6,8 @@ const Register = () => {
         name:"",
         username:"",
         email:"",
-        password: ""
+        password: "",
+        confirmpassword:"",
     })
     
     const handleChange = e =>{
@@ -19,7 +20,7 @@ const Register = () => {
     
 //register function 
    const registerAccount = ()=>{
-    if (name && username && email && password){
+    if (name && username && email && password && confirmpassword){
         axios.post("http://localhost:6969/Register",user )
         .then(res=>console.log(res))
         alert("registration successful")
@@ -27,7 +28,7 @@ const Register = () => {
            alert("invalid input")
        };
    }
-   const {name,username,email,password} = user
+   const {name,username,email,password,confirmpassword} = user
 
 
     return (
@@ -47,12 +48,12 @@ const Register = () => {
         <form action="#">
             <div class="flex flex-col mb-2">
                 <div class=" relative ">
-                    <input type="text" id="create-account-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="name" value={user.name} onChange={handleChange} placeholder="FullName"/>
+                    <input type="text" id="create-account-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="name" value={user.name} onChange={handleChange} placeholder="Full Name"/>
                     </div>
                 </div>
                 <div class="flex flex-col mb-2">
                     <div class=" relative ">
-                        <input type="text" id="create-account-username" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="username" value={user.username} onChange={handleChange}    placeholder="username"/>
+                        <input type="text" id="create-account-username" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="username" value={user.username} onChange={handleChange}    placeholder="Username"/>
                         </div>
                     </div>
                     <div class="flex gap-4 mb-2">
@@ -63,21 +64,26 @@ const Register = () => {
                             </div>
                             <div class="flex flex-col mb-2">
                                 <div class=" relative ">
-                                    <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange}    placeholder="password"/>
+                                    <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange}    placeholder="Password"/>
                                     </div>
                                 </div>
-                                <div class="flex w-full my-4">
-                                    <Link to= "/login">
-                                        <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={registerAccount} >
+                                <div class="flex flex-col mb-2">
+                                    <div class=" relative ">
+                                        <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="confirm_password" value={user.confirmpassword} onChange={handleChange}    placeholder="Confirm Password"/>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full my-4">
+                                        <Link to= "/login">
+                                            <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={registerAccount} >
                                             Register
-                                        </button>
-                                    </Link>
-                                </div>
-                            </form>
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </form>
 
 
+                                                                </div>
                                                             </div>
-                                                        </div>
 
         </>
         
