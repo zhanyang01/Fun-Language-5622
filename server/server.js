@@ -31,6 +31,7 @@ app.post("/Login", async(req, res) => {
         if (user) {
             // const isCorrect = await bcrypt.compare(req.body.password, user.password);
             if (req.body.password === user.password) {
+                localStorage.setItem("username", user.username)
                 res.send({message: "login success"});
                 console.log("login success");
                 // res.status(200).json({message: "login success"});
