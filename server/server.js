@@ -4,7 +4,7 @@ import express from "express";
 import User from "./users/userModel.js";
 import dotenv from "dotenv";
 import cors from "cors";
-// import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 connectDB();
@@ -18,6 +18,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
+
+//test for validity for email
+const validEmail = (email) => {
+  const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  return email.match(emailReged);
+};
 
 // Create API for user
 app.use("/api/users", userRoutes);
@@ -61,6 +67,10 @@ app.post("/Register", async (req, res) => {
   try {
     const { name, username, password, email } = req.body;
     const user = await User.findOne({ email: req.body.email });
+    // must fill up everything
+    if (!name || !email || !password || !username) {
+      return res.send({ message: "Please fill up all fields" });
+    }
     if (user) {
       res.send({ message: "user already exists" });
       console.log("user already exists");

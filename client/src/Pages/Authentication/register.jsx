@@ -26,8 +26,8 @@ const Register = () => {
             alert(res.data.message)
         })
        } else {
-        console.log("invalid input")
-        alert("invalid input")
+        console.log("Please fill up all fields")
+        alert("Please fill up all fields")
        };
    }
    const {name,username,email,password} = user
