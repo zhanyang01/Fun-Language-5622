@@ -1,6 +1,7 @@
 import User from "./userModel.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
+import validator from "validator";
 //import bcrypt from "bcryptjs";
 
 // ==================== helper functions====================
@@ -12,13 +13,22 @@ const generateJWT = (id) => {
   });
 };
 
-//test for validity for email
-const validEmail = (email) => {
-  const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  return email.match(emailReged);
-};
-
 // ==================== main functions====================
+
+//signup user
+/*
+const signupUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.signup(email, password);
+
+    res.status(200).json({ email, password });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+*/
 
 // Get all users
 export const getUsers = asyncHandler(async (req, res) => {
