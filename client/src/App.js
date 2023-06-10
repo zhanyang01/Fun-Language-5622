@@ -8,7 +8,7 @@ import { useState } from "react";
 
 //english language imports
 import EnglishLanguage from "./Pages/languages/english/English";
-import EnglishBasic from "./Pages/languages/english/englishbasic";
+import EnglishBasic from "./Pages/languages/english/Basic/englishbasic";
 import EBCourse from "./Pages/languages/english/Basic/ebcourse";
 import EBAssessment from "./Pages/languages/english/Basic/ebassessment";
 import EnglishIntermediate from "./Pages/languages/english/Intemediate/englishintermediate";
@@ -26,9 +26,11 @@ function App() {
       {/* need to ensure that  every route is here this might be one of the problems */}
       <Routes>
         <Route exact path="/" element={user && user._id ? <Homepage /> : <Login />} />
+        {/* authentication */}
         <Route exact path="/login" element={<Login setLoginUser={setLoginUser} />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/homepage" element={<Homepage />} />
+        {/* english */}
         <Route exact path="/english" element={<EnglishLanguage />} />
         <Route exact path="/englishbasic" element={<EnglishBasic />} />
         <Route exact path="/ebcourse" element={<EBCourse />} />

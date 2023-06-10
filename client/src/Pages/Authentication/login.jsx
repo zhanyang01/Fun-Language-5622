@@ -1,35 +1,52 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {useNavigate, Link} from "react-router-dom"
+
+//test for validity for email
+const validEmail = (email) => {
+    const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return email.match(emailReged);
+  };
+
 const Login = ({setLoginUser}) => {
-const history = useNavigate()
+    const history = useNavigate()
     const [user,setUser] = useState({
         email:"",
         password: ""
     })
+
     const handleChange = e =>{
     const {name,value} = e.target
     setUser({
-    ...user,//spread operator 
+    ...user, //spread operator 
     [name]:value
     })
     }
 
     const login =()=> {
+        let errors = [];
+        console.log(user);
+        if (!validEmail(user.email)) {
+            errors.push("Invalid email");
+            console.log("Invalid email");
+        }
         if (user.email && user.password) {
         axios.post("http://localhost:6969/Login", user)
-        .then(res=>{
+        .then((res)=>{
             console.log(res)
             alert(res.data.message)
             setLoginUser(res.data.user)
             history("/homepage");
+        }).catch((err)=>{
+            console.log(err);
+            alert(err);
         })
         } else {
             console.log("invalid input")
             alert("invalid input");
-            // history("/login");
         }
     }
+
     return (
         <>
         <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
@@ -46,7 +63,7 @@ const history = useNavigate()
                             </path>
                         </svg>
                     </span>
-                    <input type="text" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="email" value={user.email}  onChange={handleChange} placeholder="Your email"/>
+                    <input type="text" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="email" value={user.email}  onChange={handleChange} placeholder="Email"/>
                     </div>
                 </div>
                 <div className="flex flex-col mb-6">
@@ -57,22 +74,22 @@ const history = useNavigate()
                                 </path>
                             </svg>
                         </span>
-                        <input type="password" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password}  onChange={handleChange} placeholder="Your password"/>
+                        <input type="password" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password}  onChange={handleChange} placeholder="Password"/>
                         </div>
+                    
                     </div>
-                    <div className="flex items-center mb-6 -mt-4">
+                    {/*<div className="flex items-center mb-6 -mt-4">
                         <div className="flex ml-auto">
                             <a href="#" className="inline-flex text-xs font-thin text-gray-500 sm:text-sm dark:text-gray-100 hover:text-gray-700 dark:hover:text-white">
                                 Forgot Your Password?
                             </a>
                         </div>
                     </div>
+                    */}
                     <div className="flex w-full">
-                        <Link to="/homepage">
                             <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={() => login}>
                                 Login
                             </button>
-                        </Link>
                     </div>
                 </form>
             </div>
