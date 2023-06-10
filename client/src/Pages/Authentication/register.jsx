@@ -1,7 +1,15 @@
 import React , {useState} from 'react'
-import {Link} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 import axios from "axios";
+
+//test for validity for email
+const validEmail = (email) => {
+    const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return email.match(emailReged);
+  };
+
 const Register = () => {
+    const navigate = useNavigate()
     const [user,setUser] = useState({
         name:"",
         username:"",
@@ -12,29 +20,43 @@ const Register = () => {
     const handleChange = e =>{
     const {name,value} = e.target
     setUser({
-    ...user,//spread operator 
+    ...user, //spread operator 
     [name]:value
     })
     }
     
 //register function 
-   const registerAccount = ()=>{
-    if (name && username && email && password) {
-        axios.post("http://localhost:6969/Register", user)
+   const registerAccount = async ()=>{
+    let errors = [];
+    console.log(user);
+    const {name,username,email,password} = user
+    if (!name || !username || !email || !password) {
+        errors.push("Please fill up all fields");
+        console.log("Please fill up all fields");
+    }
+    if (!validEmail(email) && !errors.includes("Please fill up all fields")) {
+        errors.push("Invalid email");
+        console.log("Invalid email");
+    }
+    if (password.length < 8 && !errors.includes("Please fill up all fields")) {
+        errors.push("Invalid password");
+        console.log("Invalid password");
+    }
+    if (errors.length === 0) {
+        await axios.post("http://localhost:6969/Register", user)
         .then(res => {
-            console.log(res)
-            alert(res.data.message)
+            console.log(res);
+            alert(res.data.message);
+            navigate("/login");
         })
-       } else {
-        console.log("Please fill up all fields")
-        alert("Please fill up all fields")
-       };
+    } else {
+        var errorMessage = "Registration failed";
+        alert(errorMessage + '\n' + errors.join('\n'));
+    }
    }
-   const {name,username,email,password} = user
 
 
     return (
-        
         <>    
 <div class="flex flex-col max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
     <div class="self-center mb-2 text-xl font-light text-gray-800 sm:text-2xl dark:text-white">
@@ -47,7 +69,6 @@ const Register = () => {
         </Link>
     </span>
     <div class="p-6 mt-8">
-        <form action="#">
             <div class="flex flex-col mb-2">
                 <div class=" relative ">
                     <input type="text" id="create-account-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="name" value={user.name} onChange={handleChange} placeholder="Full Name"/>
@@ -69,15 +90,11 @@ const Register = () => {
                                     <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange}    placeholder="Password"/>
                                     </div>
                                 </div>
-
                                     <div class="flex w-full my-4">
-                                        <Link to= "/login">
                                             <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={registerAccount} >
                                             Register
                                             </button>
-                                        </Link>
                                     </div>
-                                </form>
 
 
                                                                 </div>

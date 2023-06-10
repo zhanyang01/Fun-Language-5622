@@ -19,12 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-//test for validity for email
-const validEmail = (email) => {
-  const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  return email.match(emailReged);
-};
-
 // Create API for user
 app.use("/api/users", userRoutes);
 
@@ -87,7 +81,7 @@ app.post("/Register", async (req, res) => {
       const encryptedPass = await bcrypt.hash(password, 10);
       const newUser = new User({ name, username, password: encryptedPass, email });
       await User.create(newUser).then(() => {
-        res.send({ message: "successful" });
+        res.send({ message: "registration successful" });
         console.log("registration success");
       });
     }
