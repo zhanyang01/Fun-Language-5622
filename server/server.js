@@ -26,11 +26,12 @@ app.use("/api/users", userRoutes);
 const PORT = 6969;
 
 app.post("/Login", async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email });
     if (user) {
-      // const isCorrect = await bcrypt.compare(req.body.password, user.password);
-      if (req.body.password === user.password) {
+      const isCorrect = await bcrypt.compare(password, user.password);
+      if (isCorrect) {
         res.send({ message: "login success" });
         console.log("login success");
         // res.status(200).json({message: "login success"});
@@ -46,7 +47,7 @@ app.post("/Login", async (req, res) => {
                 */
       } else {
         // res.status(400).json({message: "wrong credentials"})
-        res.send({ message: "wrong credentials" });
+        res.status(400).json({ message: "wrong credentials" });
         console.log("wrong credentials");
       }
     } else {
