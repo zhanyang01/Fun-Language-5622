@@ -9,14 +9,14 @@ import { useState } from "react";
 //english language imports
 import EnglishLanguage from "./Pages/languages/english/English";
 import EnglishBasic from "./Pages/languages/english/englishbasic";
-import EBCourse from "./Pages/languages/english/ebcourse";
-import EBAssessment from "./Pages/languages/english/ebassessment";
-import EnglishIntermediate from "./Pages/languages/english/englishintermediate";
-import EICourse from "./Pages/languages/english/eicourse";
-import EIAssessment from "./Pages/languages/english/eiassessment";
-import EnglishAdvanced from "./Pages/languages/english/englishadvanced";
-import EACourse from "./Pages/languages/english/eacourse";
-import EAAssessment from "./Pages/languages/english/eaassessment";
+import EBCourse from "./Pages/languages/english/Basic/ebcourse";
+import EBAssessment from "./Pages/languages/english/Basic/ebassessment";
+import EnglishIntermediate from "./Pages/languages/english/Intemediate/englishintermediate";
+import EICourse from "./Pages/languages/english/Intemediate/eicourse";
+import EIAssessment from "./Pages/languages/english/Intemediate/eiassessment";
+import EnglishAdvanced from "./Pages/languages/english/Advanced/englishadvanced";
+import EACourse from "./Pages/languages/english/Advanced/eacourse";
+import EAAssessment from "./Pages/languages/english/Advanced/eaassessment";
 import Profile from "./Pages/profile";
 
 function App() {
