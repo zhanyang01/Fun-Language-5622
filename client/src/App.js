@@ -5,16 +5,18 @@ import Login from "./Pages/Authentication/login";
 import Register from "./Pages/Authentication/register";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import EnglishLanguage from "./Pages/languages/english";
-import EnglishBasic from "./Pages/languages/englishbasic";
-import EBCourse from "./Pages/languages/ebcourse";
-import EBAssessment from "./Pages/languages/ebassessment";
-import EnglishIntermediate from "./Pages/languages/englishintermediate";
-import EICourse from "./Pages/languages/eicourse";
-import EIAssessment from "./Pages/languages/eiassessment";
-import EnglishAdvanced from "./Pages/languages/englishadvanced";
-import EACourse from "./Pages/languages/eacourse";
-import EAAssessment from "./Pages/languages/eaassessment";
+
+//english language imports
+import EnglishLanguage from "./Pages/languages/english/English";
+import EnglishBasic from "./Pages/languages/english/englishbasic";
+import EBCourse from "./Pages/languages/english/ebcourse";
+import EBAssessment from "./Pages/languages/english/ebassessment";
+import EnglishIntermediate from "./Pages/languages/english/englishintermediate";
+import EICourse from "./Pages/languages/english/eicourse";
+import EIAssessment from "./Pages/languages/english/eiassessment";
+import EnglishAdvanced from "./Pages/languages/english/englishadvanced";
+import EACourse from "./Pages/languages/english/eacourse";
+import EAAssessment from "./Pages/languages/english/eaassessment";
 import Profile from "./Pages/profile";
 
 function App() {
