@@ -1,7 +1,7 @@
 import User from "./userModel.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
-import validator from "validator";
+// import validator from "validator";
 //import bcrypt from "bcryptjs";
 
 // ==================== helper functions====================
