@@ -28,6 +28,7 @@ const Login = ({setLoginUser}) => {
         console.log("user",user);
         if (!validEmail(user.email)) {
             errors.push("Invalid email");
+            // alert("invalid email")
             console.log("Invalid email");
         }
         if (user.email && user.password) {
@@ -39,6 +40,8 @@ const Login = ({setLoginUser}) => {
                 // localStorage.setItem("email", res.data.user.email)
                 // setLoginUser(res.data.user)
                 history("/homepage");
+            } else {
+                errors.push(res.data.message);
             }
         }).catch((err)=>{
             console.log(err);
@@ -47,6 +50,7 @@ const Login = ({setLoginUser}) => {
         } else {
             console.log("invalid input")
             alert("invalid input");
+            errors.push("invalid input")
         }
     }
 
