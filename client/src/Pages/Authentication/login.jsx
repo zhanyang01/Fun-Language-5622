@@ -25,32 +25,33 @@ const Login = ({setLoginUser}) => {
 
     const loginUser = async()=> {
         let errors = [];
-        console.log("user",user);
-        if (!validEmail(user.email)) {
-            errors.push("Invalid email");
-            // alert("invalid email")
-            console.log("Invalid email");
-        }
+        // console.log("user",user);
         if (user.email && user.password) {
-        await axios.post("http://localhost:6969/Login", user)
-        .then((res)=>{
-            console.log(res)
-            alert(res.data.message)
-            if (res.data.message === "login success") {
-                // localStorage.setItem("email", res.data.user.email)
-                // setLoginUser(res.data.user)
-                history("/homepage");
+            if (!validEmail(user.email)) {
+                errors.push("Invalid email");
+                alert("invalid email")
+                console.log("Invalid email");
             } else {
-                errors.push(res.data.message);
+                await axios.post("http://localhost:6969/Login", user)
+                .then((res)=>{
+                    console.log(res);
+                    alert(res.data.message);
+                    if (res.data.message === "login success") {
+                        // localStorage.setItem("email", res.data.user.email)
+                        // setLoginUser(res.data.user)
+                        history("/homepage");
+                    } else {
+                        errors.push(res.data.message);
+                    }
+                }).catch((err)=>{
+                    console.log(err);
+                    alert(err);
+                })
             }
-        }).catch((err)=>{
-            console.log(err);
-            alert(err);
-        })
         } else {
-            console.log("invalid input")
+            console.log("invalid input");
             alert("invalid input");
-            errors.push("invalid input")
+            errors.push("invalid input");
         }
     }
 
