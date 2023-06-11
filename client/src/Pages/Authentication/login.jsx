@@ -9,7 +9,7 @@ const validEmail = (email) => {
   };
 
 const Login = ({setLoginUser}) => {
-    const navigate = useNavigate()
+    const history = useNavigate()
     const [user,setUser] = useState({
         email:"",
         password: ""
@@ -36,8 +36,9 @@ const Login = ({setLoginUser}) => {
             console.log(res)
             alert(res.data.message)
             if (res.data.message === "login success") {
-                setLoginUser(res.data.user)
-                navigate("/homepage");
+                // localStorage.setItem("email", res.data.user.email)
+                // setLoginUser(res.data.user)
+                history("/homepage");
             }
         }).catch((err)=>{
             console.log(err);
