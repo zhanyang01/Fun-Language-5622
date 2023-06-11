@@ -4,7 +4,7 @@ import express from "express";
 import User from "./users/userModel.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 connectDB();
@@ -34,7 +34,6 @@ app.post("/Login", async (req, res) => {
       if (isCorrect) {
         res.send({ message: "login success" });
         console.log("login success");
-        // res.status(200).json({message: "login success"});
         /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
                 const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
@@ -46,8 +45,7 @@ app.post("/Login", async (req, res) => {
                 }
                 */
       } else {
-        // res.status(400).json({message: "wrong credentials"})
-        res.status(400).json({ message: "wrong credentials" });
+        res.send({ message: "wrong credentials" });
         console.log("wrong credentials");
       }
     } else {
@@ -83,7 +81,7 @@ app.post("/Register", async (req, res) => {
       const newUser = new User({ name, username, password: encryptedPass, email });
       await User.create(newUser).then(() => {
         res.send({ message: "registration successful" });
-        console.log("registration success");
+        console.log("registration successful");
       });
     }
   } catch (e) {
