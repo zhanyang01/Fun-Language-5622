@@ -81,7 +81,7 @@ app.post("/Register", async (req, res) => {
       const newUser = new User({ name, username, password: encryptedPass, email });
       await User.create(newUser).then(() => {
         res.send({ message: "registration successful" });
-        console.log("registration success");
+        console.log("registration successful");
       });
     }
   } catch (e) {
