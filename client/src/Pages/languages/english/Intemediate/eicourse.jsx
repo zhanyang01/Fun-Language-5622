@@ -9,7 +9,7 @@ const EICourse = () => {
         navigate('/englishintermediate');
     }
 
-    const progress = { bgcolor: "#6a1b9a", completed: 0 };
+    const progress = { bgcolor: "#007FFF", completed: 0 };
 
     return (
         <>
