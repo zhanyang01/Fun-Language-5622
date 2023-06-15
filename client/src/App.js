@@ -9,13 +9,25 @@ import { useState } from "react";
 //english language imports
 import EnglishLanguage from "./Pages/languages/english/English";
 import EnglishBasic from "./Pages/languages/english/Basic/englishbasic";
-import EBCourse from "./Pages/languages/english/Basic/ebcourse";
+import EBCourse1 from "./Pages/languages/english/Basic/ebcourse1";
+import EBCourse2 from "./Pages/languages/english/Basic/ebcourse2";
+import EBCourse3 from "./Pages/languages/english/Basic/ebcourse3";
+import EBCourse4 from "./Pages/languages/english/Basic/ebcourse4";
+import EBCourseDone from "./Pages/languages/english/Basic/ebcoursedone";
 import EBAssessment from "./Pages/languages/english/Basic/ebassessment";
 import EnglishIntermediate from "./Pages/languages/english/Intemediate/englishintermediate";
-import EICourse from "./Pages/languages/english/Intemediate/eicourse";
+import EICourse1 from "./Pages/languages/english/Intemediate/eicourse1";
+import EICourse2 from "./Pages/languages/english/Intemediate/eicourse2";
+import EICourse3 from "./Pages/languages/english/Intemediate/eicourse3";
+import EICourse4 from "./Pages/languages/english/Intemediate/eicourse4";
+import EICourseDone from "./Pages/languages/english/Intemediate/eicoursedone";
 import EIAssessment from "./Pages/languages/english/Intemediate/eiassessment";
 import EnglishAdvanced from "./Pages/languages/english/Advanced/englishadvanced";
-import EACourse from "./Pages/languages/english/Advanced/eacourse";
+import EACourse1 from "./Pages/languages/english/Advanced/eacourse1";
+import EACourse2 from "./Pages/languages/english/Advanced/eacourse2";
+import EACourse3 from "./Pages/languages/english/Advanced/eacourse3";
+import EACourse4 from "./Pages/languages/english/Advanced/eacourse4";
+import EACourseDone from "./Pages/languages/english/Advanced/eacoursedone";
 import EAAssessment from "./Pages/languages/english/Advanced/eaassessment";
 import Profile from "./Pages/profile";
 
@@ -33,13 +45,25 @@ function App() {
         {/* english */}
         <Route exact path="/english" element={<EnglishLanguage />} />
         <Route exact path="/englishbasic" element={<EnglishBasic />} />
-        <Route exact path="/ebcourse" element={<EBCourse />} />
+        <Route exact path="/ebcourse1" element={<EBCourse1 />} />
+        <Route exact path="/ebcourse2" element={<EBCourse2 />} />
+        <Route exact path="/ebcourse3" element={<EBCourse3 />} />
+        <Route exact path="/ebcourse4" element={<EBCourse4 />} />
+        <Route exact path="/ebcoursedone" element={<EBCourseDone />} />
         <Route exact path="/ebassessment" element={<EBAssessment />} />
         <Route exact path="/englishintermediate" element={<EnglishIntermediate />} />
-        <Route exact path="/eicourse" element={<EICourse />} />
+        <Route exact path="/eicourse1" element={<EICourse1 />} />
+        <Route exact path="/eicourse2" element={<EICourse2 />} />
+        <Route exact path="/eicourse3" element={<EICourse3 />} />
+        <Route exact path="/eicourse4" element={<EICourse4 />} />
+        <Route exact path="/eicoursedone" element={<EICourseDone />} />
         <Route exact path="/eiassessment" element={<EIAssessment />} />
         <Route exact path="/englishadvanced" element={<EnglishAdvanced />} />
-        <Route exact path="/eacourse" element={<EACourse />} />
+        <Route exact path="/eacourse1" element={<EACourse1 />} />
+        <Route exact path="/eacourse2" element={<EACourse2 />} />
+        <Route exact path="/eacourse3" element={<EACourse3 />} />
+        <Route exact path="/eacourse4" element={<EACourse4 />} />
+        <Route exact path="/eacoursedone" element={<EACourseDone />} />
         <Route exact path="/eaassessment" element={<EAAssessment />} />
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
