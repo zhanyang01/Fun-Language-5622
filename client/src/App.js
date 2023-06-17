@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 //english language imports
+import Choosinglanguage from "./Pages/choosingLanguage";
 import EnglishLanguage from "./Pages/languages/english/English";
 import EnglishBasic from "./Pages/languages/english/Basic/englishbasic";
 import EBCourse1 from "./Pages/languages/english/Basic/ebcourse1";
@@ -41,7 +42,9 @@ function App() {
         {/* authentication */}
         <Route exact path="/login" element={<Login setLoginUser={setLoginUser} />} />
         <Route exact path="/register" element={<Register />} />
+        {/* general pages */}
         <Route exact path="/homepage" element={<Homepage />} />
+        <Route exact path="/choosinglanguage" element={<Choosinglanguage />} />
         {/* english */}
         <Route exact path="/english" element={<EnglishLanguage />} />
         <Route exact path="/englishbasic" element={<EnglishBasic />} />
