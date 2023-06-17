@@ -37,7 +37,7 @@ const Login = ({setLoginUser}) => {
                     console.log(res);
                     alert(res.data.message);
                     if (res.data.message === "login success") {
-                        // localStorage.setItem("email", res.data.user.email)
+                        localStorage.setItem("username", res.data.username)
                         // setLoginUser(res.data.user)
                         history("/homepage");
                     } else {
