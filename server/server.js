@@ -32,7 +32,7 @@ app.post("/Login", async (req, res) => {
     if (user) {
       const isCorrect = await bcrypt.compare(password, user.password);
       if (isCorrect) {
-        res.send({ message: "login success" });
+        res.send({ message: "login success", username: user.username });
         console.log("login success");
         /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
