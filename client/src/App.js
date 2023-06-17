@@ -5,9 +5,10 @@ import Login from "./Pages/Authentication/login";
 import Register from "./Pages/Authentication/register";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import Choosinglanguage from "./Pages/choosingLanguage";
+import Profile from "./Pages/profile";
 
 //english language imports
-import Choosinglanguage from "./Pages/choosingLanguage";
 import EnglishLanguage from "./Pages/languages/english/English";
 import EnglishBasic from "./Pages/languages/english/Basic/englishbasic";
 import EBCourse1 from "./Pages/languages/english/Basic/ebcourse1";
@@ -30,7 +31,6 @@ import EACourse3 from "./Pages/languages/english/Advanced/eacourse3";
 import EACourse4 from "./Pages/languages/english/Advanced/eacourse4";
 import EACourseDone from "./Pages/languages/english/Advanced/eacoursedone";
 import EAAssessment from "./Pages/languages/english/Advanced/eaassessment";
-import Profile from "./Pages/profile";
 
 function App() {
   const [user, setLoginUser] = useState({});
