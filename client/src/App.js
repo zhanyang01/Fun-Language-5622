@@ -45,6 +45,7 @@ function App() {
         {/* general pages */}
         <Route exact path="/homepage" element={<Homepage />} />
         <Route exact path="/choosinglanguage" element={<Choosinglanguage />} />
+        <Route exact path="/profile" element={<Profile />} />
         {/* english */}
         <Route exact path="/english" element={<EnglishLanguage />} />
         <Route exact path="/englishbasic" element={<EnglishBasic />} />
@@ -68,7 +69,6 @@ function App() {
         <Route exact path="/eacourse4" element={<EACourse4 />} />
         <Route exact path="/eacoursedone" element={<EACourseDone />} />
         <Route exact path="/eaassessment" element={<EAAssessment />} />
-        <Route exact path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
