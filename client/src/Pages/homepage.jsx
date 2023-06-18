@@ -21,7 +21,7 @@ const Homepage = () => {
 
     return (
         <>
-            <h1>Hello, {username}!!! </h1>
+            <h1>Hello, {username}!!! What would you like to learn today? </h1>
             <div className="flex w-full">
                 <Link to="/choosinglanguage">
                     <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={choosinglanguage}>
