@@ -48,6 +48,7 @@ function App() {
         <Route exact path="/profile" element={<Profile />} />
         {/* english */}
         <Route exact path="/english" element={<EnglishLanguage />} />
+        {/* english basics */}
         <Route exact path="/englishbasic" element={<EnglishBasic />} />
         <Route exact path="/ebcourse1" element={<EBCourse1 />} />
         <Route exact path="/ebcourse2" element={<EBCourse2 />} />
@@ -55,6 +56,7 @@ function App() {
         <Route exact path="/ebcourse4" element={<EBCourse4 />} />
         <Route exact path="/ebcoursedone" element={<EBCourseDone />} />
         <Route exact path="/ebassessment" element={<EBAssessment />} />
+        {/* english intemediate */}
         <Route exact path="/englishintermediate" element={<EnglishIntermediate />} />
         <Route exact path="/eicourse1" element={<EICourse1 />} />
         <Route exact path="/eicourse2" element={<EICourse2 />} />
@@ -62,6 +64,7 @@ function App() {
         <Route exact path="/eicourse4" element={<EICourse4 />} />
         <Route exact path="/eicoursedone" element={<EICourseDone />} />
         <Route exact path="/eiassessment" element={<EIAssessment />} />
+        {/* english advanced*/}
         <Route exact path="/englishadvanced" element={<EnglishAdvanced />} />
         <Route exact path="/eacourse1" element={<EACourse1 />} />
         <Route exact path="/eacourse2" element={<EACourse2 />} />
