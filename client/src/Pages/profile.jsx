@@ -12,7 +12,7 @@ const Profile = () => {
 
     return (
         <>
-            <h1> Hello {username} </h1>
+            <h1> {username} </h1>
             <h2> Courses completed: </h2>
             <div className="flex w-full">
                 <Link to="/homepage">
