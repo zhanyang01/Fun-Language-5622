@@ -22,7 +22,7 @@ const Login = ({setLoginUser}) => {
     [name]:value
     })
     }
-
+    //login function
     const loginUser = async()=> {
         let errors = [];
         // console.log("user",user);
