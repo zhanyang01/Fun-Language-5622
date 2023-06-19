@@ -41,12 +41,12 @@ const Profile = () => {
             console.log("Please fill up all fields");
         }
         if (!validEmail(currentEmail) && !errors.includes("Please fill up all fields")) {
-            errors.push("Invalid email");
-            console.log("Invalid email");
+            errors.push("Invalid current email");
+            console.log("Invalid current email");
         }
         if (!validEmail(newEmail) && !errors.includes("Please fill up all fields")) {
-            errors.push("Invalid email");
-            console.log("Invalid email");
+            errors.push("Invalid new email");
+            console.log("Invalid new email");
         }
         if (password.length < 8 && !errors.includes("Please fill up all fields")) {
             errors.push("Invalid password");
@@ -100,7 +100,7 @@ const Profile = () => {
                 alert(err);
             })
         } else {
-            alert("Account failed to delete");
+            alert("Account did not delete, please press 'y' to delete when you want to delete account");
         }
     }
     return (
