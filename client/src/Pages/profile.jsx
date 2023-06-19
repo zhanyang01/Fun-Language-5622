@@ -32,6 +32,7 @@ const Profile = () => {
 
     var usern = localStorage.getItem("username");
 
+    //updating account details
     const updateAccount = async ()=>{
         let errors = [];
         const {name,username,currentEmail,newEmail,password} = user
@@ -52,7 +53,7 @@ const Profile = () => {
             console.log("Invalid password");
         }
         if (errors.length === 0) {
-            await axios.post("http://localhost:6969/Profile", user)
+            await axios.put("http://localhost:6969/Profile", user)
             .then(res => {
                 console.log(res);
                 alert(res.data.message);
@@ -69,23 +70,28 @@ const Profile = () => {
         margin: 20
     }
 
+    //deleting user account
     const deleteUser = async()=> {
-        const errors = [];
-        await axios.post("http://localhost:6969/profile", user)
+        // to confirm bfore deleting an account
+        const confirmation = prompt("Are you sure you want to delete this account? This is irreversible! (Type ‘y’ to proceed)");
+        if (confirmation === 'y') {
+            await axios.delete(`http://localhost:6969/api/users/${localStorage.getItem("userId")}`)
             .then((res)=>{
                 console.log(res);
                 alert(res.data.message);
-                if (res.data.message === "login success") {
-                    localStorage.setItem("username", res.data.username);
+                if (res.data.message === "User deleted") {
+                    localStorage.removeItem("userId");
+                    localStorage.removeItem("username");
                     // setLoginUser(res.data.user)
                     navigate("/login");
                 } else {
-                    errors.push(res.data.message);
+                    alert("Account failed to delete");
                 }
             }).catch((err)=>{
                 console.log(err);
                 alert(err);
             })
+        }
     }
     return (
         <>
@@ -139,13 +145,13 @@ const Profile = () => {
                 </button>
             </Link>
         </div>
-            {/*
+            
             <div className="flex w-full">
                 <button className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={() => deleteUser()}>
                     Delete Account
                 </button>
             </div>
-    */}
+
         </>
     )
 }

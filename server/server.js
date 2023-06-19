@@ -25,6 +25,7 @@ app.use("/api/users", userRoutes);
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
 
+//login
 app.post("/Login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -32,7 +33,7 @@ app.post("/Login", async (req, res) => {
     if (user) {
       const isCorrect = await bcrypt.compare(password, user.password);
       if (isCorrect) {
-        res.send({ message: "login success", username: user.username });
+        res.send({ message: "login success", username: user.username, userId: user._id });
         console.log("login success");
         /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
@@ -57,6 +58,7 @@ app.post("/Login", async (req, res) => {
   }
 });
 
+//registration of account
 app.post("/Register", async (req, res) => {
   try {
     const { name, username, email, password } = req.body;
@@ -81,7 +83,8 @@ app.post("/Register", async (req, res) => {
   }
 });
 
-app.post("/Profile", async (req, res) => {
+// changing user details(password and email)
+app.put("/Profile", async (req, res) => {
   const { name, username, currentEmail, newEmail, password } = req.body;
   try {
     const currentUser = await User.findOne({ email: req.body.currentEmail });
@@ -91,15 +94,20 @@ app.post("/Profile", async (req, res) => {
     } else {
       if (currentEmail === newEmail) {
         const encryptedPass = await bcrypt.hash(password, 10);
-        await User.updateOne({email: currentEmail}, {$set:{
-          name: name,
-          username: username,
-          password: encryptedPass,
-          email: currentEmail
-        }}).then(() => {
+        await User.updateOne(
+          { email: currentEmail },
+          {
+            $set: {
+              name: name,
+              username: username,
+              password: encryptedPass,
+              email: currentEmail,
+            },
+          }
+        ).then(() => {
           res.send({ message: "update successful" });
           console.log("update successful");
-        })
+        });
       } else {
         const user = await User.findOne({ email: req.body.newEmail });
         if (user) {
@@ -107,15 +115,20 @@ app.post("/Profile", async (req, res) => {
           console.log("user already exists");
         } else {
           const encryptedPass = await bcrypt.hash(password, 10);
-          await User.updateOne({email: currentEmail}, {$set:{
-            name: name,
-            username: username,
-            password: encryptedPass,
-            email: newEmail
-          }}).then(() => {
+          await User.updateOne(
+            { email: currentEmail },
+            {
+              $set: {
+                name: name,
+                username: username,
+                password: encryptedPass,
+                email: newEmail,
+              },
+            }
+          ).then(() => {
             res.send({ message: "update successful" });
             console.log("update successful");
-          })
+          });
         }
       }
     }

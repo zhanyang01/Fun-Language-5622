@@ -10,6 +10,6 @@ router.route("/").get(getUsers);
 router.route("/:id").get(getUserById);
 
 // express router method to create route for deleting a user
-router.route("/:id").delete(deleteUser);
+router.route("/:userId").delete(deleteUser);
 
 export default router;
