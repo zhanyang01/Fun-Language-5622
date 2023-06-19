@@ -94,8 +94,8 @@ app.put("/Profile", async (req, res) => {
     } else {
       const user = await User.findOne({ email: req.body.newEmail });
       if (user) {
-        res.send({ message: "user already exists" });
-        console.log("user already exists");
+        res.send({ message: "email is already used by another user" });
+        console.log("email is already used by another user");
       } else {
         const encryptedPass = await bcrypt.hash(password, 10);
         await User.updateOne(
