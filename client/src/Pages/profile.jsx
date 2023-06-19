@@ -100,7 +100,7 @@ const Profile = () => {
                 alert(err);
             })
         } else {
-            alert("Account failed to delete");
+            alert("Account did not delete, please press 'y' to delete when you want to delete account");
         }
     }
     return (
