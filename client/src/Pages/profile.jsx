@@ -30,7 +30,7 @@ const Profile = () => {
         })
     }
 
-    const username = localStorage.getItem("username");
+    var usern = localStorage.getItem("username");
 
     const updateAccount = async ()=>{
         let errors = [];
@@ -56,6 +56,8 @@ const Profile = () => {
             .then(res => {
                 console.log(res);
                 alert(res.data.message);
+                usern = localStorage.setItem("username", username);
+                navigate('/homepage');
             })
         } else {
             var errorMessage = "Unable to update credentials";
@@ -63,9 +65,13 @@ const Profile = () => {
         }
     }
 
+    const margin = {
+        margin: 20
+    }
+
     return (
         <>
-        <h1> {username} </h1>
+        <h1> {usern} </h1>
         <h2> Courses completed: </h2>
         <h2> Assessments completed: </h2>
         <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
@@ -76,49 +82,45 @@ const Profile = () => {
                 (Please indicate the same email if you are not changing it!)
             </div>
             <div class="p-6 mt-8">
-            <div class="flex flex-col mb-2">
-                <div class=" relative ">
-                    <input type="text" id="create-account-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="name" value={user.name} onChange={handleChange} placeholder="Full Name"/>
+                <div class="flex flex-col mb-2">
+                    <div class=" relative ">
+                        <input type="text" id="create-account-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="name" value={user.name} onChange={handleChange} placeholder="Full Name"/>
                     </div>
                 </div>
                 <div class="flex flex-col mb-2">
                     <div class=" relative ">
                         <input type="text" id="create-account-username" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="username" value={user.username} onChange={handleChange} placeholder="Username"/>
-                        </div>
                     </div>
-                    <div class="flex gap-4 mb-2">
-                        <div class=" relative ">
-                            <input type="text" id="create-account-email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="currentEmail" value={user.currentEmail} onChange={handleChange} placeholder="Current Email"/>
-                            </div>
-
-                            </div>
-                            <div class="flex gap-4 mb-2">
-                        <div class=" relative ">
-                            <input type="text" id="create-account-email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="newEmail" value={user.newEmail} onChange={handleChange} placeholder="New Email"/>
-                            </div>
-
-                            </div>
-                            <div class="flex flex-col mb-2">
-                                <div class=" relative ">
-                                    <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange} placeholder="Password(>= 8 characters)"/>
-                                    </div>
-                                </div>
-                                    <div class="flex w-full my-4">
-                                            <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={updateAccount} >
-                                            Update account
-                                            </button>
-                                    </div>
-
-
-                                                                </div>
-                                                            </div>
-            <div className="flex w-full">
-                <Link to="/homepage">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={homepage}>
-                        Return to homepage
+                </div>
+                <div class="flex gap-4 mb-2">
+                    <div class=" relative ">
+                        <input type="text" id="create-account-email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="currentEmail" value={user.currentEmail} onChange={handleChange} placeholder="Current Email"/>
+                    </div>
+                </div>
+                <div class="flex gap-4 mb-2">
+                    <div class=" relative ">
+                        <input type="text" id="create-account-email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="newEmail" value={user.newEmail} onChange={handleChange} placeholder="New Email"/>
+                    </div>
+                </div>
+                <div class="flex flex-col mb-2">
+                    <div class=" relative ">
+                        <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange} placeholder="Password(>= 8 characters)"/>
+                    </div>
+                </div>
+                <div class="flex w-full my-4">
+                    <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={updateAccount} >
+                        Update account
                     </button>
-                </Link>
+                </div>
             </div>
+        </div>
+        <div className="flex w-full" style = {margin}>
+            <Link to="/homepage">
+                <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={homepage}>
+                    Return to homepage
+                </button>
+            </Link>
+        </div>
         </>
     )
 }
