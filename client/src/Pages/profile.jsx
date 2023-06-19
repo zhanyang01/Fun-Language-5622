@@ -81,6 +81,11 @@ const Profile = () => {
             .then((res)=>{
                 console.log(res);
                 alert(res.data.message);
+                localStorage.removeItem("userId");
+                localStorage.removeItem("username");
+                // setLoginUser(res.data.user)
+                navigate("/login");
+                /*
                 if (res.data.message === "User deleted") {
                     localStorage.removeItem("userId");
                     localStorage.removeItem("username");
@@ -89,10 +94,13 @@ const Profile = () => {
                 } else {
                     alert("Account failed to delete");
                 }
+                */
             }).catch((err)=>{
                 console.log(err);
                 alert(err);
             })
+        } else {
+            alert("Account failed to delete");
         }
     }
     return (
