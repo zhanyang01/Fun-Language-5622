@@ -41,8 +41,8 @@ const Profile = () => {
             console.log("Please fill up all fields");
         }
         if (!validEmail(currentEmail) && !errors.includes("Please fill up all fields")) {
-            errors.push("Invalid email");
-            console.log("Invalid email");
+            errors.push("Wrong current email");
+            console.log("Wrong current email");
         }
         if (!validEmail(newEmail) && !errors.includes("Please fill up all fields")) {
             errors.push("Invalid email");

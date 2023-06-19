@@ -92,7 +92,11 @@ app.put("/Profile", async (req, res) => {
       res.send({ message: "no such user exists" });
       console.log("no such user exists");
     } else {
-      if (currentEmail === newEmail) {
+      const user = await User.findOne({ email: req.body.newEmail });
+      if (user) {
+        res.send({ message: "user already exists" });
+        console.log("user already exists");
+      } else {
         const encryptedPass = await bcrypt.hash(password, 10);
         await User.updateOne(
           { email: currentEmail },
@@ -101,35 +105,13 @@ app.put("/Profile", async (req, res) => {
               name: name,
               username: username,
               password: encryptedPass,
-              email: currentEmail,
+              email: newEmail,
             },
           }
         ).then(() => {
           res.send({ message: "update successful" });
           console.log("update successful");
         });
-      } else {
-        const user = await User.findOne({ email: req.body.newEmail });
-        if (user) {
-          res.send({ message: "user already exists" });
-          console.log("user already exists");
-        } else {
-          const encryptedPass = await bcrypt.hash(password, 10);
-          await User.updateOne(
-            { email: currentEmail },
-            {
-              $set: {
-                name: name,
-                username: username,
-                password: encryptedPass,
-                email: newEmail,
-              },
-            }
-          ).then(() => {
-            res.send({ message: "update successful" });
-            console.log("update successful");
-          });
-        }
       }
     }
   } catch (e) {
