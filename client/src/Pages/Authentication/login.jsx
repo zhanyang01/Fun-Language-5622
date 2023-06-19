@@ -84,7 +84,6 @@ const Login = ({setLoginUser}) => {
                         </span>
                         <input type="password" id="sign-in-email" className=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password}  onChange={handleChange} placeholder="Password(>= 8 characters)"/>
                         </div>
-                    
                     </div>
                     {/*<div className="flex items-center mb-6 -mt-4">
                         <div className="flex ml-auto">

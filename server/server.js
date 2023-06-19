@@ -59,7 +59,7 @@ app.post("/Login", async (req, res) => {
 
 app.post("/Register", async (req, res) => {
   try {
-    const { name, username, password, email } = req.body;
+    const { name, username, email, password } = req.body;
     const user = await User.findOne({ email: req.body.email });
     // must fill up everything
     if (!name || !email || !password || !username) {
@@ -69,20 +69,55 @@ app.post("/Register", async (req, res) => {
       res.send({ message: "user already exists" });
       console.log("user already exists");
     } else {
-      /*
-            let newDocument = {
-                name: req.body.name, 
-                userName: req.body.userName, 
-                email: req.body.email,
-                password: req.body.password
-            };
-            */
       const encryptedPass = await bcrypt.hash(password, 10);
       const newUser = new User({ name, username, password: encryptedPass, email });
       await User.create(newUser).then(() => {
         res.send({ message: "registration successful" });
         console.log("registration successful");
       });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+app.post("/Profile", async (req, res) => {
+  const { name, username, currentEmail, newEmail, password } = req.body;
+  try {
+    const currentUser = await User.findOne({ email: req.body.currentEmail });
+    if (!currentUser) {
+      res.send({ message: "no such user exists" });
+      console.log("no such user exists");
+    } else {
+      if (currentEmail === newEmail) {
+        const encryptedPass = await bcrypt.hash(password, 10);
+        await User.updateOne({email: currentEmail}, {$set:{
+          name: name,
+          username: username,
+          password: encryptedPass,
+          email: currentEmail
+        }}).then(() => {
+          res.send({ message: "update successful" });
+          console.log("update successful");
+        })
+      } else {
+        const user = await User.findOne({ email: req.body.newEmail });
+        if (user) {
+          res.send({ message: "user already exists" });
+          console.log("user already exists");
+        } else {
+          const encryptedPass = await bcrypt.hash(password, 10);
+          await User.updateOne({email: currentEmail}, {$set:{
+            name: name,
+            username: username,
+            password: encryptedPass,
+            email: newEmail
+          }}).then(() => {
+            res.send({ message: "update successful" });
+            console.log("update successful");
+          })
+        }
+      }
     }
   } catch (e) {
     console.log(e);
