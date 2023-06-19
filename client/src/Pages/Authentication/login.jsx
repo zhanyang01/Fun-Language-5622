@@ -22,7 +22,7 @@ const Login = ({setLoginUser}) => {
     [name]:value
     })
     }
-
+    //login function
     const loginUser = async()=> {
         let errors = [];
         // console.log("user",user);
@@ -38,6 +38,7 @@ const Login = ({setLoginUser}) => {
                     alert(res.data.message);
                     if (res.data.message === "login success") {
                         localStorage.setItem("username", res.data.username);
+                        localStorage.setItem("userId", res.data.userId);
                         // setLoginUser(res.data.user)
                         history("/homepage");
                     } else {

@@ -47,3 +47,32 @@ export const getUserById = asyncHandler(async (req, res) => {
     return res.status(404).json({ message: "User not found" });
   }
 });
+
+// Delete user by id
+export const deleteUser = async (req, res) => {
+  const { userId } = req.params;
+  const currUser = await User.findById(userId);
+  console.log(currUser);
+  console.log(userId);
+  // if user does not exist throw error
+  if (!currUser) {
+    return res.status(404).json({
+      message: "User not found",
+    });
+    // else delete user
+  } else {
+    await User.deleteOne(currUser)
+      .then((deleteResult) => {
+        console.log(deleteResult);
+        return res.status(200).json({
+          message: "User deleted",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json({
+          message: err,
+        });
+      });
+  }
+};
