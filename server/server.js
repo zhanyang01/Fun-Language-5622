@@ -1,4 +1,4 @@
-import connectDB from "./database.js";
+import connectDB from "./config/database.js";
 import userRoutes from "./Routes/userRoute.js";
 import express from "express";
 import User from "./Models/userModel.js";
