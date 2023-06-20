@@ -4,17 +4,15 @@ import axios from 'axios';
 import defaultProfileLogo from '../Images/profileLogo.png';
 
 const Profile = () => {
+// ============== constant variables if any ==============
     const navigate = useNavigate();
 
-    const homepage = () => {
-        navigate('/homepage');
+    var usern = localStorage.getItem("username");
+
+    const margin = {
+        margin: 20
     }
-
-    const validEmail = (email) => {
-        const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        return email.match(emailReged);
-    };
-
+// ============== user ==============
     const [user, setUser] = useState({
         name:"",
         username:"",
@@ -30,7 +28,7 @@ const Profile = () => {
         [name]:value
         })
     }
-
+    // ============== file(profile pic) ==============
     const [file, setFile] = useState();
 
     const handleFileChange = e => {
@@ -38,9 +36,18 @@ const Profile = () => {
         setFile(URL.createObjectURL(e.target.files[0]));
     }
 
-    var usern = localStorage.getItem("username");
+    //============== navigation ============== 
+    const homepage = () => {
+        navigate('/homepage');
+    }
+    
+    //============== helper functions if any============== 
+    const validEmail = (email) => {
+        const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        return email.match(emailReged);
+    };
 
-    //updating account details
+    //============== updating account details============== 
     const updateAccount = async ()=>{
         let errors = [];
         const {name,username,currentEmail,newEmail,password} = user
@@ -76,11 +83,7 @@ const Profile = () => {
         }
     }
 
-    const margin = {
-        margin: 20
-    }
-
-    //deleting user account
+    //============== deleting user account============== 
     const deleteUser = async()=> {
         // to confirm bfore deleting an account
         const confirmation = prompt("Are you sure you want to delete this account? This is irreversible! (Type ‘y’ to proceed)");
@@ -115,7 +118,7 @@ const Profile = () => {
     return (
         <>
         <div className = "img">
-            <img src={file} height = {150} width = {150} class="center" />
+            <img src= {defaultProfileLogo} height = {150} width = {150} class="center" />
             <input type = "file" onChange = {handleFileChange} />
         </div>
         <h1> {usern} </h1>
