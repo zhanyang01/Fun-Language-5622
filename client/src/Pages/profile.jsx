@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
+import defaultProfileLogo from '../Images/profileLogo.png';
 
 const Profile = () => {
     const navigate = useNavigate();
