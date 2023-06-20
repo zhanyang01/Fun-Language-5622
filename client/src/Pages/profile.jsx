@@ -30,6 +30,13 @@ const Profile = () => {
         })
     }
 
+    const [file, setFile] = useState();
+
+    const handleFileChange = e => {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
+
     var usern = localStorage.getItem("username");
 
     //updating account details
@@ -103,8 +110,13 @@ const Profile = () => {
             alert("Account did not delete, please press 'y' to delete when you want to delete account");
         }
     }
+
     return (
         <>
+        <div className = "img">
+            <img src={file} height = {150} width = {150} class="center" />
+            <input type = "file" onChange = {handleFileChange} />
+        </div>
         <h1> {usern} </h1>
         <h2> Courses completed: </h2>
         <h2> Assessments completed: </h2>
