@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+//import cloudinary from "../cloudinary.js";
 
 connectDB();
 
@@ -118,6 +119,8 @@ app.put("/Profile", async (req, res) => {
     console.log(e);
   }
 });
+
+//adding profile picture
 
 // Express js listen method to run project
 app.listen(PORT, console.log("Server started"));
