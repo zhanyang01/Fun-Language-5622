@@ -21,10 +21,6 @@ const userSchema = mongoose.Schema(
       unique: true,
     },
     image: {
-      public_id: {
-        type: String,
-        required: true,
-      },
       url: {
         type: String,
         required: true,
