@@ -1,7 +1,7 @@
-import connectDB from "./database.js";
-import userRoutes from "./users/userRoute.js";
+import connectDB from "./config/database.js";
+import userRoutes from "./Routes/userRoute.js";
 import express from "express";
-import User from "./users/userModel.js";
+import User from "./Models/userModel.js";
 import dotenv from "dotenv";
 import cors from "cors";
 // import jwt from "jsonwebtoken";
