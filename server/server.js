@@ -7,6 +7,9 @@ import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 //import cloudinary from "../cloudinary.js";
+import multer from "multer";
+const upload = multer({ dest: "./uploads/" });
+import fs from "fs";
 
 connectDB();
 
@@ -19,6 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
+
+app.use("/static", express.static("./uploads"));
 
 // Create API for user
 app.use("/api/users", userRoutes);
@@ -121,6 +126,14 @@ app.put("/Profile", async (req, res) => {
 });
 
 //adding profile picture
+app.post("/uploadFile", upload.single("avatar"), (req, res) => {
+  let fileType = req.file.mimetype.split("/")[1];
+  let newFileName = req.file.filename + "." + fileType;
+  fs.rename(`./uploads/${req.file.filename}`, `./uploads/${newFileName}`, function () {
+    console.log("callback");
+    res.send("200");
+  });
+});
 
 // Express js listen method to run project
 app.listen(PORT, console.log("Server started"));
