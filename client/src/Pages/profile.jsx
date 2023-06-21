@@ -29,12 +29,17 @@ const Profile = () => {
         })
     }
     // ============== file(profile pic) ==============
-    const [file, setFile] = useState();
+    const [pic, setPic] = useState();
 
-    const handleFileChange = e => {
-        console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));
+    const fileOnChange = (event) => {
+        setPic(URL.createObjectURL(event.target.files[0]));
+    };
+
+    const sendImage = (event) => {
+        fetch
+        console.log(pic);
     }
+
 
     //============== navigation ============== 
     const homepage = () => {
@@ -118,8 +123,9 @@ const Profile = () => {
     return (
         <>
         <div className = "img">
-            <img src= {defaultProfileLogo} height = {150} width = {150} class="center" />
-            <input type = "file" onChange = {handleFileChange} />
+            <img src= {pic} height = {150} width = {150} class="centre" />
+            <input type = "file" onChange = {fileOnChange} />
+            <button onClick = {sendImage}>Upload</button>
         </div>
         <h1> {usern} </h1>
         <h2> Courses completed: </h2>
