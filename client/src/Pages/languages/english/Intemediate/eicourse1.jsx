@@ -33,12 +33,15 @@ const EICourse1 = () => {
     }
 
     const nextLevel = () => {
+        var maxScore = "/3 correct"
+        var pass = "Passed! Please proceed to next level";
+        var fail = "Please try again!"
         var score = getScore();
-        if (score == 3) {
-            alert("Passed! Please proceed to next level" + "\n" + score + "/3 correct");
+        if (score === 3) {
+            alert(pass + "\n" + score + maxScore);
             navigate('/eicourse2');
         } else {
-            alert("Please try again!" + "\n" + score + "/3 correct");
+            alert(fail + "\n" + score + maxScore);
         }
     }
 
