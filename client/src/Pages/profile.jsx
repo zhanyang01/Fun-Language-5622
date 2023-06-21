@@ -36,7 +36,6 @@ const Profile = () => {
     };
 
     const sendImage = (event) => {
-        fetch
         console.log(pic);
     }
 
