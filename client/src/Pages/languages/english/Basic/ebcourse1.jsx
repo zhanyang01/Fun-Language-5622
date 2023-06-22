@@ -5,7 +5,9 @@ import ProgressBar from '../../progressbar';
 const EBCourse1 = () => {
     const navigate = useNavigate();
 
-    const basic = () => {
+    const saveProgress = () => {
+        localStorage.setItem("course", "Basic Course");
+        localStorage.setItem("meter", "0%");
         navigate('/englishbasic');
     }
 
@@ -136,11 +138,9 @@ const EBCourse1 = () => {
                 </button>
             </div>
             <div className="flex w-full" style = {margin}>
-                <Link to="/englishbasic">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={basic}>
-                        Save and exit
-                    </button>
-                </Link>
+                <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={saveProgress}>
+                    Save and exit
+                </button>
             </div>
         </>
     )
