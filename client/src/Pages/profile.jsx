@@ -30,15 +30,39 @@ const Profile = () => {
     }
     // ============== file(profile pic) ==============
     const [pic, setPic] = useState();
+    const [loading, setLoading] = useState(false);
+    const [res, setRes] = useState({});
 
     const fileOnChange = (event) => {
         setPic(URL.createObjectURL(event.target.files[0]));
     };
 
-    const sendImage = (event) => {
+    /*const sendImage = (event) => {
+        let formData = new FormData();
+        formData.append("image", pic);
+        fetch("http://localhost:6969/uploadFile", {
+            method: "post",
+            body: formData
+        })
+            .then((res) => res.text())
+            .then((resBody) => {
+                console.log(resBody);
+            });
         console.log(pic);
-    }
-
+    };*/
+    const sendImage = async () => {
+        try {
+          setLoading(true);
+          const data = new FormData();
+          data.append("image", pic);
+          const res = await axios.post("http://localhost:6969/upload", data);
+          setRes(res.data);
+        } catch (error) {
+          alert(error.message);
+        } finally {
+          setLoading(false);
+        }
+    };
 
     //============== navigation ============== 
     const homepage = () => {
@@ -144,7 +168,7 @@ const Profile = () => {
 
     return (
         <>
-        <div className = "img">
+        <div className = "App">
             <img src= {pic} height = {150} width = {150} class="centre" />
             <input type = "file" onChange = {fileOnChange} />
             <button onClick = {sendImage}>Upload</button>

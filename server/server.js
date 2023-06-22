@@ -6,10 +6,29 @@ import dotenv from "dotenv";
 import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-//import cloudinary from "../cloudinary.js";
-import multer from "multer";
-const upload = multer({ dest: "./uploads/" });
 import fs from "fs";
+
+//==============temporary cloudinary setup==================
+import cloudinary from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_KEY,
+  api_secret: process.env.CLOUD_SECRET_KEY,
+});
+async function handleUpload(file) {
+  const res = await cloudinary.uploader.upload(file, {
+    resource_type: "auto",
+  });
+  return res;
+}
+
+//================= temporary multer setup ====================
+import Multer from "multer";
+const storage = new Multer.memoryStorage();
+const upload = Multer({
+  dest: "./uploads",
+});
 
 connectDB();
 
@@ -126,7 +145,7 @@ app.put("/Profile", async (req, res) => {
 });
 
 //adding profile picture
-app.post("/uploadFile", upload.single("avatar"), (req, res) => {
+app.post("/uploadFile", upload.single("image"), (req, res) => {
   let fileType = req.file.mimetype.split("/")[1];
   let newFileName = req.file.filename + "." + fileType;
   fs.rename(`./uploads/${req.file.filename}`, `./uploads/${newFileName}`, function () {
@@ -135,7 +154,22 @@ app.post("/uploadFile", upload.single("avatar"), (req, res) => {
   });
 });
 
+//==================need to debug but this uses cloudinary also=======================
+/*app.post("/upload", upload.single("my_file"), async (req, res) => {
+  try {
+    const b64 = Buffer.from(req.file.buffer).toString("base64");
+    let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+    const cldRes = await handleUpload(dataURI);
+    res.json(cldRes);
+  } catch (error) {
+    console.log(error);
+    res.send({
+      message: error.message,
+    });
+  }
+});*/
+
 // Express js listen method to run project
-app.listen(PORT, console.log("Server started"));
+app.listen(PORT, console.log(`Server started ${PORT}`));
 
 // Debugging purposes: localhost:6969/api/users
