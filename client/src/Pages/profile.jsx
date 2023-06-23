@@ -120,8 +120,8 @@ const Profile = () => {
             .then(res => {
                 console.log(res);
                 alert(res.data.message);
-                usern = localStorage.setItem("username", username);
                 if (res.data.message === "update successful") {
+                    usern = localStorage.setItem("username", username);
                     navigate('/homepage');
                 }
             })
