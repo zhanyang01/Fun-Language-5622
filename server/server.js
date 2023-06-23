@@ -16,12 +16,6 @@ cloudinary.config({
   api_key: process.env.CLOUD_KEY,
   api_secret: process.env.CLOUD_SECRET_KEY,
 });
-async function handleUpload(file) {
-  const res = await cloudinary.uploader.upload(file, {
-    resource_type: "auto",
-  });
-  return res;
-}
 
 //================= temporary multer setup ====================
 import Multer from "multer";
@@ -145,6 +139,10 @@ app.put("/Profile", async (req, res) => {
 });
 
 //adding profile picture
+var newImage = {
+  public_id: "",
+  url: "",
+};
 app.post("/uploadFile", upload.single("image"), (req, res) => {
   let fileType = req.file.mimetype.split("/")[1];
   let newFileName = req.file.filename + "." + fileType;
