@@ -120,8 +120,8 @@ const Profile = () => {
             .then(res => {
                 console.log(res);
                 alert(res.data.message);
-                usern = localStorage.setItem("username", username);
                 if (res.data.message === "update successful") {
+                    usern = localStorage.setItem("username", username);
                     navigate('/homepage');
                 }
             })
@@ -188,7 +188,6 @@ const Profile = () => {
 
     return (
         <>
-        {/*<div className = "App">*/}
             <div className = 'profile_img text-center p-4'>
                 <div className = "flex flex-column justify-content-center align-items-center">
                     <img style = {{
@@ -205,7 +204,6 @@ const Profile = () => {
                     {/*<button onClick = {sendImage}>Upload</button>*/}
                 </div>
             </div>
-        {/*</div>*/}
         <h1> {usern} </h1>
         <h2> Courses completed: </h2>
         <script>
