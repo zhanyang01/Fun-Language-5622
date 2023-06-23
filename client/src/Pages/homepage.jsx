@@ -1,5 +1,6 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
+// import defaultProfileLogo from '../Images/profileLogo.png';
 
 const Homepage = () => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ const Homepage = () => {
 
     const profile = () => {
         navigate('/profile');
+        // localStorage.setItem("pic", defaultProfileLogo);
     }
 
     const exit = () => {
