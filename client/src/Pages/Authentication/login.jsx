@@ -29,7 +29,7 @@ const Login = ({setLoginUser}) => {
         if (user.email && user.password) {
             if (!validEmail(user.email)) {
                 errors.push("Invalid email");
-                alert("invalid email")
+                alert("invalid email");
                 console.log("Invalid email");
             } else {
                 await axios.post("http://localhost:6969/Login", user)
@@ -38,7 +38,6 @@ const Login = ({setLoginUser}) => {
                     alert(res.data.message);
                     if (res.data.message === "login success") {
                         localStorage.setItem("username", res.data.username);
-                        localStorage.setItem("userId", res.data.userId);
                         // setLoginUser(res.data.user)
                         history("/homepage");
                     } else {

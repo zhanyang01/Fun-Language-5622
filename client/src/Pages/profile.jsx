@@ -29,12 +29,29 @@ const Profile = () => {
         })
     }
     // ============== file(profile pic) ==============
-    const [pic, setPic] = useState();
+    const [pic, setPic] = useState(defaultProfileLogo);
+
+    // var profileFinal = defaultProfileLogo;
+
+    /*
     const [loading, setLoading] = useState(false);
     const [res, setRes] = useState({});
+    */
 
     const fileOnChange = (event) => {
-        setPic(URL.createObjectURL(event.target.files[0]));
+        const file = event.target.files[0];
+        // alert(file.type.substring(0, 5))
+        if (file && file.type.substring(0, 5) === "image") {
+            localStorage.setItem("pic", file)
+            setPic(URL.createObjectURL(file));
+            alert(file.type.substring(0, 5));
+            alert("upload successful");
+        } else {
+            setPic(defaultProfileLogo);
+            localStorage.setItem("pic", defaultProfileLogo);
+            alert("invalid");
+        }
+        // setPic(URL.createObjectURL(event.target.files[0]));
     };
 
     /*const sendImage = (event) => {
@@ -50,6 +67,8 @@ const Profile = () => {
             });
         console.log(pic);
     };*/
+
+    /*
     const sendImage = async () => {
         try {
           setLoading(true);
@@ -63,6 +82,7 @@ const Profile = () => {
           setLoading(false);
         }
     };
+    */
 
     //============== navigation ============== 
     const homepage = () => {
@@ -168,11 +188,24 @@ const Profile = () => {
 
     return (
         <>
-        <div className = "App">
-            <img src= {pic} height = {150} width = {150} class="centre" />
-            <input type = "file" onChange = {fileOnChange} />
-            <button onClick = {sendImage}>Upload</button>
-        </div>
+        {/*<div className = "App">*/}
+            <div className = 'profile_img text-center p-4'>
+                <div className = "flex flex-column justify-content-center align-items-center">
+                    <img style = {{
+                        width: "200px",
+                        height: "200px",
+                        borderRadius: "50%",
+                        // objectFit: "cover",
+                        border: "3px-solid-green",
+                        display: 'block',
+                        margin: 'auto'
+                    }}
+                    src= {pic} alt = "" />                    
+                    <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
+                    {/*<button onClick = {sendImage}>Upload</button>*/}
+                </div>
+            </div>
+        {/*</div>*/}
         <h1> {usern} </h1>
         <h2> Courses completed: </h2>
         <script>
