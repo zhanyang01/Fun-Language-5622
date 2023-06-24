@@ -7,6 +7,8 @@ const Profile = () => {
 // ============== constant variables if any ==============
     const navigate = useNavigate();
 
+    const fileReader = new FileReader();
+
     var usern = localStorage.getItem("username");
 
     const margin = {
@@ -30,29 +32,45 @@ const Profile = () => {
     }
     // ============== file(profile pic) ==============
     const [pic, setPic] = useState(defaultProfileLogo);
+    const [imageChange, setImageChange] = useState(false);
+    const [res, setRes] = useState("");
 
-    // var profileFinal = defaultProfileLogo;
-
-    /*
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
-    */
-
-    const fileOnChange = (event) => {
+    const fileOnChange = async (event) => {
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
         if (file && file.type.substring(0, 5) === "image") {
-            localStorage.setItem("pic", file)
-            setPic(URL.createObjectURL(file));
-            alert(file.type.substring(0, 5));
-            alert("upload successful");
+            localStorage.setItem("pic", file);
+            {/*setPic(URL.createObjectURL(file));
+            console.log("image up");*/}
+            convert(file).then((res) => {
+                console.log(res)
+                setPic(URL.createObjectURL(file));
+                setImageChange(true);
+                setRes(res);
+            });
+            alert(file.type.substring(0, 5) + " " + "upload successful");
         } else {
             setPic(defaultProfileLogo);
             localStorage.setItem("pic", defaultProfileLogo);
-            alert("invalid");
+            alert("invalid image");
         }
         // setPic(URL.createObjectURL(event.target.files[0]));
     };
+
+    //function to convert the image to base64 to put in cloudinary
+    function convert(image) {
+        return new Promise((resolve, reject) => {
+            fileReader.readAsDataURL(image);
+            fileReader.onload = () => {
+                console.log("working siuuuuuuu");
+                resolve(fileReader.result);
+            };
+            fileReader.onerror = (e) => {
+                console.log(e);
+                reject(e);
+            };
+        });
+    }
 
     /*const sendImage = (event) => {
         let formData = new FormData();
