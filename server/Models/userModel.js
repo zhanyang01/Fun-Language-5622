@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema(
         type: String,
         required: false,
       },
+      id: {
+        type: String,
+        required: false,
+      },
     },
   },
   {
