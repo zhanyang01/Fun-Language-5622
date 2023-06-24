@@ -28,10 +28,10 @@ const Profile = () => {
         [name]:value
         })
     }
-    // ============== file(profile pic) ==============
-    const [pic, setPic] = useState(defaultProfileLogo);
-
-    // var profileFinal = defaultProfileLogo;
+    // ============== file(profile pic) ==============      
+    var image = localStorage.getItem("pic") ? localStorage.getItem("pic"): defaultProfileLogo;
+    
+    var [pic, setPic] = useState(image);
 
     /*
     const [loading, setLoading] = useState(false);
@@ -42,17 +42,22 @@ const Profile = () => {
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
         if (file && file.type.substring(0, 5) === "image") {
-            localStorage.setItem("pic", file)
+            localStorage.setItem("pic", file);
             setPic(URL.createObjectURL(file));
-            alert(file.type.substring(0, 5));
+            // alert(file.type.substring(0, 5));
             alert("upload successful");
         } else {
-            setPic(defaultProfileLogo);
+            // setPic(defaultProfileLogo.URL);
             localStorage.setItem("pic", defaultProfileLogo);
             alert("invalid");
         }
         // setPic(URL.createObjectURL(event.target.files[0]));
     };
+
+    const confirmProfile = () => {
+        localStorage.setItem("pic", pic);
+        alert("profile picture confirmed");
+    }
 
     /*const sendImage = (event) => {
         let formData = new FormData();
@@ -201,7 +206,9 @@ const Profile = () => {
                     }}
                     src= {pic} alt = "" />                    
                     <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
-                    {/*<button onClick = {sendImage}>Upload</button>*/}
+                    <button className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={confirmProfile}>
+                    Confirm photo
+                </button>
                 </div>
             </div>
         <h1> {usern} </h1>
