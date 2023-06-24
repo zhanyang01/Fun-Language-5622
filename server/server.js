@@ -17,6 +17,12 @@ cloudinary.config({
   api_key: process.env.CLOUD_KEY,
   api_secret: process.env.CLOUD_SECRET_KEY,
 });
+async function handleUpload(file) {
+  const res = await cloudinary.uploader.upload(file, {
+    resource_type: "auto",
+  });
+  return res;
+}
 
 //================= temporary multer setup ====================
 import Multer from "multer";
@@ -81,18 +87,39 @@ app.post("/Login", async (req, res) => {
 //registration of account
 app.post("/Register", async (req, res) => {
   try {
-    const { name, username, email, password } = req.body;
+    const { name, username, email, password, image } = req.body;
     const user = await User.findOne({ email: req.body.email });
     // must fill up everything
     if (!name || !email || !password || !username) {
       return res.send({ message: "Please fill up all fields" });
     }
+    // check if user exist
     if (user) {
       res.send({ message: "user already exists" });
       console.log("user already exists");
     } else {
+      // encrypting password
       const encryptedPass = await bcrypt.hash(password, 10);
-      const newUser = new User({ name, username, password: encryptedPass, email });
+      //adding the default image
+      var newImage = {
+        url: "",
+      };
+      if (image) {
+        const uploadImage = await cloudinary.v2.uploader.upload(profilePicture, {
+          folder: "uploads",
+        });
+        const { url: url } = uploadImage;
+        newImage = {
+          url,
+        };
+      }
+      const newUser = new User({
+        name,
+        username,
+        password: encryptedPass,
+        email,
+        image: newImage,
+      });
       await User.create(newUser).then(() => {
         res.send({ message: "registration successful" });
         console.log("registration successful");
@@ -105,29 +132,64 @@ app.post("/Register", async (req, res) => {
 
 // changing user details(password and email)
 app.put("/Profile", async (req, res) => {
-  const { name, username, currentEmail, newEmail, password } = req.body;
+  const { name, username, currentEmail, newEmail, password, image, previousImageURL } = req.body;
   try {
-    const currentUser = await User.findOne({ email: req.body.currentEmail });
+    //check if user exists
+    const currentUser = await User.findOne({ email: currentEmail });
     if (!currentUser) {
       res.send({ message: "no such user exists" });
       console.log("no such user exists");
     } else {
-      const user = await User.findOne({ email: req.body.newEmail });
-      if (user) {
+      // check if email that is in current email fills is used by someone else
+      const user = await User.findOne({ email: newEmail });
+      if (user && currentUser.email !== user.email) {
         res.send({ message: "email is already used by another user" });
         console.log("email is already used by another user");
       } else {
+        // changing password and email
         const encryptedPass = await bcrypt.hash(password, 10);
+
+        //changing profile picture
+        if (previousImageURL) {
+          await cloudinary.uploader.destroy(previousImageURL);
+          console.log("previous image destroyed");
+        }
+
+        var updatedProfilePic = null;
+        if (image) {
+          console.log("uploaded!! beee");
+          const uploadImage = await cloudinary.v2.uploader.upload(projectPicture, {
+            folder: "uploads",
+          });
+          const { url: url } = uploadImage;
+          updatedProfilePic = {
+            url,
+          };
+        }
+
+        //updating everything
+        var updatedUser = {};
+        if (updatedProfilePic) {
+          updatedUser = {
+            name: name,
+            username: username,
+            email: newEmail,
+            password: encryptedPass,
+            image: updatedProfilePic,
+          };
+        } else {
+          updatedUser = {
+            name: name,
+            username: username,
+            email: newEmail,
+            password: encryptedPass,
+          };
+        }
         await User.updateOne(
-          { email: currentEmail },
           {
-            $set: {
-              name: name,
-              username: username,
-              password: encryptedPass,
-              email: newEmail,
-            },
-          }
+            _id: currentUser.id,
+          },
+          updatedUser
         ).then(() => {
           res.send({ message: "update successful" });
           console.log("update successful");
@@ -139,36 +201,7 @@ app.put("/Profile", async (req, res) => {
   }
 });
 
-//adding profile picture
-var newImage = {
-  public_id: "",
-  url: "",
-};
-app.post("/uploadFile", upload.single("image"), (req, res) => {
-  let fileType = req.file.mimetype.split("/")[1];
-  let newFileName = req.file.filename + "." + fileType;
-  fs.rename(`./uploads/${req.file.filename}`, `./uploads/${newFileName}`, function () {
-    console.log("callback");
-    res.send("200");
-  });
-});
-
-//==================need to debug but this uses cloudinary also=======================
-/*app.post("/upload", upload.single("my_file"), async (req, res) => {
-  try {
-    const b64 = Buffer.from(req.file.buffer).toString("base64");
-    let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-    const cldRes = await handleUpload(dataURI);
-    res.json(cldRes);
-  } catch (error) {
-    console.log(error);
-    res.send({
-      message: error.message,
-    });
-  }
-});*/
-
 // Express js listen method to run project
-app.listen(PORT, console.log(`Server started ${PORT}`));
+app.listen(PORT, console.log(`Server started `));
 
 // Debugging purposes: localhost:6969/api/users

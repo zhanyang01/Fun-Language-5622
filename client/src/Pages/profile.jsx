@@ -7,6 +7,8 @@ const Profile = () => {
 // ============== constant variables if any ==============
     const navigate = useNavigate();
 
+    const fileReader = new FileReader();
+
     var usern = localStorage.getItem("username");
 
     const margin = {
@@ -39,6 +41,7 @@ const Profile = () => {
     */
 
     const fileOnChange = (event) => {
+
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
         if (file && file.type.substring(0, 5) === "image") {
@@ -49,7 +52,7 @@ const Profile = () => {
         } else {
             // setPic(defaultProfileLogo.URL);
             localStorage.setItem("pic", defaultProfileLogo);
-            alert("invalid");
+            alert("invalid image");
         }
         // setPic(URL.createObjectURL(event.target.files[0]));
     };
