@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import defaultProfileLogo from '../Images/profileLogo.png';
@@ -30,17 +30,91 @@ const Profile = () => {
         [name]:value
         })
     }
-    // ============== file(profile pic) ==============      
-    var image = localStorage.getItem("pic") ? localStorage.getItem("pic"): defaultProfileLogo;
+    // ============== file(profile pic) ==============  
+    // this is to be sent as request (the base64 form)     
+    const [pic, setPic] = useState();
+
+    // this is for the image preview (the blob)
+    const [previewPic,setPreviewPic] = useState()
+
+    const [imageChanged, setImageChanged] = useState(false);
+
+
+    // for file upload & preview
+    const fileOnChange = async (event) => {
+        const file = event.target.files[0];
+        if (file && file.type.substring(0, 5) === "image") {
+            localStorage.setItem("pic", file);
+            convert(file).then((res) => {
+                console.log(res);
+                setPic(res)
+                setPreviewPic(URL.createObjectURL(file));
+                setImageChanged(true);
+            });
+            alert(file.type.substring(0, 5) + " " + "upload successful");
+        } else {
+         //   setPic(defaultProfileLogo);
+         //   localStorage.setItem("pic", defaultProfileLogo);
+            alert("invalid image");
+        }
+    };
+
+    // to convert the image into base64
+    function convert(image) {
+        return new Promise((resolve, reject) => {
+            fileReader.readAsDataURL(image);
+            fileReader.onload = () => {
+                console.log("working siuuuuuuuu")
+                resolve(fileReader.result);
+            };
+            fileReader.onerror = (e) => {
+                console.log(e);
+                reject(e);
+            };
+        });
+    }
     
-    var [pic, setPic] = useState(image);
+    const confirmProfile = async () => {
+        await axios.put(`http://localhost:6969/Profile/Pic/${localStorage.getItem("userId")}`,{
+            image: pic
+        })
+        .then((res)=>{
+            console.log(res);
+            alert(res.data.message);
+            navigate("/profile");
+        }).catch((err)=>{
+            console.log(err);
+            alert(err);
+        })
+        alert("profile picture confirmed");
+    }
 
-    /*
-    const [loading, setLoading] = useState(false);
-    const [res, setRes] = useState({});
-    */
+        // use effect (this time upon load)
+        useEffect(()=>{
+            setupUser()
+        },[])
+        
+        const setupUser = async ()=>{
+            // get the info of the current user
+            // endpoint to get the specific user
+            // extract out the image --> setPreview(user.image.url)
+            const fetchedUser = await axios.get(`http://localhost:6969/api/users/${localStorage.getItem("userId")}`) 
+           
+/*            axios.get(...).then((result)=>{
+                const {image} = result.data
+            })
 
-    const fileOnChange = (event) => {
+            */
+            if(fetchedUser){
+                console.log("result",fetchedUser)
+                const {username, email, image} = fetchedUser.data
+                setPreviewPic(image.url)
+                // other attributes
+            } 
+        }
+
+    //================eesean=========================
+    {/*const fileOnChange = (event) => {
 
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
@@ -55,13 +129,9 @@ const Profile = () => {
             alert("invalid image");
         }
         // setPic(URL.createObjectURL(event.target.files[0]));
-    };
+    };*/}
 
-    const confirmProfile = () => {
-        localStorage.setItem("pic", pic);
-        alert("profile picture confirmed");
-    }
-
+    //=============temporary fix======================
     /*const sendImage = (event) => {
         let formData = new FormData();
         formData.append("image", pic);
@@ -97,13 +167,13 @@ const Profile = () => {
         navigate('/homepage');
     }
     
-    //============== helper functions if any============== 
+    //============== helper functions if any ============== 
     const validEmail = (email) => {
         const emailReged = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         return email.match(emailReged);
     };
 
-    //============== updating account details============== 
+    //============== updating account details ============== 
     const updateAccount = async ()=>{
         let errors = [];
         const {name,username,currentEmail,newEmail,password} = user
@@ -207,7 +277,7 @@ const Profile = () => {
                         display: 'block',
                         margin: 'auto'
                     }}
-                    src= {pic} alt = "" />                    
+                    src= { previewPic?previewPic:defaultProfileLogo } alt = "" />                    
                     <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
                     <button className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={confirmProfile}>
                     Confirm photo

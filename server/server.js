@@ -37,9 +37,9 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({ limit: "50mb" }));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 app.use(cors());
 
@@ -100,25 +100,11 @@ app.post("/Register", async (req, res) => {
     } else {
       // encrypting password
       const encryptedPass = await bcrypt.hash(password, 10);
-      //adding the default image
-      var newImage = {
-        url: "",
-      };
-      if (image) {
-        const uploadImage = await cloudinary.v2.uploader.upload(profilePicture, {
-          folder: "uploads",
-        });
-        const { url: url } = uploadImage;
-        newImage = {
-          url,
-        };
-      }
       const newUser = new User({
         name,
         username,
         password: encryptedPass,
         email,
-        image: newImage,
       });
       await User.create(newUser).then(() => {
         res.send({ message: "registration successful" });
@@ -131,11 +117,12 @@ app.post("/Register", async (req, res) => {
 });
 
 // changing user details(password and email)
-app.put("/Profile", async (req, res) => {
-  const { name, username, currentEmail, newEmail, password, image, previousImageURL } = req.body;
+app.put("/Profile/:UserId", async (req, res) => {
+  const { name, username, currentEmail, newEmail, password } = req.body;
+  const { UserId } = req.params;
   try {
     //check if user exists
-    const currentUser = await User.findOne({ email: currentEmail });
+    const currentUser = await User.findbyId(UserId);
     if (!currentUser) {
       res.send({ message: "no such user exists" });
       console.log("no such user exists");
@@ -148,43 +135,14 @@ app.put("/Profile", async (req, res) => {
       } else {
         // changing password and email
         const encryptedPass = await bcrypt.hash(password, 10);
-
-        //changing profile picture
-        if (previousImageURL) {
-          await cloudinary.uploader.destroy(previousImageURL);
-          console.log("previous image destroyed");
-        }
-
-        var updatedProfilePic = null;
-        if (image) {
-          console.log("uploaded!! beee");
-          const uploadImage = await cloudinary.v2.uploader.upload(projectPicture, {
-            folder: "uploads",
-          });
-          const { url: url } = uploadImage;
-          updatedProfilePic = {
-            url,
-          };
-        }
-
         //updating everything
         var updatedUser = {};
-        if (updatedProfilePic) {
-          updatedUser = {
-            name: name,
-            username: username,
-            email: newEmail,
-            password: encryptedPass,
-            image: updatedProfilePic,
-          };
-        } else {
-          updatedUser = {
-            name: name,
-            username: username,
-            email: newEmail,
-            password: encryptedPass,
-          };
-        }
+        updatedUser = {
+          name: name,
+          username: username,
+          email: newEmail,
+          password: encryptedPass,
+        };
         await User.updateOne(
           {
             _id: currentUser.id,
@@ -194,6 +152,53 @@ app.put("/Profile", async (req, res) => {
           res.send({ message: "update successful" });
           console.log("update successful");
         });
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+//add profile picture
+app.put("/Profile/Pic/:UserId", async (req, res) => {
+  const { UserId } = req.params;
+  const { image } = req.body;
+  try {
+    //check if user exists
+    const currentUser = await User.findById(UserId);
+    if (!currentUser) {
+      res.send({ message: "no such user exists" });
+      console.log("no such user exists");
+    } else {
+      if (currentUser.image && currentUser.image.id) {
+        await cloudinary.v2.uploader.destroy(currentUser.image.id);
+      }
+      var updatedImage = null;
+      if (image) {
+        const uploadImage = await cloudinary.v2.uploader.upload(image, {
+          folder: "Fun Language",
+        });
+
+        const { public_id: id, url } = uploadImage;
+        updatedImage = {
+          id,
+          url,
+        };
+      }
+
+      if (updatedImage) {
+        await User.updateOne(
+          {
+            _id: currentUser.id,
+          },
+          { image: updatedImage }
+        ).then(() => {
+          res.send({ message: "profile picture updated successfully" });
+          console.log("profile picture update successfully");
+        });
+      } else {
+        res.send({ message: "profile picture updated unsuccessful" });
+        console.log("profile picture updated unsuccessful");
       }
     }
   } catch (e) {
