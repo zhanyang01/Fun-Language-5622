@@ -6,30 +6,9 @@ import dotenv from "dotenv";
 import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import fs from "fs";
 // import defaultProfileLogo from './Images';
 
-//==============temporary cloudinary setup==================
-import cloudinary from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.CLOUD_NAME,
-  api_key: process.env.CLOUD_KEY,
-  api_secret: process.env.CLOUD_SECRET_KEY,
-});
-async function handleUpload(file) {
-  const res = await cloudinary.uploader.upload(file, {
-    resource_type: "auto",
-  });
-  return res;
-}
-
-//================= temporary multer setup ====================
-import Multer from "multer";
-const storage = new Multer.memoryStorage();
-const upload = Multer({
-  dest: "./uploads",
-});
+import { cloudinaryObj } from "./config/cloudinary.js";
 
 connectDB();
 
@@ -51,7 +30,7 @@ app.use("/api/users", userRoutes);
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
 
-//login
+// ===================login================================
 app.post("/Login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -84,7 +63,7 @@ app.post("/Login", async (req, res) => {
   }
 });
 
-//registration of account
+// ========================registration of account =============================
 app.post("/Register", async (req, res) => {
   try {
     const { name, username, email, password, image } = req.body;
@@ -116,7 +95,7 @@ app.post("/Register", async (req, res) => {
   }
 });
 
-// changing user details(password and email)
+//    =========================changing user details(password and email)=====================
 app.put("/Profile/:UserId", async (req, res) => {
   const { name, username, currentEmail, newEmail, password } = req.body;
   const { UserId } = req.params;
@@ -159,7 +138,7 @@ app.put("/Profile/:UserId", async (req, res) => {
   }
 });
 
-//add profile picture
+//=====================add profile picture=======================
 app.put("/Profile/Pic/:UserId", async (req, res) => {
   const { UserId } = req.params;
   const { image } = req.body;
@@ -171,11 +150,11 @@ app.put("/Profile/Pic/:UserId", async (req, res) => {
       console.log("no such user exists");
     } else {
       if (currentUser.image && currentUser.image.id) {
-        await cloudinary.v2.uploader.destroy(currentUser.image.id);
+        await cloudinaryObj.v2.uploader.destroy(currentUser.image.id);
       }
       var updatedImage = null;
       if (image) {
-        const uploadImage = await cloudinary.v2.uploader.upload(image, {
+        const uploadImage = await cloudinaryObj.v2.uploader.upload(image, {
           folder: "Fun Language",
         });
 

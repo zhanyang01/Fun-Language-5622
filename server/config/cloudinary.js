@@ -1,9 +1,11 @@
-/*const cloudinary = require("cloudinary");
+import cloudinary from "cloudinary";
 
-cloudinary.config({
+const cloudinaryObj = cloudinary;
+
+cloudinaryObj.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_KEY,
   api_secret: process.env.CLOUD_SECRET_KEY,
 });
 
-module.export = cloudinary;*/
+export { cloudinaryObj };
