@@ -80,7 +80,7 @@ Node.js (Backend)
 
 * After Milestone 3: Extend to mobile app and/or add other features
 
-## System Design
+## System Design:
 <img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/a13e91c5-8872-4bab-a316-d9c5c80b20b0">   
 
 > Flow chart of how a user navigates the various components of the Fun Language App. 
