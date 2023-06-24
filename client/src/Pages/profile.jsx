@@ -89,6 +89,7 @@ const Profile = () => {
         alert("profile picture confirmed");
     }
 
+
         // use effect (this time upon load)
         useEffect(()=>{
             setupUser()
@@ -115,7 +116,6 @@ const Profile = () => {
 
     //================eesean=========================
     {/*const fileOnChange = (event) => {
-
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
         if (file && file.type.substring(0, 5) === "image") {
