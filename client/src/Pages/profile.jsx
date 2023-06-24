@@ -30,46 +30,36 @@ const Profile = () => {
         [name]:value
         })
     }
-    // ============== file(profile pic) ==============
-    const [pic, setPic] = useState(defaultProfileLogo);
-    const [imageChange, setImageChange] = useState(false);
-    const [res, setRes] = useState("");
+    // ============== file(profile pic) ==============      
+    var image = localStorage.getItem("pic") ? localStorage.getItem("pic"): defaultProfileLogo;
+    
+    var [pic, setPic] = useState(image);
 
-    const fileOnChange = async (event) => {
+    /*
+    const [loading, setLoading] = useState(false);
+    const [res, setRes] = useState({});
+    */
+
+    const fileOnChange = (event) => {
+
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
         if (file && file.type.substring(0, 5) === "image") {
             localStorage.setItem("pic", file);
-            {/*setPic(URL.createObjectURL(file));
-            console.log("image up");*/}
-            convert(file).then((res) => {
-                console.log(res)
-                setPic(URL.createObjectURL(file));
-                setImageChange(true);
-                setRes(res);
-            });
-            alert(file.type.substring(0, 5) + " " + "upload successful");
+            setPic(URL.createObjectURL(file));
+            // alert(file.type.substring(0, 5));
+            alert("upload successful");
         } else {
-            setPic(defaultProfileLogo);
+            // setPic(defaultProfileLogo.URL);
             localStorage.setItem("pic", defaultProfileLogo);
             alert("invalid image");
         }
         // setPic(URL.createObjectURL(event.target.files[0]));
     };
 
-    //function to convert the image to base64 to put in cloudinary
-    function convert(image) {
-        return new Promise((resolve, reject) => {
-            fileReader.readAsDataURL(image);
-            fileReader.onload = () => {
-                console.log("working siuuuuuuu");
-                resolve(fileReader.result);
-            };
-            fileReader.onerror = (e) => {
-                console.log(e);
-                reject(e);
-            };
-        });
+    const confirmProfile = () => {
+        localStorage.setItem("pic", pic);
+        alert("profile picture confirmed");
     }
 
     /*const sendImage = (event) => {
@@ -219,7 +209,9 @@ const Profile = () => {
                     }}
                     src= {pic} alt = "" />                    
                     <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
-                    {/*<button onClick = {sendImage}>Upload</button>*/}
+                    <button className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={confirmProfile}>
+                    Confirm photo
+                </button>
                 </div>
             </div>
         <h1> {usern} </h1>
