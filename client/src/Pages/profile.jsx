@@ -33,7 +33,7 @@ const Profile = () => {
     // ============== file(profile pic) ==============      
     var image = localStorage.getItem("pic") ? localStorage.getItem("pic"): defaultProfileLogo;
     
-    var [pic, setPic] = useState(image);
+    const [pic, setPic] = useState(image);
 
     /*
     const [loading, setLoading] = useState(false);
