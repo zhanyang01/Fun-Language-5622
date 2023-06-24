@@ -2,9 +2,9 @@
 ## User Stories:  
 1. User selects which language they want to learn  
 
-2. Enroll for courses on the language of choice varying in terms of difficulty (beginner, intermediate, expert)  
+2. Enroll for courses on the language of choice varying in terms of difficulty (basic, intermediate, advanced)  
 
-3. If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course to determine whether they are able to enroll for the course of choice (otherwise enroll for beginner)  
+3. If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course if not done previously to determine whether they are able to enroll for the course of choice (otherwise enroll for preceding course)  
 
 4. After completing the courses, user can unlock the proficiency assessment and attempt it (can do practice tests before attempting the test)  
 
@@ -41,9 +41,9 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Mobile Application to allow users to be able to learn the languages they want to learn even when they are not at home, hence making learning much more convenient 
 
-* Interface to allow the users to be able to access the courses with ease at the comfort of their homes with others taking the same courses to allow them to discuss and learn from each other 
+* Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning 
 
-* Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning  
+* Resources for references  
 
 ## Techstack (MERN stack):
 MongoDB (Database),
