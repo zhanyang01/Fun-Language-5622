@@ -41,7 +41,6 @@ const Profile = () => {
     */
 
     const fileOnChange = (event) => {
-
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
         if (file && file.type.substring(0, 5) === "image") {
