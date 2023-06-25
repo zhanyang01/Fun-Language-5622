@@ -80,13 +80,12 @@ const Profile = () => {
         })
         .then((res)=>{
             console.log(res);
-            // alert(res.data.message);
+            alert("profile picture confirmed");
             navigate("/profile");
         }).catch((err)=>{
             console.log(err);
             alert(err);
         })
-        alert("profile picture confirmed");
     }
 
 
@@ -109,7 +108,7 @@ const Profile = () => {
             if(fetchedUser){
                 console.log("result",fetchedUser)
                 const {username, email, image} = fetchedUser.data
-                // setPreviewPic(image.url)
+                setPreviewPic(image.url)
                 // other attributes
             } 
         }
@@ -194,7 +193,7 @@ const Profile = () => {
             console.log("Invalid password");
         }
         if (errors.length === 0) {
-            await axios.put("http://localhost:6969/Profile", user)
+            await axios.put(`http://localhost:6969/Profile/${localStorage.getItem("userId")}`, user)
             .then(res => {
                 console.log(res);
                 alert(res.data.message);
