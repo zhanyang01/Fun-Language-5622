@@ -99,7 +99,6 @@ app.post("/Register", async (req, res) => {
 app.put("/Profile/:UserId", async (req, res) => {
   const { name, username, currentEmail, newEmail, password } = req.body;
   //const { UserId } = req.params;
-  console.log("hellohellohello");
   try {
     //check if user exists
     const currentUser = await User.findOne({ email: currentEmail });
@@ -174,11 +173,11 @@ app.put("/Profile/Pic/:UserId", async (req, res) => {
           { image: updatedImage }
         ).then(() => {
           res.send({ message: "profile picture updated successfully" });
-          console.log("profile picture updated successfully");
+          console.log("profile picture update successfully");
         });
       } else {
-        res.send({ message: "profile picture updated unsuccessfully" });
-        console.log("profile picture updated unsuccessfully");
+        res.send({ message: "profile picture updated unsuccessful" });
+        console.log("profile picture updated unsuccessful");
       }
     }
   } catch (e) {
