@@ -66,7 +66,7 @@ app.post("/Login", async (req, res) => {
 // ========================registration of account =============================
 app.post("/Register", async (req, res) => {
   try {
-    const { name, username, email, password, image } = req.body;
+    const { name, username, email, password } = req.body;
     const user = await User.findOne({ email: req.body.email });
     // must fill up everything
     if (!name || !email || !password || !username) {
