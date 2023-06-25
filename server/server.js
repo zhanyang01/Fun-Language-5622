@@ -38,7 +38,7 @@ app.post("/Login", async (req, res) => {
     if (user) {
       const isCorrect = await bcrypt.compare(password, user.password);
       if (isCorrect) {
-        res.send({ message: "login success", username: user.username, userId: user._id });
+        res.send({ message: "login success", username: user.username });
         console.log("login success");
         /*
                 const payload = {name: user.name, userName: user.userName, email: user.email};
@@ -98,7 +98,8 @@ app.post("/Register", async (req, res) => {
 //    =========================changing user details(password and email)=====================
 app.put("/Profile/:UserId", async (req, res) => {
   const { name, username, currentEmail, newEmail, password } = req.body;
-  const { UserId } = req.params;
+  //const { UserId } = req.params;
+  console.log("hellohellohello");
   try {
     //check if user exists
     const currentUser = await User.findOne({ email: currentEmail });
@@ -173,11 +174,11 @@ app.put("/Profile/Pic/:UserId", async (req, res) => {
           { image: updatedImage }
         ).then(() => {
           res.send({ message: "profile picture updated successfully" });
-          console.log("profile picture update successfully");
+          console.log("profile picture updated successfully");
         });
       } else {
-        res.send({ message: "profile picture updated unsuccessful" });
-        console.log("profile picture updated unsuccessful");
+        res.send({ message: "profile picture updated unsuccessfully" });
+        console.log("profile picture updated unsuccessfully");
       }
     }
   } catch (e) {
