@@ -80,7 +80,7 @@ const Profile = () => {
         })
         .then((res)=>{
             console.log(res);
-            alert(res.data.message);
+            // alert(res.data.message);
             navigate("/profile");
         }).catch((err)=>{
             console.log(err);
@@ -109,7 +109,7 @@ const Profile = () => {
             if(fetchedUser){
                 console.log("result",fetchedUser)
                 const {username, email, image} = fetchedUser.data
-                setPreviewPic(image.url)
+                // setPreviewPic(image.url)
                 // other attributes
             } 
         }
@@ -237,7 +237,7 @@ const Profile = () => {
                 alert(err);
             })
         } else {
-            alert("Account did not delete, please press 'y' to delete when you want to delete account");
+            alert("Request unsuccessful, please press 'y' to delete if you wish to delete your account");
         }
     }
 
