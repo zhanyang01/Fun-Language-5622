@@ -197,6 +197,10 @@ const Profile = () => {
             errors.push("Invalid password");
             console.log("Invalid password");
         }
+        if (currentEmail !== localStorage.getItem("email") && !errors.includes("Please fill up all fields")) {
+            errors.push("Please check that you are giving the correct email");
+            console.log("Please check that you are giving the correct email");
+        }
         if (errors.length === 0) {
             await axios.put("http://localhost:6969/Profile", user)
             .then(res => {
@@ -224,6 +228,7 @@ const Profile = () => {
                 alert(res.data.message);
                 localStorage.removeItem("userId");
                 localStorage.removeItem("username");
+                localStorage.removeItem("email");
                 // setLoginUser(res.data.user)
                 navigate("/login");
                 /*
