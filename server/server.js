@@ -96,7 +96,7 @@ app.post("/Register", async (req, res) => {
 });
 
 //    =========================changing user details(password and email)=====================
-app.put("/Profile/:UserId", async (req, res) => {
+app.put("/Profile", async (req, res) => {
   const { name, username, currentEmail, newEmail, password } = req.body;
   //const { UserId } = req.params;
   console.log("hellohellohello");
