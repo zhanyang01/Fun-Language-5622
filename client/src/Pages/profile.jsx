@@ -110,9 +110,9 @@ const Profile = () => {
                 console.log("result",fetchedUser)
                 const {username, email, image} = fetchedUser.data
                 try {
-                    setPreviewPic(image.url)
+                    setPreviewPic(image.url);
                 } catch(e) {
-                    console.log(e)
+                    console.log(e);
                 }
                 // other attributes
             } 
