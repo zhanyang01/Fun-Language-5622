@@ -80,13 +80,12 @@ const Profile = () => {
         })
         .then((res)=>{
             console.log(res);
-            // alert(res.data.message);
+            alert("profile picture confirmed");
             navigate("/profile");
         }).catch((err)=>{
             console.log(err);
             alert(err);
         })
-        alert("profile picture confirmed");
     }
 
 
