@@ -126,8 +126,7 @@ app.put("/Profile/:UserId", async (req, res) => {
         await User.updateOne(
           {
             _id: currentUser.id,
-          },
-          updatedUser
+          },updatedUser
         ).then(() => {
           res.send({ message: "update successful" });
           console.log("update successful");
