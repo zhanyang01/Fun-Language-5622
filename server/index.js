@@ -30,6 +30,12 @@ app.use("/api/users", userRoutes);
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
 
+app.get("/", async (req, res) => {
+  return res.json({
+    message: "Server is up",
+  });
+});
+
 // ===================login================================
 app.post("/Login", async (req, res) => {
   const { email, password } = req.body;
@@ -125,7 +131,8 @@ app.put("/Profile", async (req, res) => {
         await User.updateOne(
           {
             _id: currentUser.id,
-          },updatedUser
+          },
+          updatedUser
         ).then(() => {
           res.send({ message: "update successful" });
           console.log("update successful");

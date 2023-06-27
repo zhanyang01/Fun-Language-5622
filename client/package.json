@@ -43,7 +43,7 @@
     ]
   },
   "type": "module",
-  "proxy": "http://127.0.0.1:6969",
+  "proxy": "http://127.0.0.1:6969/",
   "devDependencies": {
     "concurrently": "^8.0.1"
   }
