@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 
-const choosinglanguage = () => {
+const Choosinglanguage = () => {
     const navigate = useNavigate();
 
     const english = () => {
@@ -32,4 +32,4 @@ const choosinglanguage = () => {
         </>
     )
 }
-export default choosinglanguage;
+export default Choosinglanguage;
