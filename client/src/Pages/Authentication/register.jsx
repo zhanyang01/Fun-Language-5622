@@ -43,7 +43,7 @@ const Register = () => {
         console.log("Invalid password");
     }
     if (errors.length === 0) {
-        await axios.post("http://localhost:6969/Register", user)
+        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/Register`, user)
         .then(res => {
             console.log(res);
             alert(res.data.message);

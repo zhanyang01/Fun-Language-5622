@@ -75,7 +75,7 @@ const Profile = () => {
     }
     
     const confirmProfile = async () => {
-        await axios.put(`http://localhost:6969/Profile/Pic/${localStorage.getItem("userId")}`,{
+        await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Profile/Pic/${localStorage.getItem("userId")}`,{
             image: pic
         })
         .then((res)=>{
@@ -98,7 +98,7 @@ const Profile = () => {
             // get the info of the current user
             // endpoint to get the specific user
             // extract out the image --> setPreview(user.image.url)
-            const fetchedUser = await axios.get(`http://localhost:6969/api/users/${localStorage.getItem("userId")}`) 
+            const fetchedUser = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/${localStorage.getItem("userId")}`) 
            
 /*            axios.get(...).then((result)=>{
                 const {image} = result.data
@@ -201,7 +201,7 @@ const Profile = () => {
             console.log("Please check that you are giving the correct email");
         }
         if (errors.length === 0) {
-            await axios.put("http://localhost:6969/Profile", user)
+            await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Profile`, user)
             .then(res => {
                 console.log(res);
                 alert(res.data.message);
@@ -221,7 +221,7 @@ const Profile = () => {
         // to confirm bfore deleting an account
         const confirmation = prompt("Are you sure you want to delete this account? This is irreversible! (Type ‘y’ to proceed)");
         if (confirmation === 'y') {
-            await axios.delete(`http://localhost:6969/api/users/${localStorage.getItem("userId")}`)
+            await axios.delete(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/${localStorage.getItem("userId")}`)
             .then((res)=>{
                 console.log(res);
                 alert(res.data.message);
