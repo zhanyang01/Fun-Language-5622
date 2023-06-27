@@ -32,7 +32,7 @@ const Login = ({setLoginUser}) => {
                 alert("invalid email");
                 console.log("Invalid email");
             } else {
-                await axios.post("http://localhost:6969/Login", user)
+                await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/Login`, user)
                 .then((res)=>{
                     console.log(res);
                     alert(res.data.message);
