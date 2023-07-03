@@ -44,7 +44,7 @@ const Profile = () => {
     const fileOnChange = async (event) => {
         const file = event.target.files[0];
         if (file && file.type.substring(0, 5) === "image") {
-            localStorage.setItem("pic", file);
+            // localStorage.setItem("pic", file);
             convert(file).then((res) => {
                 console.log(res);
                 setPic(res)
@@ -288,8 +288,8 @@ const Profile = () => {
                     src= { previewPic?previewPic:defaultProfileLogo } alt = "" />                    
                     <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
                     <button className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={confirmProfile}>
-                    Confirm photo
-                </button>
+                        Set as profile picture
+                    </button>
                 </div>
             </div>
         <h1> {usern} </h1>
