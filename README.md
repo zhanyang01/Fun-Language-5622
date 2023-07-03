@@ -72,7 +72,7 @@ Node.js (Backend)
 
 * 3rd week of June: Software testing of Fun Language App, refine profile page 
 
-* 1st week of July:Improve on user interface and gamification features 
+* 1st week of July: Improve on user interface and gamification features 
 
 * 2nd week of July: Create assessments, marking system and pronunciation check 
 
