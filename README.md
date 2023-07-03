@@ -46,10 +46,13 @@ The Fun Language App allows for users to have a fun experience learning a new la
 * Resources for references  
 
 ## Techstack (MERN stack):
-MongoDB (Document Database),
-Express.js (Server-side Web Framework),
-React.js (Client-side JavaScript Framework),
-Node.js (JavaScript Server Platform)
+* MongoDB (Document Database)
+
+* Express.js (Server-side Web Framework)
+
+* React.js (Client-side JavaScript Framework)
+
+* Node.js (JavaScript Server Platform)
 
 
 ## Distinctive Features:
