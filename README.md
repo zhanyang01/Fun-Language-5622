@@ -46,10 +46,13 @@ The Fun Language App allows for users to have a fun experience learning a new la
 * Resources for references  
 
 ## Techstack (MERN stack):
-MongoDB (Database),
-Express.js (Framework),
-React.js (Frontend),
-Node.js (Backend)
+* MongoDB (Document Database)
+
+* Express.js (Server-side Web Framework)
+
+* React.js (Client-side JavaScript Framework)
+
+* Node.js (JavaScript Server Platform)
 
 
 ## Distinctive Features:
@@ -72,13 +75,16 @@ Node.js (Backend)
 
 * 3rd week of June: Software testing of Fun Language App, refine profile page 
 
-* 1st week of July: Create assessments, marking system and pronunciation check 
+* 1st week of July: Improve on user interface and gamification features 
 
-* 2nd week of July: Create web-based forum, improve on user interface and gamification features 
+* 2nd week of July: Create assessments, marking system and pronunciation check 
 
-* 3rd week of July: Extend to another language (e.g. Chinese), create certificates of achievement
+* 3rd week of July: Create certificates of achievement and extend to another language, test app
 
-* After Milestone 3: Extend to mobile app and/or add other features
+* After Milestone 3: Create web-based forum / extend to mobile app / add any other features
+
+## Link to access Fun Language App:
+* http://fun-language-5622-frontend-seven.vercel.app/
 
 ## System Design:
 <img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/a13e91c5-8872-4bab-a316-d9c5c80b20b0">   
