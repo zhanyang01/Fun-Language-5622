@@ -118,7 +118,8 @@ const Profile = () => {
         }
 
     //================eesean=========================
-    {/*const fileOnChange = (event) => {
+    /*
+    const fileOnChange = (event) => {
         const file = event.target.files[0];
         // alert(file.type.substring(0, 5))
         if (file && file.type.substring(0, 5) === "image") {
@@ -132,7 +133,8 @@ const Profile = () => {
             alert("invalid image");
         }
         // setPic(URL.createObjectURL(event.target.files[0]));
-    };*/}
+    };
+    */
 
     //=============temporary fix======================
     /*const sendImage = (event) => {
