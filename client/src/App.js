@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Homepage from "./Pages/homepage.jsx";
+import Homepage from "./Pages/Home/homepage.jsx";
 import Login from "./Pages/Authentication/login.jsx";
 import Register from "./Pages/Authentication/register.jsx";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Choosinglanguage from "./Pages/choosingLanguage.jsx";
-import Profile from "./Pages/profile.jsx";
+import Choosinglanguage from "./Pages/languages/choosingLanguage.jsx";
+import Profile from "./Pages/Users/profile.jsx";
 
 //english language imports
 import EnglishLanguage from "./Pages/languages/english/English.jsx";
