@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import ProgressBar from '../../progressbar';
+import courseProgress from '../../courselist';
 
 const EBCourse1 = () => {
     const navigate = useNavigate();
@@ -10,6 +11,7 @@ const EBCourse1 = () => {
         console.log("Basic Course");
         localStorage.setItem("meter", "0%");
         console.log("0%");
+        courseProgress();
         navigate('/englishbasic');
     }
 
