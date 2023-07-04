@@ -252,7 +252,7 @@ const Profile = () => {
     }
 
     //============== Progress of Courses ==============  
-    var list = [];
+    const [list, setList] = useState([]);
     
     function courseProgress() {
         // var list = [];
@@ -262,7 +262,10 @@ const Profile = () => {
             if (course in list[i]) {
                 list[i]["meter"] = meter;
             } else {
-                list.push([course, meter]);
+                setList([
+                    ...list,
+                    {"course": course, "meter": meter}
+                ]);
             }
         }
         var output = "";
