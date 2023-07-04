@@ -15,6 +15,8 @@ const EBCourseDone = () => {
 
     const progress = { bgcolor: "#007FFF", completed: 100 };
 
+    localStorage.setItem("course", "English Language: Basic Course");
+
     return (
         <>
             <h1> Congratulations! You have completed the Basic Course for English Language :D </h1>

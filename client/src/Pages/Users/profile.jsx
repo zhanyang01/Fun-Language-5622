@@ -256,6 +256,7 @@ const Profile = () => {
     const [list, setList] = useState([]);
     
     function courseProgress() {
+        /*
         var course = localStorage.getItem("course");
         var meter = localStorage.getItem("meter");
         for (var i = 0; i < list.length; i++) {
@@ -276,8 +277,19 @@ const Profile = () => {
             </div>
         ))});
         */
-       return list;
-        
+       var course = localStorage.getItem("course");
+       if (!course in list) {
+        setList([
+            ...list, course
+        ]);
+        }
+        return (
+            <ol>
+                {list.map(task => (
+                    <li key = {task}>{task}</li>
+                ))}
+            </ol>
+        );      
     }
 
     return (
