@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 
-const [list, setList] = useState([]);
+// const [list, setList] = useState([]);
 
 const courseProgress = () => {
+    const [list, setList] = useState([]);
     var course = localStorage.getItem("course");
     var meter = localStorage.getItem("meter");
     for (var i = 0; i < list.length; i++) {

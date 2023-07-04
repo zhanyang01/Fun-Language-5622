@@ -253,7 +253,7 @@ const Profile = () => {
     }
 
     //============== Progress of Courses ==============  
-    const [list, setList] = useState([]);
+    // const [list, setList] = useState([]);
     
     /*
     function courseProgress() {
