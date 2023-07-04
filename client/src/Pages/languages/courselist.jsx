@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-// const [list, setList] = useState([]);
-
 const courseProgress = () => {
     const [list, setList] = useState([]);
     var course = localStorage.getItem("course");
