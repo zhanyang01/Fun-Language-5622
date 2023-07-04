@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const courseProgress = () => {
+const CourseProgress = () => {
     const [list, setList] = useState([]);
     var course = localStorage.getItem("course");
     var meter = localStorage.getItem("meter");
@@ -16,4 +16,4 @@ const courseProgress = () => {
     }
 }
 
-export default courseProgress;
+export default CourseProgress;
