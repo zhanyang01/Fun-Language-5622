@@ -254,6 +254,8 @@ const Profile = () => {
 
     //============== Progress of Courses ==============  
     const [list, setList] = useState([]);
+
+    var records = ["English Language"];
     
     function courseProgress() {
         /*
@@ -278,11 +280,12 @@ const Profile = () => {
         ))});
         */
        var course = localStorage.getItem("course");
-       if (!course in list) {
+       if (!(course in list)) {
         setList([
             ...list, course
         ]);
         }
+        alert("list updated");
         return (
             <ol>
                 {list.map(task => (
@@ -315,7 +318,11 @@ const Profile = () => {
         <h1> {usern} </h1>
         <h2> Courses completed: </h2>
         <div className="records">
-            {courseProgress}
+        <ol>
+                {records.map(task => (
+                    <li key = {task}>{task}</li>
+                ))}
+            </ol>
         </div>
         <h2> Assessments completed: </h2>
         <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
