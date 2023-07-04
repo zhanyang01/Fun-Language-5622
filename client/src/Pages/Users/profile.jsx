@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
-// import courseProgress from '../languages/courselist';
+import List from '../languages/courselist';
 
 const Profile = () => {
 // ============== constant variables if any ==============
@@ -317,13 +317,13 @@ const Profile = () => {
             </div>
         <h1> {usern} </h1>
         <h2> Courses completed: </h2>
-        <h4>
+        <p>
         <ol>
-                {records.map(task => (
+                {List.map(task => (
                     <li key = {task}>{task}</li>
                 ))}
             </ol>
-        </h4>
+        </p>
         <h2> Assessments completed: </h2>
         <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
             <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
