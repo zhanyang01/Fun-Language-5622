@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
-import List from '../languages/courselist';
+// import List from '../languages/courselist';
 
 const Profile = () => {
 // ============== constant variables if any ==============
