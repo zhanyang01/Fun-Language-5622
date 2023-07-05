@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
-const CourseProgress = () => {
+const List = () => {
     const [list, setList] = useState([]);
     var course = localStorage.getItem("course");
-    var meter = localStorage.getItem("meter");
+    setList([
+        ...list, course
+    ]);
+    // var meter = localStorage.getItem("meter");
+    /*
     for (var i = 0; i < list.length; i++) {
         if (course in list[i]) {
             list[i]["meter"] = meter;
@@ -14,6 +18,7 @@ const CourseProgress = () => {
             ]);
         }
     }
+    */
 }
 
-export default CourseProgress;
+export default List;

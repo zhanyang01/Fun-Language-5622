@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import ProgressBar from '../../progressbar';
+import List from '../../courselist';
 
 const EBCourseDone = () => {
     const navigate = useNavigate();
@@ -14,6 +15,10 @@ const EBCourseDone = () => {
     }
 
     const progress = { bgcolor: "#007FFF", completed: 100 };
+
+    localStorage.setItem("course", "English Language: Basic Course");
+
+    List();
 
     return (
         <>
