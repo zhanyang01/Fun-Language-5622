@@ -47,8 +47,8 @@ const Register = () => {
         console.log("Invalid email");
     }
     if (password.length < 8 && !errors.includes("Please fill up all fields")) {
-        errors.push("Invalid password");
-        console.log("Invalid password");
+        errors.push("Invalid password (must be at least 8 characters)");
+        console.log("Invalid password (must be at least 8 characters)");
     }
     if (errors.length === 0) {
         await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/Register`, user)
@@ -113,8 +113,6 @@ const Register = () => {
                 }}>
             Sign in
         </Link>
-
-
         </Container>    
 
         </>

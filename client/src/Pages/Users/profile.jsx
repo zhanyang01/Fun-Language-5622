@@ -204,8 +204,8 @@ const Profile = () => {
             console.log("Invalid new email");
         }
         if (password.length < 8 && !errors.includes("Please fill up all fields")) {
-            errors.push("Invalid password");
-            console.log("Invalid password");
+            errors.push("Invalid password (must be at least 8 characters)");
+            console.log("Invalid password (must be at least 8 characters)");
         }
         if (currentEmail !== localStorage.getItem("email") && !errors.includes("Please fill up all fields")) {
             errors.push("Please check that you are giving the correct email");
@@ -334,6 +334,7 @@ const Profile = () => {
             </Text>
             <Text fontSize="16px" color="red" fontWeight="semibold">
                 (Please indicate the same email if you are not changing it!)
+
             </Text>
             <Input 
                 m="5px" 
