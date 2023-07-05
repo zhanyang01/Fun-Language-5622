@@ -7,7 +7,6 @@ import {
     Button, 
     Input,
     Container,
-    Box, 
 } from '@chakra-ui/react';
 
 //test for validity for email
@@ -80,7 +79,7 @@ const Login = ({setLoginUser}) => {
                 <Input 
                     m="5px"
                     type="password"
-                    placeholder="Password(>= 8 characters)" 
+                    placeholder="Password" 
                     name="password" 
                     value={user.password}  
                     onChange={handleChange}/>

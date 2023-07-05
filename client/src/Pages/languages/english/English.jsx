@@ -1,3 +1,4 @@
+import { Button, Container, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 
@@ -22,36 +23,54 @@ const EnglishLanguage = () => {
 
     return (
         <>
-            <h1> Welcome to English Language Course </h1>
-            <h2> Please select preferred level </h2>
-            <div className="flex w-full">
+            <Heading my = {10} fontSize = "3xl" color="teal.500"> Welcome to English Language Course </Heading>
+            <Container border="1px" borderColor="gray.300">
+            <Text fontSize = "xl" color="teal.500" fontWeight="bold" m="15px"> Please select preferred level </Text>
                 <Link to="/englishbasic">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={englishbasic}>
+                    <Button
+                        m="5px"
+                        colorScheme = "teal" 
+                        width = "480px"
+                        variant="solid"
+                        type="submit"
+                        onClick={englishbasic}>
                         Basic
-                    </button>
+                    </Button>
                 </Link>
-            </div>
-            <div className="flex w-full">
                 <Link to="/englishintermediate">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={englishintermediate}>
+                    <Button
+                        m="5px"
+                        colorScheme = "teal" 
+                        width = "480px"
+                        variant="solid"
+                        type="submit"
+                        onClick={englishintermediate}>
                         Intermediate
-                    </button>
+                    </Button>
                 </Link>
-            </div>
-            <div className="flex w-full">
                 <Link to="/englishadvanced">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={englishadvanced}>
+                    <Button
+                        m="5px"
+                        colorScheme = "teal" 
+                        width = "480px"
+                        variant="solid"
+                        type="submit"
+                        onClick={englishadvanced}>
                         Advanced
-                    </button>
+                    </Button>
                 </Link>
-            </div>
-            <div className="flex w-full">
                 <Link to="/homepage">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={homepage}>
+                    <Button
+                        m="5px"
+                        colorScheme = "teal" 
+                        width = "480px"
+                        variant="solid"
+                        type="submit"
+                        onClick={homepage}>
                         Return to Homepage
-                    </button>
+                    </Button>
                 </Link>
-            </div>
+            </Container>
         </>
     )
 }
