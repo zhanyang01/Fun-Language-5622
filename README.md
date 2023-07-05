@@ -33,11 +33,9 @@ The Fun Language App allows for users to have a fun experience learning a new la
 ## Features to be completed by mid-July:
 * Pronunciation check  
 
-* Create the assessment & marking system  
+* Assessment & marking system  
 
 * Certificate of achievements  
-
-* Improve on gamification and user interface
 
 * Friends list in profile page for users to connect with friends and peers 
 
@@ -77,11 +75,11 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 1st week of June: Create English course and levels of difficulty, refine authentication process
 
-* 2nd week of June: Implement gamification feature and user interface
+* 2nd week of June: Implement gamification features and user interface
 
 * 3rd week of June: Software testing of Fun Language App, refine profile page 
 
-* 1st week of July: Improve on user interface and gamification features, create friends list
+* 1st week of July: Improve on gamification features and user interface, create friends list
 
 * 2nd week of July: Create assessments, marking system and pronunciation check 
 
