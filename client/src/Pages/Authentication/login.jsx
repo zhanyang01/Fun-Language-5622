@@ -81,7 +81,7 @@ const Login = ({setLoginUser}) => {
                     <Input 
                         m="5px"
                         type="password"
-                        placeholder="Password(>= 8 characters)" 
+                        placeholder="Password" 
                         name="password" 
                         value={user.password}  
                         onChange={handleChange}/>
