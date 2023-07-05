@@ -7,7 +7,6 @@ import {
     Button, 
     Input,
     Container,
-    Box, 
 } from '@chakra-ui/react';
 
 //test for validity for email
@@ -68,35 +67,31 @@ const Login = ({setLoginUser}) => {
     return (
         <>
         <Heading my = {10} fontSize = "3xl" color = "teal.500">Welcome to Fun Language!</Heading>
-        <Container>
-            <Box border="1px" borderColor="gray.300" p="15px">
-                <Text fontSize = "xl">Sign in</Text>
-                    <Input 
-                        m="5px" 
-                        type="text"
-                        placeholder="Email"
-                        name="email"
-                        value={user.email}  
-                        onChange ={handleChange}/>
-                    <Input 
-                        m="5px"
-                        type="password"
-                        placeholder="Password" 
-                        name="password" 
-                        value={user.password}  
-                        onChange={handleChange}/>
-                    <Button 
-                        m="5px"
-                        type = "submit" 
-                        colorScheme = "teal" 
-                        width = "full"
-                        variant="solid"
-                        onClick={() => loginUser()}>
-                        Login
-                    </Button>
-                </Box>
-            </Container>
-            <Box>
+        <Container border="1px" borderColor="gray.300">
+            <Text fontSize = "xl">Sign in</Text>
+                <Input 
+                    m="5px" 
+                    type="text"
+                    placeholder="Email"
+                    name="email"
+                    value={user.email}  
+                    onChange ={handleChange}/>
+                <Input 
+                    m="5px"
+                    type="password"
+                    placeholder="Password" 
+                    name="password" 
+                    value={user.password}  
+                    onChange={handleChange}/>
+                <Button 
+                    m="5px"
+                    type = "submit" 
+                    colorScheme = "teal" 
+                    width = "full"
+                    variant="solid"
+                    onClick={() => loginUser()}>
+                    Login
+                </Button>
                 New to us?{" "}
                 <Link to="/register"
                     style = {{
@@ -104,7 +99,7 @@ const Login = ({setLoginUser}) => {
                         }}>
                     Sign Up.
                 </Link>
-            </Box>
+            </Container>
         </>
     )
 }
