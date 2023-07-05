@@ -1,6 +1,14 @@
 import React , {useState} from 'react'
 import {useNavigate, Link} from "react-router-dom"
 import axios from "axios";
+import {
+    Heading, 
+    Text, 
+    Button, 
+    Input,
+    Container,
+    Box, 
+} from '@chakra-ui/react';
 
 //test for validity for email
 const validEmail = (email) => {
