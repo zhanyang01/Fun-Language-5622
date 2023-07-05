@@ -45,7 +45,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Resources for references  
 
-## Techstack (MERN stack):
+## Techstack:
 * MongoDB (Document Database)
 
 * Express.js (Server-side Web Framework)
@@ -54,6 +54,12 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Node.js (JavaScript Server Platform)
 
+## Other Supporting Tools:
+* Cloudinary (for uploading profile picture)
+
+* Vercel (app deployment)
+
+* Chakra UI (app design)
 
 ## Distinctive Features:
 * Gamification  
