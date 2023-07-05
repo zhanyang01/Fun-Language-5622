@@ -3,6 +3,13 @@ import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
 // import List from '../languages/courselist';
+import {
+    Button, 
+    Container, 
+    Heading, 
+    Input, 
+    Text 
+} from "@chakra-ui/react"
 
 const Profile = () => {
 // ============== constant variables if any ==============
@@ -15,6 +22,7 @@ const Profile = () => {
     const margin = {
         margin: 20
     }
+
 // ============== user ==============
     const [user, setUser] = useState({
         name:"",
@@ -310,68 +318,91 @@ const Profile = () => {
                     }}
                     src= { previewPic?previewPic:defaultProfileLogo } alt = "" />                    
                     <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
-                    <button className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={confirmProfile}>
+                    <Button
+                        colorScheme = "teal" 
+                        onClick={confirmProfile}>
                         Set as profile picture
-                    </button>
+                    </Button>
                 </div>
             </div>
-        <h1> {usern} </h1>
+        <Heading color="teal"> {usern} </Heading>
         <h2> Courses completed: </h2>
         <h2> Assessments completed: </h2>
-        <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
-            <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
+        <Container border="1px" borderColor="gray.300">
+            <Text fontSize="20px" color="teal.500" fontWeight="bold">
                 Update Your Account
-            </div>
-            <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
+            </Text>
+            <Text fontSize="16px" color="red" fontWeight="semibold">
                 (Please indicate the same email if you are not changing it!)
-            </div>
-            <div class="p-6 mt-8">
-                <div class="flex flex-col mb-2">
-                    <div class=" relative ">
-                        <input type="text" id="create-account-name" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="name" value={user.name} onChange={handleChange} placeholder="Full Name"/>
-                    </div>
-                </div>
-                <div class="flex flex-col mb-2">
-                    <div class=" relative ">
-                        <input type="text" id="create-account-username" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="username" value={user.username} onChange={handleChange} placeholder="Username"/>
-                    </div>
-                </div>
-                <div class="flex gap-4 mb-2">
-                    <div class=" relative ">
-                        <input type="text" id="create-account-email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="currentEmail" value={user.currentEmail} onChange={handleChange} placeholder="Current Email"/>
-                    </div>
-                </div>
-                <div class="flex gap-4 mb-2">
-                    <div class=" relative ">
-                        <input type="text" id="create-account-email" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="newEmail" value={user.newEmail} onChange={handleChange} placeholder="New Email"/>
-                    </div>
-                </div>
-                <div class="flex flex-col mb-2">
-                    <div class=" relative ">
-                        <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange} placeholder="Password(>= 8 characters)"/>
-                    </div>
-                </div>
-                <div class="flex w-full my-4">
-                    <button type="submit" className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg " onClick={updateAccount} >
-                        Update account
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div className="flex w-full" style = {margin}>
+            </Text>
+            <Input 
+                m="5px" 
+                type="text"
+                name="name" 
+                value={user.name} 
+                onChange={handleChange} 
+                placeholder="Full Name"/>
+            <Input 
+                m="5px" 
+                type="text" 
+                name="username" 
+                value={user.username} 
+                onChange={handleChange} 
+                placeholder="Username"/>
+            <Input 
+                m="5px" 
+                type="text" 
+                name="currentEmail" 
+                value={user.currentEmail} 
+                onChange={handleChange} 
+                placeholder="Current Email"/>
+            <Input 
+                m="5px" 
+                type="text" 
+                name="newEmail" 
+                value={user.newEmail} 
+                onChange={handleChange} 
+                placeholder="New Email"/>
+            <Input 
+                m="5px" 
+                type="password" 
+                name="password" 
+                value={user.password} 
+                onChange={handleChange} 
+                placeholder="Password"/>
+            <Button 
+                m="5px"
+                type = "submit" 
+                colorScheme = "teal" 
+                width = "480px"
+                variant="solid"
+                onClick={updateAccount} >
+                Update account
+            </Button>
             <Link to="/homepage">
-                <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={homepage}>
+                <Button 
+                    m="5px"
+                    type = "submit" 
+                    colorScheme = "teal" 
+                    width = "480px"
+                    variant="solid"
+                    onClick={homepage}>
                     Return to homepage
-                </button>
+                </Button>
             </Link>
-        </div>
-            
-            <div className="flex w-full">
-                <button className="py-2 px-4  bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={() => deleteUser()}>
-                    Delete Account
-                </button>
-            </div>
-
+            <Button 
+                _hover={{
+                    bg : "red"
+                }}
+                m="5px"
+                type = "submit" 
+                colorScheme = "teal" 
+                width = "480px"
+                variant="solid"
+                onClick={() => deleteUser()}>
+                Delete Account
+            </Button>
+        </Container>
         </>
     )
 }
