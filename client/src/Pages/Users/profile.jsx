@@ -317,13 +317,6 @@ const Profile = () => {
             </div>
         <h1> {usern} </h1>
         <h2> Courses completed: </h2>
-        <p>
-        <ol>
-                {List.map(task => (
-                    <li key = {task}>{task}</li>
-                ))}
-            </ol>
-        </p>
         <h2> Assessments completed: </h2>
         <div className="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
             <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
