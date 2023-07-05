@@ -196,8 +196,8 @@ const Profile = () => {
             console.log("Invalid new email");
         }
         if (password.length < 8 && !errors.includes("Please fill up all fields")) {
-            errors.push("Invalid password");
-            console.log("Invalid password");
+            errors.push("Invalid password (must be at least 8 characters)");
+            console.log("Invalid password (must be at least 8 characters)");
         }
         if (currentEmail !== localStorage.getItem("email") && !errors.includes("Please fill up all fields")) {
             errors.push("Please check that you are giving the correct email");
@@ -348,7 +348,7 @@ const Profile = () => {
                 </div>
                 <div class="flex flex-col mb-2">
                     <div class=" relative ">
-                        <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange} placeholder="Password(>= 8 characters)"/>
+                        <input type="password" id="create-account-password" class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" name="password" value={user.password} onChange={handleChange} placeholder="Password"/>
                     </div>
                 </div>
                 <div class="flex w-full my-4">
