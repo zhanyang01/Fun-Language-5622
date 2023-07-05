@@ -39,7 +39,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Improve on gamification and user interface
 
-* Mobile Application to allow users to be able to learn the languages they want to learn even when they are not at home, hence making learning much more convenient 
+* Friends list in profile page for users to connect with friends and peers 
 
 * Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning 
 
@@ -75,13 +75,13 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 3rd week of June: Software testing of Fun Language App, refine profile page 
 
-* 1st week of July: Improve on user interface and gamification features 
+* 1st week of July: Improve on user interface and gamification features, create friends list
 
 * 2nd week of July: Create assessments, marking system and pronunciation check 
 
 * 3rd week of July: Create certificates of achievement and extend to another language, test app
 
-* After Milestone 3: Create web-based forum / extend to mobile app / add any other features
+* After Milestone 3: Create web-based forum
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
