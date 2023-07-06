@@ -1,5 +1,11 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
+import {
+    Heading, 
+    Text, 
+    Button, 
+    Container
+} from '@chakra-ui/react';
 
 const EnglishAdvanced = () => {
     const navigate = useNavigate();
@@ -18,28 +24,43 @@ const EnglishAdvanced = () => {
 
     return (
         <>
-            <h1> Advanced Course for English Language </h1>
-            <div className="flex w-full">
-                <Link to="/eacourse1">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={course}>
-                        Start learning!
-                    </button>
-                </Link>
-            </div>
-            <div className="flex w-full">
-                <Link to="/eaassessment">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={assessment}>
-                        Take assessment
-                    </button>
-                </Link>
-            </div>
-            <div className="flex w-full">
-                <Link to="/english">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={english}>
-                        Return to English Language
-                    </button>
-                </Link>
-            </div>
+        <Heading my = {10} fontSize = "3xl" color="teal.500"> Basic Course for English Language </Heading>
+        <Container border="1px" borderColor="gray.300">
+        <Text fontSize = "xl" color="teal.500" fontWeight="bold" m="15px"> Please select preferred level </Text>
+        <Link to="/eacourse1">
+            <Button
+                m="5px"
+                colorScheme = "teal" 
+                width = "480px"
+                variant="solid"
+                type="submit"
+                onClick={course}>
+                Start learning!
+            </Button>
+        </Link>
+            <Link to="/eaassessment">
+                <Button
+                    m="5px"
+                    colorScheme = "teal" 
+                    width = "480px"
+                    variant="solid"
+                    type="submit"
+                    onClick={assessment}>
+                    Take Assessment
+                </Button>
+            </Link>
+            <Link to="/english">
+                <Button
+                    m="5px"
+                    colorScheme = "teal" 
+                    width = "480px"
+                    variant="solid"
+                    type="submit"
+                    onClick={english}>
+                    Return to English Language
+                </Button>
+            </Link>
+        </Container>
         </>
     )
 }
