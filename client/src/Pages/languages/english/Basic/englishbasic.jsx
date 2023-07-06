@@ -15,22 +15,27 @@ const EnglishBasic = () => {
         const status = localStorage.getItem("English Basic");
         if (status) {
             alert("You have already completed the Basic Course");
-        }
-        if (current === "Basic" && meter !== "0%") {
-            if (meter === "25%") {
-                navigate('/ebcourse2');
-            }
-            if (meter === "50%") {
-                navigate('/ebcourse3');
-            }
-            if (meter === "75%") {
-                navigate('/ebcourse4');
-            }
-        }
-        if (current === "Intermediate" || current === "Advanced") {
-            alert("You are already enrolled in another level");
         } else {
-            navigate('/ebcourse1');
+            if (current === "Intermediate" || current === "Advanced") {
+                alert("You are already enrolled in another level");
+            } else {
+                if (current === "Basic") {
+                    if (meter === "0%") {
+                        navigate('/ebcourse1');
+                    }
+                    if (meter === "25%") {
+                        navigate('/ebcourse2');
+                    }
+                    if (meter === "50%") {
+                        navigate('/ebcourse3');
+                    }
+                    if (meter === "75%") {
+                        navigate('/ebcourse4');
+                    }
+                } else {
+                    navigate('/ebcourse1');
+                }
+            }
         }
     }
 
