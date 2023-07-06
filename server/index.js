@@ -191,6 +191,24 @@ app.put("/Profile/Pic/:UserId", async (req, res) => {
   }
 });
 
+//=====================add completed basic course to user schema=======================
+app.put("/EBCourseDone", async(req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await user.findOne({ email: email})
+    await user.updateOne({
+      _id: user.id,
+    },
+    {$addToSet: {courses: "English Language (Basic Course)"}}
+    ).then(() => {
+      res.send({courses: user.courses});
+      console.log(user.courses)
+    })
+  } catch (e) {
+    console.log(e);
+  }
+})
+
 // Express js listen method to run project
 app.listen(PORT, console.log(`Server started `));
 

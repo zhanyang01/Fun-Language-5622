@@ -30,6 +30,14 @@ const userSchema = mongoose.Schema(
         required: false,
       },
     },
+    courses: {
+      type: Array,
+      required: false,
+    },
+    assessments: {
+      type: Array,
+      required: false,
+    },
   },
   {
     timeStamp: true,
