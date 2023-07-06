@@ -11,7 +11,7 @@ const EnglishBasic = () => {
 
     const course = () => {
         const current = localStorage.getItem("English Course");
-        const meter = localStorage.getItem("meter");
+        const meter = localStorage.getItem("English Meter");
         const status = localStorage.getItem("English Basic");
         if (status) {
             alert("You have already completed the Basic Course");
