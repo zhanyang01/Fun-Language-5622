@@ -22,7 +22,7 @@ const EnglishAdvanced = () => {
         // const doneBasic = localStorage.getItem(basic);
         const doneIntermediate = localStorage.getItem(intermediate)
         if (status) {
-            alert("You have already completed the Intermediate Course");
+            alert("You have already completed the Advanced Course");
         } else {
             if (current === "Basic" || current === "Intermediate") {
                 alert("You are already enrolled in another level");
