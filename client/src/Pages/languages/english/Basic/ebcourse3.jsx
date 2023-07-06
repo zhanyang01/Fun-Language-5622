@@ -6,6 +6,10 @@ const EBCourse3 = () => {
     const navigate = useNavigate();
 
     const basic = () => {
+        localStorage.setItem("English Course", "Basic");
+        console.log("Basic");
+        localStorage.setItem("English Meter", "50%");
+        console.log("50%");
         navigate('/englishbasic');
     }
 
