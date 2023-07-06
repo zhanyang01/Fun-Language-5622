@@ -46,7 +46,6 @@ const EnglishBasic = () => {
         <>
         <Heading my = {10} fontSize = "3xl" color="teal.500"> Basic Course for English Language </Heading>
         <Container border="1px" borderColor="gray.300">
-        <Link to="/ebcourse1">
             <Button
                 m="5px"
                 colorScheme = "teal" 
@@ -56,7 +55,6 @@ const EnglishBasic = () => {
                 onClick={course}>
                 Start learning!
             </Button>
-        </Link>
             <Link to="/ebassessment">
                 <Button
                     m="5px"
