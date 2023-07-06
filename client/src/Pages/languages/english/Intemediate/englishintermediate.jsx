@@ -22,28 +22,29 @@ const EnglishIntermediate = () => {
         if (status) {
             alert("You have already completed the Intermediate Course");
         } else {
-            if (!doneBasic) {
-                alert("Please do a Basic proficiency test before proceeding!")
-                navigate('/ebassessment');
-            }
             if (current === "Basic" || current === "Advanced") {
                 alert("You are already enrolled in another level");
             } else {
-                if (current === "Intermediate") {
-                    if (meter === "0%") {
+                if (!doneBasic) {
+                    alert("Please do a Basic Proficiency Test before proceeding");
+                    navigate('/ebassessment');
+                } else {
+                    if (current === "Intermediate") {
+                        if (meter === "0%") {
+                            navigate('/eicourse1');
+                        }
+                        if (meter === "25%") {
+                            navigate('/eicourse2');
+                        }
+                        if (meter === "50%") {
+                            navigate('/eicourse3');
+                        }
+                        if (meter === "75%") {
+                            navigate('/eicourse4');
+                        }
+                    } else {
                         navigate('/eicourse1');
                     }
-                    if (meter === "25%") {
-                        navigate('/eicourse2');
-                    }
-                    if (meter === "50%") {
-                        navigate('/eicourse3');
-                    }
-                    if (meter === "75%") {
-                        navigate('/eicourse4');
-                    }
-                } else {
-                    navigate('/eicourse1');
                 }
             }
         }
