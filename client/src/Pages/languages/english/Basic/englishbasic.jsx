@@ -10,7 +10,28 @@ const EnglishBasic = () => {
     const navigate = useNavigate();
 
     const course = () => {
-        navigate('/ebcourse1');
+        const current = localStorage.getItem("English Course");
+        const meter = localStorage.getItem("meter");
+        const status = localStorage.getItem("English Basic");
+        if (status) {
+            alert("You have already completed the Basic Course");
+        }
+        if (current === "Basic" && meter !== "0%") {
+            if (meter === "25%") {
+                navigate('/ebcourse2');
+            }
+            if (meter === "50%") {
+                navigate('/ebcourse3');
+            }
+            if (meter === "75%") {
+                navigate('/ebcourse4');
+            }
+        }
+        if (current !== "Basic") {
+            alert("You are already enrolled in another level");
+        } else {
+            navigate('/ebcourse1');
+        }
     }
 
     const assessment = () => {
