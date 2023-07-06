@@ -27,7 +27,7 @@ const EnglishBasic = () => {
                 navigate('/ebcourse4');
             }
         }
-        if (current !== "Basic") {
+        if (current === "Intermediate" || current === "Advanced") {
             alert("You are already enrolled in another level");
         } else {
             navigate('/ebcourse1');
