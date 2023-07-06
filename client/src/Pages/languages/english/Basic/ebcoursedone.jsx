@@ -13,7 +13,7 @@ const EBCourseDone = () => {
         localStorage.setItem(completed, "Completed");
         console.log("Completed");
         localStorage.removeItem("English Course");
-        localStorage.removeItem("meter");
+        localStorage.removeItem("English Meter");
         navigate('/englishbasic');
     }
 
