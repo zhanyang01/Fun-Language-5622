@@ -10,7 +10,37 @@ const EnglishBasic = () => {
     const navigate = useNavigate();
 
     const course = () => {
-        navigate('/ebcourse1');
+        var email = localStorage.getItem("email");
+        const course = email + " English Course";
+        const progress = email + " English Meter";
+        const completed = email + " English Basic";
+        const current = localStorage.getItem(course);
+        const meter = localStorage.getItem(progress);
+        const status = localStorage.getItem(completed);
+        if (status) {
+            alert("You have already completed the Basic Course");
+        } else {
+            if (current === "Intermediate" || current === "Advanced") {
+                alert("You are already enrolled in another level");
+            } else {
+                if (current === "Basic") {
+                    if (meter === "0%") {
+                        navigate('/ebcourse1');
+                    }
+                    if (meter === "25%") {
+                        navigate('/ebcourse2');
+                    }
+                    if (meter === "50%") {
+                        navigate('/ebcourse3');
+                    }
+                    if (meter === "75%") {
+                        navigate('/ebcourse4');
+                    }
+                } else {
+                    navigate('/ebcourse1');
+                }
+            }
+        }
     }
 
     const assessment = () => {
@@ -25,7 +55,6 @@ const EnglishBasic = () => {
         <>
         <Heading my = {10} fontSize = "3xl" color="teal.500"> Basic Course for English Language </Heading>
         <Container border="1px" borderColor="gray.300">
-        <Link to="/ebcourse1">
             <Button
                 m="5px"
                 colorScheme = "teal" 
@@ -35,7 +64,6 @@ const EnglishBasic = () => {
                 onClick={course}>
                 Start learning!
             </Button>
-        </Link>
             <Link to="/ebassessment">
                 <Button
                     m="5px"

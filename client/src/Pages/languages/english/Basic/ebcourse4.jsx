@@ -6,6 +6,13 @@ const EBCourse4 = () => {
     const navigate = useNavigate();
 
     const basic = () => {
+        var email = localStorage.getItem("email");
+        const course = email + " English Course";
+        const meter = email + " English Meter";
+        localStorage.setItem(course, "Basic");
+        console.log("Basic");
+        localStorage.setItem(meter, "75%");
+        console.log("75%");
         navigate('/englishbasic');
     }
 

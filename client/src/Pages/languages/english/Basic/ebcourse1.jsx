@@ -6,12 +6,13 @@ const EBCourse1 = () => {
     const navigate = useNavigate();
 
     const saveProgress = () => {
-        /*
-        localStorage.setItem("course", "Basic Course");
-        console.log("Basic Course");
-        localStorage.setItem("meter", "0%");
+        var email = localStorage.getItem("email");
+        const course = email + " English Course";
+        const meter = email + " English Meter";
+        localStorage.setItem(course, "Basic");
+        console.log("Basic");
+        localStorage.setItem(meter, "0%");
         console.log("0%");
-        */
         navigate('/englishbasic');
     }
 

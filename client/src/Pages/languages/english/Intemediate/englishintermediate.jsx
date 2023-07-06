@@ -10,7 +10,44 @@ const EnglishIntermediate = () => {
     const navigate = useNavigate();
 
     const course = () => {
-        navigate('/eicourse1');
+        var email = localStorage.getItem("email");
+        const course = email + " English Course";
+        const progress = email + " English Meter";
+        const completed = email + " English Intermediate";
+        const basic = email + " English Basic";
+        const current = localStorage.getItem(course);
+        const meter = localStorage.getItem(progress);
+        const status = localStorage.getItem(completed);
+        const doneBasic = localStorage.getItem(basic);
+        if (status) {
+            alert("You have already completed the Intermediate Course");
+        } else {
+            if (current === "Basic" || current === "Advanced") {
+                alert("You are already enrolled in another level");
+            } else {
+                if (!doneBasic) {
+                    alert("Please do the Basic Proficiency Test before proceeding");
+                    navigate('/ebassessment');
+                } else {
+                    if (current === "Intermediate") {
+                        if (meter === "0%") {
+                            navigate('/eicourse1');
+                        }
+                        if (meter === "25%") {
+                            navigate('/eicourse2');
+                        }
+                        if (meter === "50%") {
+                            navigate('/eicourse3');
+                        }
+                        if (meter === "75%") {
+                            navigate('/eicourse4');
+                        }
+                    } else {
+                        navigate('/eicourse1');
+                    }
+                }
+            }
+        }
     }
 
     const assessment = () => {
@@ -23,9 +60,8 @@ const EnglishIntermediate = () => {
 
     return (
         <>
-        <Heading my = {10} fontSize = "3xl" color="teal.500"> Basic Course for English Language </Heading>
+        <Heading my = {10} fontSize = "3xl" color="teal.500"> Intermediate Course for English Language </Heading>
         <Container border="1px" borderColor="gray.300">
-        <Link to="/eicourse1">
             <Button
                 m="5px"
                 colorScheme = "teal" 
@@ -35,7 +71,6 @@ const EnglishIntermediate = () => {
                 onClick={course}>
                 Start learning!
             </Button>
-        </Link>
             <Link to="/eiassessment">
                 <Button
                     m="5px"
