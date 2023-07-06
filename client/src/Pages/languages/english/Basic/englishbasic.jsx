@@ -2,7 +2,6 @@ import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import {
     Heading, 
-    Text, 
     Button, 
     Container
 } from '@chakra-ui/react';
@@ -26,7 +25,6 @@ const EnglishBasic = () => {
         <>
         <Heading my = {10} fontSize = "3xl" color="teal.500"> Basic Course for English Language </Heading>
         <Container border="1px" borderColor="gray.300">
-        <Text fontSize = "xl" color="teal.500" fontWeight="bold" m="15px"> Please select preferred level </Text>
         <Link to="/ebcourse1">
             <Button
                 m="5px"
