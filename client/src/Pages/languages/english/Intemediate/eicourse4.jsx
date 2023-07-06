@@ -6,6 +6,13 @@ const EICourse4 = () => {
     const navigate = useNavigate();
 
     const intermediate = () => {
+        var email = localStorage.getItem("email");
+        const course = email + " English Course";
+        const meter = email + " English Meter";
+        localStorage.setItem(course, "Intermediate");
+        console.log("Basic");
+        localStorage.setItem(meter, "75%");
+        console.log("75%");
         navigate('/englishintermediate');
     }
 
