@@ -10,10 +10,12 @@ const EBCourseDone = () => {
     const basic = async() => {
         var email = localStorage.getItem("email");
         const completed = email + " English Basic";
+        const course = email + " English Course";
+        const meter = email + " English Meter";
         localStorage.setItem(completed, "Completed");
         console.log("Completed");
-        localStorage.removeItem("English Course");
-        localStorage.removeItem("English Meter");
+        localStorage.removeItem(course);
+        localStorage.removeItem(meter);
         navigate('/englishbasic');
     }
 
