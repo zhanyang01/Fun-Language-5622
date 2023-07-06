@@ -26,7 +26,7 @@ const EnglishIntermediate = () => {
                 alert("You are already enrolled in another level");
             } else {
                 if (!doneBasic) {
-                    alert("Please do a Basic Proficiency Test before proceeding");
+                    alert("Please do the Basic Proficiency Test before proceeding");
                     navigate('/ebassessment');
                 } else {
                     if (current === "Intermediate") {
