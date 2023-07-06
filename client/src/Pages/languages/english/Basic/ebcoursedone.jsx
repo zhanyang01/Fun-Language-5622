@@ -8,7 +8,9 @@ const EBCourseDone = () => {
     const navigate = useNavigate();
 
     const basic = async() => {
-        localStorage.setItem("English Basic", "Completed");
+        var email = localStorage.getItem("email");
+        const completed = email + " English Basic";
+        localStorage.setItem(completed, "Completed");
         console.log("Completed");
         localStorage.removeItem("English Course");
         localStorage.removeItem("meter");

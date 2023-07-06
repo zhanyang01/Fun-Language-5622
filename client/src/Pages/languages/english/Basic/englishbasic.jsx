@@ -10,9 +10,13 @@ const EnglishBasic = () => {
     const navigate = useNavigate();
 
     const course = () => {
-        const current = localStorage.getItem("English Course");
-        const meter = localStorage.getItem("English Meter");
-        const status = localStorage.getItem("English Basic");
+        var email = localStorage.getItem("email");
+        const course = email + " English Course";
+        const progress = email + " English Meter";
+        const completed = email + " English Basic";
+        const current = localStorage.getItem(course);
+        const meter = localStorage.getItem(progress);
+        const status = localStorage.getItem(completed);
         if (status) {
             alert("You have already completed the Basic Course");
         } else {
