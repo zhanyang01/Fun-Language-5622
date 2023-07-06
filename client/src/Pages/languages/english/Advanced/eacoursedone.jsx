@@ -6,6 +6,14 @@ const EACourseDone = () => {
     const navigate = useNavigate();
 
     const advanced = () => {
+        var email = localStorage.getItem("email");
+        const completed = email + " English Advanced";
+        const course = email + " English Course";
+        const meter = email + " English Meter";
+        localStorage.setItem(completed, "Completed");
+        console.log("Completed");
+        localStorage.removeItem(course);
+        localStorage.removeItem(meter);
         navigate('/englishadvanced');
     }
 
