@@ -15,7 +15,10 @@ const Choosinglanguage = () => {
 
     return (
         <>
-            <Heading my = {10} fontSize = "3xl" color="teal.500">Please Choose a Language to learn!! </Heading>
+            <Heading my = {10} fontSize = "3xl" color="teal.500">
+                Please Choose a Language to learn!! 
+            </Heading>
+            <Container>
                 <Link to="/english">
                     <Button 
                         m="5px"
@@ -38,6 +41,7 @@ const Choosinglanguage = () => {
                         Return to Homepage
                     </Button>
                 </Link>
+            </Container>
         </>
     )
 }

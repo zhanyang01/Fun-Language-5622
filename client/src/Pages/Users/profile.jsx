@@ -305,26 +305,22 @@ const Profile = () => {
 
     return (
         <>
-            <div className = 'profile_img text-center p-4'>
-                <div className = "flex flex-column justify-content-center align-items-center">
-                    <img style = {{
-                        width: "200px",
-                        height: "200px",
-                        borderRadius: "50%",
-                        // objectFit: "cover",
-                        border: "3px-solid-green",
-                        display: 'block',
-                        margin: 'auto'
-                    }}
-                    src= { previewPic?previewPic:defaultProfileLogo } alt = "" />                    
-                    <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
-                    <Button
-                        colorScheme = "teal" 
-                        onClick={confirmProfile}>
-                        Set as profile picture
-                    </Button>
-                </div>
-            </div>
+            <img style = {{
+                width: "200px",
+                height: "200px",
+                borderRadius: "50%",
+                // objectFit: "cover",
+                border: "3px-solid-green",
+                display: 'block',
+                margin: 'auto'
+            }}
+            src= { previewPic?previewPic:defaultProfileLogo } alt = "" />                    
+            <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
+            <Button
+                colorScheme = "teal" 
+                onClick={confirmProfile}>
+                Set as profile picture
+            </Button>
         <Heading color="teal"> {usern} </Heading>
         <h2> Courses completed: </h2>
         <h2> Assessments completed: </h2>
@@ -380,6 +376,8 @@ const Profile = () => {
                 onClick={updateAccount} >
                 Update account
             </Button>
+            </Container>
+            <Container>
             <Link to="/homepage">
                 <Button 
                     m="5px"
@@ -403,7 +401,7 @@ const Profile = () => {
                 onClick={() => deleteUser()}>
                 Delete Account
             </Button>
-        </Container>
+            </Container>
         </>
     )
 }
