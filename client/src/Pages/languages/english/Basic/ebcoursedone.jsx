@@ -1,12 +1,13 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import ProgressBar from '../../progressbar';
-import List from '../../courselist';
+import axios from 'axios';
+// import List from '../../courselist';
 
 const EBCourseDone = () => {
     const navigate = useNavigate();
 
-    const basic = () => {
+    const basic = async() => {
         navigate('/englishbasic');
     }
 
@@ -16,9 +17,25 @@ const EBCourseDone = () => {
 
     const progress = { bgcolor: "#007FFF", completed: 100 };
 
-    localStorage.setItem("course", "English Language: Basic Course");
+    const email = localStorage.getItem("email");
 
-    List();
+    // localStorage.setItem("course", "English Language: Basic Course");
+
+    // List();
+
+    axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/EBCourseDone`, email)
+        .then((res) =>{
+            console.log(res);
+        })
+
+    /*
+    const newCourse = async() => {
+        await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Login`, user)
+        .then((res) =>{
+            console.log(res);
+        })
+    }
+    */
 
     return (
         <>
