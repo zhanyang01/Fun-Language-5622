@@ -24,12 +24,12 @@ const EnglishLanguage = () => {
     return (
         <>
             <Heading my = {10} fontSize = "3xl" color="teal.500"> Welcome to English Language Course </Heading>
-            <Container border="1px" borderColor="gray.300">
+            <Container>
             <Text fontSize = "xl" color="teal.500" fontWeight="bold" m="15px"> Please select preferred level </Text>
                 <Link to="/englishbasic">
                     <Button
                         m="5px"
-                        colorScheme = "teal" 
+                        colorScheme = "green" 
                         width = "480px"
                         variant="solid"
                         type="submit"
@@ -40,7 +40,7 @@ const EnglishLanguage = () => {
                 <Link to="/englishintermediate">
                     <Button
                         m="5px"
-                        colorScheme = "teal" 
+                        colorScheme = "orange" 
                         width = "480px"
                         variant="solid"
                         type="submit"
@@ -51,7 +51,7 @@ const EnglishLanguage = () => {
                 <Link to="/englishadvanced">
                     <Button
                         m="5px"
-                        colorScheme = "teal" 
+                        colorScheme = "red" 
                         width = "480px"
                         variant="solid"
                         type="submit"

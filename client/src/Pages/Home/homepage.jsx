@@ -26,8 +26,10 @@ const Homepage = () => {
 
     return (
         <>
-        <Heading my = {10} fontSize = "3xl" color="teal.500"> Hello, {username}!!! What would you like to learn today? </Heading>
-        <Container border="1px" borderColor="gray.300">
+        <Heading my = {10} fontSize = "3xl" color="teal.500">
+            Hello, {username}!!! What would you like to learn today? 
+        </Heading>
+        <Container>
         <Link to="/choosinglanguage">
             <Button
                 m="5px"
