@@ -28,9 +28,10 @@ const Homepage = () => {
             duration: 5000,
             isClosable: true,
             status: 'success',
-            position: 'top'
+            position: 'top',
+            onCloseComplete: navigate('/login')
         });
-        navigate('/login');
+        // navigate('/login');
     }
 
     const username = localStorage.getItem("username");
