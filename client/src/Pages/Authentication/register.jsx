@@ -87,7 +87,7 @@ const Register = () => {
             description: errors.join('\n'),
             duration: 5000,
             isClosable: true,
-            status: 'success',
+            status: 'error',
             position: 'top',
         });
         // alert(errorMessage + '\n' + errors.join('\n'));
