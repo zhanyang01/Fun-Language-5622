@@ -1,163 +1,84 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import ProgressBar from '../../progressbar';
-import { Button, Container, Heading } from '@chakra-ui/react';
+// import ProgressBar from '../../progressbar';
+import { QuizStructure } from '../../../../Components/UI/QuizStructure';
+import { allQuestions } from '../../../../data';
+import { useQuiz } from '../../../../Storage/UserStorage';
 
 const EBCourse1 = () => {
+    // to save the quiz attempt
+    const {quiz,saveQuiz} = useQuiz()
     const navigate = useNavigate();
+    const questionLabel = "basicQuestionsPartOne"
+    const [currentAnswers,setCurrentAnswers] = useState([])
 
+    const handleAnswerChange = (newAnswer,questionNumber) =>{
+
+        currentAnswers[questionNumber] = newAnswer
+        setCurrentAnswers([...currentAnswers])
+    }
+
+    useEffect(()=>{
+        console.log("ans",currentAnswers)
+    },[currentAnswers])
+
+    useEffect(()=>{
+        console.log("quiz",quiz)
+        const currentAns = []
+        // check if there or no
+        if(quiz.hasOwnProperty(questionLabel)){
+            // have prior attempt
+            console.log("attempt exists =D")
+            for(var i = 0;i < quiz[questionLabel].length; i++){
+                const {questionNo,answerValue} = quiz[questionLabel][i]
+                currentAns.push(answerValue)
+            }
+        }
+        else{
+            // first attempt
+            for(var i = 0;i < allQuestions[questionLabel].length; i++){
+                currentAns.push("-1")
+            }
+        }
+        // quiz[questionLabel]
+        setCurrentAnswers(currentAns)
+    },[])
+
+    /*
     const saveProgress = () => {
         var email = localStorage.getItem("email");
         const course = email + " English Course";
         const meter = email + " English Meter";
         localStorage.setItem(course, "Basic");
-        console.log("Basic");
+        //console.log("Basic");
         localStorage.setItem(meter, "0%");
-        console.log("0%");
-        navigate('/englishbasic');
-    }
-
-    var answers = ["B", "A", "C"];
-
-    var submissions = answers.length;
-
-    function getCheckedValue(radioName) {
-        var radios = document.getElementsByName(radioName);
-        for (var x = 0; x < radios.length; x++) {
-            if (radios[x].checked) {
-                return radios[x].value;
-            }
+        //console.log("0%");
+        // this is where the saveQuiz comes in
+        let quizAnswerArray = []
+        for(var i = 0; i < currentAnswers.length; i ++){
+            //console.log(i,currentAnswers[i])
+            quizAnswerArray.push({
+                questionNo:i,
+                answerValue: currentAnswers[i]
+            })
         }
+        saveQuiz(questionLabel,quizAnswerArray)
+        navigate(`/${backToCourseRoute}`);
     }
-
-    function getScore() {
-        var score  = 0;
-        for (var i = 0; i < submissions; i++) {
-            if (getCheckedValue("question" + i) === answers[i]) {
-                score += 1;
-            }
-        }
-        return score;
-    }
-
-    const nextLevel = () => {
-        var maxScore = "/3 correct"
-        var pass = "Passed! Please proceed to next level";
-        var fail = "Please try again!"
-        var score = getScore();
-        if (score === 3) {
-            alert(pass + "\n" + score + maxScore);
-            navigate('/ebcourse2');
-        } else {
-            alert(fail + "\n" + score + maxScore);
-        }
-    }
-
-    const progress = { bgcolor: "#007FFF", completed: 0 };
-
-    const margin = {
-        margin: 20
-    }
+    */
 
     return (
         <>
-            <Heading color="teal.500"> 
-                Basic Course (Part 1) 
-            </Heading>
-            <ProgressBar bgcolor = {progress.bgcolor} completed = {progress.completed} />
-            <ul class = "quiz">
-
-                    <h4>I saw __ dog.</h4>
-                    <ul class = "choices">
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question0" value = "A" />
-                                <span> an </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question0" value = "B" />
-                                <span> a </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question0" value = "C" />
-                                <span> it </span>
-                            </label>
-                        </li>
-                    </ul>
-
-                <l1>
-                    <h4>Which pronoun is used to refer to yourself?</h4>
-                    <ul class = "choices">
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question1" value = "A" />
-                                <span> I </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question1" value = "B" />
-                                <span> He </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question1" value = "C" />
-                                <span> We </span>
-                            </label>
-                        </li>
-                    </ul>
-                </l1>
-
-                <l1>
-                    <h4>Which word is the same as 60?</h4>
-                    <ul class = "choices">
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question2" value = "A" />
-                                <span> fifty </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question2" value = "B" />
-                                <span> sixty-nine </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question2" value = "C" />
-                                <span> sixty </span>
-                            </label>
-                        </li>
-                    </ul>
-                </l1>
-
-            </ul>
-            <Container>
-                <Button 
-                    m="5px"
-                    type="submit" 
-                    colorScheme = "teal" 
-                    width = "480px"
-                    variant="solid"
-                    onClick={nextLevel}>
-                    Submit
-                </Button>
-                <Button 
-                    type="submit" 
-                    m="5px"
-                    colorScheme = "teal" 
-                    width = "480px"
-                    variant="solid"
-                    onClick={saveProgress}>
-                    Save and exit
-                </Button>
-            </Container>
+           <QuizStructure 
+            quizTitle={"Basic Course (Part 1) "}
+            questionLabel = {questionLabel}
+            questions ={allQuestions[questionLabel]}
+            currentAnswers={currentAnswers}
+            handleAnswerChange ={handleAnswerChange}
+            nextLevelRoute ={"ebcourse2"}
+            previousLevelRoute={"englishbasic"}
+            backToCourseRoute={"englishbasic"}
+            />
         </>
     )
 }

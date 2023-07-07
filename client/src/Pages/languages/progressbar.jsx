@@ -1,9 +1,7 @@
 import React from "react";
 import {Progress } from "@chakra-ui/react"
 
-
-
-const ProgressBar = (props) => {
+export const ProgressBar = (props) => {
     const { bgcolor, completed } = props;
   
     const containerStyles = {
@@ -36,5 +34,6 @@ const ProgressBar = (props) => {
       </div>
     );
   };
+
   
   export default ProgressBar;
