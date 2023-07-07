@@ -245,7 +245,7 @@ const Profile = () => {
             await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Profile`, user)
             .then(res => {
                 console.log(res);
-                alert(res.data.message);
+                // alert(res.data.message);
                 if (res.data.message === "update successful") {
                     usern = localStorage.setItem("username", username);
                     toast({
