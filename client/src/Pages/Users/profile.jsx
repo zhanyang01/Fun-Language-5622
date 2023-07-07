@@ -322,9 +322,15 @@ const Profile = () => {
             </Button>
             </SimpleGrid>
         </Container>
-        <Heading color="teal"> {usern} </Heading>
-        <h2> Courses completed: </h2>
-        <h2> Assessments completed: </h2>
+        <Text color="teal" fontSize="32px" fontWeight="bold"> 
+            {usern} 
+        </Text>
+        <Text size="24px"> 
+            Courses completed: 
+        </Text>
+        <Text size="24px"> 
+            Assessments completed: 
+        </Text>
         <Container border="1px" borderColor="gray.300">
             <Text fontSize="20px" color="teal.500" fontWeight="bold">
                 Update Your Account

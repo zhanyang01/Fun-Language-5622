@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import ProgressBar from '../../progressbar';
+import { Button, Container, Heading } from '@chakra-ui/react';
 
 const EBCourse1 = () => {
     const navigate = useNavigate();
@@ -60,11 +61,12 @@ const EBCourse1 = () => {
 
     return (
         <>
-            <h1> Basic Course (Part 1) </h1>
+            <Heading color="teal.500"> 
+                Basic Course (Part 1) 
+            </Heading>
             <ProgressBar bgcolor = {progress.bgcolor} completed = {progress.completed} />
             <ul class = "quiz">
 
-                <l1>
                     <h4>I saw __ dog.</h4>
                     <ul class = "choices">
                         <li>
@@ -86,7 +88,6 @@ const EBCourse1 = () => {
                             </label>
                         </li>
                     </ul>
-                </l1>
 
                 <l1>
                     <h4>Which pronoun is used to refer to yourself?</h4>
@@ -137,16 +138,26 @@ const EBCourse1 = () => {
                 </l1>
 
             </ul>
-            <div className="flex w-full">
-                <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={nextLevel}>
+            <Container>
+                <Button 
+                    m="5px"
+                    type="submit" 
+                    colorScheme = "teal" 
+                    width = "480px"
+                    variant="solid"
+                    onClick={nextLevel}>
                     Submit
-                </button>
-            </div>
-            <div className="flex w-full" style = {margin}>
-                <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={saveProgress}>
+                </Button>
+                <Button 
+                    type="submit" 
+                    m="5px"
+                    colorScheme = "teal" 
+                    width = "480px"
+                    variant="solid"
+                    onClick={saveProgress}>
                     Save and exit
-                </button>
-            </div>
+                </Button>
+            </Container>
         </>
     )
 }
