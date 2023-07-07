@@ -11,7 +11,8 @@ import {
     Heading, 
     Input, 
     SimpleGrid, 
-    Text 
+    Text,
+    useToast 
 } from "@chakra-ui/react"
 
 const Profile = () => {
@@ -25,6 +26,8 @@ const Profile = () => {
     const margin = {
         margin: 20
     }
+
+    const toast = useToast();
 
 // ============== user ==============
     const [user, setUser] = useState({
@@ -63,11 +66,27 @@ const Profile = () => {
                 setPreviewPic(URL.createObjectURL(file));
                 setImageChanged(true);
             });
-            alert(file.type.substring(0, 5) + " " + "upload successful");
+            // alert(file.type.substring(0, 5) + " " + "upload successful");
+            toast({
+                title: 'Upload Picture',
+                description: file.type.substring(0, 5) + " " + "upload successful",
+                duration: 5000,
+                isClosable: true,
+                status: 'success',
+                position: 'top',
+            });
         } else {
          //   setPic(defaultProfileLogo);
          //   localStorage.setItem("pic", defaultProfileLogo);
-            alert("invalid image");
+            // alert("invalid image");
+            toast({
+                title: 'File Error',
+                description: "Invalid Image",
+                duration: 5000,
+                isClosable: true,
+                status: 'error',
+                position: 'top',
+            });
         }
     };
 
@@ -92,7 +111,15 @@ const Profile = () => {
         })
         .then((res)=>{
             console.log(res);
-            alert("profile picture confirmed");
+            // alert("profile picture confirmed");
+            toast({
+                title: 'Set Picture Success',
+                description: "profile picture confirmed",
+                duration: 5000,
+                isClosable: true,
+                status: 'success',
+                position: 'top',
+            });
             navigate("/profile");
         }).catch((err)=>{
             console.log(err);
@@ -221,12 +248,37 @@ const Profile = () => {
                 alert(res.data.message);
                 if (res.data.message === "update successful") {
                     usern = localStorage.setItem("username", username);
+                    toast({
+                        title: 'Update Success',
+                        description: res.data.message,
+                        duration: 5000,
+                        isClosable: true,
+                        status: 'success',
+                        position: 'top',
+                    });
                     navigate('/homepage');
+                } else {
+                    toast({
+                        title: 'Update Error',
+                        description: res.data.message,
+                        duration: 5000,
+                        isClosable: true,
+                        status: 'error',
+                        position: 'top',
+                    });
                 }
             })
         } else {
-            var errorMessage = "Unable to update credentials";
-            alert(errorMessage + '\n' + errors.join('\n'));
+            // var errorMessage = "Unable to update credentials";
+            toast({
+                title: 'Unable to update credentials',
+                description: errors.join('\n'),
+                duration: 5000,
+                isClosable: true,
+                status: 'error',
+                position: 'top',
+            });
+            // alert(errorMessage + '\n' + errors.join('\n'));
         }
     }
 
