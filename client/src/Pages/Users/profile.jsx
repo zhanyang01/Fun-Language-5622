@@ -290,7 +290,15 @@ const Profile = () => {
             await axios.delete(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/${localStorage.getItem("userId")}`)
             .then((res)=>{
                 console.log(res);
-                alert(res.data.message);
+                toast({
+                    title: 'Account removed',
+                    description: res.data.message,
+                    duration: 5000,
+                    isClosable: true,
+                    status: 'info',
+                    position: 'top',
+                });
+                // alert(res.data.message);
                 localStorage.removeItem("userId");
                 localStorage.removeItem("username");
                 localStorage.removeItem("email");
@@ -311,7 +319,15 @@ const Profile = () => {
                 alert(err);
             })
         } else {
-            alert("Request unsuccessful, please press 'y' to delete if you wish to delete your account");
+            toast({
+                title: 'Error',
+                description: "Request unsuccessful, please press 'y' to delete if you wish to delete your account",
+                duration: 5000,
+                isClosable: true,
+                status: 'error',
+                position: 'top',
+            });
+            // alert("Request unsuccessful, please press 'y' to delete if you wish to delete your account");
         }
     }
 
