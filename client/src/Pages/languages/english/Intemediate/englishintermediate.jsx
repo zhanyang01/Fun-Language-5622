@@ -61,7 +61,7 @@ const EnglishIntermediate = () => {
     return (
         <>
         <Heading my = {10} fontSize = "3xl" color="teal.500"> Intermediate Course for English Language </Heading>
-        <Container border="1px" borderColor="gray.300">
+        <Container>
             <Button
                 m="5px"
                 colorScheme = "teal" 
@@ -73,6 +73,9 @@ const EnglishIntermediate = () => {
             </Button>
             <Link to="/eiassessment">
                 <Button
+                    _hover={{
+                        bg : "green"
+                    }}
                     m="5px"
                     colorScheme = "teal" 
                     width = "480px"

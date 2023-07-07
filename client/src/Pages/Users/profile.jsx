@@ -321,7 +321,7 @@ const Profile = () => {
                 Set as profile picture
             </Button>
             </SimpleGrid>
-            </Container>
+        </Container>
         <Heading color="teal"> {usern} </Heading>
         <h2> Courses completed: </h2>
         <h2> Assessments completed: </h2>

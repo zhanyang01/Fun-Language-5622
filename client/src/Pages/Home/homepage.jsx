@@ -66,6 +66,9 @@ const Homepage = () => {
             </Link>
             <Link to="/login">
                 <Button
+                    _hover={{
+                        bg : "red"
+                    }}
                     m="5px"
                     colorScheme = "teal" 
                     width = "480px"
