@@ -4,10 +4,13 @@ import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
 // import List from '../languages/courselist';
 import {
+    Avatar,
     Button, 
     Container, 
+    Flex, 
     Heading, 
     Input, 
+    SimpleGrid, 
     Text 
 } from "@chakra-ui/react"
 
@@ -305,25 +308,29 @@ const Profile = () => {
 
     return (
         <>
-            <img style = {{
-                width: "200px",
-                height: "200px",
-                borderRadius: "50%",
-                // objectFit: "cover",
-                border: "3px-solid-green",
-                display: 'block',
-                margin: 'auto'
-            }}
-            src= { previewPic?previewPic:defaultProfileLogo } alt = "" />                    
+        <Container>
+            <Avatar 
+                size="2xl"
+                src= { previewPic?previewPic:defaultProfileLogo } alt = "" />                    
+            <SimpleGrid>
             <input type = "file" accept = "/image/*" onChange = {fileOnChange} />
             <Button
                 colorScheme = "teal" 
+                width="240px"
                 onClick={confirmProfile}>
                 Set as profile picture
             </Button>
-        <Heading color="teal"> {usern} </Heading>
-        <h2> Courses completed: </h2>
-        <h2> Assessments completed: </h2>
+            </SimpleGrid>
+        </Container>
+        <Text color="teal" fontSize="32px" fontWeight="bold"> 
+            {usern} 
+        </Text>
+        <Text size="24px"> 
+            Courses completed: 
+        </Text>
+        <Text size="24px"> 
+            Assessments completed: 
+        </Text>
         <Container border="1px" borderColor="gray.300">
             <Text fontSize="20px" color="teal.500" fontWeight="bold">
                 Update Your Account

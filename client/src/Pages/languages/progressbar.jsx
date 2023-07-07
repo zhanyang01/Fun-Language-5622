@@ -1,6 +1,8 @@
 import React from "react";
 import {Progress } from "@chakra-ui/react"
 
+
+
 const ProgressBar = (props) => {
     const { bgcolor, completed } = props;
   
