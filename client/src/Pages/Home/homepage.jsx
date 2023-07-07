@@ -3,7 +3,8 @@ import {useNavigate, Link} from 'react-router-dom';
 import {
     Heading, 
     Button, 
-    Container
+    Container,
+    useToast
 } from '@chakra-ui/react';
 
 const Homepage = () => {
@@ -17,9 +18,20 @@ const Homepage = () => {
         navigate('/profile');
     }
 
+    const toast = useToast();
+
     const exit = () => {
-        alert("Thank you and have a nice day ahead!");
-        navigate('/login');
+        // alert("Thank you and have a nice day ahead!");
+        toast({
+            title: 'Logged out',
+            description: 'Thank you and have a nice day ahead!',
+            duration: 5000,
+            isClosable: true,
+            status: 'success',
+            position: 'top',
+            onCloseComplete: navigate('/login')
+        });
+        // navigate('/login');
     }
 
     const username = localStorage.getItem("username");
