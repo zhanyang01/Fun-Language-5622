@@ -7,6 +7,7 @@ import {
     Button, 
     Input,
     Container,
+    useToast
 } from '@chakra-ui/react';
 
 //test for validity for email
@@ -29,6 +30,9 @@ const Login = ({setLoginUser}) => {
     [name]:value
     })
     }
+
+    const toast = useToast();
+
     //login function
     const loginUser = async()=> {
         let errors = [];
@@ -36,21 +40,45 @@ const Login = ({setLoginUser}) => {
         if (user.email && user.password) {
             if (!validEmail(user.email)) {
                 errors.push("Invalid email");
-                alert("invalid email");
+                toast({
+                    title: 'Login Error',
+                    description: "Invalid email",
+                    duration: 5000,
+                    isClosable: true,
+                    status: 'error',
+                    position: 'top',
+                });
+                // alert("invalid email");
                 console.log("Invalid email");
             } else {
                 await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/Login`, user)
                 .then((res)=>{
                     console.log(res);
-                    alert(res.data.message);
+                    // alert(res.data.message);
                     if (res.data.message === "login success") {
                         localStorage.setItem("username", res.data.username);
                         localStorage.setItem("userId", res.data.userId);
                         localStorage.setItem("email", user.email);
                         // setLoginUser(res.data.user)
+                        toast({
+                            title: 'Logged in',
+                            description: res.data.message,
+                            duration: 5000,
+                            isClosable: true,
+                            status: 'success',
+                            position: 'top',
+                        });
                         history("/homepage");
                     } else {
                         errors.push(res.data.message);
+                        toast({
+                            title: 'Login Error',
+                            description: res.data.message,
+                            duration: 5000,
+                            isClosable: true,
+                            status: 'error',
+                            position: 'top',
+                        });
                     }
                 }).catch((err)=>{
                     console.log(err);
@@ -59,7 +87,15 @@ const Login = ({setLoginUser}) => {
             }
         } else {
             console.log("invalid input");
-            alert("invalid input");
+            toast({
+                title: 'Login Error',
+                description: "Invalid input",
+                duration: 5000,
+                isClosable: true,
+                status: 'error',
+                position: 'top',
+            });
+            // alert("invalid input");
             errors.push("invalid input");
         }
     }

@@ -8,6 +8,7 @@ import {
     Input,
     Container,
     Box, 
+    useToast
 } from '@chakra-ui/react';
 
 //test for validity for email
@@ -32,6 +33,8 @@ const Register = () => {
     [name]:value
     })
     }
+
+    const toast = useToast();
     
 //register function 
    const registerAccount = async ()=>{
@@ -54,12 +57,40 @@ const Register = () => {
         await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/Register`, user)
         .then(res => {
             console.log(res);
-            alert(res.data.message);
-            navigate("/login");
+            // alert(res.data.message);
+            if (res.data.message === "registration successful") {
+                toast({
+                    title: 'Registered',
+                    description: res.data.message,
+                    duration: 5000,
+                    isClosable: true,
+                    status: 'success',
+                    position: 'top',
+                });
+                navigate("/login");
+            } else {
+                toast({
+                    title: 'Registration Error',
+                    description: res.data.message,
+                    duration: 5000,
+                    isClosable: true,
+                    status: 'error',
+                    position: 'top',
+                });
+                navigate("/login");
+            }
         })
     } else {
-        var errorMessage = "Registration failed";
-        alert(errorMessage + '\n' + errors.join('\n'));
+        // var errorMessage = "Registration failed";
+        toast({
+            title: 'Registration failed',
+            description: errors.join('\n'),
+            duration: 5000,
+            isClosable: true,
+            status: 'success',
+            position: 'top',
+        });
+        // alert(errorMessage + '\n' + errors.join('\n'));
     }
    }
 
