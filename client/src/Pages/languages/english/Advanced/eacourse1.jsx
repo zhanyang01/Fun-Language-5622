@@ -8,7 +8,6 @@ import { useQuiz } from '../../../../Storage/UserStorage';
 const EACourse1 = () => {
     // to save the quiz attempt
     const {quiz,saveQuiz} = useQuiz()
-    const navigate = useNavigate();
     const questionLabel = "advancedQuestionsPartOne"
     const [currentAnswers,setCurrentAnswers] = useState([])
 
