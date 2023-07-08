@@ -76,7 +76,7 @@ const EBCourse2 = () => {
             currentAnswers={currentAnswers}
             handleAnswerChange ={handleAnswerChange}
             nextLevelRoute ={"ebcourse3"}
-            previousLevelRoute={"englishbasic"}
+            previousLevelRoute={"ebcourse1"}
             backToCourseRoute={"englishbasic"}
             />
         </>
