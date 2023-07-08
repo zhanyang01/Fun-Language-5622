@@ -5,7 +5,7 @@ import { allQuestions } from '../../Questions/data';
 import { useQuiz } from '../../Storage/UserStorage';
 
 export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, questions,
-    questionLabel, currentAnswers, handleAnswerChange,backToCourseRoute, value}) => {
+    questionLabel, currentAnswers, handleAnswerChange,backToCourseRoute, value, courseDiff}) => {
     const navigate = useNavigate()
     const {saveQuiz} = useQuiz()    
     function getScore() {
@@ -60,9 +60,9 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         var email = localStorage.getItem("email");
         const course = email + " English Course";
         const meter = email + " English Meter";
-        localStorage.setItem(course, "Basic");
+        localStorage.setItem(course, {courseDiff});
         //console.log("Basic");
-        localStorage.setItem(meter, "0%");
+        localStorage.setItem(meter, `${value}%`);
         //console.log("0%");
         // this is where the saveQuiz comes in
         let quizAnswerArray = []
