@@ -299,9 +299,20 @@ const Profile = () => {
                     position: 'top',
                 });
                 // alert(res.data.message);
+                const email = localStorage.getItem("email")
+                const course = email + " English Course";
+                const progress = email + " English Meter";
+                const basic = email + " English Basic";
+                const intermediate = email + " English Intermediate";
+                const advanced = email + " English Advanced";
                 localStorage.removeItem("userId");
                 localStorage.removeItem("username");
                 localStorage.removeItem("email");
+                localStorage.removeItem(course);
+                localStorage.removeItem(progress);
+                localStorage.removeItem(basic);
+                localStorage.removeItem(intermediate);
+                localStorage.removeItem(advanced);
                 // setLoginUser(res.data.user)
                 navigate("/login");
                 /*
