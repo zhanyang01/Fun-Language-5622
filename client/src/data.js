@@ -148,6 +148,7 @@ export const allQuestions = {
   intemediateQuestionsPartOne: [
     {
       description: "None of this should ___ happened",
+      answer: "B",
       options: [
         { value: "A", text: "had" },
         { value: "B", text: "have" },
@@ -157,6 +158,7 @@ export const allQuestions = {
 
     {
       description: "What is the most appropriate adjactive to describe someone as careful?",
+      answer: "A",
       options: [
         { value: "A", text: "cautious" },
         { value: "B", text: "anxious" },
@@ -166,6 +168,7 @@ export const allQuestions = {
 
     {
       description: "This person can't be ________",
+      answer: "A",
       options: [
         { value: "A", text: "trusted" },
         { value: "B", text: "trusting" },
@@ -177,6 +180,7 @@ export const allQuestions = {
   intemediateQuestionsPartTwo: [
     {
       description: "At least ___ is above the median score",
+      answer: "C",
       options: [
         { value: "A", text: "am" },
         { value: "B", text: "I" },
@@ -186,6 +190,7 @@ export const allQuestions = {
 
     {
       description: "________ Sam was tired, he still carried Frodo on his back to Mount Doom.",
+      answer: "C",
       options: [
         { value: "A", text: "But" },
         { value: "B", text: "Despite" },
@@ -195,6 +200,7 @@ export const allQuestions = {
 
     {
       description: "This sword was ___ for the Witch King of Angmar.",
+      answer: "A",
       options: [
         { value: "A", text: "made" },
         { value: "B", text: "make" },
@@ -206,6 +212,7 @@ export const allQuestions = {
   intemediateQuestionsPartThree: [
     {
       description: "___ is Gamora?",
+      answer: "C",
       options: [
         { value: "A", text: "Why" },
         { value: "B", text: "When" },
@@ -215,6 +222,7 @@ export const allQuestions = {
 
     {
       description: "I felt _____ building up inside me.",
+      answer: "B",
       options: [
         { value: "A", text: "angry" },
         { value: "B", text: "anger" },
@@ -224,10 +232,174 @@ export const allQuestions = {
 
     {
       description: "This is ______",
+      answer: "C",
       options: [
         { value: "A", text: "ridicule" },
         { value: "B", text: "ridiculed" },
         { value: "C", text: "ridiculous" },
+      ],
+    },
+  ],
+
+  intemediateQuestionsPartFour: [
+    {
+      description: "No sooner (a), than (b)",
+      answer: "A",
+      options: [
+        { value: "A", text: "(a) : had she left the house, (b) : it started raining" },
+        { value: "B", text: "(a) : had it started raining, (b) : she left the house" },
+        { value: "C", text: "(a) it started raining, (b) had she left the house" },
+      ],
+    },
+
+    {
+      description: "Which of the following is not a verb?",
+      answer: "A",
+      options: [
+        { value: "A", text: "hi" },
+        { value: "B", text: "describe" },
+        { value: "C", text: "eat" },
+      ],
+    },
+
+    {
+      description: "In spite of ____, he completed he marathon and attained third place",
+      answer: "B",
+      options: [
+        { value: "A", text: "him feeling the pain" },
+        { value: "B", text: "the pain in his leg" },
+        { value: "C", text: "his leg feeling very painful" },
+      ],
+    },
+  ],
+  advancedQuestionsPartOne: [
+    {
+      description:
+        "Which word is the most appropriate to describe very small amount in the field of Mathematics?",
+      answer: "C",
+      options: [
+        { value: "A", text: "small" },
+        { value: "B", text: "miniscle" },
+        { value: "C", text: "infinitesimal" },
+      ],
+    },
+
+    {
+      description: "Which is the closest definition to ecstacy?",
+      answer: "A",
+      options: [
+        { value: "A", text: "a state of overwhelming emotion" },
+        { value: "B", text: "happiness" },
+        { value: "C", text: "anger" },
+      ],
+    },
+
+    {
+      description: "Which word has a negative connotation",
+      answer: "B",
+      options: [
+        { value: "A", text: "dog" },
+        { value: "B", text: "mutt" },
+        { value: "C", text: "purebred" },
+      ],
+    },
+  ],
+
+  advancedQuestionsPartTwo: [
+    {
+      description: "The antonym of lethargic is ____.",
+      answer: "A",
+      options: [
+        { value: "A", text: "active" },
+        { value: "B", text: "happy" },
+        { value: "C", text: "sleepy" },
+      ],
+    },
+
+    {
+      description: "Neither Danny ___ Harry entered the classroom today.",
+      answer: "A",
+      options: [
+        { value: "A", text: "nor" },
+        { value: "B", text: "or" },
+        { value: "C", text: "and" },
+      ],
+    },
+
+    {
+      description: "Which of the following is the definition of alleviate?",
+      answer: "C",
+      options: [
+        { value: "A", text: "to make something, such as pain and suffering, more bearable" },
+        { value: "B", text: "to partially remove or correct something undesirable" },
+        { value: "C", text: "to worsen" },
+      ],
+    },
+  ],
+
+  advancedQuestionsPartThree: [
+    {
+      description: "We saw a ____ of orcas during our trip in Alaska!",
+      answer: "B",
+      options: [
+        { value: "A", text: "flock" },
+        { value: "B", text: "pod" },
+        { value: "C", text: "swarm" },
+      ],
+    },
+
+    {
+      description: "Which of the following best explains amnesia?",
+      answer: "B",
+      options: [
+        { value: "A", text: "forgetfulness" },
+        {
+          value: "B",
+          text: "loss of memory usually due to brain injury, shock , faitgue , repression or illness",
+        },
+        { value: "C", text: "dementia" },
+      ],
+    },
+
+    {
+      description: "What do you think is the purpose of framing in news reporting?",
+      answer: "C",
+      options: [
+        { value: "A", text: "to influence the public" },
+        { value: "B", text: "to advocate a call of action" },
+        { value: "C", text: "to make a perspective sailent" },
+      ],
+    },
+  ],
+
+  advancedQuestionsPartOne: [
+    {
+      description: "What is the meaning of 'face value'",
+      answer: "A",
+      options: [
+        { value: "A", text: "apparent value of significance" },
+        { value: "B", text: "the value of someone's else face" },
+        { value: "C", text: "profit" },
+      ],
+    },
+
+    {
+      description: "Which of the following best explains 'pecking order'?",
+      answer: "C",
+      options: [
+        { value: "A", text: "egalitarian" },
+        { value: "B", text: "rank" },
+        { value: "C", text: "social hierachy" },
+      ],
+    },
+
+    {
+      description: "Which word does not describe someone who is obstinate?",
+      answer: "B",
+      options: [
+        { value: "A", text: "adamant" },
+        { value: "B", text: "placable" },
+        { value: "C", text: "headstrong" },
       ],
     },
   ],
