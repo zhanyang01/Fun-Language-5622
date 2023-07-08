@@ -19,7 +19,7 @@ text: the text to be displayed in the radio option
 export const allQuestions = {
   basicQuestionsPartOne: [
     {
-      description: "I saw __ dog",
+      description: "I saw __ dog.",
       answer: "B",
       options: [
         { value: "A", text: "an" },
@@ -39,7 +39,7 @@ export const allQuestions = {
     },
 
     {
-      description: "Which word is the same as 60",
+      description: "Which word is the same as 60?",
       answer: "C",
       options: [
         { value: "A", text: "fifty" },
@@ -51,7 +51,8 @@ export const allQuestions = {
 
   basicQuestionsPartTwo: [
     {
-      description: "What is the synonym of happy",
+      description: "What is the synonym of happy?",
+      answer: "B",
       options: [
         { value: "A", text: "scared" },
         { value: "B", text: "cheerful" },
@@ -60,7 +61,8 @@ export const allQuestions = {
     },
 
     {
-      description: "Which word is used to describe movement under water",
+      description: "Which word is used to describe movement under water?",
+      answer: "C",
       options: [
         { value: "A", text: "run" },
         { value: "B", text: "sleep" },
@@ -69,7 +71,8 @@ export const allQuestions = {
     },
 
     {
-      description: "Which punctuation is used to write a question",
+      description: "Which punctuation is used to write a question?",
+      answer: "A",
       options: [
         { value: "A", text: "?" },
         { value: "B", text: "!" },
@@ -80,7 +83,8 @@ export const allQuestions = {
 
   basicQuestionsPartThree: [
     {
-      description: "He __ a pet",
+      description: "He __ a pet.",
+      answer: "A",
       options: [
         { value: "A", text: "has" },
         { value: "B", text: "have" },
@@ -89,7 +93,8 @@ export const allQuestions = {
     },
 
     {
-      description: "I have not __ her in a week",
+      description: "I have not __ her in a week.",
+      answer: "B",
       options: [
         { value: "A", text: "see" },
         { value: "B", text: "seen" },
@@ -99,35 +104,7 @@ export const allQuestions = {
 
     {
       description: "It __ snowing earlier!",
-      options: [
-        { value: "A", text: "is" },
-        { value: "B", text: "did" },
-        { value: "C", text: "was" },
-      ],
-    },
-  ],
-
-  basicQuestionsPartThree: [
-    {
-      description: "He __ a pet",
-      options: [
-        { value: "A", text: "has" },
-        { value: "B", text: "have" },
-        { value: "C", text: "hasn't" },
-      ],
-    },
-
-    {
-      description: "I have not __ her in a week",
-      options: [
-        { value: "A", text: "see" },
-        { value: "B", text: "seen" },
-        { value: "C", text: "saw" },
-      ],
-    },
-
-    {
-      description: "It __ snowing earlier!",
+      answer: "C",
       options: [
         { value: "A", text: "is" },
         { value: "B", text: "did" },
@@ -139,6 +116,7 @@ export const allQuestions = {
   basicQuestionsPartFour: [
     {
       description: "Which of the following is a noun?",
+      answer: "A",
       options: [
         { value: "A", text: "John" },
         { value: "B", text: "a" },
@@ -148,6 +126,7 @@ export const allQuestions = {
 
     {
       description: "I wonder __ she went.",
+      answer: "C",
       options: [
         { value: "A", text: "what" },
         { value: "B", text: "who" },
@@ -157,6 +136,7 @@ export const allQuestions = {
 
     {
       description: "Can't wait __ to see you next week!",
+      answer: "B",
       options: [
         { value: "A", text: "in" },
         { value: "B", text: "to" },
