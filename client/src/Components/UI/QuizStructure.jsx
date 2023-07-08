@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react';
+import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text, useToast } from '@chakra-ui/react';
 import { allQuestions } from '../../data';
 import { useQuiz } from '../../Storage/UserStorage';
 
@@ -20,18 +20,35 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         }
         return score;
     }
+
+    const toast = useToast();
             
     const nextLevel = () => {
-        var maxScore = "/3 correct"
+        var maxScore = "/" + allQuestions[questionLabel].length + " correct"
         var pass = "Passed! Please proceed to next level";
         var fail = "Please try again!"
         var score = getScore();
         if (score === allQuestions[questionLabel].length) {
-            alert(pass + "\n" + score + maxScore);
-            // navigate('/ebcourse2');
+            toast({
+                title: pass,
+                description: score + maxScore,
+                duration: 5000,
+                isClosable: true,
+                status: 'success',
+                position: 'top',
+            });
+            //alert(pass + "\n" + score + maxScore);
             navigate(`/${nextLevelRoute}`)
         } else {
-            alert(fail + "\n" + score + maxScore);
+            toast({
+                title: fail,
+                description: score + maxScore,
+                duration: 5000,
+                isClosable: true,
+                status: 'success',
+                position: 'top',
+            });
+            //alert(fail + "\n" + score + maxScore);
         }
     }
 
