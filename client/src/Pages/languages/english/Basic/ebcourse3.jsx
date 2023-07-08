@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 // import ProgressBar from '../../progressbar';
 import { QuizStructure } from '../../../../Components/languagePages/QuizStructure'
-import { allQuestions } from '../../../../data';
+import { allQuestions } from '../../../../Questions/data'
 import { useQuiz } from '../../../../Storage/UserStorage';
 
 const EBCourse3= () => {
