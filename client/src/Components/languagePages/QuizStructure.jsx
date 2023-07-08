@@ -7,7 +7,7 @@ import { useQuiz } from '../../Storage/UserStorage';
 export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, questions,
     questionLabel, currentAnswers, handleAnswerChange,backToCourseRoute, value, courseDiff}) => {
     const navigate = useNavigate()
-    const {saveQuiz} = useQuiz()    
+    const {quiz, saveQuiz} = useQuiz()    
     function getScore() {
         var score  = 0;
         for (var i = 0; i < currentAnswers.length ; i++) {
