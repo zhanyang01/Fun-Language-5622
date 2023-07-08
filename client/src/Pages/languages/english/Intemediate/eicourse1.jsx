@@ -76,8 +76,8 @@ const EICourse1 = () => {
             currentAnswers={currentAnswers}
             handleAnswerChange ={handleAnswerChange}
             nextLevelRoute ={"eicourse2"}
-            previousLevelRoute={"englishintemediate"}
-            backToCourseRoute={"englishintemediate"}
+            previousLevelRoute={"englishintermediate"}
+            backToCourseRoute={"englishintermediate"}
             />
         </>
     )
