@@ -135,7 +135,7 @@ export const allQuestions = {
     },
 
     {
-      description: "Can't wait __ to see you next week!",
+      description: "Can't wait __ see you next week!",
       answer: "B",
       options: [
         { value: "A", text: "in" },
