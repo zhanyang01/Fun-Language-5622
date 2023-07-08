@@ -11,22 +11,22 @@ Grading of the assessment may require the 'compromise' library for interpreting 
 export const advancedQuestions = {
     advancedTest: [
       {
-        description: "She __ seashells by the seashore.",
-        answer: "A",
+        description: "Which of the following describes a callous person?",
+        answer: "C",
         options: [
-          { value: "A", text: "sells" },
-          { value: "B", text: "selling" },
-          { value: "C", text: "sell" },
+          { value: "A", text: "someone who is abusive" },
+          { value: "B", text: "someone who is rude" },
+          { value: "C", text: "someone who is insensitive" },
         ]
       },
   
       {
-        description: "__ is this place?",
-        answer: "C",
+        description: "That thought just came from the __ of my __.",
+        answer: "A",
         options: [
-          { value: "A", text: "Who" },
-          { value: "B", text: "Why" },
-          { value: "C", text: "Where" },
+          { value: "A", text: "back, mind" },
+          { value: "B", text: "front, mind" },
+          { value: "C", text: "back, brain" },
         ]
       },
   
