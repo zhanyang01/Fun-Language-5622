@@ -31,8 +31,8 @@ export const intermediateQuestions = {
       },
   
       {
-        description: "Type out the following sentence with the correct tense: I has not been to Italy in a while.",
-        answer: "I have not been to Italy in a while."
+        description: "Type out the following sentence using the phrase 'together with': Peter goes to the market everyday. Jane goes with him.",
+        answer: "Peter, together with Jane, goes to the market everyday."
       },
 
       {
