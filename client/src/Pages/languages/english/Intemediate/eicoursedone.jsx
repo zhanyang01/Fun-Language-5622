@@ -1,11 +1,12 @@
 import React from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import ProgressBar from '../../progressbar';
+import axios from 'axios';
+import { Button, Container, Heading, Progress } from '@chakra-ui/react';
 
 const EICourseDone = () => {
     const navigate = useNavigate();
 
-    const intermediate = () => {
+    const intermediate = async() => {
         var email = localStorage.getItem("email");
         const completed = email + " English Intermediate";
         const course = email + " English Course";
@@ -21,26 +22,63 @@ const EICourseDone = () => {
         navigate('/eiassessment');
     }
 
-    const progress = { bgcolor: "#007FFF", completed: 100 };
+    const email = localStorage.getItem("email");
+
+    // localStorage.setItem("course", "English Language: Basic Course");
+
+    // List();
+
+    axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/EICourseDone`, email)
+        .then((res) =>{
+            console.log(res);
+        })
+
+    /*
+    const newCourse = async() => {
+        await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Login`, user)
+        .then((res) =>{
+            console.log(res);
+        })
+    }
+    */
 
     return (
         <>
-            <h1> Congratulations! You have completed the Intermediate Course for English Language :D </h1>
-            <ProgressBar bgcolor = {progress.bgcolor} completed = {progress.completed} />
-            <div className="flex w-full">
+            <Heading my = {10} fontSize = "3xl" color="teal.500">
+                Congratulations! You have completed the Intermediate Course for English Language :D 
+            </Heading>
+            <Progress 
+                colorScheme="teal" 
+                size="lg"
+                width="90%"
+                margin="0 auto"
+                mb="50px"
+                value={100}
+            />
+            <Container>
                 <Link to="/eiassessment">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={nextLevel}>
+                    <Button 
+                        m="5px"
+                        colorScheme = "teal" 
+                        width = "480px"
+                        variant="solid"
+                        type="submit"
+                        onClick={nextLevel}>
                         Take assessment
-                    </button>
+                    </Button>
                 </Link>
-            </div>
-            <div className="flex w-full">
-                <Link to="/englishintermediate">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={intermediate}>
+                <Link to="/englishintemediate">
+                    <Button 
+                        m="5px"
+                        colorScheme = "teal" 
+                        width = "480px"
+                        variant="solid"
+                        type="submit"
+                        onClick={intermediate}>
                         Exit
-                    </button>
+                    </Button>
                 </Link>
-            </div>
+            </Container>
         </>
     )
 }
