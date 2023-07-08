@@ -83,4 +83,4 @@ const EBCourse2 = () => {
     )
 }
 
-export default EBCourse1
+export default EBCourse2
