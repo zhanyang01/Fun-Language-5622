@@ -33,13 +33,13 @@ export const intermediateQuestions = {
       },
   
       {
-        description: "Type out the following sentence using the phrase 'together with': Peter goes to the market everyday. Jane goes with him.",
+        description: "Rephrase the following sentence using the phrase 'together with': Peter goes to the market everyday. Jane goes with him.",
         answer: "Peter, together with Jane, goes to the market everyday."
       },
 
       {
-        description: "Type out the following sentence with the correct punctuation: Are you hungry,",
-        answer: "Are you hungry?"
+        description: "Rephrase the following sentence with 'before': We returned the equipment to the storeroom. Then, we locked the storeroom.",
+        answer: "We returned the equipment to the storeroom before locking the storeroom."
       },
     ]   
   };
