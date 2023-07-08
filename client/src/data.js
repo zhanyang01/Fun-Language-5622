@@ -147,7 +147,7 @@ export const allQuestions = {
 
   intemediateQuestionsPartOne: [
     {
-      description: "None of this should ___ happened",
+      description: "None of this should ___ happened.",
       answer: "B",
       options: [
         { value: "A", text: "had" },
@@ -179,7 +179,7 @@ export const allQuestions = {
 
   intemediateQuestionsPartTwo: [
     {
-      description: "At least ___ is above the median score",
+      description: "At least ___ is above the median score.",
       answer: "C",
       options: [
         { value: "A", text: "am" },
@@ -231,7 +231,7 @@ export const allQuestions = {
     },
 
     {
-      description: "This is ______",
+      description: "This is ______!",
       answer: "C",
       options: [
         { value: "A", text: "ridicule" },
@@ -243,7 +243,7 @@ export const allQuestions = {
 
   intemediateQuestionsPartFour: [
     {
-      description: "No sooner (a), than (b)",
+      description: "No sooner (a), than (b).",
       answer: "A",
       options: [
         { value: "A", text: "(a) : had she left the house, (b) : it started raining" },
@@ -263,7 +263,7 @@ export const allQuestions = {
     },
 
     {
-      description: "In spite of ____, he completed he marathon and attained third place",
+      description: "In spite of ____, he completed he marathon and attained third place.",
       answer: "B",
       options: [
         { value: "A", text: "him feeling the pain" },
@@ -295,7 +295,7 @@ export const allQuestions = {
     },
 
     {
-      description: "Which word has a negative connotation",
+      description: "Which word has a negative connotation?",
       answer: "B",
       options: [
         { value: "A", text: "dog" },
@@ -374,7 +374,7 @@ export const allQuestions = {
 
   advancedQuestionsPartOne: [
     {
-      description: "What is the meaning of 'face value'",
+      description: "What is the meaning of 'face value'?",
       answer: "A",
       options: [
         { value: "A", text: "apparent value of significance" },
