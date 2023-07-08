@@ -11,22 +11,22 @@ Grading of the assessment may require the 'compromise' library for interpreting 
 export const intermediateQuestions = {
     intermediateTest: [
       {
-        description: "She __ seashells by the seashore.",
-        answer: "A",
+        description: "Which of the following best explains the meaning of a year?",
+        answer: "B",
         options: [
-          { value: "A", text: "sells" },
-          { value: "B", text: "selling" },
-          { value: "C", text: "sell" },
+          { value: "A", text: "1 second" },
+          { value: "B", text: "365 days" },
+          { value: "C", text: "10 months" },
         ]
       },
   
       {
-        description: "__ is this place?",
+        description: "Which of the following is a synonym of achievement?",
         answer: "C",
         options: [
-          { value: "A", text: "Who" },
-          { value: "B", text: "Why" },
-          { value: "C", text: "Where" },
+          { value: "A", text: "accomplishment" },
+          { value: "B", text: "failure" },
+          { value: "C", text: "incomplete" },
         ]
       },
   
