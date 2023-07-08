@@ -59,6 +59,8 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Chakra UI (app design)
 
+* Jest (unit testing)
+
 ## Distinctive Features:
 * Gamification  
 
