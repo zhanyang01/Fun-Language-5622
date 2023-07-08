@@ -1,6 +1,6 @@
 import React from 'react';
 // import List from '../../courselist';
-import {CourseDoneStructure} from '../../../../Components/UI/CourseDoneStructure' 
+import {CourseDoneStructure} from '../../../../Components/languagePages/CourseDoneStructure' 
 
 const EICourseDone = () => {
     return (

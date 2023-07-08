@@ -1,5 +1,5 @@
 import React from 'react';
-import { EnglishDiffStructure } from '../../../../Components/UI/EnglishDiffStructure';
+import { EnglishDiffStructure } from '../../../../Components/languagePages/EnglishDiffStructure';
 
 const EnglishIntemediate = () => {
     return (
