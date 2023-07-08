@@ -1,154 +1,84 @@
-import React from 'react';
+import {useState, useEffect} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import ProgressBar from '../../progressbar';
+// import ProgressBar from '../../progressbar';
+import { QuizStructure } from '../../../../Components/UI/QuizStructure';
+import { allQuestions } from '../../../../data';
+import { useQuiz } from '../../../../Storage/UserStorage';
 
 const EACourse1 = () => {
+    // to save the quiz attempt
+    const {quiz,saveQuiz} = useQuiz()
     const navigate = useNavigate();
+    const questionLabel = "advancedQuestionsPartOne"
+    const [currentAnswers,setCurrentAnswers] = useState([])
 
-    const advanced = () => {
+    const handleAnswerChange = (newAnswer,questionNumber) =>{
+
+        currentAnswers[questionNumber] = newAnswer
+        setCurrentAnswers([...currentAnswers])
+    }
+
+    useEffect(()=>{
+        console.log("ans",currentAnswers)
+    },[currentAnswers])
+
+    useEffect(()=>{
+        console.log("quiz",quiz)
+        const currentAns = []
+        // check if there or no
+        if(quiz.hasOwnProperty(questionLabel)){
+            // have prior attempt
+            console.log("attempt exists =D")
+            for(var i = 0;i < quiz[questionLabel].length; i++){
+                const {questionNo,answerValue} = quiz[questionLabel][i]
+                currentAns.push(answerValue)
+            }
+        }
+        else{
+            // first attempt
+            for(var i = 0;i < allQuestions[questionLabel].length; i++){
+                currentAns.push("-1")
+            }
+        }
+        // quiz[questionLabel]
+        setCurrentAnswers(currentAns)
+    },[])
+
+    /*
+    const saveProgress = () => {
         var email = localStorage.getItem("email");
         const course = email + " English Course";
         const meter = email + " English Meter";
-        localStorage.setItem(course, "Advanced");
-        console.log("Basic");
+        localStorage.setItem(course, "Basic");
+        //console.log("Basic");
         localStorage.setItem(meter, "0%");
-        console.log("0%");
-        navigate('/englishadvanced');
-    }
-
-    var answers = ["C", "A", "B"];
-
-    var submissions = answers.length;
-
-    function getCheckedValue(radioName) {
-        var radios = document.getElementsByName(radioName);
-        for (var x = 0; x < radios.length; x++) {
-            if (radios[x].checked) {
-                return radios[x].value;
-            }
+        //console.log("0%");
+        // this is where the saveQuiz comes in
+        let quizAnswerArray = []
+        for(var i = 0; i < currentAnswers.length; i ++){
+            //console.log(i,currentAnswers[i])
+            quizAnswerArray.push({
+                questionNo:i,
+                answerValue: currentAnswers[i]
+            })
         }
+        saveQuiz(questionLabel,quizAnswerArray)
+        navigate(`/${backToCourseRoute}`);
     }
-
-    function getScore() {
-        var score  = 0;
-        for (var i = 0; i < submissions; i++) {
-            if (getCheckedValue("question" + i) === answers[i]) {
-                score += 1;
-            }
-        }
-        return score;
-    }
-
-    const nextLevel = () => {
-        var maxScore = "/3 correct"
-        var pass = "Passed! Please proceed to next level";
-        var fail = "Please try again!"
-        var score = getScore();
-        if (score === 3) {
-            alert(pass + "\n" + score + maxScore);
-            navigate('/eacourse2');
-        } else {
-            alert(fail + "\n" + score + maxScore);
-        }
-    }
-
-    const progress = { bgcolor: "#007FFF", completed: 0 };
-
-    const margin = {
-        margin: 20
-    }
+    */
 
     return (
         <>
-            <h1> Advanced Course (Part 1) </h1>
-            <ProgressBar bgcolor = {progress.bgcolor} completed = {progress.completed} />
-            <ul class = "quiz">
-
-                <l1>
-                    <h4>Which word is most appropriate to describe very small amounts in the field of Mathematics?</h4>
-                    <ul class = "choices">
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question0" value = "A" />
-                                <span> small </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question0" value = "B" />
-                                <span> miniscule </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question0" value = "C" />
-                                <span> infinitesimal </span>
-                            </label>
-                        </li>
-                    </ul>
-                </l1>
-
-                <l1>
-                    <h4>Which is the closest definition of ecstacy?</h4>
-                    <ul class = "choices">
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question1" value = "A" />
-                                <span> a state of overwhelming emotion </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question1" value = "B" />
-                                <span> happiness </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question1" value = "C" />
-                                <span> anger </span>
-                            </label>
-                        </li>
-                    </ul>
-                </l1>
-
-                <l1>
-                    <h4>Which word has a negative connotation?</h4>
-                    <ul class = "choices">
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question2" value = "A" />
-                                <span> dog </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question2" value = "B" />
-                                <span> mutt </span>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input type = "radio" name = "question2" value = "C" />
-                                <span> purebred </span>
-                            </label>
-                        </li>
-                    </ul>
-                </l1>
-
-            </ul>
-            <div className="flex w-full">
-                <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={nextLevel}>
-                    Submit
-                </button>
-            </div>
-            <div className="flex w-full" style = {margin}>
-                <Link to="/englishadvanced">
-                    <button type="submit" className="py-5 px-5 bg-purple-600 hover:bg-purple-700 focus:ring-purple-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg  " onClick={advanced}>
-                        Save and exit
-                    </button>
-                </Link>
-            </div>
+           <QuizStructure 
+            quizTitle={"Advanced Course (Part 1) "}
+            questionLabel = {questionLabel}
+            questions ={allQuestions[questionLabel]}
+            currentAnswers={currentAnswers}
+            handleAnswerChange ={handleAnswerChange}
+            nextLevelRoute ={"eacourse2"}
+            previousLevelRoute={"englishadvanced"}
+            backToCourseRoute={"englishadvanced"}
+            />
         </>
     )
 }
