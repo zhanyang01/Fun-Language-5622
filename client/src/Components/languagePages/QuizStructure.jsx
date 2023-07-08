@@ -5,7 +5,7 @@ import { allQuestions } from '../../Questions/data';
 import { useQuiz } from '../../Storage/UserStorage';
 
 export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, questions,
-    questionLabel, currentAnswers, handleAnswerChange,backToCourseRoute}) => {
+    questionLabel, currentAnswers, handleAnswerChange,backToCourseRoute, value}) => {
     const navigate = useNavigate()
     const {saveQuiz} = useQuiz()    
     function getScore() {
@@ -87,6 +87,7 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
                 size="lg"
                 width="90%"
                 margin="0 auto"
+                value={value}
                 />
                 <Container>
                     {

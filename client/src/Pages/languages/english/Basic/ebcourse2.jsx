@@ -78,6 +78,7 @@ const EBCourse2 = () => {
             nextLevelRoute ={"ebcourse3"}
             previousLevelRoute={"ebcourse1"}
             backToCourseRoute={"englishbasic"}
+            value={25}
             />
         </>
     )

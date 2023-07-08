@@ -8,7 +8,6 @@ import { useQuiz } from '../../../../Storage/UserStorage';
 const EBCourse1 = () => {
     // to save the quiz attempt
     const {quiz,saveQuiz} = useQuiz()
-    const navigate = useNavigate();
     const questionLabel = "basicQuestionsPartOne"
     const [currentAnswers,setCurrentAnswers] = useState([])
 
@@ -78,6 +77,7 @@ const EBCourse1 = () => {
             nextLevelRoute ={"ebcourse2"}
             previousLevelRoute={"englishbasic"}
             backToCourseRoute={"englishbasic"}
+            value={0}
             />
         </>
     )
