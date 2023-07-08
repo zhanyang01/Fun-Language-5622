@@ -15,7 +15,7 @@ export const CourseDoneStructure = ({nextLevelRoute, courseDiff, courseRoute, di
     const basic = async() => {
         var email = localStorage.getItem("email");
         const completed = email + `/${courseDiff}`;
-        const course = email + " " + " English Course";
+        const course = email + " English Course";
         const meter = email + " English Meter";
         localStorage.setItem(completed, "Completed");
         console.log("Completed");
