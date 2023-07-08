@@ -75,7 +75,7 @@ const EBCourse4 = () => {
             questions ={allQuestions[questionLabel]}
             currentAnswers={currentAnswers}
             handleAnswerChange ={handleAnswerChange}
-            nextLevelRoute ={"ebassessment"}
+            nextLevelRoute ={"ebcoursedone"}
             previousLevelRoute={"ebcourse3"}
             backToCourseRoute={"englishbasic"}
             />
