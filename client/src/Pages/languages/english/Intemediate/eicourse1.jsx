@@ -79,6 +79,7 @@ const EICourse1 = () => {
             previousLevelRoute={"englishintermediate"}
             backToCourseRoute={"englishintermediate"}
             value={0}
+            courseDiff={"Intermediate"}
             />
         </>
     )

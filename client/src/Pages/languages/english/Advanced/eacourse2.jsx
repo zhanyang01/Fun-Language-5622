@@ -79,6 +79,7 @@ const EACourse2 = () => {
             previousLevelRoute={"eacourse1"}
             backToCourseRoute={"englishadvanced"}
             value={25}
+            courseDiff={"Advanced"}
             />
         </>
     )
