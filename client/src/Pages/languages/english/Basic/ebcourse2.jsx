@@ -7,43 +7,7 @@ import { useQuiz } from '../../../../Storage/UserStorage';
 
 const EBCourse2 = () => {
     // to save the quiz attempt
-    const {quiz,saveQuiz} = useQuiz()
-    const navigate = useNavigate();
     const questionLabel = "basicQuestionsPartTwo"
-    const [currentAnswers,setCurrentAnswers] = useState([])
-
-    const handleAnswerChange = (newAnswer,questionNumber) =>{
-
-        currentAnswers[questionNumber] = newAnswer
-        setCurrentAnswers([...currentAnswers])
-    }
-
-    useEffect(()=>{
-        console.log("ans",currentAnswers)
-    },[currentAnswers])
-
-    useEffect(()=>{
-        console.log("quiz",quiz)
-        const currentAns = []
-        // check if there or no
-        if(quiz.hasOwnProperty(questionLabel)){
-            // have prior attempt
-            console.log("attempt exists =D")
-            for(var i = 0;i < quiz[questionLabel].length; i++){
-                const {questionNo,answerValue} = quiz[questionLabel][i]
-                currentAns.push(answerValue)
-            }
-        }
-        else{
-            // first attempt
-            for(var i = 0;i < allQuestions[questionLabel].length; i++){
-                currentAns.push("-1")
-            }
-        }
-        // quiz[questionLabel]
-        setCurrentAnswers(currentAns)
-    },[])
-
     /*
     const saveProgress = () => {
         var email = localStorage.getItem("email");
@@ -73,8 +37,6 @@ const EBCourse2 = () => {
             quizTitle={"Basic Course (Part 2) "}
             questionLabel = {questionLabel}
             questions ={allQuestions[questionLabel]}
-            currentAnswers={currentAnswers}
-            handleAnswerChange ={handleAnswerChange}
             nextLevelRoute ={"ebcourse3"}
             previousLevelRoute={"ebcourse1"}
             backToCourseRoute={"englishbasic"}

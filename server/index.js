@@ -29,7 +29,7 @@ app.use("/static", express.static("./uploads"));
 app.use("/api/users", userRoutes);
 
 // Create API for questionAttempt
-app.use("/api/questionAttempt", questionAttemptRoutes);
+app.use("/api/questionAttempts", questionAttemptRoutes);
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
