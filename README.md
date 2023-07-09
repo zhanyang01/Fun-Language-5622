@@ -79,7 +79,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 2nd week of June: Implement gamification features and user interface
 
-* 3rd week of June: Software testing of Fun Language App, refine profile page 
+* 3rd week of June: Create profile page and refine associated features 
 
 * 1st week of July: Improve on gamification features and user interface, create friends list
 
