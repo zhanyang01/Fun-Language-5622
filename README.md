@@ -85,9 +85,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 2nd week of July: Create assessments, marking system and pronunciation check 
 
-* 3rd week of July: Create certificates of achievement and extend to another language, test app
-
-* After Milestone 3: Create web-based forum
+* 3rd week of July: Create certificates of achievement and web-based forum, extend to another language
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
