@@ -23,23 +23,43 @@ export const advancedQuestions = {
       },
   
       {
-        description: "That thought just came from the __ of my __.",
+        description: "If you are __ with this test, perhaps you should attempt an easier one.",
         answer: "A",
         options: [
-          { value: "A", text: "back, mind" },
-          { value: "B", text: "front, mind" },
-          { value: "C", text: "back, brain" },
+          { value: "A", text: "struggling" },
+          { value: "B", text: "stumbling" },
+          { value: "C", text: "stressed" },
         ]
       },
   
       {
-        description: "Type out the following sentence with the correct tense: I has not been to Italy in a while.",
-        answer: "I have not been to Italy in a while."
+        description: "Type out the following sentence using the correct grammar: Would you mind open the window?",
+        answer: "Would you mind opening the window?"
       },
 
       {
-        description: "Type out the following sentence with the correct punctuation: Are you hungry,",
-        answer: "Are you hungry?"
+        description: "Type out the following sentence using the correct grammar: The princess laid down and slept for twenty years.",
+        answer: "The princess lay down and slept for twenty years."
+      },
+
+      {
+        description: "__ most birds, penguins are able to swim underwater.",
+        answer: "Unlike"
+      },
+
+      {
+        description: "My life was rather dull __ I decided to move to the city.",
+        answer: "until"
+      },
+
+      {
+        description: "The police could not believe that the heist took place in __ daylight.",
+        answer: "broad"
+      },
+
+      {
+        description: "We may be a bit late. We're __ in a traffic jam.",
+        answer: "stuck"
       },
     ]   
   };
