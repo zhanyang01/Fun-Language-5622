@@ -3,7 +3,7 @@ questionLabel:[
   all the questions inside
 ]
 
-In each assessment, there will be tentatively 8 questions, with a max of 3 multiple choice questions.
+In each assessment, there will be tentatively 8 questions (2 MCQs and 6 short answer questions).
 Greater emphasis will be placed on how learners apply the correct use of language.
 Grading of the assessment may require the 'compromise' library for interpreting short answer questions.
 To make the assessment less daunting, pronunciation check may be implemented in each assessment. This can
