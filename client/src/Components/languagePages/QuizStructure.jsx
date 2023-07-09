@@ -1,13 +1,20 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text, useToast } from '@chakra-ui/react';
-import { allQuestions } from '../../data';
+import { allQuestions } from '../../Questions/data';
 import { useQuiz } from '../../Storage/UserStorage';
 
 export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, questions,
-    questionLabel, currentAnswers, handleAnswerChange,backToCourseRoute}) => {
+    questionLabel,backToCourseRoute, value, courseDiff}) => {
+
+    const toast = useToast();
+    
     const navigate = useNavigate()
-    const {saveQuiz} = useQuiz()    
+
+    const {quiz, saveQuiz} = useQuiz()    
+    
+    const [currentAnswers,setCurrentAnswers] = useState([])
+    
     function getScore() {
         var score  = 0;
         for (var i = 0; i < currentAnswers.length ; i++) {
@@ -21,7 +28,37 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         return score;
     }
 
-    const toast = useToast();
+    const handleAnswerChange = (newAnswer,questionNumber) =>{
+
+        currentAnswers[questionNumber] = newAnswer
+        setCurrentAnswers([...currentAnswers])
+    }
+
+    useEffect(()=>{
+        console.log("ans",currentAnswers)
+    },[currentAnswers])
+
+    useEffect(()=>{
+        console.log("quiz",quiz)
+        const currentAns = []
+        // check if there or no
+        if(quiz.hasOwnProperty(questionLabel)){
+            // have prior attempt
+            console.log("attempt exists =D")
+            for(var i = 0;i < quiz[questionLabel].length; i++){
+                const {questionNo,answerValue} = quiz[questionLabel][i]
+                currentAns.push(answerValue)
+            }
+        }
+        else{
+            // first attempt
+            for(var i = 0;i < allQuestions[questionLabel].length; i++){
+                currentAns.push("-1")
+            }
+        }
+        // quiz[questionLabel]
+        setCurrentAnswers(currentAns)
+    },[])
             
     const nextLevel = () => {
         var maxScore = "/" + allQuestions[questionLabel].length + " correct"
@@ -60,9 +97,9 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         var email = localStorage.getItem("email");
         const course = email + " English Course";
         const meter = email + " English Meter";
-        localStorage.setItem(course, "Basic");
+        localStorage.setItem(course, {courseDiff});
         //console.log("Basic");
-        localStorage.setItem(meter, "0%");
+        localStorage.setItem(meter, `${value}%`);
         //console.log("0%");
         // this is where the saveQuiz comes in
         let quizAnswerArray = []
@@ -87,6 +124,7 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
                 size="lg"
                 width="90%"
                 margin="0 auto"
+                value={value}
                 />
                 <Container>
                     {
