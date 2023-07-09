@@ -8,11 +8,9 @@
 
 4. User can attempt the proficiency assessment found in each level once they feel confident (can do practice written test papers before attempting the test)  
 
-5. Assessment comprises of oral and written components  
+5. Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
 
-6. Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
-
-7. Resources for reference
+6. Resources for reference
 
 ## Scope of Project:  
 The Fun Language App allows for users to have a fun experience learning a new language of interest.
