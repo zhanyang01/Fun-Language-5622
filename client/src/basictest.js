@@ -41,5 +41,25 @@ export const basicQuestions = {
         description: "Type out the following sentence with the correct punctuation: Are you hungry,",
         answer: "Are you hungry?"
       },
+
+      {
+        description: "Provide the past tense of 'will go'.",
+        answer: "went"
+      },
+
+      {
+        description: "Type in the word with the same meaning as the number 5.",
+        answer: "five"
+      },
+
+      {
+        description: "Fill in the blank for the following sentence: __ old is your sister?",
+        answer: "How"
+      },
+
+      {
+        description: "Provide the plural form of the word 'mouse'.",
+        answer: "mice"
+      },
     ]   
   };
