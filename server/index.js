@@ -1,5 +1,6 @@
 import connectDB from "./config/database.js";
 import userRoutes from "./Routes/userRoute.js";
+import questionAttemptRoutes from "./Routes/questionAttemptRoute.js";
 import express from "express";
 import User from "./Models/userModel.js";
 import dotenv from "dotenv";
@@ -26,6 +27,9 @@ app.use("/static", express.static("./uploads"));
 
 // Create API for user
 app.use("/api/users", userRoutes);
+
+// Create API for questionAttempt
+app.use("/api/questionAttempt", questionAttemptRoutes);
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
@@ -192,22 +196,25 @@ app.put("/Profile/Pic/:UserId", async (req, res) => {
 });
 
 //=====================add completed basic course to user schema=======================
-app.put("/EBCourseDone", async(req, res) => {
+app.put("/EBCourseDone", async (req, res) => {
   const { email } = req.body;
   try {
-    const user = await user.findOne({ email: email})
-    await user.updateOne({
-      _id: user.id,
-    },
-    {$addToSet: {courses: "English Language (Basic Course)"}}
-    ).then(() => {
-      res.send({courses: user.courses});
-      console.log(user.courses)
-    })
+    const user = await user.findOne({ email: email });
+    await user
+      .updateOne(
+        {
+          _id: user.id,
+        },
+        { $addToSet: { courses: "English Language (Basic Course)" } }
+      )
+      .then(() => {
+        res.send({ courses: user.courses });
+        console.log(user.courses);
+      });
   } catch (e) {
     console.log(e);
   }
-})
+});
 
 // Express js listen method to run project
 app.listen(PORT, console.log(`Server started `));
