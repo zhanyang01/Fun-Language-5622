@@ -6,9 +6,9 @@
 
 3. If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course if not done previously to determine whether they are able to enroll for the course of choice (otherwise enroll for preceding course)  
 
-4. After completing the courses, user can unlock the proficiency assessment and attempt it (can do practice tests before attempting the test)  
+4. User can attempt the proficiency assessment found in each level once they feel confident (can do practice written test papers before attempting the test)  
 
-5. Assessment comprises of oral and written components (practice written test papers available)  
+5. Assessment comprises of oral and written components  
 
 6. Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
 
@@ -79,15 +79,13 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 2nd week of June: Implement gamification features and user interface
 
-* 3rd week of June: Software testing of Fun Language App, refine profile page 
+* 3rd week of June: Create profile page and refine associated features 
 
 * 1st week of July: Improve on gamification features and user interface, create friends list
 
 * 2nd week of July: Create assessments, marking system and pronunciation check 
 
-* 3rd week of July: Create certificates of achievement and extend to another language, test app
-
-* After Milestone 3: Create web-based forum
+* 3rd week of July: Create certificates of achievement and web-based forum, extend to another language
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
