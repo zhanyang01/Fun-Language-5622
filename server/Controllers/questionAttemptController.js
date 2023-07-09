@@ -3,21 +3,24 @@ import asyncHandler from "express-async-handler";
 
 // Retrieve attempt by id
 export const getQuestionsById = asyncHandler(async (req, res) => {
-  const questions = await questionAttempt.findById(req.params.id);
+  const { userId, questionLabel } = req.params;
+  const questions = await questionAttempt.findOne({ userId, questionLabel });
   // if user id match param id send user, else throw error
   if (questions) {
-    return res.json(questions);
+    return res.json({
+      data: questions,
+    });
   } else {
-    return res.status(404).json({ message: "QuestionAttempt not found" });
+    return res.json({ message: "Question Attempt not found" });
   }
 });
 
+// To save quiz progress before exiting
 export const saveQuizProgress = async (req, res) => {
-  const { questionId } = req.params;
   const { userId, questions, questionLabel } = req.body;
   try {
-    //check if existing attempt exists
-    const currentQuestionAttempt = await questionAttempt.findById(questionId);
+    //check if existing attempt exists with userId and questionLabel
+    const currentQuestionAttempt = await questionAttempt.findOne({ userId, questionLabel });
     //if existing attempt does not exist, create a new attempt
     if (!currentQuestionAttempt) {
       const newQuestionAttempt = new questionAttempt({
@@ -26,24 +29,17 @@ export const saveQuizProgress = async (req, res) => {
         questionLabel,
       });
       await questionAttempt.create(newQuestionAttempt).then(() => {
-        res.send({ message: "a new attempt for the user have been created" });
-        console.log("a new attempt for the user have been created");
+        res.send({ message: "Attempt Created" });
+        console.log("Attempt Created");
       });
       //if existing attempt exists, update the attempt
     } else {
-      var updatedAttempt = {};
-      updatedAttempt = {
-        userId,
-        questions,
-        questionLabel,
-      };
-
       await questionAttempt
         .updateOne(
           {
             _id: currentQuestionAttempt.id,
           },
-          updatedAttempt
+          { questions }
         )
         .then(() => {
           res.send({ message: "question attempt updated successfully" });

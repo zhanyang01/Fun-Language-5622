@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text, useToast } from '@chakra-ui/react';
 import { allQuestions } from '../../Questions/data';
+import axios from 'axios';
 import { useQuiz } from '../../Storage/UserStorage';
 
 export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, questions,
@@ -11,9 +12,13 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
     
     const navigate = useNavigate()
 
-    const {quiz, saveQuiz} = useQuiz()    
-    
+    //const {quiz, saveQuiz} = useQuiz()
+
     const [currentAnswers,setCurrentAnswers] = useState([])
+
+    const previousLevel = () => {
+        navigate(`/${previousLevelRoute}`)
+    }
     
     function getScore() {
         var score  = 0;
@@ -34,48 +39,82 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         setCurrentAnswers([...currentAnswers])
     }
 
-    useEffect(()=>{
-        console.log("ans",currentAnswers)
-    },[currentAnswers])
-
-    useEffect(()=>{
-        console.log("quiz",quiz)
-        const currentAns = []
-        // check if there or no
-        if(quiz.hasOwnProperty(questionLabel)){
+    const getLoadedAttempt = async() =>{
+        const userId = localStorage.getItem("userId");
+        var quiz = null;
+        const currentAns = [];
+        const loadedUserAttempt = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/questionAttempts/${userId}/${questionLabel}`)
+        if(loadedUserAttempt.data.hasOwnProperty("data")) {
+            quiz =  loadedUserAttempt.data.data
+        }
+        if (quiz) {
             // have prior attempt
             console.log("attempt exists =D")
-            for(var i = 0;i < quiz[questionLabel].length; i++){
-                const {questionNo,answerValue} = quiz[questionLabel][i]
+            console.log(quiz)
+            for(var i = 0;i < quiz.questions.length; i++){
+                const {questionNo,answerValue} = quiz.questions[i]
                 currentAns.push(answerValue)
             }
         }
         else{
             // first attempt
+            console.log("attempt does not exist =D")
             for(var i = 0;i < allQuestions[questionLabel].length; i++){
                 currentAns.push("-1")
             }
         }
         // quiz[questionLabel]
         setCurrentAnswers(currentAns)
-    },[])
-            
-    const nextLevel = () => {
-        var maxScore = "/" + allQuestions[questionLabel].length + " correct"
-        var pass = "Passed! Please proceed to next level";
-        var fail = "Please try again!"
-        var score = getScore();
-        if (score === allQuestions[questionLabel].length) {
+        }
+    
+    const saveQuiz = async(questionAttempt, successToastTitle, successToastDescription, navigationRoute) =>{
+        const userId = localStorage.getItem("userId");
+        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/questionAttempts/`, {questionLabel, userId, questions: questionAttempt})
+        .then((res) => {
+            console.log(res.data);
             toast({
-                title: pass,
-                description: score + maxScore,
+                title: successToastTitle,
+                description: successToastDescription,
                 duration: 5000,
                 isClosable: true,
                 status: 'success',
                 position: 'top',
             });
-            //alert(pass + "\n" + score + maxScore);
-            navigate(`/${nextLevelRoute}`)
+            navigate(`/${navigationRoute}`)
+        }).catch((err) => {
+            console.log(err)
+            toast({
+                title: "Error",
+                description: "Please try again later",
+                duration: 5000,
+                isClosable: true,
+                status: 'error',
+                position: 'top',
+            });
+        })
+    }
+
+    const formatAnswer = () =>{
+        let quizAnswerArray = []
+        for(var i = 0; i < currentAnswers.length; i ++){
+            //console.log(i,currentAnswers[i])
+            quizAnswerArray.push({
+                questionNo:i,
+                answerValue: currentAnswers[i]
+            })
+        }
+        return quizAnswerArray
+    }
+
+    // go to next level   
+    const nextLevel = async () => {
+        var maxScore = "/" + allQuestions[questionLabel].length + " correct"
+        var pass = "Passed! Please proceed to next level";
+        var fail = "Please try again!"
+        var score = getScore();
+        if (score === allQuestions[questionLabel].length) {
+            const updatedAnswer = formatAnswer();
+            await saveQuiz(updatedAnswer, pass, score + maxScore, nextLevelRoute)
         } else {
             toast({
                 title: fail,
@@ -89,30 +128,21 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         }
     }
 
-    const previousLevel = () => {
-        navigate(`/${previousLevelRoute}`)
-    }
-
-    const saveProgress = () => {
+    const saveProgress = async () => {
         var email = localStorage.getItem("email");
         const course = email + " English Course";
         const meter = email + " English Meter";
         localStorage.setItem(course, {courseDiff});
-        //console.log("Basic");
         localStorage.setItem(meter, `${value}%`);
-        //console.log("0%");
         // this is where the saveQuiz comes in
-        let quizAnswerArray = []
-        for(var i = 0; i < currentAnswers.length; i ++){
-            //console.log(i,currentAnswers[i])
-            quizAnswerArray.push({
-                questionNo:i,
-                answerValue: currentAnswers[i]
-            })
-        }
-        saveQuiz(questionLabel,quizAnswerArray)
-        navigate(`/${backToCourseRoute}`);
+        const updatedAnswer = formatAnswer();
+        await saveQuiz(updatedAnswer, "Progress Saved", "Your progress has been saved", backToCourseRoute)
     }
+
+    
+    useEffect(()=>{
+        getLoadedAttempt()
+    },[])
 
     return (
         <>
