@@ -6,7 +6,7 @@
 
 3. If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course if not done previously to determine whether they are able to enroll for the course of choice (otherwise enroll for preceding course)  
 
-4. After completing the courses, user can unlock the proficiency assessment and attempt it (can do practice tests before attempting the test)  
+4. User can attempt the proficiency assessment found in each level once they feel confident (can do practice tests before attempting the test)  
 
 5. Assessment comprises of oral and written components (practice written test papers available)  
 
