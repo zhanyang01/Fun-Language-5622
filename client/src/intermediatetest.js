@@ -41,5 +41,10 @@ export const intermediateQuestions = {
         description: "Rephrase the following sentence with 'before': We returned the equipment to the storeroom. Then, we locked the storeroom.",
         answer: "We returned the equipment to the storeroom before locking the storeroom."
       },
+
+      {
+        description: "What is the superlative of 'quick'?",
+        answer: "quickest"
+      },
     ]   
   };
