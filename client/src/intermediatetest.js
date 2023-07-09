@@ -46,5 +46,20 @@ export const intermediateQuestions = {
         description: "What is the superlative of 'quick'?",
         answer: "quickest"
       },
+
+      {
+        description: "He said, 'I'm going out'. Transform this to indirect speech.",
+        answer: "He said he was going out."
+      },
+
+      {
+        description: "Neither Sam __ Tommy attended school today.",
+        answer: "nor"
+      },
+
+      {
+        description: "Type in the noun of 'persevere'.",
+        answer: "perseverance"
+      }
     ]   
   };

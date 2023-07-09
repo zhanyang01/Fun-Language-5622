@@ -60,6 +60,6 @@ export const basicQuestions = {
       {
         description: "Provide the plural form of the word 'mouse'.",
         answer: "mice"
-      },
+      }
     ]   
   };
