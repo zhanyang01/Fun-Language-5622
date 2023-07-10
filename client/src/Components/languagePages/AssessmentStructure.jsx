@@ -21,7 +21,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
             console.log("testQuestions[questionLabel][i]", testQuestions[questionLabel]);
-            if (currentAnswers[i] === testQuestions[questionLabel][i].answer) {
+            if (currentAnswers[i].localeCompare(testQuestions[questionLabel][i].answer, undefined, { sensitivity: 'accent' }) === 0) {
                 score += 1;
             }
         }
