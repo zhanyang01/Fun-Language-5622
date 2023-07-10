@@ -1,12 +1,12 @@
 import {AchievementStructure} from "../Components/UI/achievementStructure"
-
+import fireLogo from '../Images/fireLogo.png';
 export const completedEnglishAdvanced = () => {
     return (
         <>
             <AchievementStructure
-                achievementTitle={"English Master"}
+                achievementTitle={"English Sage"}
                 achievementDescription={"Completed English Advanced Course!"}
-                achievementImage={"Fill later"}
+                achievementImage={fireLogo}
             />
         </>
     )
