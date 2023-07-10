@@ -94,7 +94,6 @@ export const EnglishDiffStructure = ({
                 onClick={course}>
                 Start learning!
             </Button>
-            <Link to="/ebassessment">
                 <Button
                     _hover={{
                         bg : "green"
@@ -107,7 +106,6 @@ export const EnglishDiffStructure = ({
                     onClick={assessment}>
                     Take Assessment
                 </Button>
-            </Link>
             <Link to="/english">
                 <Button
                     m="5px"

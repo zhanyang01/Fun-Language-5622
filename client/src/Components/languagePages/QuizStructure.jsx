@@ -121,7 +121,7 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
                 description: score + maxScore,
                 duration: 5000,
                 isClosable: true,
-                status: 'success',
+                status: 'info',
                 position: 'top',
             });
             //alert(fail + "\n" + score + maxScore);
