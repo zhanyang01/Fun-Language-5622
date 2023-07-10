@@ -133,7 +133,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
                           {  /*<Stack> */}
-                                <Input placeholder = "Enter your answer here!" size = 'md'/>
+                                <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true"/>
                                         </>
 
                                     })
