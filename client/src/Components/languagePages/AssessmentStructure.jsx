@@ -12,10 +12,11 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
 
     // const {quiz, saveQuiz} = useQuiz()    
     
-    const [currentAnswers,setCurrentAnswers] = useState([])
+    // const [currentAnswers,setCurrentAnswers] = useState([])
     
     function getScore() {
         var score  = 0;
+        const currentAnswers = document.getElementsByTagName('input');
         for (var i = 0; i < currentAnswers.length ; i++) {
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
@@ -27,7 +28,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         return score;
     }
     
-
+    /*
     const handleAnswerChange = (newAnswer,questionNumber) =>{
 
         currentAnswers[questionNumber] = newAnswer
@@ -132,7 +133,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
                           {  /*<Stack> */}
-                                <Input placeholder = "Enter your answer here!" size = 'md' onChange={handleAnswerChange} m="10px"/>
+                                <Input placeholder = "Enter your answer here!" size = 'md'/>
                                         </>
 
                                     })
