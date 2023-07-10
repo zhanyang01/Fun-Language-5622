@@ -1,16 +1,16 @@
 import React,{useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
-import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text, useToast } from '@chakra-ui/react';
-import { allQuestions } from '../../Questions/assessment';
+import {Button, Container, Heading, Input, Text, useToast } from '@chakra-ui/react';
+import { testQuestions } from '../../Questions/assessment';
 
-export const AssessmentStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, questions,
-    questionLabel,backToCourseRoute, value, courseDiff}) => {
+export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
+    questionLabel , value, courseDiff}) => {
 
     const toast = useToast();
     
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const {quiz, saveQuiz} = useQuiz()    
+    // const {quiz, saveQuiz} = useQuiz()    
     
     const [currentAnswers,setCurrentAnswers] = useState([])
     
@@ -18,14 +18,15 @@ export const AssessmentStructure = ({quizTitle,previousLevelRoute, nextLevelRout
         var score  = 0;
         for (var i = 0; i < currentAnswers.length ; i++) {
             console.log("currentAnswers",currentAnswers);
-            console.log("questionLabel",questionLabel)
-            console.log("allQuestions[questionLabel][i]",allQuestions[questionLabel]);
-            if (currentAnswers[i] === allQuestions[questionLabel][i].answer) {
+            console.log("questionLabel",questionLabel);
+            console.log("testQuestions[questionLabel][i]", testQuestions[questionLabel]);
+            if (currentAnswers[i] === testQuestions[questionLabel][i].answer) {
                 score += 1;
             }
         }
         return score;
     }
+    
 
     const handleAnswerChange = (newAnswer,questionNumber) =>{
 
@@ -33,6 +34,7 @@ export const AssessmentStructure = ({quizTitle,previousLevelRoute, nextLevelRout
         setCurrentAnswers([...currentAnswers])
     }
 
+    /*
     useEffect(()=>{
         console.log("ans",currentAnswers)
     },[currentAnswers])
@@ -51,20 +53,21 @@ export const AssessmentStructure = ({quizTitle,previousLevelRoute, nextLevelRout
         }
         else{
             // first attempt
-            for(var i = 0;i < allQuestions[questionLabel].length; i++){
+            for(var i = 0;i < testQuestions[questionLabel].length; i++){
                 currentAns.push("-1")
             }
         }
         // quiz[questionLabel]
         setCurrentAnswers(currentAns)
     },[])
+    */
             
-    const nextLevel = () => {
-        var maxScore = "/" + allQuestions[questionLabel].length + " correct"
-        var pass = "Passed! Please proceed to next level";
+    const submitAnswer = () => {
+        var maxScore = "/" + testQuestions[questionLabel].length + " correct"
+        var pass = "Congratulations! You have passed the proficiency test :)";
         var fail = "Please try again!"
         var score = getScore();
-        if (score === allQuestions[questionLabel].length) {
+        if (score >= 4) {
             toast({
                 title: pass,
                 description: score + maxScore,
@@ -81,12 +84,13 @@ export const AssessmentStructure = ({quizTitle,previousLevelRoute, nextLevelRout
                 description: score + maxScore,
                 duration: 5000,
                 isClosable: true,
-                status: 'success',
+                status: 'info',
                 position: 'top',
             });
             //alert(fail + "\n" + score + maxScore);
         }
     }
+    /*
 
     const previousLevel = () => {
         navigate(`/${previousLevelRoute}`)
@@ -112,55 +116,27 @@ export const AssessmentStructure = ({quizTitle,previousLevelRoute, nextLevelRout
         saveQuiz(questionLabel,quizAnswerArray)
         navigate(`/${backToCourseRoute}`);
     }
+    */
 
     return (
         <>
             <Heading color="teal.500"> 
-                {quizTitle}
+                {testTitle}
             </Heading>
-            <Progress 
-                colorScheme="teal" 
-                size="lg"
-                width="90%"
-                margin="0 auto"
-                value={value}
-                />
                 <Container>
                     {
-                        questions ?<>
-                        {
+
                         questions.map((question,questionIndex) => {
-                            const {description,options} = question
+                            const {description} = question
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
                           {  /*<Stack> */}
-                                <RadioGroup name = {questionIndex}  
-                                   onChange = {(e)=>{handleAnswerChange(e,questionIndex)}}
-                                   value = {currentAnswers[questionIndex]}
-                                >
-                                <Stack m = {"10px"}>
-                                {
-                                    options.map((option,index)=>{
-                                        const {value,text} = option;
-                                        return <>
-                                        <Radio
-                                        key = {index}
-                                        name = {questionIndex} 
-                                        value = {value} >
-                                        {text}
-                                        </Radio>
+                                <Input placeholder = "Enter your answer here!" size = 'md'/>
                                         </>
 
                                     })
-                                }
-                                </Stack>
-                                </RadioGroup>
                                  
-                        {/* </Stack> */}
 
-                            </>
-                        })
-                    }</>:null
                     }
                 </Container>
                 <Container>
@@ -170,26 +146,8 @@ export const AssessmentStructure = ({quizTitle,previousLevelRoute, nextLevelRout
                     colorScheme = "teal" 
                     width = "480px"
                     variant="solid"
-                    onClick={nextLevel}>
+                    onClick={submitAnswer}>
                     Submit
-                </Button>
-                <Button 
-                    type="submit" 
-                    m="5px"
-                    colorScheme = "teal" 
-                    width = "480px"
-                    variant="solid"
-                    onClick={saveProgress}>
-                    Save and exit
-                </Button>
-                <Button 
-                    type="submit" 
-                    m="5px"
-                    colorScheme = "teal" 
-                    width = "480px"
-                    variant="solid"
-                    onClick={previousLevel}>
-                    Back
                 </Button>
             </Container>
         </>
