@@ -12,22 +12,23 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
 
     // const {quiz, saveQuiz} = useQuiz()    
     
-    const [currentAnswers,setCurrentAnswers] = useState([])
+    // const [currentAnswers,setCurrentAnswers] = useState([])
     
     function getScore() {
         var score  = 0;
+        const currentAnswers = document.getElementsByTagName('input');
         for (var i = 0; i < currentAnswers.length ; i++) {
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
             console.log("testQuestions[questionLabel][i]", testQuestions[questionLabel]);
-            if (currentAnswers[i] === testQuestions[questionLabel][i].answer) {
+            if (currentAnswers[i].localeCompare(testQuestions[questionLabel][i].answer, undefined, { sensitivity: 'accent' }) === 0) {
                 score += 1;
             }
         }
         return score;
     }
     
-
+    /*
     const handleAnswerChange = (newAnswer,questionNumber) =>{
 
         currentAnswers[questionNumber] = newAnswer
@@ -131,8 +132,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                             const {description} = question
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
-                          {  /*<Stack> */}
-                                <Input placeholder = "Enter your answer here!" size = 'md' onChange={handleAnswerChange} m="10px"/>
+                                <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true"/>
                                         </>
 
                                     })
