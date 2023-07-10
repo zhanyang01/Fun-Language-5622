@@ -39,6 +39,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         console.log("ans",currentAnswers)
     },[currentAnswers])
 
+    /*
     useEffect(()=>{
         console.log("quiz",quiz)
         const currentAns = []
@@ -60,6 +61,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         // quiz[questionLabel]
         setCurrentAnswers(currentAns)
     },[])
+    */
             
     const submitAnswer = () => {
         var maxScore = "/" + testQuestions[questionLabel].length + " correct"
