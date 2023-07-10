@@ -34,7 +34,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         setCurrentAnswers([...currentAnswers])
     }
 
-    /*
+
     useEffect(()=>{
         console.log("ans",currentAnswers)
     },[currentAnswers])
@@ -60,7 +60,6 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         // quiz[questionLabel]
         setCurrentAnswers(currentAns)
     },[])
-    */
             
     const submitAnswer = () => {
         var maxScore = "/" + testQuestions[questionLabel].length + " correct"
@@ -131,7 +130,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
                           {  /*<Stack> */}
-                                <Input placeholder = "Enter your answer here!" size = 'md' onChange={handleAnswerChange}/>
+                                <Input placeholder = "Enter your answer here!" size = 'md' onChange={handleAnswerChange} m="10px"/>
                                         </>
 
                                     })
