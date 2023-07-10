@@ -13,23 +13,13 @@ help guide users in crafting proper words and cohesive sentences.
 export const testQuestions = {
     basicTest: [
       {
-        description: "She __ seashells by the seashore.",
-        answer: "A",
-        options: [
-          { value: "A", text: "sells" },
-          { value: "B", text: "selling" },
-          { value: "C", text: "sell" },
-        ]
+        description: "One of the words in the sentence is wrong, please key in the correct word: I is happy.",
+        answer: "am"
       },
   
       {
         description: "__ is this place?",
-        answer: "C",
-        options: [
-          { value: "A", text: "Who" },
-          { value: "B", text: "Why" },
-          { value: "C", text: "Where" },
-        ]
+        answer: "Where"
       },
   
       {
@@ -65,23 +55,13 @@ export const testQuestions = {
     
     intermediateTest: [
       {
-        description: "Which of the following best explains the meaning of a year?",
-        answer: "B",
-        options: [
-          { value: "A", text: "1 second" },
-          { value: "B", text: "365 days" },
-          { value: "C", text: "10 months" },
-        ]
+        description: "A __ is equal to 365 days.",
+        answer: "year"
       },
   
       {
-        description: "Which of the following is a synonym of achievement?",
-        answer: "C",
-        options: [
-          { value: "A", text: "accomplishment" },
-          { value: "B", text: "failure" },
-          { value: "C", text: "incomplete" },
-        ]
+        description: "One of the words in the sentence is wrong, please key in the correct word: I was just inform that the meeting has been cancelled.",
+        answer: "informed"
       },
   
       {
@@ -117,23 +97,13 @@ export const testQuestions = {
     
     advancedTest: [
       {
-        description: "Which of the following describes a callous person?",
-        answer: "C",
-        options: [
-          { value: "A", text: "someone who is abusive" },
-          { value: "B", text: "someone who is rude" },
-          { value: "C", text: "someone who is insensitive" },
-        ]
+        description: "Choose a word from the list of words that is an antonym of 'cautious', and write it in the space below: careful, attentive, reckless",
+        answer: "reckless"
       },
   
       {
         description: "If you are __ with this test, perhaps you should attempt an easier one.",
-        answer: "A",
-        options: [
-          { value: "A", text: "struggling" },
-          { value: "B", text: "stumbling" },
-          { value: "C", text: "stressed" },
-        ]
+        answer: "struggling"
       },
   
       {
