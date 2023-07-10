@@ -1,7 +1,7 @@
 import { Box, Card, Flex, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 
-export const achievementStruc = ({
+export const AchievementStructure = ({
     achievementTitle, 
     achievementDescription, 
     achievementImage}) => {
@@ -26,4 +26,4 @@ export const achievementStruc = ({
     )
 }
 
-export default achievementStruc
+export default AchievementStructure

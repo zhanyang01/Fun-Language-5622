@@ -1,11 +1,11 @@
 import {AchievementStructure} from "../Components/UI/achievementStructure"
 
-export const profilePictureChosen = () => {
+export const completedEnglish = () => {
     return (
         <>
             <AchievementStructure
-                achievementTitle={"Personalisation"}
-                achievementDescription={"You have chosen your profile picture!"}
+                achievementTitle={"English Finisher"}
+                achievementDescription={"Completed English Course!"}
                 achievementImage={"Fill later"}
             />
         </>
