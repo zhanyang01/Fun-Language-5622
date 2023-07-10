@@ -1,4 +1,5 @@
 import {AchievementStructure} from "../Components/UI/achievementStructure"
+import bookLogo from '../Images/book.png';
 
 export const completedEnglish = () => {
     return (
@@ -6,7 +7,7 @@ export const completedEnglish = () => {
             <AchievementStructure
                 achievementTitle={"English Finisher"}
                 achievementDescription={"Completed English Course!"}
-                achievementImage={"Fill later"}
+                achievementImage={bookLogo}
             />
         </>
     )
