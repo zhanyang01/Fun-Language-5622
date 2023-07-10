@@ -21,7 +21,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
             console.log("testQuestions[questionLabel][i]", testQuestions[questionLabel]);
-            if (currentAnswers[i] === testQuestions[questionLabel][i].answer) {
+            if (currentAnswers[i].localeCompare(testQuestions[questionLabel][i].answer, undefined, { sensitivity: 'accent' }) === 0) {
                 score += 1;
             }
         }
@@ -133,7 +133,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
                           {  /*<Stack> */}
-                                <Input placeholder = "Enter your answer here!" size = 'md'/>
+                                <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true"/>
                                         </>
 
                                     })
