@@ -79,7 +79,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                 position: 'top',
             });
             //alert(pass + "\n" + score + maxScore);
-            navigate(`/${nextLevelRoute}`)
+            navigate(`/${nextLevelRoute}`);
         } else {
             toast({
                 title: fail,
@@ -91,6 +91,10 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             });
             //alert(fail + "\n" + score + maxScore);
         }
+    }
+
+    const exit = () => {
+        navigate(`/${nextLevelRoute}`);
     }
     /*
 
@@ -145,6 +149,15 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                     variant="solid"
                     onClick={submitAnswer}>
                     Submit
+                </Button>
+                <Button 
+                    m="5px"
+                    type="submit" 
+                    colorScheme = "teal" 
+                    width = "480px"
+                    variant="solid"
+                    onClick={exit}>
+                    Exit
                 </Button>
                 <Text>*Please provide the word in small capital letters for these questions! (e.g. small instead of Small)</Text>
             </Container>
