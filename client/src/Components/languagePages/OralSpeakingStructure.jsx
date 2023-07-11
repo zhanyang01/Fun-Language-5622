@@ -25,7 +25,7 @@ export const OralStructure = ({speechTitle, exitRoute, questions, questionLabel}
     return (
         <>
             <Heading color="teal.500"> 
-                {testTitle}
+                {speechTitle}
             </Heading>
             <Text>Try speaking the sentences below!</Text>
                 <Container>
