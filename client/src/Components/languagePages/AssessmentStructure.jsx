@@ -12,7 +12,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
 
     // const {quiz, saveQuiz} = useQuiz()    
     
-    const [currentAnswers,setCurrentAnswers] = useState([])
+    // const [currentAnswers,setCurrentAnswers] = useState([])
 
     /*
     const handleAnswerChange = (newAnswer,questionNumber) =>{
