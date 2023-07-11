@@ -14,19 +14,21 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     
     const [currentAnswers,setCurrentAnswers] = useState([])
 
+    /*
     const handleAnswerChange = (newAnswer,questionNumber) =>{
         currentAnswers[questionNumber] = newAnswer
         setCurrentAnswers([...currentAnswers])
     }
+    */
     
     function getScore() {
         var score  = 0;
-        // const currentAnswers = document.getElementsByTagName('input');
+        const currentAnswers = document.getElementsByTagName('input');
         for (var i = 0; i < currentAnswers.length ; i++) {
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
             console.log("testQuestions[questionLabel][i]", testQuestions[questionLabel]);
-            if (currentAnswers[i].toString().localeCompare(testQuestions[questionLabel][i].answer.toString(), undefined, { sensitivity: 'accent' }) === 0) {
+            if (currentAnswers[i] === testQuestions[questionLabel][i].answer) {
                 score += 1;
             }
         }
@@ -129,7 +131,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                             const {description} = question
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1} {description}</Text>
-                            <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true" onChange={(e)=>{handleAnswerChange(e,questionIndex)}}/>
+                            <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true" /*onChange={(e)=>{handleAnswerChange(e,questionIndex)}} */ />
                                 </>
                         })
                     }
@@ -144,6 +146,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                     onClick={submitAnswer}>
                     Submit
                 </Button>
+                <Text>*For questions that require words only, please provide them in small capital letters! (e.g. small instead of Small)</Text>
             </Container>
         </>
     )
