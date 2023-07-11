@@ -13,6 +13,7 @@ const EnglishIntemediate = () => {
             part3 ={"eicourse3"}
             part4 ={"eicourse4"}
             assess ={"eiassessment"}
+            oral = {"eioral"}
         />
         </>
     )

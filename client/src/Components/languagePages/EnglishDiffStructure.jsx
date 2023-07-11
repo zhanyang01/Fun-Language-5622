@@ -15,7 +15,8 @@ export const EnglishDiffStructure = ({
     part2, 
     part3, 
     part4, 
-    assess
+    assess,
+    oral
 }) => {
     const navigate = useNavigate();
 
@@ -75,6 +76,10 @@ export const EnglishDiffStructure = ({
         navigate(`/${assess}`)
     }
 
+    const oralSpeaking = () => {
+        navigate(`/${oral}`)
+    }
+
     const english = () => {
         navigate('/english')
     }
@@ -105,6 +110,15 @@ export const EnglishDiffStructure = ({
                     type="submit"
                     onClick={assessment}>
                     Take Assessment
+                </Button>
+                <Button
+                    m="5px"
+                    colorScheme = "teal" 
+                    width = "480px"
+                    variant="solid"
+                    type="submit"
+                    onClick={oralSpeaking}>
+                    Practise oral speaking!
                 </Button>
             <Link to="/english">
                 <Button
