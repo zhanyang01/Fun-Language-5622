@@ -4,7 +4,7 @@ import {Button, Container, Heading, Input, Text, useToast } from '@chakra-ui/rea
 import { testQuestions } from '../../Questions/assessment';
 
 export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
-    questionLabel , value, courseDiff}) => {
+    questionLabel}) => {
 
     const toast = useToast();
     
@@ -12,11 +12,16 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
 
     // const {quiz, saveQuiz} = useQuiz()    
     
-    // const [currentAnswers,setCurrentAnswers] = useState([])
+    const [currentAnswers,setCurrentAnswers] = useState([])
+
+    const handleAnswerChange = (newAnswer,questionNumber) =>{
+        currentAnswers[questionNumber] = newAnswer
+        setCurrentAnswers([...currentAnswers])
+    }
     
     function getScore() {
         var score  = 0;
-        const currentAnswers = document.getElementsByTagName('input');
+        // const currentAnswers = document.getElementsByTagName('input');
         for (var i = 0; i < currentAnswers.length ; i++) {
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
@@ -29,13 +34,6 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     }
     
     /*
-    const handleAnswerChange = (newAnswer,questionNumber) =>{
-
-        currentAnswers[questionNumber] = newAnswer
-        setCurrentAnswers([...currentAnswers])
-    }
-
-
     useEffect(()=>{
         console.log("ans",currentAnswers)
     },[currentAnswers])
@@ -127,17 +125,13 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             </Heading>
                 <Container>
                     {
-
                         questions.map((question,questionIndex) => {
                             const {description} = question
                             return<>
-                            <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
-                                <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true"/>
-                                        </>
-
-                                    })
-                                 
-
+                            <Text textAlign={"left"}> {questionIndex+1} {description}</Text>
+                            <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true" onChange={(e)=>{handleAnswerChange(e,questionIndex)}}/>
+                                </>
+                        })
                     }
                 </Container>
                 <Container>
