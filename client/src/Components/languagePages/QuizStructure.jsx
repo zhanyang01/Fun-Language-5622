@@ -163,7 +163,7 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
                         questions.map((question,questionIndex) => {
                             const {description,options} = question
                             return<>
-                            <Text textAlign={"left"}> {questionIndex+1}) {description}</Text>
+                            <Text textAlign={"left"}> {questionIndex+1} {description}</Text>
                           {  /*<Stack> */}
                                 <RadioGroup name = {questionIndex}  
                                    onChange = {(e)=>{handleAnswerChange(e,questionIndex)}}
