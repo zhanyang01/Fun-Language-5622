@@ -13,6 +13,7 @@ const EnglishAdvanced = () => {
             part3 ={"eacourse3"}
             part4 ={"eacourse4"}
             assess ={"eaassessment"}
+            oral = {"eaoral"}
         />
         </>
     )
