@@ -146,7 +146,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                     onClick={submitAnswer}>
                     Submit
                 </Button>
-                <Text>*For questions that require single word only, please provide the word in small capital letters! (e.g. small instead of Small)</Text>
+                <Text>*Please provide the word in small capital letters for these questions! (e.g. small instead of Small)</Text>
             </Container>
         </>
     )

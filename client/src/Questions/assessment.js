@@ -12,7 +12,7 @@ proper words and cohesive sentences.
 export const testQuestions = {
     basicTest: [
       {
-        description: "One of the words in the sentence is wrong, please key in the correct word: I is happy.",
+        description: "*One of the words in the sentence is wrong, please key in the correct word: I is happy.",
         answer: "am"
       },
   
@@ -32,12 +32,12 @@ export const testQuestions = {
       },
 
       {
-        description: "Provide the past tense of 'will go'.",
+        description: "*Provide the past tense of 'will go'.",
         answer: "went"
       },
 
       {
-        description: "Type in the word with the same meaning as the number 5.",
+        description: "*Type in the word with the same meaning as the number 5.",
         answer: "five"
       },
 
@@ -47,7 +47,7 @@ export const testQuestions = {
       },
 
       {
-        description: "Provide the plural form of the word 'mouse'.",
+        description: "*Provide the plural form of the word 'mouse'.",
         answer: "mice"
       }
     ],
@@ -59,7 +59,7 @@ export const testQuestions = {
       },
   
       {
-        description: "One of the words in the sentence is wrong, please key in the correct word: I was just inform that the meeting has been cancelled.",
+        description: "*One of the words in the sentence is wrong, please key in the correct word: I was just inform that the meeting has been cancelled.",
         answer: "informed"
       },
   
@@ -74,7 +74,7 @@ export const testQuestions = {
       },
 
       {
-        description: "What is the superlative of 'quick'?",
+        description: "*What is the superlative of 'quick'?",
         answer: "quickest"
       },
 
@@ -89,14 +89,14 @@ export const testQuestions = {
       },
 
       {
-        description: "Type in the noun of 'persevere'.",
+        description: "*Type in the noun of 'persevere'.",
         answer: "perseverance"
       }
     ],
     
     advancedTest: [
       {
-        description: "Choose a word from the list of words that is an antonym of 'cautious', and write it in the space below: careful, attentive, reckless",
+        description: "*Choose a word from the list of words that is an antonym of 'cautious', and write it in the space below: careful, attentive, reckless",
         answer: "reckless"
       },
   
