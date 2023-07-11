@@ -23,7 +23,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     
     function getScore() {
         var score  = 0;
-        // const currentAnswers = document.getElementsByTagName('input');
+        const currentAnswers = document.getElementsByTagName('input');
         for (var i = 0; i < currentAnswers.length ; i++) {
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
