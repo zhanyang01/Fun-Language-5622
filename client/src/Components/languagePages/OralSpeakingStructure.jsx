@@ -34,15 +34,16 @@ export const OralStructure = ({speechTitle, exitRoute, questions, questionLabel}
                             const {description} = question
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1} {description}</Text>
-                            <Text>Microphone: {listening ? 'on' : 'off'}</Text>
-                            <Button onClick={SpeechRecognition.startListening}>Start</Button>
-                            <Button onClick={SpeechRecognition.stopListening}>Stop</Button>
-                            <Button onClick={resetTranscript}>Reset</Button>
-                            <p>{transcript}</p>
                                 </>
                         })
+                        
                     }
                 </Container>
+                <Text>Microphone: {listening ? 'on' : 'off'}</Text>
+                <Button onClick={SpeechRecognition.startListening}>Start</Button>
+                <Button onClick={SpeechRecognition.stopListening}>Stop</Button>
+                <Button onClick={resetTranscript}>Reset</Button>
+                <Text>{transcript}</Text>
                 <Container>
                 <Button 
                     m="5px"
