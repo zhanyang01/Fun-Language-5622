@@ -1,7 +1,7 @@
-import { Box, Card, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Card, Flex, Text , Avatar} from '@chakra-ui/react';
 import React from 'react';
 
-export const AchievementStructure = ({
+export const AchievementComponentStructure = ({
     achievementTitle, 
     achievementDescription, 
     achievementImage}) => {
@@ -11,11 +11,15 @@ export const AchievementStructure = ({
                 direction="row"
                 variant="outline">
                 <Flex gap={5}>
-                <Avatar src={achievementImage} />
+                <Avatar src={achievementImage} size="lg" />
                     <Box>
-                        <Heading my = {10} fontSize = "lg">
+                        <Text 
+                            textAlign={"left"} 
+                            fontSize = "lg"
+                            color="teal.500"
+                            fontWeight={"bold"}>
                             {achievementTitle}
-                        </Heading>
+                        </Text>
                         <Text fontSize = "md">
                             {achievementDescription}
                         </Text>
@@ -26,4 +30,4 @@ export const AchievementStructure = ({
     )
 }
 
-export default AchievementStructure
+export default AchievementComponentStructure
