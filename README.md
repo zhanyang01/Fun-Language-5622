@@ -35,7 +35,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Certificate of achievements  
 
-* Friends list in profile page for users to connect with friends and peers 
+* Friends system for users to connect with friends and peers 
 
 * Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning 
 
@@ -81,7 +81,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 1st week of July: Improve on gamification features and user interface, create proficiency assessments
 
-* 2nd week of July: Create friends list and page in each level for learners to practice oral speaking 
+* 2nd week of July: Create friends system and page in each level for learners to practice oral speaking 
 
 * 3rd week of July: Create certificates of achievement and web-based forum, extend to another language
 
