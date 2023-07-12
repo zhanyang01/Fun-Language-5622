@@ -6,7 +6,7 @@
 
 3. If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course if not done previously to determine whether they are able to enroll for the course of choice (otherwise enroll for preceding course)  
 
-4. User can attempt the proficiency assessment found in each level once they feel confident (can do practice written test papers before attempting the test)  
+4. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)  
 
 5. Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
 
@@ -33,7 +33,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Proficiency assessment  
 
-* Certificate of achievements  
+* Certificates of achievement  
 
 * Friends system for users to connect with friends and peers 
 
@@ -71,7 +71,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 3rd week of May: Pick up necessary technologies (MongoDB, ExpressJS, ReactJS, NodeJS)  
 
-* 4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting with database  
+* 4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting to database  
 
 * 1st week of June: Create English course and levels of difficulty, refine authentication process
 
@@ -81,9 +81,9 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 1st week of July: Improve on gamification features and user interface, create proficiency assessments
 
-* 2nd week of July: Create friends system and page in each level for learners to practice oral speaking 
+* 2nd week of July: Create page in each level for learners to practice oral speaking and certificates of achievement
 
-* 3rd week of July: Create certificates of achievement and web-based forum, extend to another language
+* 3rd week of July: Create friends system and web-based forum, extend to another language
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
