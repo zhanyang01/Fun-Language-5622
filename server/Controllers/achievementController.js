@@ -32,17 +32,22 @@ export const addAchievement = async (req, res) => {
       });
     } else {
       // if the user already has achievements, push the new achievement to the array
-      await achievement
-        .updateOne(
-          {
-            _id: userAchievements._id,
-          },
-          { achievements: [...userAchievements.achievements, achievements] }
-        )
-        .then(() => {
-          res.send({ message: "Achievement added" });
-          console.log("Achievement added");
-        });
+      if (userAchievements.achievements.includes(achievements)) {
+        res.send({ message: "Achievement already exists" });
+        console.log("Achievement already exists");
+      } else {
+        await achievement
+          .updateOne(
+            {
+              _id: userAchievements._id,
+            },
+            { achievements: [...userAchievements.achievements, ...achievements] }
+          )
+          .then(() => {
+            res.send({ message: "Achievement updated" });
+            console.log("Achievement updated");
+          });
+      }
     }
   } catch (error) {
     console.log(error);
