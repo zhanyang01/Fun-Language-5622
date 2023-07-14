@@ -1,6 +1,7 @@
 import connectDB from "./config/database.js";
 import userRoutes from "./Routes/userRoute.js";
 import questionAttemptRoutes from "./Routes/questionAttemptRoute.js";
+import achievementRoutes from "./Routes/achievementRoute.js";
 import express from "express";
 import User from "./Models/userModel.js";
 import dotenv from "dotenv";
@@ -30,6 +31,9 @@ app.use("/api/users", userRoutes);
 
 // Create API for questionAttempt
 app.use("/api/questionAttempts", questionAttemptRoutes);
+
+// Create API for achievement
+app.use("/api/achievements", achievementRoutes);
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;

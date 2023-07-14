@@ -210,6 +210,10 @@ const Profile = () => {
     const homepage = () => {
         navigate('/homepage');
     }
+
+    const achievement = () => {
+        navigate('/achievementPage');
+    }
     
     //============== helper functions if any ============== 
     const validEmail = (email) => {
@@ -464,6 +468,17 @@ const Profile = () => {
             </Button>
             </Container>
             <Container>
+            <Link to = "/achievementPage">
+                <Button
+                    m="5px"
+                    type = "submit"
+                    colorScheme = "teal"
+                    width = "480px"
+                    variant="solid"
+                    onClick={achievement}>
+                        View Achievements
+                </Button>
+            </Link>
             <Link to="/homepage">
                 <Button 
                     m="5px"

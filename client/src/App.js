@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Choosinglanguage from "./Pages/languages/choosingLanguage.jsx";
 import Profile from "./Pages/Users/profile.jsx";
-
+import AchievementPage from "./Pages/Achievement/achievementPage.jsx";
 //english language imports
 import EnglishLanguage from "./Pages/languages/english/English.jsx";
 import EnglishBasic from "./Pages/languages/english/Basic/englishbasic.jsx";
@@ -49,6 +49,7 @@ function App() {
         <Route exact path="/homepage" element={<Homepage />} />
         <Route exact path="/choosinglanguage" element={<Choosinglanguage />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/achievementPage" element={<AchievementPage />} />
         {/* english */}
         <Route exact path="/english" element={<EnglishLanguage />} />
         {/* english basics */}
