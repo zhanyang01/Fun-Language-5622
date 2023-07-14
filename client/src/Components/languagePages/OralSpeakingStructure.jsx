@@ -24,7 +24,7 @@ export const OralStructure = ({speechTitle, exitRoute, questions, questionLabel}
 
     return (
         <>
-            <Heading color="teal.500" marginBottom={10}> 
+            <Heading color="teal.500" marginBottom={5}> 
                 {speechTitle}
             </Heading>
             <Text marginBottom={10}>Try speaking the sentences below!</Text>
@@ -33,7 +33,7 @@ export const OralStructure = ({speechTitle, exitRoute, questions, questionLabel}
                         questions.map((question,questionIndex) => {
                             const {description} = question
                             return<>
-                            <Text marginBottom={10} textAlign={"left"}> {questionIndex+1} {description}</Text>
+                            <Text marginBottom={5} textAlign={"left"}> {questionIndex+1} {description}</Text>
                                 </>
                         })
                         
