@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 
-export const achievementTriggerStructure = (achievementTitle, achievementDescription) => {
+export const AchievementTriggerStructure = (achievementTitle) => {
     
     const postAchievements = async() => {
         const userId = localStorage.getItem('userId');
-        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${userId}`, {userId, achievement: [achievementTitle, achievementDescription]})
+        console.log(achievementTitle)
+        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/`, {userId, achievementTitle})
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
                 console.log(err);
             })
         }
-    }
 
-export default achievementTriggerStructure;
+        useEffect(() => {
+            postAchievements();
+        }, [])
+    }

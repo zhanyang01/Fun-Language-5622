@@ -2,7 +2,9 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
-import { achievementTriggerStructure} from '../../Components/Profile/achievementTriggerStructure';
+import { AchievementTriggerStructure} from '../../Components/Profile/achievementTriggerStructure';
+import { AchievementList } from "../../Achievements/achievementList";
+
 // import List from '../languages/courselist';
 import {
     Avatar,
@@ -19,6 +21,8 @@ import {
 const Profile = () => {
 // ============== constant variables if any ==============
     const navigate = useNavigate();
+
+    const title = "Profile Picture Chosen"
 
     const fileReader = new FileReader();
 
@@ -139,12 +143,6 @@ const Profile = () => {
             // endpoint to get the specific user
             // extract out the image --> setPreview(user.image.url)
             const fetchedUser = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/${localStorage.getItem("userId")}`) 
-           
-/*            axios.get(...).then((result)=>{
-                const {image} = result.data
-            })
-
-            */
             if(fetchedUser){
                 console.log("result",fetchedUser)
                 const {username, email, image} = fetchedUser.data
@@ -393,6 +391,9 @@ const Profile = () => {
 
     return (
         <>
+        <AchievementTriggerStructure
+            achievementTitle = {title}
+        />
         <Container>
             <Avatar 
                 size="2xl"

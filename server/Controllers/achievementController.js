@@ -16,15 +16,16 @@ export const getAchievementsById = asyncHandler(async (req, res) => {
 
 // To add new achievement of the user to the database to be able to be retrieved
 export const addAchievement = async (req, res) => {
-  const { userId, achievements } = req.body;
+  const { userId, achievementTitle } = req.body;
   try {
     // check if the user already has achievements
+    console.log(achievementTitle);
     const userAchievements = await achievement.findOne({ userId });
     // if the user does not have any achievements, create one set for the user
     if (!userAchievements) {
       const newAchievement = new achievement({
         userId,
-        achievements,
+        achievementTitle,
       });
       await achievement.create(newAchievement).then(() => {
         res.send({ message: "Achievement added" });
@@ -32,7 +33,7 @@ export const addAchievement = async (req, res) => {
       });
     } else {
       // if the user already has achievements, push the new achievement to the array
-      if (userAchievements.achievements.includes(achievements)) {
+      if (userAchievements.achievements.includes(achievementTitle)) {
         res.send({ message: "Achievement already exists" });
         console.log("Achievement already exists");
       } else {
@@ -41,7 +42,7 @@ export const addAchievement = async (req, res) => {
             {
               _id: userAchievements._id,
             },
-            { achievements: [...userAchievements.achievements, ...achievements] }
+            { achievements: [...userAchievements.achievements, achievementTitle] }
           )
           .then(() => {
             res.send({ message: "Achievement updated" });
