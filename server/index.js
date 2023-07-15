@@ -48,6 +48,29 @@ app.get("/", async (req, res) => {
   });
 });
 
+// ===================send email================================
+app.post("/AssessmentStructure", async(req, res) => {
+  var file = "";
+  const { email, testTitle } = req.body;
+  if (testTitle === "Basic Assessment") {
+    file = 'English Language Basic Assessment.pdf';
+  }
+  if (testTitle === "Intermediate Assessment") {
+    file = 'English Language Basic Assessment.pdf';
+  }
+  if (testTitle === "Advanced Assessment") {
+    file = 'English Language Advanced Assessment.pdf';
+  }
+  try {
+    await sendEmail(file, email).then(() => {
+      res.send({message: "An email has been sent to you"});
+      console.log("An email has been sent to you");
+    })
+  } catch(e) {
+    console.log(e);
+  }
+})
+
 // ===================login================================
 app.post("/Login", async (req, res) => {
   const { email, password } = req.body;
