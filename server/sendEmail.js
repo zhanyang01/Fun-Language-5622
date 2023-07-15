@@ -5,12 +5,13 @@ Blueprint for sending email to user
 import nodemailer from "nodemailer";
 
 const sendEmail = async(subject, message, send_to, sent_from) => {
+    let testAccount = nodemailer.createTestAccount();
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
+      host: "smtp.ethereal.email",
       port: "587",
       auth: {
-        user: process.env.APP_EMAIL,
-        pass: process.env.APP_PASS
+        user: testAccount.user,
+        pass: testAccount.pass
       },
       tls: {
         rejectUnauthorized: false
