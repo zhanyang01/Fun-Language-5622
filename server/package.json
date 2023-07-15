@@ -28,6 +28,6 @@
   "type": "module",
   "devDependencies": {
     "concurrently": "^8.0.1",
-    "nodemon": "^1.14.9"
+    "nodemon": "^3.0.1"
   }
 }

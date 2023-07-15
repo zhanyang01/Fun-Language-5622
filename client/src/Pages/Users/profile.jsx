@@ -256,7 +256,8 @@ const Profile = () => {
                 console.log(res);
                 // alert(res.data.message);
                 if (res.data.message === "update successful") {
-                    usern = localStorage.setItem("username", username);
+                    localStorage.setItem("username", username);
+                    localStorage.setItem("email", newEmail);
                     toast({
                         title: 'Update Success',
                         description: res.data.message,

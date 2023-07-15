@@ -9,6 +9,7 @@ import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
+import sendEmail from "./sendEmail.js";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
@@ -35,6 +36,9 @@ app.use("/api/questionAttempts", questionAttemptRoutes);
 // Create API for achievement
 app.use("/api/achievements", achievementRoutes);
 
+// Create API for sending email
+// app.use("/api/sendEmail", sendEmail)
+
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
 
@@ -43,6 +47,33 @@ app.get("/", async (req, res) => {
     message: "Server is up",
   });
 });
+
+// ===================send email================================
+app.post("/AssessmentStructure", async(req, res) => {
+  var filename = "";
+  var filepath = ";"
+  const { email, testTitle } = req.body;
+  if (testTitle === "Basic Assessment") {
+    filename = 'English Language Basic Assessment.pdf';
+    filepath = './English Certificates/English Language Basic Assessment.pdf';
+  }
+  if (testTitle === "Intermediate Assessment") {
+    filename = 'English Language Basic Assessment.pdf';
+    filepath = './English Certificates/English Language Intermediate Assessment.pdf';
+  }
+  if (testTitle === "Advanced Assessment") {
+    filename = 'English Language Advanced Assessment.pdf';
+    filepath = './English Certificates/English Language Advanced Assessment.pdf';
+  }
+  try {
+    await sendEmail(filename, filepath, email).then(() => {
+      res.send({message: "An email has been sent to you"});
+      console.log("An email has been sent to you");
+    })
+  } catch(e) {
+    console.log(e);
+  }
+})
 
 // ===================login================================
 app.post("/Login", async (req, res) => {

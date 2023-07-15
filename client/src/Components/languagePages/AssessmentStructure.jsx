@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import {Button, Container, Heading, Input, Text, useToast } from '@chakra-ui/react';
 import { testQuestions } from '../../Questions/assessment';
+import axios from 'axios';
 
 export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     questionLabel}) => {
@@ -64,7 +65,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     },[])
     */
             
-    const submitAnswer = () => {
+    const submitAnswer = async() => {
         var maxScore = "/" + testQuestions[questionLabel].length + " correct"
         var pass = "Congratulations! You have passed the proficiency test :)";
         var fail = "Please try again!"
@@ -80,6 +81,20 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             });
             //alert(pass + "\n" + score + maxScore);
             navigate(`/${nextLevelRoute}`);
+            const email = localStorage.getItem("email");
+            const info = {email, testTitle};
+            await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/AssessmentStructure`, info)
+            .then(res => {
+                console.log(res);
+                toast({
+                    title: "Email",
+                    description: res.data.message,
+                    duration: 5000,
+                    isClosable: true,
+                    status: 'info',
+                    position: 'top',
+                });
+            })
         } else {
             toast({
                 title: fail,
@@ -135,7 +150,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                             const {description} = question
                             return<>
                             <Text textAlign={"left"}> {questionIndex+1} {description}</Text>
-                            <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true" marginBottom={10} /*onChange={(e)=>{handleAnswerChange(e,questionIndex)}} */ />
+                            <Input type="text" placeholder = "Enter your answer here!" size = 'md' spellCheck="true" marginBottom={5} /*onChange={(e)=>{handleAnswerChange(e,questionIndex)}} */ />
                                 </>
                         })
                     }
