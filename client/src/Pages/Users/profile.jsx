@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
+import { achievementTriggerStructure} from '../../Components/Profile/achievementTriggerStructure';
 // import List from '../languages/courselist';
 import {
     Avatar,

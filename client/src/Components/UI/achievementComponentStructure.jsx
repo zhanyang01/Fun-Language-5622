@@ -4,12 +4,15 @@ import React from 'react';
 export const AchievementComponentStructure = ({
     achievementTitle, 
     achievementDescription, 
-    achievementImage}) => {
+    achievementImage,
+    isUnlocked}) => {
     return (
         <>
             <Card 
                 direction="row"
-                variant="outline">
+                variant="outline"
+                borderTop="8px"
+                borderColor={isUnlocked?"blue.200":"red.200"}>
                 <Flex gap={5}>
                 <Avatar src={achievementImage} size="lg" />
                     <Box>
