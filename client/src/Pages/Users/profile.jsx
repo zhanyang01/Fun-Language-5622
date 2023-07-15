@@ -22,7 +22,7 @@ const Profile = () => {
 // ============== constant variables if any ==============
     const navigate = useNavigate();
 
-    const title = AchievementList.achievements[4].title;
+    const title = "Profile Picture Chosen"
 
     const fileReader = new FileReader();
 
@@ -143,12 +143,6 @@ const Profile = () => {
             // endpoint to get the specific user
             // extract out the image --> setPreview(user.image.url)
             const fetchedUser = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/${localStorage.getItem("userId")}`) 
-           
-/*            axios.get(...).then((result)=>{
-                const {image} = result.data
-            })
-
-            */
             if(fetchedUser){
                 console.log("result",fetchedUser)
                 const {username, email, image} = fetchedUser.data
@@ -397,6 +391,9 @@ const Profile = () => {
 
     return (
         <>
+        <AchievementTriggerStructure
+            achievementTitle = {title}
+        />
         <Container>
             <Avatar 
                 size="2xl"

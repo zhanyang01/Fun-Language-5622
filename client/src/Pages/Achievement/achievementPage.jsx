@@ -24,6 +24,7 @@ export const AchievementPage = () => {
         } else {
             console.log("Achievements loaded");
             achievements = loadAchievements.data.data;
+            console.log(achievements);
         }
         return achievements;
     }
