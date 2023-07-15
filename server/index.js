@@ -50,19 +50,23 @@ app.get("/", async (req, res) => {
 
 // ===================send email================================
 app.post("/AssessmentStructure", async(req, res) => {
-  var file = "";
+  var filename = "";
+  var filepath = ";"
   const { email, testTitle } = req.body;
   if (testTitle === "Basic Assessment") {
-    file = 'English Language Basic Assessment.pdf';
+    filename = 'English Language Basic Assessment.pdf';
+    filepath = './English Certificates/English Language Basic Assessment.pdf';
   }
   if (testTitle === "Intermediate Assessment") {
-    file = 'English Language Basic Assessment.pdf';
+    filename = 'English Language Basic Assessment.pdf';
+    filepath = './English Certificates/English Language Intermediate Assessment.pdf';
   }
   if (testTitle === "Advanced Assessment") {
-    file = 'English Language Advanced Assessment.pdf';
+    filename = 'English Language Advanced Assessment.pdf';
+    filepath = './English Certificates/English Language Advanced Assessment.pdf';
   }
   try {
-    await sendEmail(file, email).then(() => {
+    await sendEmail(filename, filepath, email).then(() => {
       res.send({message: "An email has been sent to you"});
       console.log("An email has been sent to you");
     })
