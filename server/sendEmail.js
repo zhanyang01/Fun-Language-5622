@@ -17,6 +17,7 @@ const sendEmail = async(subject, message, send_to, sent_from) => {
       }
     });
   
+    // need to account for which assessment to attach the correct pdf
     const mail = {
       from: sent_from,
       to: send_to,
