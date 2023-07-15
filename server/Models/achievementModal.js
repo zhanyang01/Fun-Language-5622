@@ -9,6 +9,7 @@ const achievementSchema = mongoose.Schema(
     achievements: {
       type: Array,
       required: false,
+      unique: true,
     },
   },
   {
