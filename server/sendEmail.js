@@ -4,7 +4,7 @@ Blueprint for sending email to user
 
 import nodemailer from "nodemailer";
 
-const sendEmail = async(subject, message, send_to, sent_from) => {
+const sendEmail = async(file, email) => {
     let testAccount = nodemailer.createTestAccount();
     const transporter = nodemailer.createTransport({
       host: "smtp.ethereal.email",
@@ -20,13 +20,12 @@ const sendEmail = async(subject, message, send_to, sent_from) => {
   
     // need to account for which assessment to attach the correct pdf
     const mail = {
-      from: sent_from,
-      to: send_to,
-      subject: subject,
-      html: message,
+      from: "tan.eesean@gmail.com",
+      to: email,
+      subject: "Certificate of Achievement",
+      html: "<p>We are pleased to inform that you have received the following certificate for passing your assessment! We look forward to your future accomplishments.</p>",
       attachments: {
-        filename: "",
-        path: ""
+        path: file
       }
     }
   
@@ -36,7 +35,7 @@ const sendEmail = async(subject, message, send_to, sent_from) => {
         alert(err);
       } else {
         console.log(info);
-        alert("An email has been sent to you")
+        // alert("An email has been sent to you")
       }
     })
   }
