@@ -9,6 +9,7 @@ import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
+// import sendEmail from "./sendEmail.js";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
@@ -34,6 +35,9 @@ app.use("/api/questionAttempts", questionAttemptRoutes);
 
 // Create API for achievement
 app.use("/api/achievements", achievementRoutes);
+
+// Create API for sending email
+// app.use("/api/sendEmail", sendEmail)
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
