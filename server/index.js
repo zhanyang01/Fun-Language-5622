@@ -9,7 +9,7 @@ import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
-// import sendEmail from "./sendEmail.js";
+import sendEmail from "./sendEmail.js";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
