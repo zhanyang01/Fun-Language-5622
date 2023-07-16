@@ -7,12 +7,12 @@ import nodemailer from "nodemailer";
 const sendEmail = async(filename, filepath, email) => {
     let testAccount = nodemailer.createTestAccount();
     const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
+      host: process.env.EMAIL_HOST,
       port: "587",
       secure: false,
       auth: {
-        user: testAccount.user,
-        pass: testAccount.pass
+        user: process.env.APP_EMAIL,
+        pass: process.env.APP_PASS
       },
       tls: {
         rejectUnauthorized: false
