@@ -29,9 +29,9 @@ The Fun Language App allows for users to have a fun experience learning a new la
 * Interactive interface to allow the users to be able to navigate between courses with ease  
 
 ## Features to be completed by mid-July:
-* Page in each level for learners to practice oral speaking 
+* Oral speaking page for each level 
 
-* Proficiency assessment  
+* Proficiency assessment for each level of difficulty  
 
 * Certificates of achievement  
 
@@ -57,6 +57,8 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Chakra UI (app design)
 
+* Nodemailer (for sending certificate of achievement to user via email)
+
 * Jest (unit testing)
 
 ## Distinctive Features:
@@ -81,7 +83,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 1st week of July: Improve on gamification features and user interface, create proficiency assessments
 
-* 2nd week of July: Create page in each level for learners to practice oral speaking and certificates of achievement
+* 2nd week of July: Create oral speaking page for each level and certificates of achievement
 
 * 3rd week of July: Create friends system and web-based forum, extend to another language
 
