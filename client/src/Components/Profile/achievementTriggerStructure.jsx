@@ -1,20 +1,28 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
+import { addAchievement } from '../../HelperFunctions/addAchievement';
+import { useToast } from "@chakra-ui/react"
 
-export const AchievementTriggerStructure = (achievementTitle) => {
+export const AchievementTriggerStructure = ({achievementTitle}) => {
+
+    const toast = useToast();
     
     const postAchievements = async() => {
         const userId = localStorage.getItem('userId');
-        console.log(achievementTitle)
-        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/`, {userId, achievementTitle})
-            .then((res) => {
-                console.log(res.data);
-            }).catch((err) => {
-                console.log(err);
+        const achievementAdded = await addAchievement(userId, achievementTitle);
+        if (achievementAdded) {
+            toast({
+                title: "Achievement Unlocked! " + achievementTitle,
+                description: "You have unlocked an achievement!",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+                position: "top"
             })
         }
+    }
 
-        useEffect(() => {
-            postAchievements();
-        }, [])
+
+    useEffect(() => {
+        postAchievements();
+    }, [])
     }

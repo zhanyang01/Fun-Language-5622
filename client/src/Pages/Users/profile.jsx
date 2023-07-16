@@ -144,7 +144,7 @@ const Profile = () => {
             // extract out the image --> setPreview(user.image.url)
             const fetchedUser = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/${localStorage.getItem("userId")}`) 
             if(fetchedUser){
-                console.log("result",fetchedUser)
+                //console.log("result",fetchedUser)
                 const {username, email, image} = fetchedUser.data
                 try {
                     setPreviewPic(image.url);

@@ -1,11 +1,13 @@
 import { Button, Container, Heading, Text} from "@chakra-ui/react"
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AchievementComponentStructure} from "../../Components/UI/achievementComponentStructure"
 import { AchievementList } from "../../Achievements/achievementList";
 import axios from "axios";
 
 export const AchievementPage = () => {
+
+    const [achievements, setAchievements] = useState([]);
 
     const navigate = useNavigate();
 
@@ -15,18 +17,16 @@ export const AchievementPage = () => {
 
     const getAchievements = async() => {
         const userId = localStorage.getItem('userId');
-        var achievements = [];
         const loadAchievements = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${userId}`);
         console.log(loadAchievements);
         if (loadAchievements.data.message === "Achievements not found") {
             console.log("Error loading achievements");
         // this part is not tested yet
         } else {
+            setAchievements(loadAchievements.data.data.achievements)
             console.log("Achievements loaded");
-            achievements = loadAchievements.data.data;
-            console.log(achievements);
         }
-        return achievements;
+        console.log(achievements);
     }
 
     useEffect(() => {
@@ -39,7 +39,7 @@ export const AchievementPage = () => {
                 All Achievements
             </Heading>
             <Text my={5} fontSize="lg">
-                Total unlocked achievements: {getAchievements.length}/{AchievementList.achievements.length}
+                Total unlocked achievements: {achievements.length}/{AchievementList.achievements.length}
             </Text>
             <Container>
                 {
@@ -50,6 +50,7 @@ export const AchievementPage = () => {
                                 achievementTitle = {title}
                                 achievementDescription = {description}
                                 achievementImage = {image}
+                                isUnlocked = {achievements.includes(title)}
                             />
                         )
                     })
