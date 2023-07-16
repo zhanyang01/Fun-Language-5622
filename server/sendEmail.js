@@ -5,7 +5,7 @@ Blueprint for sending email to user
 import nodemailer from "nodemailer";
 
 const sendEmail = async(filename, filepath, email) => {
-    let testAccount = nodemailer.createTestAccount();
+    // let testAccount = nodemailer.createTestAccount();
     const transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: "587",
@@ -36,7 +36,7 @@ const sendEmail = async(filename, filepath, email) => {
         console.log(err);
         alert(err);
       } else {
-        console.log(info);
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         // alert("An email has been sent to you")
       }
     })
