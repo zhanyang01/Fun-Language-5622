@@ -33,10 +33,9 @@ const sendEmail = async(filename, filepath, email) => {
     }
     
     try {
-      let info = await transporter.sendMail(mail).then(() => {
-        console.log("Message sent: %s", info.messageId)
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
-      })
+      let info = transporter.sendMail(mail);
+      console.log("Message sent: %s", info.messageId)
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
     } catch(e) {
       console.log(e);
     }
