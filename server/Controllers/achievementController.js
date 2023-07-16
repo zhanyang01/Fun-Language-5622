@@ -22,31 +22,33 @@ export const addAchievement = async (req, res) => {
     console.log(achievementTitle);
     const userAchievements = await achievement.findOne({ userId });
     // if the user does not have any achievements, create one set for the user
-    if (!userAchievements) {
+    if (!userAchievements || !userAchievements.achievements) {
       const newAchievement = new achievement({
         userId,
-        achievementTitle,
+        achievements: [achievementTitle],
       });
       await achievement.create(newAchievement).then(() => {
-        res.send({ message: "Achievement added" });
         console.log("Achievement added");
+        return res.status(200).json({ message: "Achievement added" });
       });
     } else {
+      const currAchievements = userAchievements.achievements;
       // if the user already has achievements, push the new achievement to the array
       if (userAchievements.achievements.includes(achievementTitle)) {
-        res.send({ message: "Achievement already exists" });
         console.log("Achievement already exists");
+        return res.status(500).json({ message: "Achievement already exists" });
       } else {
+        currAchievements.push(achievementTitle);
         await achievement
           .updateOne(
             {
               _id: userAchievements._id,
             },
-            { achievements: [...userAchievements.achievements, achievementTitle] }
+            { achievements: currAchievements }
           )
           .then(() => {
-            res.send({ message: "Achievement updated" });
             console.log("Achievement updated");
+            return res.status(200).json({ message: "Achievement updated" });
           });
       }
     }
