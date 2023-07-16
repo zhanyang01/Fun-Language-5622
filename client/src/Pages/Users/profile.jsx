@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate, Link} from 'react-router-dom';
 import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
-import { AchievementTriggerStructure} from '../../Components/Profile/achievementTriggerStructure';
-import { AchievementList } from "../../Achievements/achievementList";
+import { AchievementTriggerStructure} from '../../Components/Profile/achievementTriggerStructure.js';
 
 // import List from '../languages/courselist';
 import {
@@ -114,7 +113,7 @@ const Profile = () => {
         await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Profile/Pic/${localStorage.getItem("userId")}`,{
             image: pic
         })
-        .then((res)=>{
+        .then( async (res)=>{
             console.log(res);
             // alert("profile picture confirmed");
             toast({
@@ -125,13 +124,13 @@ const Profile = () => {
                 status: 'success',
                 position: 'top',
             });
+            await AchievementTriggerStructure(title, toast);
             navigate("/profile");
         }).catch((err)=>{
             console.log(err);
             alert(err);
         })
     }
-
 
         // use effect (this time upon load)
         useEffect(()=>{
@@ -389,11 +388,10 @@ const Profile = () => {
         );      
     }
 
+
+
     return (
         <>
-        <AchievementTriggerStructure
-            achievementTitle = {title}
-        />
         <Container>
             <Avatar 
                 size="2xl"

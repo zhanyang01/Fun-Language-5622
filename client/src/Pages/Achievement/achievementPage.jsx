@@ -45,6 +45,7 @@ export const AchievementPage = () => {
                 {
                     AchievementList.achievements.map((achievement) => {
                         const {title, description, image} = achievement;
+                        console.log(title)
                         return (
                             <AchievementComponentStructure
                                 achievementTitle = {title}

@@ -22,7 +22,7 @@ export const addAchievement = async (req, res) => {
     console.log(achievementTitle);
     const userAchievements = await achievement.findOne({ userId });
     // if the user does not have any achievements, create one set for the user
-    if (!userAchievements) {
+    if (!userAchievements || !userAchievements.achievements) {
       const newAchievement = new achievement({
         userId,
         achievements: [achievementTitle],
