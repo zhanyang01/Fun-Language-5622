@@ -4,6 +4,8 @@ import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text, us
 import { allQuestions } from '../../Questions/data';
 import axios from 'axios';
 import { useQuiz } from '../../Storage/UserStorage';
+import { AchievementTriggerStructure } from '../Profile/achievementTriggerStructure';
+import { checkSubsetArray } from '../../HelperFunctions/checkSubsetArray';
 
 export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, questions,
     questionLabel,backToCourseRoute, value, courseDiff}) => {
@@ -112,9 +114,24 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         var pass = "Passed! Please proceed to next level";
         var fail = "Please try again!"
         var score = getScore();
+        const courseDoneDictionary = {"ebcoursedone" : "English Baby", "eicoursedone" : "English Apprentice", "eacoursedone" : "English Sage"}
         if (score === allQuestions[questionLabel].length) {
             const updatedAnswer = formatAnswer();
             await saveQuiz(updatedAnswer, pass, score + maxScore, nextLevelRoute)
+            if (Object.keys(courseDoneDictionary).includes(nextLevelRoute)) {
+                const title = courseDoneDictionary[nextLevelRoute]
+                await AchievementTriggerStructure(title, toast)
+                await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${localStorage.getItem("userId")}`)
+                    .then(async (res) => {
+                        //console.log(res.data.data.achievements);
+                        console.log(checkSubsetArray(res.data.data.achievements, Object.values(courseDoneDictionary)));
+                        if (checkSubsetArray(res.data.data.achievements, Object.values(courseDoneDictionary))) {
+                            await AchievementTriggerStructure("English Finisher", toast)
+                        }
+                    }).catch((err) => {
+                        console.log(err)
+                    })
+                }
         } else {
             toast({
                 title: fail,

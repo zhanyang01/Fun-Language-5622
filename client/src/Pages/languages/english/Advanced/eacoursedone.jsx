@@ -10,7 +10,7 @@ const EACourseDone = () => {
             courseDiff={"English Advanced"}
             courseRoute={"englishadvanced"}
             diffCourseDone={"EACourseDone"}
-            headingContent={"Congratulations! You have completed the Advanced Courrse for English Language :D"}
+            headingContent={"Congratulations! You have completed the Advanced Course for English Language :D"}
             />
         </>
     )

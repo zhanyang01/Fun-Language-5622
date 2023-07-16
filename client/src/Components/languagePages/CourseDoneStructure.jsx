@@ -7,6 +7,7 @@ import {
     Heading, 
     Progress 
 } from '@chakra-ui/react';
+import { AchievementTriggerStructure } from '../Profile/achievementTriggerStructure.js'
 // import List from '../../courselist';
 
 export const CourseDoneStructure = ({nextLevelRoute, courseDiff, courseRoute, diffCourseDone, headingContent}) => {
@@ -34,10 +35,11 @@ export const CourseDoneStructure = ({nextLevelRoute, courseDiff, courseRoute, di
 
     // List();
 
-    axios.put(`${process.env.REACT_APP_BACKEND_SERVER}`/`${diffCourseDone}`, email)
+    {/*axios.put(`${process.env.REACT_APP_BACKEND_SERVER}`/`${diffCourseDone}`, email)
         .then((res) =>{
             console.log(res);
         })
+    */}
 
     /*
     const newCourse = async() => {

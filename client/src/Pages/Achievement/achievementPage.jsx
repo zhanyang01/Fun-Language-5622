@@ -18,7 +18,7 @@ export const AchievementPage = () => {
     const getAchievements = async() => {
         const userId = localStorage.getItem('userId');
         const loadAchievements = await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${userId}`);
-        console.log(loadAchievements);
+        //console.log(loadAchievements);
         if (loadAchievements.data.message === "Achievements not found") {
             console.log("Error loading achievements");
         // this part is not tested yet
@@ -26,7 +26,6 @@ export const AchievementPage = () => {
             setAchievements(loadAchievements.data.data.achievements)
             console.log("Achievements loaded");
         }
-        console.log(achievements);
     }
 
     useEffect(() => {
@@ -45,7 +44,6 @@ export const AchievementPage = () => {
                 {
                     AchievementList.achievements.map((achievement) => {
                         const {title, description, image} = achievement;
-                        console.log(title)
                         return (
                             <AchievementComponentStructure
                                 achievementTitle = {title}
