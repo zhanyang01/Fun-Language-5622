@@ -31,16 +31,15 @@ const sendEmail = async(filename, filepath, email) => {
         path: filepath
       }
     }
-  
-    transporter.sendMail(mail, function(err, info) {
-      if (err) {
-        console.log(err);
-        // alert(err);
-      } else {
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-        // alert("An email has been sent to you")
-      }
-    })
+    
+    try {
+      let info = await transporter.sendMail(mail).then(() => {
+        console.log("Message sent: %s", info.messageId)
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
+      })
+    } catch(e) {
+      console.log(e);
+    }
   }
 
   export default sendEmail;
