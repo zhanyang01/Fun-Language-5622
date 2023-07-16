@@ -6,7 +6,7 @@ import nodemailer from "nodemailer";
 
 const sendEmail = async(filename, filepath, email) => {
     // let testAccount = nodemailer.createTestAccount();
-    const transporter = nodemailer.createTransport({
+    let transporter = nodemailer.createTransport({
       host: process.env.EMAIL_HOST,
       port: "587",
       secure: false,
@@ -20,7 +20,7 @@ const sendEmail = async(filename, filepath, email) => {
     });
   
     // need to account for which assessment to attach the correct pdf
-    const mail = {
+    let mail = {
       from: '"Fun Language" <funlanguage@example.com>',
       to: email,
       subject: "Certificate of Achievement",
@@ -34,9 +34,9 @@ const sendEmail = async(filename, filepath, email) => {
     transporter.sendMail(mail, function(err, info) {
       if (err) {
         console.log(err);
-        alert(err);
+        // alert(err);
       } else {
-        alert("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         // alert("An email has been sent to you")
       }
     })
