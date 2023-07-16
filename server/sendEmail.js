@@ -36,7 +36,7 @@ const sendEmail = async(filename, filepath, email) => {
         console.log(err);
         alert(err);
       } else {
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        alert("Preview URL: %s", nodemailer.getTestMessageUrl(info));
         // alert("An email has been sent to you")
       }
     })
