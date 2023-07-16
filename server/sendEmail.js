@@ -7,6 +7,7 @@ import nodemailer from "nodemailer";
 const sendEmail = async(filename, filepath, email) => {
     // let testAccount = nodemailer.createTestAccount();
     let transporter = nodemailer.createTransport({
+      name: 'www.gmail.com',
       host: process.env.EMAIL_HOST,
       port: "587",
       secure: false,
