@@ -411,12 +411,14 @@ const Profile = () => {
         <Text color="teal" fontSize="32px" fontWeight="bold"> 
             {usern} 
         </Text>
+        {/*
         <Text size="24px"> 
             Courses completed: 
         </Text>
         <Text size="24px"> 
             Assessments completed: 
         </Text>
+        */}
         <Container border="1px" borderColor="gray.300">
             <Text fontSize="20px" color="teal.500" fontWeight="bold">
                 Update Your Account
