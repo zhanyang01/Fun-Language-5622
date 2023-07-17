@@ -3,8 +3,9 @@ Blueprint for sending email to user
 */
 
 import nodemailer from "nodemailer";
+import asyncHandler from "express-async-handler";
 
-const sendEmail = async(filename, filepath, email) => {
+export const sendEmail = asyncHandler(async(filename, filepath, email) => {
     // let testAccount = nodemailer.createTestAccount();
     let transporter = nodemailer.createTransport({
       // name: 'gmail',
@@ -40,6 +41,4 @@ const sendEmail = async(filename, filepath, email) => {
     } catch(e) {
       console.log(e);
     }
-  }
-
-  export default sendEmail;
+  });

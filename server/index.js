@@ -9,7 +9,7 @@ import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
-import sendEmail from "./sendEmail.js";
+import emailRoutes from "./Routes/emailRoute.js";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
@@ -37,7 +37,7 @@ app.use("/api/questionAttempts", questionAttemptRoutes);
 app.use("/api/achievements", achievementRoutes);
 
 // Create API for sending email
-// app.use("/api/sendEmail", sendEmail)
+app.use("/api/user", emailRoutes)
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
@@ -58,7 +58,7 @@ app.post("/AssessmentStructure", async(req, res) => {
     filepath = './English Certificates/English Language Basic Assessment.pdf';
   }
   if (testTitle === "Intermediate Assessment") {
-    filename = 'English Language Basic Assessment.pdf';
+    filename = 'English Language Intermediate Assessment.pdf';
     filepath = './English Certificates/English Language Intermediate Assessment.pdf';
   }
   if (testTitle === "Advanced Assessment") {
@@ -225,27 +225,6 @@ app.put("/Profile/Pic/:UserId", async (req, res) => {
         console.log("profile picture updated unsuccessful");
       }
     }
-  } catch (e) {
-    console.log(e);
-  }
-});
-
-//=====================add completed basic course to user schema=======================
-app.put("/EBCourseDone", async (req, res) => {
-  const { email } = req.body;
-  try {
-    const user = await user.findOne({ email: email });
-    await user
-      .updateOne(
-        {
-          _id: user.id,
-        },
-        { $addToSet: { courses: "English Language (Basic Course)" } }
-      )
-      .then(() => {
-        res.send({ courses: user.courses });
-        console.log(user.courses);
-      });
   } catch (e) {
     console.log(e);
   }
