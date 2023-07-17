@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
 
-export const keyFeatures = ({
+export const KeyFeatures = ({
     featTitle,
     featText,
     featImage,
@@ -19,8 +19,7 @@ export const keyFeatures = ({
                         index % 2 === 0 ? "row" : "row-reverse",
                     ]}>
                     <Box
-                        width={["90%", "80%", "50%"]}
-                        m="10px auto">
+                        width={["90%", "80%", "50%"]}>
                         <Image src={featImage}
                             alt={featTitle} />
                     </Box>
