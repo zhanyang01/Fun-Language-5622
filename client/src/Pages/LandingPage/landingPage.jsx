@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import {Hero} from "../../Components/LandingPage/hero"
 import {Navbar} from "../../Components/LandingPage/Navbar"
 import heroLogo from "../../Images/heroLogo.png"
+import { keyFeatures } from '../../Components/LandingPage/keyFeatures'
+import { FeaturesList } from '../../Components/LandingPage/features.js';
+import { Container } from '@chakra-ui/react';
 
-function LandingPage() {
+const LandingPage = () => {
 
     const navigate = useNavigate();
 
@@ -34,6 +37,22 @@ function LandingPage() {
                 text="Create Your Account now!"
                 image={heroLogo}
             />
+            <Container>
+                {
+                FeaturesList.features.map((feature, index) => {
+                    const { featTitle, featText, featImage } = feature;
+                    return (
+                        <keyFeatures
+                            key={index}
+                            featTitle={featTitle}
+                            featText={featText}
+                            featImage={featImage}
+                            index={index}
+                        />
+                    );
+                })
+                }
+            </Container>
         </>
     )
 }

@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Flex, Heading, Stack, Box, Image } from '@chakra-ui/react';
 
-export function Hero ({
+export const Hero = ({
     title,
     nextRoute,
     nextPage,
     text,
     image
-}) {
+}) => {
     return (
         <>
         <Flex
