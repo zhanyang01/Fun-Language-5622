@@ -10,8 +10,8 @@ import cors from "cors";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
 // import emailRoutes from "./Routes/emailRoute.js";
-// import { sendEmail } from "./Controllers/emailController.js";
-import nodemailer from "nodemailer";
+import sendEmail from "./Controllers/emailController.js";
+// import nodemailer from "nodemailer";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
@@ -52,21 +52,6 @@ app.get("/", async (req, res) => {
 
 // ===================send email================================
 app.post("/AssessmentStructure", async(req, res) => {
-  let transporter = nodemailer.createTransport({
-    // name: 'gmail',
-    service: 'gmail',
-    // port: "587",
-    // secure: false,
-    auth: {
-      user: process.env.APP_EMAIL,
-      pass: process.env.APP_PASS
-    } /*,
-    tls: {
-      rejectUnauthorized: false
-    }
-    */
-  });
-
   var filename = "";
   var filepath = "";
   const { email, testTitle } = req.body;
@@ -84,22 +69,15 @@ app.post("/AssessmentStructure", async(req, res) => {
     filename = 'English Language Advanced Assessment.pdf';
     filepath = './English Certificates/English Language Advanced Assessment.pdf';
   }
-  
-  let mail = {
-    from: 'Fun Language <' + process.env.APP_EMAIL + '>',
-    to: email,
-    subject: "Certificate of Achievement",
-    html: `<p>We are pleased to inform that you have received the following certificate for passing your assessment! We look forward to your future accomplishments.</p>`,
-    attachments: {
-      filename: filename,
-      path: filepath
-    }
-  }
     
-  await transporter.sendMail(mail).then(() => {
-    res.send({message: "An email has been sent to you"})
-    console.log("An email has been sent to you");
-  })
+  try {
+    await sendEmail(filename, filepath, email).then(() => {
+      res.send({message: "An email has been sent to you"})
+      console.log("An email has been sent to you");
+    })
+  } catch(e) {
+    console.log(e);
+  }
 });
 
 // ===================login================================

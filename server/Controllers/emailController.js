@@ -3,9 +3,9 @@ Blueprint for sending email to user
 */
 
 import nodemailer from "nodemailer";
-import asyncHandler from "express-async-handler";
+// import asyncHandler from "express-async-handler";
 
-export const sendEmail = asyncHandler(async(req, res) => {
+const sendEmail = async(filename, filepath, email) => {
   // let testAccount = nodemailer.createTestAccount();
   let transporter = nodemailer.createTransport({
     // name: 'gmail',
@@ -22,6 +22,7 @@ export const sendEmail = asyncHandler(async(req, res) => {
     */
   });
 
+  /*
   var filename = "";
   var filepath = "";
   const { email, testTitle } = req.body;
@@ -39,8 +40,8 @@ export const sendEmail = asyncHandler(async(req, res) => {
     filename = 'English Language Advanced Assessment.pdf';
     filepath = './English Certificates/English Language Advanced Assessment.pdf';
   }
+  */
   
-  // need to account for which assessment to attach the correct pdf
   let mail = {
     from: 'Fun Language <' + process.env.APP_EMAIL + '>',
     to: email,
@@ -52,13 +53,14 @@ export const sendEmail = asyncHandler(async(req, res) => {
     }
   }
     
-  transporter.sendMail(mail, (err, info) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send({message: "An email has been sent to you"});
-      console.log("An email has been sent to you");
-      res.json({status: info.response});
-    }
-  })
-});
+  try {
+    let info = await transporter.sendMail(mail).then(() => {
+      console.log("Message sent: %s", info.messageId)
+      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
+    })
+  } catch(e) {
+    console.log(e);
+  }
+};
+
+export default sendEmail;
