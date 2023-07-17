@@ -10,9 +10,11 @@ const sendEmail = async(filename, filepath, email) => {
   let transporter = nodemailer.createTransport({
     // name: 'gmail',
     service: 'gmail',
+    /*
     host: "smtp.gmail.com",
     port: "587",
     secure: false,
+    */
     auth: {
       user: process.env.APP_EMAIL,
       pass: process.env.APP_PASS
@@ -54,14 +56,13 @@ const sendEmail = async(filename, filepath, email) => {
     }
   }
     
-  try {
-    let info = await transporter.sendMail(mail).then(() => {
-      console.log("Message sent: %s", info.messageId)
-      console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info))
-    })
-  } catch(e) {
-    console.log(e);
-  }
+  transporter.sendMail(mail, (err, info) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Email sent" + info.response)
+    }
+  })
 };
 
 export default sendEmail;
