@@ -85,7 +85,6 @@ app.post("/AssessmentStructure", async(req, res) => {
     filepath = './English Certificates/English Language Advanced Assessment.pdf';
   }
   
-  // need to account for which assessment to attach the correct pdf
   let mail = {
     from: 'Fun Language <' + process.env.APP_EMAIL + '>',
     to: email,
