@@ -37,7 +37,7 @@ app.use("/api/questionAttempts", questionAttemptRoutes);
 app.use("/api/achievements", achievementRoutes);
 
 // Create API for sending email
-app.use("/api/user", emailRoutes)
+app.use("/api/email", emailRoutes)
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
