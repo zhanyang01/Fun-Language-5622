@@ -49,6 +49,7 @@ app.get("/", async (req, res) => {
 });
 
 // ===================send email================================
+/*
 app.post("/AssessmentStructure", async(req, res) => {
   var filename = "";
   var filepath = "";
@@ -74,6 +75,7 @@ app.post("/AssessmentStructure", async(req, res) => {
     console.log(e);
   }
 })
+*/
 
 // ===================login================================
 app.post("/Login", async (req, res) => {
