@@ -97,16 +97,11 @@ app.post("/AssessmentStructure", async(req, res) => {
     }
   }
     
-  transporter.sendMail(mail, (err, info) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send({message: "An email has been sent to you"});
-      console.log("An email has been sent to you");
-      res.json({status: info.response});
-    }
+  await transporter.sendMail(mail).then(() => {
+    res.send({message: "An email has been sent to you"})
+    console.log("An email has been sent to you");
   })
-})
+});
 
 // ===================login================================
 app.post("/Login", async (req, res) => {
