@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import {Hero} from "../../Components/LandingPage/hero"
 import {Navbar} from "../../Components/LandingPage/Navbar"
 import heroLogo from "../../Images/heroLogo.png"
-import { keyFeatures } from '../../Components/LandingPage/keyFeatures'
+import { KeyFeatures } from '../../Components/LandingPage/KeyFeatures'
 import { FeaturesList } from '../../Components/LandingPage/features.js';
-import { Container } from '@chakra-ui/react';
+import { Container, Heading} from '@chakra-ui/react';
 
 const LandingPage = () => {
 
@@ -38,11 +38,17 @@ const LandingPage = () => {
                 image={heroLogo}
             />
             <Container>
+            <Heading
+                my = {10} 
+                fontSize = "3xl" 
+                color = "teal.500">
+                Key Features
+            </Heading>
                 {
                 FeaturesList.features.map((feature, index) => {
                     const { featTitle, featText, featImage } = feature;
                     return (
-                        <keyFeatures
+                        <KeyFeatures
                             key={index}
                             featTitle={featTitle}
                             featText={featText}
