@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import LandingPage from "./Pages/LandingPage/landingPage.jsx";
 import Homepage from "./Pages/Home/homepage.jsx";
 import Login from "./Pages/Authentication/login.jsx";
 import Register from "./Pages/Authentication/register.jsx";
@@ -41,7 +42,7 @@ function App() {
     <div className="App">
       {/* need to ensure that  every route is here this might be one of the problems */}
       <Routes>
-        <Route exact path="/" element={user && user._id ? <Homepage /> : <Login />} />
+        <Route exact path="/" element={<LandingPage />} />
         {/* authentication */}
         <Route exact path="/login" element={<Login setLoginUser={setLoginUser} />} />
         <Route exact path="/register" element={<Register />} />
