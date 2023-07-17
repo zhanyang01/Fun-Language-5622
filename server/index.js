@@ -11,6 +11,7 @@ import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
 // import emailRoutes from "./Routes/emailRoute.js";
 // import { sendEmail } from "./Controllers/emailController.js";
+import nodemailer from "nodemailer";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
