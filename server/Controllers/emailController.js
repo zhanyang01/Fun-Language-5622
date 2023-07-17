@@ -56,6 +56,8 @@ export const sendEmail = asyncHandler(async(req, res) => {
     if (err) {
       console.log(err);
     } else {
+      res.send({message: "An email has been sent to you"});
+      console.log("An email has been sent to you");
       res.json({status: info.response});
     }
   })
