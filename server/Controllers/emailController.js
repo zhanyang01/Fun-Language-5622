@@ -60,7 +60,7 @@ const sendEmail = async(filename, filepath, email) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("Email sent" + info.response)
+      alert("Email sent" + info.response)
     }
   })
 };
