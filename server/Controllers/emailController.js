@@ -49,7 +49,7 @@ const sendEmail = async(filename, filepath, email) => {
     from: 'funlanguageapp@gmail.com',
     to: email,
     subject: "Certificate of Achievement",
-    html: `<p>We are pleased to inform that you have received the following certificate for passing your assessment! We look forward to your future accomplishments.</p>`,
+    text: 'We are pleased to inform that you have received the following certificate for passing your assessment! We look forward to your future accomplishments.',
     attachments: {
       filename: filename,
       path: filepath
