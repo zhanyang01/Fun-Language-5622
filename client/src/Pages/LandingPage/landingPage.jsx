@@ -28,7 +28,7 @@ function LandingPage() {
                 nextPageTwo={loginPage}
             />
             <Hero
-                title="Learn a new Language today with out highly gamified courses today!!"
+                title="Learn a new language with our gamified courses today!!"
                 nextRoute="/register"
                 nextPage={registerPage}
                 text="Create Your Account now!"
