@@ -9,7 +9,8 @@ import cors from "cors";
 // import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
-import emailRoutes from "./Routes/emailRoute.js";
+// import emailRoutes from "./Routes/emailRoute.js";
+// import { sendEmail } from "./Controllers/emailController.js";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
@@ -37,7 +38,7 @@ app.use("/api/questionAttempts", questionAttemptRoutes);
 app.use("/api/achievements", achievementRoutes);
 
 // Create API for sending email
-app.use("/api/email", emailRoutes)
+// app.use("/api/email", emailRoutes)
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
@@ -49,11 +50,27 @@ app.get("/", async (req, res) => {
 });
 
 // ===================send email================================
-/*
 app.post("/AssessmentStructure", async(req, res) => {
+  let transporter = nodemailer.createTransport({
+    // name: 'gmail',
+    service: 'gmail',
+    // port: "587",
+    // secure: false,
+    auth: {
+      user: process.env.APP_EMAIL,
+      pass: process.env.APP_PASS
+    } /*,
+    tls: {
+      rejectUnauthorized: false
+    }
+    */
+  });
+
   var filename = "";
   var filepath = "";
   const { email, testTitle } = req.body;
+
+  // need to account for which assessment to attach the correct pdf
   if (testTitle === "Basic Assessment") {
     filename = 'English Language Basic Assessment.pdf';
     filepath = './English Certificates/English Language Basic Assessment.pdf';
@@ -66,16 +83,29 @@ app.post("/AssessmentStructure", async(req, res) => {
     filename = 'English Language Advanced Assessment.pdf';
     filepath = './English Certificates/English Language Advanced Assessment.pdf';
   }
-  try {
-    await sendEmail(filename, filepath, email).then(() => {
+  
+  // need to account for which assessment to attach the correct pdf
+  let mail = {
+    from: 'Fun Language <' + process.env.APP_EMAIL + '>',
+    to: email,
+    subject: "Certificate of Achievement",
+    html: `<p>We are pleased to inform that you have received the following certificate for passing your assessment! We look forward to your future accomplishments.</p>`,
+    attachments: {
+      filename: filename,
+      path: filepath
+    }
+  }
+    
+  transporter.sendMail(mail, (err, info) => {
+    if (err) {
+      console.log(err);
+    } else {
       res.send({message: "An email has been sent to you"});
       console.log("An email has been sent to you");
-    })
-  } catch(e) {
-    console.log(e);
-  }
+      res.json({status: info.response});
+    }
+  })
 })
-*/
 
 // ===================login================================
 app.post("/Login", async (req, res) => {
