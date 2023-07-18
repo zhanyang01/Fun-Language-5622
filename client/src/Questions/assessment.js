@@ -64,12 +64,12 @@ export const testQuestions = {
       },
   
       {
-        description: "Rephrase the following sentence using the phrase 'together with': Peter goes to the market everyday. Jane goes with him.",
+        description: "Transform the following sentences into a single sentence using the phrase 'together with': Peter goes to the market everyday. Jane goes with him.",
         answer: "Peter, together with Jane, goes to the market everyday."
       },
 
       {
-        description: "Rephrase the following sentence with 'before': We returned the equipment to the storeroom. Then, we locked the storeroom.",
+        description: "Transform the following sentences into a single sentence using the word 'before': We returned the equipment to the storeroom. Then, we locked the storeroom.",
         answer: "We returned the equipment to the storeroom before locking the storeroom."
       },
 

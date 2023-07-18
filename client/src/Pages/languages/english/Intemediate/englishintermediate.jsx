@@ -1,11 +1,11 @@
 import React from 'react';
 import { EnglishDiffStructure } from '../../../../Components/languagePages/EnglishDiffStructure';
 
-const EnglishIntemediate = () => {
+const EnglishIntermediate = () => {
     return (
         <>
         <EnglishDiffStructure
-            courseDiff={"Intemediate"}
+            courseDiff={"Intermediate"}
             differA ={"Basic"}
             differB ={"Advanced"}
             part1 ={"eicourse1"}
@@ -19,4 +19,4 @@ const EnglishIntemediate = () => {
     )
 }
 
-export default EnglishIntemediate
+export default EnglishIntermediate

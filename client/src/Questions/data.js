@@ -145,7 +145,7 @@ export const allQuestions = {
     },
   ],
 
-  intemediateQuestionsPartOne: [
+  intermediateQuestionsPartOne: [
     {
       description: "None of this should ___ happened.",
       answer: "B",
@@ -157,7 +157,7 @@ export const allQuestions = {
     },
 
     {
-      description: "What is the most appropriate adjactive to describe someone as careful?",
+      description: "What is the most appropriate adjective to describe someone as careful?",
       answer: "A",
       options: [
         { value: "A", text: "cautious" },
@@ -167,7 +167,7 @@ export const allQuestions = {
     },
 
     {
-      description: "This person can't be ________",
+      description: "This person can't be ___.",
       answer: "A",
       options: [
         { value: "A", text: "trusted" },
@@ -177,9 +177,9 @@ export const allQuestions = {
     },
   ],
 
-  intemediateQuestionsPartTwo: [
+  intermediateQuestionsPartTwo: [
     {
-      description: "At least ___ is above the median score.",
+      description: "At least ___ above the median score.",
       answer: "C",
       options: [
         { value: "A", text: "am" },
@@ -209,7 +209,7 @@ export const allQuestions = {
     },
   ],
 
-  intemediateQuestionsPartThree: [
+  intermediateQuestionsPartThree: [
     {
       description: "___ is Gamora?",
       answer: "C",
@@ -241,7 +241,7 @@ export const allQuestions = {
     },
   ],
 
-  intemediateQuestionsPartFour: [
+  intermediateQuestionsPartFour: [
     {
       description: "No sooner (a), than (b).",
       answer: "A",
@@ -327,7 +327,7 @@ export const allQuestions = {
     },
 
     {
-      description: "Which of the following is the definition of alleviate?",
+      description: "Which of the following is not the definition of alleviate?",
       answer: "C",
       options: [
         { value: "A", text: "to make something, such as pain and suffering, more bearable" },
@@ -389,7 +389,7 @@ export const allQuestions = {
       options: [
         { value: "A", text: "egalitarian" },
         { value: "B", text: "rank" },
-        { value: "C", text: "social hierachy" },
+        { value: "C", text: "social hierarchy" },
       ],
     },
 

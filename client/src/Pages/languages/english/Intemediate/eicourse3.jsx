@@ -7,7 +7,7 @@ import { useQuiz } from '../../../../Storage/UserStorage';
 
 const EICourse3 = () => {
     // to save the quiz attempt
-    const questionLabel = "intemediateQuestionsPartThree"
+    const questionLabel = "intermediateQuestionsPartThree"
 
     /*
     const saveProgress = () => {
@@ -35,12 +35,12 @@ const EICourse3 = () => {
     return (
         <>
            <QuizStructure 
-            quizTitle={"Intemediate Course (Part 3) "}
+            quizTitle={"Intermediate Course (Part 3) "}
             questionLabel = {questionLabel}
             questions ={allQuestions[questionLabel]}
             nextLevelRoute ={"eicourse4"}
             previousLevelRoute={"eicourse2"}
-            backToCourseRoute={"englishintemediate"}
+            backToCourseRoute={"englishintermediate"}
             value={50}
             courseDiff={"Intermediate"}
             />

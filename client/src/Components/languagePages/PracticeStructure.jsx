@@ -1,26 +1,14 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Button, Container, Heading, Input, Text, useToast } from '@chakra-ui/react';
-import { testQuestions } from '../../Questions/assessment';
-import axios from 'axios';
+import { practiceQuestions } from '../../Questions/practice';
 
-export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
+export const PracticeStructure = ({practiceTitle, nextLevelRoute, questions,
     questionLabel}) => {
 
     const toast = useToast();
     
     const navigate = useNavigate();
-
-    // const {quiz, saveQuiz} = useQuiz()    
-    
-    // const [currentAnswers,setCurrentAnswers] = useState([])
-
-    /*
-    const handleAnswerChange = (newAnswer,questionNumber) =>{
-        currentAnswers[questionNumber] = newAnswer
-        setCurrentAnswers([...currentAnswers])
-    }
-    */
     
     function getScore() {
         var score  = 0;
@@ -28,45 +16,16 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         for (var i = 0; i < currentAnswers.length ; i++) {
             console.log("currentAnswers",currentAnswers);
             console.log("questionLabel",questionLabel);
-            console.log("testQuestions[questionLabel][i]", testQuestions[questionLabel]);
-            if (currentAnswers[i].value === testQuestions[questionLabel][i].answer) {
+            console.log("practiceQuestions[questionLabel][i]", practiceQuestions[questionLabel]);
+            if (currentAnswers[i].value === practiceQuestions[questionLabel][i].answer) {
                 score += 1;
             }
         }
         return score;
     }
-    
-    /*
-    useEffect(()=>{
-        console.log("ans",currentAnswers)
-    },[currentAnswers])
-
-    /*
-    useEffect(()=>{
-        console.log("quiz",quiz)
-        const currentAns = []
-        // check if there or no
-        if(quiz.hasOwnProperty(questionLabel)){
-            // have prior attempt
-            console.log("attempt exists =D")
-            for(var i = 0;i < quiz[questionLabel].length; i++){
-                const {questionNo,answerValue} = quiz[questionLabel][i]
-                currentAns.push(answerValue)
-            }
-        }
-        else{
-            // first attempt
-            for(var i = 0;i < testQuestions[questionLabel].length; i++){
-                currentAns.push("-1")
-            }
-        }
-        // quiz[questionLabel]
-        setCurrentAnswers(currentAns)
-    },[])
-    */
             
     const submitAnswer = async() => {
-        var maxScore = "/" + testQuestions[questionLabel].length + " correct"
+        var maxScore = "/" + practiceQuestions[questionLabel].length + " correct"
         var pass = "Congratulations! You have passed the proficiency test :)";
         var fail = "Please try again!"
         var score = getScore();
@@ -81,20 +40,6 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             });
             //alert(pass + "\n" + score + maxScore);
             navigate(`/${nextLevelRoute}`);
-            const email = localStorage.getItem("email");
-            const info = {email, testTitle};
-            await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/AssessmentStructure`, info)
-            .then(res => {
-                console.log(res);
-                toast({
-                    title: "Email",
-                    description: res.data.message,
-                    duration: 5000,
-                    isClosable: true,
-                    status: 'info',
-                    position: 'top',
-                });
-            })
         } else {
             toast({
                 title: fail,
@@ -104,45 +49,17 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                 status: 'info',
                 position: 'top',
             });
-            //alert(fail + "\n" + score + maxScore);
         }
     }
 
     const exit = () => {
         navigate(`/${nextLevelRoute}`);
     }
-    /*
-
-    const previousLevel = () => {
-        navigate(`/${previousLevelRoute}`)
-    }
-
-    const saveProgress = () => {
-        var email = localStorage.getItem("email");
-        const course = email + " English Course";
-        const meter = email + " English Meter";
-        localStorage.setItem(course, {courseDiff});
-        //console.log("Basic");
-        localStorage.setItem(meter, `${value}%`);
-        //console.log("0%");
-        // this is where the saveQuiz comes in
-        let quizAnswerArray = []
-        for(var i = 0; i < currentAnswers.length; i ++){
-            //console.log(i,currentAnswers[i])
-            quizAnswerArray.push({
-                questionNo:i,
-                answerValue: currentAnswers[i]
-            })
-        }
-        saveQuiz(questionLabel,quizAnswerArray)
-        navigate(`/${backToCourseRoute}`);
-    }
-    */
 
     return (
         <>
             <Heading color="teal.500" marginBottom={10}> 
-                {testTitle}
+                {practiceTitle}
             </Heading>
                 <Container>
                     {
@@ -180,4 +97,4 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     )
 }
 
-export default AssessmentStructure
+export default PracticeStructure
