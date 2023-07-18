@@ -55,6 +55,7 @@ app.post("/AssessmentStructure", async(req, res) => {
   var filename = "";
   var filepath = "";
   const { email, testTitle } = req.body;
+  console.log(req.body);
 
   // need to account for which assessment to attach the correct pdf
   if (testTitle === "Basic Assessment") {
