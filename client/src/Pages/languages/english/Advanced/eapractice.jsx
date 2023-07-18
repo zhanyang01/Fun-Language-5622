@@ -7,7 +7,7 @@ const EAPractice = () => {
     return (
         <>
             <PracticeStructure 
-            testTitle={"Advanced Practice Assessment"}
+            practiceTitle={"Advanced Practice Assessment"}
             questionLabel = {questionLabel}
             questions ={practiceQuestions[questionLabel]}
             nextLevelRoute ={"englishadvanced"}

@@ -7,7 +7,7 @@ const EIPractice = () => {
     return (
         <>
             <PracticeStructure 
-            testTitle={"Intermediate Practice Assessment"}
+            practiceTitle={"Intermediate Practice Assessment"}
             questionLabel = {questionLabel}
             questions ={practiceQuestions[questionLabel]}
             nextLevelRoute ={"englishintermediate"}

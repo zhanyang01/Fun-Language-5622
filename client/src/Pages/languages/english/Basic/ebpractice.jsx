@@ -7,7 +7,7 @@ const EBPractice = () => {
     return (
         <>
             <PracticeStructure 
-            testTitle={"Basic Practice Assessment"}
+            practiceTitle={"Basic Practice Assessment"}
             questionLabel = {questionLabel}
             questions ={practiceQuestions[questionLabel]}
             nextLevelRoute ={"englishbasic"}
