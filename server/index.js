@@ -73,7 +73,7 @@ app.post("/AssessmentStructure", async(req, res) => {
     
   try {
     await sendEmail(filename, filepath, email).then(() => {
-      res.send({message: "An email has been sent to you", email: req.body.email})
+      res.send({message: "An email has been sent to you"})
       console.log("An email has been sent to you");
     })
   } catch(e) {

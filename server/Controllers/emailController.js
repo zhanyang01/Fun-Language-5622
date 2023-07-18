@@ -47,7 +47,7 @@ const sendEmail = async(filename, filepath, email) => {
   
   let mail = {
     from: 'funlanguageapp@gmail.com',
-    to: email,
+    to: 'funlanguageapp@gmail.com',
     subject: "Certificate of Achievement",
     text: 'We are pleased to inform that you have received the following certificate for passing your assessment! We look forward to your future accomplishments.',
     attachments: {
