@@ -9,12 +9,10 @@ const sendEmail = async(filename, filepath, email) => {
   // let testAccount = nodemailer.createTestAccount();
   let transporter = nodemailer.createTransport({
     // name: 'gmail',
-    service: 'gmail',
-    /*
+    // service: 'gmail',
     host: "smtp.gmail.com",
-    port: "587",
-    secure: false,
-    */
+    port: 465,
+    secure: true,
     auth: {
       user: 'funlanguageapp@gmail.com',
       pass: 'kwdlsvrtlkunyaha'
