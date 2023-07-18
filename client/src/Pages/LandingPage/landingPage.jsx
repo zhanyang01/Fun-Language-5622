@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {Hero} from "../../Components/LandingPage/hero"
 import {Navbar} from "../../Components/LandingPage/Navbar"
 import heroLogo from "../../Images/heroLogo.png"
-import { KeyFeatures } from '../../Components/LandingPage/KeyFeatures'
+import { KeyFeatures } from '../../Components/LandingPage/keyFeatures'
 import { FeaturesList } from '../../Components/LandingPage/features.js';
 import { Container, Heading} from '@chakra-ui/react';
 
