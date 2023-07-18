@@ -14,6 +14,7 @@ const EnglishIntermediate = () => {
             part4 ={"eicourse4"}
             assess ={"eiassessment"}
             oral = {"eioral"}
+            practice = {"eipractice"}
         />
         </>
     )
