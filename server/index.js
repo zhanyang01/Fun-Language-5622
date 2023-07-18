@@ -55,7 +55,7 @@ app.post("/AssessmentStructure", async(req, res) => {
   var filename = "";
   var filepath = "";
   const { email, testTitle } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
 
   // need to account for which assessment to attach the correct pdf
   if (testTitle === "Basic Assessment") {
@@ -73,7 +73,7 @@ app.post("/AssessmentStructure", async(req, res) => {
     
   try {
     await sendEmail(filename, filepath, email).then(() => {
-      res.send({message: "An email has been sent to you"})
+      res.send({message: "An email has been sent to you", email: req.body.email})
       console.log("An email has been sent to you");
     })
   } catch(e) {
