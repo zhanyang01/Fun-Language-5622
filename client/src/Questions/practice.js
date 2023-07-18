@@ -75,7 +75,7 @@ export const practiceQuestions = {
 
       {
         description: "*What is the noun of 'pollute'?",
-        answer: "quickest"
+        answer: "pollution"
       },
 
       {
