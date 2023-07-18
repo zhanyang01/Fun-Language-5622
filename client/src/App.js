@@ -19,7 +19,7 @@ import EBCourse4 from "./Pages/languages/english/Basic/ebcourse4.jsx";
 import EBCourseDone from "./Pages/languages/english/Basic/ebcoursedone.jsx";
 import EBAssessment from "./Pages/languages/english/Basic/ebassessment.jsx";
 import EBOral from "./Pages/languages/english/Basic/eboral.jsx";
-import EBPractice from "./Pages/languages/english/Basic/ebpractice";
+import EBPractice from "./Pages/languages/english/Basic/ebpractice.jsx";
 import EnglishIntermediate from "./Pages/languages/english/Intemediate/englishintermediate.jsx";
 import EICourse1 from "./Pages/languages/english/Intemediate/eicourse1.jsx";
 import EICourse2 from "./Pages/languages/english/Intemediate/eicourse2.jsx";
@@ -28,7 +28,7 @@ import EICourse4 from "./Pages/languages/english/Intemediate/eicourse4.jsx";
 import EICourseDone from "./Pages/languages/english/Intemediate/eicoursedone.jsx";
 import EIAssessment from "./Pages/languages/english/Intemediate/eiassessment.jsx";
 import EIOral from "./Pages/languages/english/Intemediate/eioral.jsx";
-import EIPractice from "./Pages/languages/english/Intemediate/eipractice";
+import EIPractice from "./Pages/languages/english/Intemediate/eipractice.jsx";
 import EnglishAdvanced from "./Pages/languages/english/Advanced/englishadvanced.jsx";
 import EACourse1 from "./Pages/languages/english/Advanced/eacourse1.jsx";
 import EACourse2 from "./Pages/languages/english/Advanced/eacourse2.jsx";
@@ -37,7 +37,7 @@ import EACourse4 from "./Pages/languages/english/Advanced/eacourse4.jsx";
 import EACourseDone from "./Pages/languages/english/Advanced/eacoursedone.jsx";
 import EAAssessment from "./Pages/languages/english/Advanced/eaassessment.jsx";
 import EAOral from "./Pages/languages/english/Advanced/eaoral.jsx";
-import EAPractice from "./Pages/languages/english/Advanced/eapractice";
+import EAPractice from "./Pages/languages/english/Advanced/eapractice.jsx";
 
 function App() {
   const [user, setLoginUser] = useState({});
