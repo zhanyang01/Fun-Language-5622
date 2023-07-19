@@ -54,7 +54,7 @@ const Register = () => {
         console.log("Invalid password (must be at least 8 characters)");
     }
     if (errors.length === 0) {
-        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/Register`, user)
+        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/register`, user)
         .then(res => {
             console.log(res);
             // alert(res.data.message);

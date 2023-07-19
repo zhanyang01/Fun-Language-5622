@@ -3,7 +3,8 @@ import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 
 // import validator from "validator";
-//import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
+import sendEmail from "../HelperFunctions/sendEmail.js";
 
 // ==================== helper functions====================
 
@@ -79,3 +80,45 @@ export const deleteUser = async (req, res) => {
       });
   }
 };
+
+// ============= Register =============
+export const register = asyncHandler(async (req, res) => {
+  try {
+    const { name, username, email, password } = req.body;
+    const user = await User.findOne({ email: req.body.email });
+    // must fill up everything
+    if (!name || !email || !password || !username) {
+      return res.send({ message: "Please fill up all fields" });
+    }
+    // check if user exist
+    if (user) {
+      res.send({ message: "user already exists" });
+      console.log("user already exists");
+    } else {
+      // encrypting password
+      const encryptedPass = await bcrypt.hash(password, 10);
+      const newUser = new User({
+        name,
+        username,
+        password: encryptedPass,
+        email,
+      });
+      await User.create(newUser).then(async (result) => {
+        const content = {
+          user: newUser,
+          recipient: email,
+        };
+        await sendEmail("verification", content).then((result) => {
+          res.send({
+            message: "registration successful",
+            userId: newUser._id,
+            success: true,
+          });
+          console.log("registration successful");
+        });
+      });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
