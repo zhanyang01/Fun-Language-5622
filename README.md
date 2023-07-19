@@ -4,13 +4,7 @@
 
 2. Enroll for courses on the language of choice varying in terms of difficulty (basic, intermediate, advanced)  
 
-3. If the user opts for a higher difficulty course, he or she will be required to do the assessment for the preceding course if not done previously to determine whether they are able to enroll for the course of choice (otherwise enroll for preceding course)  
-
-4. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)  
-
-5. Certificate of achievement sent to their email if they pass the assessment for the enrolled course  
-
-6. Resources for reference
+3. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)  
 
 ## Scope of Project:  
 The Fun Language App allows for users to have a fun experience learning a new language of interest.
@@ -24,22 +18,20 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * English Course and levels of difficulty
 
-* Gamification feature (user needs to complete current task to unlock higher levels)  
-
-* Interactive interface to allow the users to be able to navigate between courses with ease  
+* Progress component (save progress feature and progress bar)  
 
 ## Features to be completed by mid-July:
-* Oral speaking page for each level 
+* Interactive interface to allow the users to be able to navigate between courses with ease
 
-* Proficiency assessment for each level of difficulty  
+* Achievement system
 
-* Certificates of achievement  
+* Oral speaking page for each level of difficulty
 
-* Friends system for users to connect with friends and peers 
+* Proficiency assessments 
 
-* Web-based forum to allow for meaningful discussions between students and teachers, hence facilitating effective learning 
+* Landing page 
 
-* Resources for references  
+* Practice assessment for each level of difficulty  
 
 ## Techstack:
 * MongoDB (Document Database)
@@ -57,16 +49,12 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Chakra UI (app design)
 
-* Nodemailer (for sending certificate of achievement to user via email)
-
 * Jest (unit testing)
 
 ## Distinctive Features:
 * Gamification  
 
 * Interactive interface  
-
-* Web-based forum  
 
 ## Development Plan:
 * 2nd week of May: Finalize project ideas and create poster and video for liftoff  
@@ -77,15 +65,15 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 1st week of June: Create English course and levels of difficulty, refine authentication process
 
-* 2nd week of June: Implement gamification features and user interface
+* 2nd week of June: Implement progress component for gamification features (progress bar and save progress feature)
 
 * 3rd week of June: Create profile page and refine associated features 
 
-* 1st week of July: Improve on gamification features and user interface, create proficiency assessments
+* 1st week of July: Implement interactive interface and create proficiency assessments
 
-* 2nd week of July: Create oral speaking page for each level and certificates of achievement
+* 2nd week of July: Create oral speaking page for each level and achievement system for gamification features
 
-* 3rd week of July: Create friends system and web-based forum, extend to another language
+* 3rd week of July: Create landing page and practice assessments
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
