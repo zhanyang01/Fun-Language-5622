@@ -1,4 +1,4 @@
-import { getUsers, getUserById, deleteUser } from "../Controllers/userController.js";
+import { getUsers, getUserById, deleteUser, register } from "../Controllers/userController.js";
 import express from "express";
 
 const router = express.Router();
@@ -11,5 +11,11 @@ router.route("/:userId").get(getUserById);
 
 // express router method to create route for deleting a user
 router.route("/:userId").delete(deleteUser);
+
+// express router method to create route for registering a user
+router.route("/register").post(register);
+
+// express router method to create route for verification of email
+//router.put("/verify/:userId").put(verifyEmail);
 
 export default router;

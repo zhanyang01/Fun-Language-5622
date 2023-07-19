@@ -12,7 +12,7 @@ import bcrypt from "bcrypt";
 // import emailRoutes from "./Routes/emailRoute.js";
 //import sendEmail from "./Controllers/emailController.js";
 // import nodemailer from "nodemailer";
-import sendEmail from "./HelperFunctions/sendEmail.js";
+//import Token from "./Models/tokenModel.js";
 import { cloudinaryObj } from "./config/cloudinary.js";
 
 connectDB();
@@ -117,48 +117,6 @@ app.post("/Login", async (req, res) => {
     } else {
       res.send({ message: "not registered" });
       console.log("not registered");
-    }
-  } catch (e) {
-    console.log(e);
-  }
-});
-
-// ========================registration of account =============================
-app.post("/Register", async (req, res) => {
-  try {
-    const { name, username, email, password } = req.body;
-    const user = await User.findOne({ email: req.body.email });
-    // must fill up everything
-    if (!name || !email || !password || !username) {
-      return res.send({ message: "Please fill up all fields" });
-    }
-    // check if user exist
-    if (user) {
-      res.send({ message: "user already exists" });
-      console.log("user already exists");
-    } else {
-      // encrypting password
-      const encryptedPass = await bcrypt.hash(password, 10);
-      const newUser = new User({
-        name,
-        username,
-        password: encryptedPass,
-        email,
-      });
-      await User.create(newUser).then(async (result) => {
-        const content = {
-          user: newUser,
-          recipient: email,
-        };
-        await sendEmail("verification", content).then((result) => {
-          res.send({
-            message: "Registration successful",
-            userId: newUser._id,
-            success: true,
-          });
-          console.log("Registration successful");
-        });
-      });
     }
   } catch (e) {
     console.log(e);
