@@ -16,8 +16,8 @@ const sendEmail = async(filename, filepath, email) => {
     secure: true,
     */
     auth: {
-      user: 'funlanguageapp@gmail.com',
-      pass: 'lwiyxwryrtakfule'
+      user: process.env.APP_EMAIL,
+      pass: process.env.APP_PASS
     } /*,
     tls: {
       rejectUnauthorized: false
@@ -46,8 +46,8 @@ const sendEmail = async(filename, filepath, email) => {
   */
   
   let mail = {
-    from: 'funlanguageapp@gmail.com',
-    to: 'funlanguageapp@gmail.com',
+    from: process.env.APP_EMAIL,
+    to: email,
     subject: "Certificate of Achievement",
     text: 'We are pleased to inform that you have received the following certificate for passing your assessment! We look forward to your future accomplishments.',
     attachments: {
