@@ -12,6 +12,7 @@ import bcrypt from "bcrypt";
 // import emailRoutes from "./Routes/emailRoute.js";
 import sendEmail from "./Controllers/emailController.js";
 // import nodemailer from "nodemailer";
+import Token from "./Models/tokenModel.js";
 
 import { cloudinaryObj } from "./config/cloudinary.js";
 
@@ -140,6 +141,17 @@ app.post("/Register", async (req, res) => {
         res.send({ message: "registration successful" });
         console.log("registration successful");
       });
+
+      /*create token
+      const newToken = new Token({
+        userId: user._id,
+        token: crypto.randomBytes(32).toString("hex")
+      });
+
+      await Token.create(newToken).then(() => {
+        console.log("token created");
+      })
+      */
     }
   } catch (e) {
     console.log(e);
