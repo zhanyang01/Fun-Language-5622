@@ -16,4 +16,5 @@ const EmailVerificationForm = () => {
             .catch((err) => {
                 setverificationFail(true);
             });
-    }*/}
+    */}
+}
