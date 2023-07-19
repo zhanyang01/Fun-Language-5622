@@ -159,6 +159,17 @@ app.post("/Register", async (req, res) => {
           console.log("Registration successful");
         });
       });
+
+      /*create token
+      const newToken = new Token({
+        userId: user._id,
+        token: crypto.randomBytes(32).toString("hex")
+      });
+
+      await Token.create(newToken).then(() => {
+        console.log("token created");
+      })
+      */
     }
   } catch (e) {
     console.log(e);
