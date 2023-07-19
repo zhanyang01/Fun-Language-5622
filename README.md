@@ -33,7 +33,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Practice assessment for each level of difficulty  
 
-## Techstack:
+## Tech Stack:
 * MongoDB (Document Database)
 
 * Express.js (Server-side Web Framework)
