@@ -6,19 +6,27 @@ import express from "express";
 import User from "./Models/userModel.js";
 import dotenv from "dotenv";
 import cors from "cors";
-// import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
 // import emailRoutes from "./Routes/emailRoute.js";
-import sendEmail from "./Controllers/emailController.js";
+//import sendEmail from "./Controllers/emailController.js";
 // import nodemailer from "nodemailer";
-import Token from "./Models/tokenModel.js";
-
+import sendEmail from "./HelperFunctions/sendEmail.js";
 import { cloudinaryObj } from "./config/cloudinary.js";
 
 connectDB();
 
 dotenv.config();
+
+// ================= JWT =================
+/*
+const generateJWT = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: 5*60,
+  });
+};
+*/
 
 const app = express();
 
@@ -52,7 +60,7 @@ app.get("/", async (req, res) => {
 });
 
 // ===================send email================================
-app.post("/AssessmentStructure", async(req, res) => {
+app.post("/AssessmentStructure", async (req, res) => {
   var filename = "";
   var filepath = "";
   const { email, testTitle } = req.body;
@@ -60,24 +68,24 @@ app.post("/AssessmentStructure", async(req, res) => {
 
   // need to account for which assessment to attach the correct pdf
   if (testTitle === "Basic Assessment") {
-    filename = 'English Language Basic Assessment.pdf';
-    filepath = './English Certificates/English Language Basic Assessment.pdf';
+    filename = "English Language Basic Assessment.pdf";
+    filepath = "./English Certificates/English Language Basic Assessment.pdf";
   }
   if (testTitle === "Intermediate Assessment") {
-    filename = 'English Language Intermediate Assessment.pdf';
-    filepath = './English Certificates/English Language Intermediate Assessment.pdf';
+    filename = "English Language Intermediate Assessment.pdf";
+    filepath = "./English Certificates/English Language Intermediate Assessment.pdf";
   }
   if (testTitle === "Advanced Assessment") {
-    filename = 'English Language Advanced Assessment.pdf';
-    filepath = './English Certificates/English Language Advanced Assessment.pdf';
+    filename = "English Language Advanced Assessment.pdf";
+    filepath = "./English Certificates/English Language Advanced Assessment.pdf";
   }
-    
+
   try {
     await sendEmail(filename, filepath, email).then(() => {
-      res.send({message: "An email has been sent to you"})
+      res.send({ message: "An email has been sent to you" });
       console.log("An email has been sent to you");
-    })
-  } catch(e) {
+    });
+  } catch (e) {
     console.log(e);
   }
 });
@@ -137,9 +145,19 @@ app.post("/Register", async (req, res) => {
         password: encryptedPass,
         email,
       });
-      await User.create(newUser).then(() => {
-        res.send({ message: "registration successful" });
-        console.log("registration successful");
+      await User.create(newUser).then(async (result) => {
+        const content = {
+          user: newUser,
+          recipient: email,
+        };
+        await sendEmail("verification", content).then((result) => {
+          res.send({
+            message: "Registration successful",
+            userId: newUser._id,
+            success: true,
+          });
+          console.log("Registration successful");
+        });
       });
 
       /*create token
