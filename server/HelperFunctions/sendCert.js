@@ -17,7 +17,7 @@ const sendCert = async (filename, filepath, email) => {
     from: process.env.APP_EMAIL,
     to: email,
     subject: "Certificate of Achievement",
-    text: "We are pleased to present to you the certificate of achievement for passing your assessment! We look forward to hearing about your future accomplishments :)",
+    text: "We are pleased to present to you the certificate of achievement! We look forward to hearing about your future accomplishments :)",
     attachments: [
         {
             filename: filename,
