@@ -74,7 +74,7 @@ app.post("/AssessmentStructure", async (req, res) => {
   }
 
   try {
-    await sendCert(filename, filepath, email).then(() => {
+    await sendCert(filename, filepath, email).then((result) => {
       res.send({ message: "An email has been sent to you" });
       console.log("An email has been sent to you");
     });
@@ -96,7 +96,7 @@ app.post("/QuizStructure", async (req, res) => {
   }
 
   try {
-    await sendCert(filename, filepath, email).then(() => {
+    await sendCert(filename, filepath, email).then((result) => {
       res.send({ message: "An email has been sent to you" });
       console.log("An email has been sent to you");
     });
