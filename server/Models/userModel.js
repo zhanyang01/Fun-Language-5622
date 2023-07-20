@@ -30,6 +30,10 @@ const userSchema = mongoose.Schema(
         required: false,
       },
     },
+    cert: {
+      type: Array,
+      required: false
+    }
   },
   {
     timeStamp: true,
