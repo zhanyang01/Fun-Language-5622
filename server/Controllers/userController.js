@@ -252,34 +252,44 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
 export const cert = asyncHandler(async (req, res) => {
   var filename = "";
   var filepath = "";
-  const { email, testTitle } = req.body;
+  const { email, type } = req.body;
   // console.log(req.body);
 
   // need to account for which assessment to attach the correct pdf
-  if (testTitle === "Basic Assessment") {
-    filename = "English Language Basic Assessment.pdf";
-    filepath = "./English Certificates/English Language Basic Assessment.pdf";
+  if (type === "English Assessment") {
+    filename = "English Language Assessment.pdf";
+    filepath = "./English Certificates/English Language Assessment.pdf";
   }
-  if (testTitle === "Intermediate Assessment") {
-    filename = "English Language Intermediate Assessment.pdf";
-    filepath = "./English Certificates/English Language Intermediate Assessment.pdf";
-  }
-  if (testTitle === "Advanced Assessment") {
-    filename = "English Language Advanced Assessment.pdf";
-    filepath = "./English Certificates/English Language Advanced Assessment.pdf";
+  if (type === "English Course") {
+    filename = "English Language Course.pdf";
+    filepath = "./English Certificates/English Language Course.pdf";
   }
 
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = User.findOne({ email: req.body.email });
     if (user) {
-      await sendCert(filename, filepath, email).then(() => {
+      const currentCerts = user.cert;
+      if (user.cert.includes(type)) {
+        res.send({ message: "you have already received the certificate" });
+        console.log("You have already received the certificate");
+      } else {
+        currentCerts.push(type);
+        await User.updateOne({
+          email: email,
+        },
+        {cert: currentCerts}
+        ).then(() => {
+          console.log("User updated")
+        })
+        await sendCert(filename, filepath, email).then((result) => {
         res.send({ message: "An email has been sent to you" });
         console.log("An email has been sent to you");
       });
-    } else {
-      res.send({ message: "Email does not exist" });
-      console.log("Email does not exist");
     }
+  } else {
+    res.send({ message: "Email does not exist" });
+    console.log("Email does not exist")
+  }
   } catch (e) {
     console.log(e);
   }

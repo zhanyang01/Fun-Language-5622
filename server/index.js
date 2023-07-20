@@ -13,7 +13,8 @@ import bcrypt from "bcrypt";
 //import sendEmail from "./Controllers/emailController.js";
 // import nodemailer from "nodemailer";
 //import Token from "./Models/tokenModel.js";
-import sendCert from "./HelperFunctions/sendCert.js";
+
+// import sendCert from "./HelperFunctions/sendCert.js";
 
 connectDB();
 
@@ -60,6 +61,7 @@ app.get("/", async (req, res) => {
 });
 
 // ===================send email================================
+/*
 app.post("/AssessmentStructure", async (req, res) => {
   var filename = "";
   var filepath = "";
@@ -103,6 +105,7 @@ app.post("/QuizStructure", async (req, res) => {
     console.log(e);
   }
 });
+*/
 
 // Express js listen method to run project
 app.listen(PORT, console.log(`Server started `));
