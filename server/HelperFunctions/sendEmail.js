@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = async (emailType, content) => {
-  const { user, recipient } = content;
+  const { user, token, recipient } = content;
   const { _id, name } = user;
   var emailSubject = "";
   var emailText = "";
@@ -17,7 +17,7 @@ const sendEmail = async (emailType, content) => {
   if (emailType == "verification") {
     emailSubject = "Account Verification";
     console.log(emailSubject);
-    var linkToClick = `${process.env.REACT_APP_FRONTEND_SERVER}/verify/${_id}/`;
+    var linkToClick = `${process.env.REACT_APP_FRONTEND_SERVER}/verify/${_id}/${token}`;
     var emailText = `Hello ${name},\n\nPlease click on the following link to verify your account:\n\n${linkToClick}\n\nIf you did not request this, please ignore this email.\n\nRegards,\n\nThe English Language Team`;
   }
   await transporter.sendMail({
