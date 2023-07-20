@@ -51,7 +51,7 @@ const Login = ({setLoginUser}) => {
                 // alert("invalid email");
                 console.log("Invalid email");
             } else {
-                await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/Login`, user)
+                await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/login`, user)
                 .then((res)=>{
                     console.log(res);
                     // alert(res.data.message);
