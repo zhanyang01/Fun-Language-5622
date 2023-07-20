@@ -99,7 +99,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                         console.log(checkSubsetArray(res.data.data.achievements, Object.values(assessmentDictionary)));
                         if (checkSubsetArray(res.data.data.achievements, Object.values(assessmentDictionary))) {
                             await AchievementTriggerStructure("English Master", toast)
-                            await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/cert/${localStorage.getItem("userId")}`, info)
+                            await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/cert`, info)
                             .then(res => {
                                 console.log(res);
                                 toast({
