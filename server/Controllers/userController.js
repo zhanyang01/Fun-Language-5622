@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 // import validator from "validator";
 import bcrypt from "bcrypt";
 import sendEmail from "../HelperFunctions/sendEmail.js";
+import sendCert from "../HelperFunctions/sendCert.js";
 
 // ==================== helper functions====================
 
@@ -117,6 +118,43 @@ export const register = asyncHandler(async (req, res) => {
           console.log("registration successful");
         });
       });
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+// ============= Send certificate of achievement =============
+export const cert = asyncHandler(async(req, res) => {
+  var filename = "";
+  var filepath = "";
+  const { email, testTitle } = req.body;
+  // console.log(req.body);
+
+  // need to account for which assessment to attach the correct pdf
+  if (testTitle === "Basic Assessment") {
+    filename = "English Language Basic Assessment.pdf";
+    filepath = "./English Certificates/English Language Basic Assessment.pdf";
+  }
+  if (testTitle === "Intermediate Assessment") {
+    filename = "English Language Intermediate Assessment.pdf";
+    filepath = "./English Certificates/English Language Intermediate Assessment.pdf";
+  }
+  if (testTitle === "Advanced Assessment") {
+    filename = "English Language Advanced Assessment.pdf";
+    filepath = "./English Certificates/English Language Advanced Assessment.pdf";
+  }
+
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      await sendCert(filename, filepath, email).then(() => {
+        res.send({ message: "An email has been sent to you" });
+        console.log("An email has been sent to you");
+      });
+    } else {
+      res.send({ message: "Email does not exist" });
+      console.log("Email does not exist");
     }
   } catch (e) {
     console.log(e);
