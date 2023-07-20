@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendCert = async (filename, filepath, email) => {
-  transporter.sendMail({
+  await transporter.sendMail({
     from: process.env.APP_EMAIL,
     to: email,
     subject: "Certificate of Achievement",
@@ -24,6 +24,8 @@ const sendCert = async (filename, filepath, email) => {
             filepath: filepath
         }
     ]
+  }).then(() => {
+    console.log("success")
   });
 };
 
