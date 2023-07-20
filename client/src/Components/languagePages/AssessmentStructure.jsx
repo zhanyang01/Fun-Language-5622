@@ -83,7 +83,7 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             navigate(`/${nextLevelRoute}`);
             const email = localStorage.getItem("email");
             const info = {email, testTitle};
-            await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/email/cert`, info)
+            await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/cert`, info)
             .then(res => {
                 console.log(res);
                 toast({

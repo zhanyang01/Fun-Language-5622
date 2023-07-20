@@ -1,4 +1,4 @@
-import { getUsers, getUserById, deleteUser, register } from "../Controllers/userController.js";
+import { getUsers, getUserById, deleteUser, register, cert } from "../Controllers/userController.js";
 import express from "express";
 
 const router = express.Router();
@@ -17,5 +17,8 @@ router.route("/register").post(register);
 
 // express router method to create route for verification of email
 //router.put("/verify/:userId").put(verifyEmail);
+
+// express router method to create route for sending email to user
+router.route("/cert").post(cert);
 
 export default router;
