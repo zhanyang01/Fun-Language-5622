@@ -114,6 +114,9 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         var pass = "Passed! Please proceed to next level";
         var fail = "Please try again!"
         var score = getScore();
+        const email = localStorage.getItem("email");
+        const type = "English Course";
+        const info = {email, type};
         const courseDoneDictionary = {"ebcoursedone" : "English Baby", "eicoursedone" : "English Apprentice", "eacoursedone" : "English Sage"}
         if (score === allQuestions[questionLabel].length) {
             const updatedAnswer = formatAnswer();
@@ -127,6 +130,18 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
                         console.log(checkSubsetArray(res.data.data.achievements, Object.values(courseDoneDictionary)));
                         if (checkSubsetArray(res.data.data.achievements, Object.values(courseDoneDictionary))) {
                             await AchievementTriggerStructure("English Finisher", toast)
+                            await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/QuizStructure`, info)
+                            .then(res => {
+                                console.log(res);
+                                toast({
+                                    title: "Email",
+                                    description: res.data.message,
+                                    duration: 5000,
+                                    isClosable: true,
+                                    status: 'info',
+                                    position: 'top',
+                                });
+                            })
                         }
                     }).catch((err) => {
                         console.log(err)

@@ -3,6 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import {Button, Container, Heading, Input, Text, useToast } from '@chakra-ui/react';
 import { testQuestions } from '../../Questions/assessment';
 import axios from 'axios';
+import { AchievementTriggerStructure } from '../Profile/achievementTriggerStructure';
+import { checkSubsetArray } from '../../HelperFunctions/checkSubsetArray';
 
 export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     questionLabel}) => {
@@ -70,6 +72,11 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         var pass = "Congratulations! You have passed the proficiency test :)";
         var fail = "Please try again!"
         var score = getScore();
+        const assessmentDictionary = {
+            "Basic Assessment" : "English Novice", 
+            "Intermediate Assessment" : "English Veteran", 
+            "Advanced Assessment" : "English Hero"
+        }
         if (score >= 4) {
             toast({
                 title: pass,
@@ -82,19 +89,32 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             //alert(pass + "\n" + score + maxScore);
             navigate(`/${nextLevelRoute}`);
             const email = localStorage.getItem("email");
-            const info = {email, testTitle};
-            await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/AssessmentStructure`, info)
-            .then(res => {
-                console.log(res);
-                toast({
-                    title: "Email",
-                    description: res.data.message,
-                    duration: 5000,
-                    isClosable: true,
-                    status: 'info',
-                    position: 'top',
-                });
-            })
+            const type = "English Assessment";
+            const info = {email, type};
+            const achievement = assessmentDictionary[testTitle];
+            await AchievementTriggerStructure(achievement, toast);
+            await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${localStorage.getItem("userId")}`)
+                    .then(async (res) => {
+                        //console.log(res.data.data.achievements);
+                        console.log(checkSubsetArray(res.data.data.achievements, Object.values(assessmentDictionary)));
+                        if (checkSubsetArray(res.data.data.achievements, Object.values(assessmentDictionary))) {
+                            await AchievementTriggerStructure("English Master", toast)
+                            await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/AssessmentStructure`, info)
+                            .then(res => {
+                                console.log(res);
+                                toast({
+                                    title: "Email",
+                                    description: res.data.message,
+                                    duration: 5000,
+                                    isClosable: true,
+                                    status: 'info',
+                                    position: 'top',
+                                });
+                            })
+                        }
+                    }).catch((err) => {
+                        console.log(err)
+                    })
         } else {
             toast({
                 title: fail,
