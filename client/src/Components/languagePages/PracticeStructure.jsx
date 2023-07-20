@@ -26,7 +26,7 @@ export const PracticeStructure = ({practiceTitle, nextLevelRoute, questions,
             
     const submitAnswer = async() => {
         var maxScore = "/" + practiceQuestions[questionLabel].length + " correct"
-        var pass = "Congratulations! You have passed the proficiency test :)";
+        var pass = "Congratulations! You have passed the practice test :)";
         var fail = "Please try again!"
         var score = getScore();
         if (score >= 4) {

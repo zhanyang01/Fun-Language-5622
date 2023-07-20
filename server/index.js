@@ -14,6 +14,7 @@ import bcrypt from "bcrypt";
 // import nodemailer from "nodemailer";
 //import Token from "./Models/tokenModel.js";
 import { cloudinaryObj } from "./config/cloudinary.js";
+import sendCert from "./HelperFunctions/sendCert.js";
 
 connectDB();
 
@@ -81,7 +82,7 @@ app.post("/AssessmentStructure", async (req, res) => {
   }
 
   try {
-    await sendEmail(filename, filepath, email).then(() => {
+    await sendCert(filename, filepath, email).then(() => {
       res.send({ message: "An email has been sent to you" });
       console.log("An email has been sent to you");
     });
