@@ -1,4 +1,13 @@
-import { getUsers, getUserById, deleteUser, register, cert } from "../Controllers/userController.js";
+import {
+  getUsers,
+  getUserById,
+  deleteUser,
+  register,
+  cert,
+  login,
+  changeUserDetails,
+  changeProfilePicture,
+} from "../Controllers/userController.js";
 import express from "express";
 
 const router = express.Router();
@@ -20,5 +29,14 @@ router.route("/register").post(register);
 
 // express router method to create route for sending email to user
 router.route("/cert").put(cert);
+
+// express router method to create route for login
+router.route("/login").post(login);
+
+// express router method to create route for changing user details
+router.route("/profile").put(changeUserDetails);
+
+// express router method to create route for changing profile picture
+router.route("/profile/pic/:userId").put(changeProfilePicture);
 
 export default router;

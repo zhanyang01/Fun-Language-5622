@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import sendEmail from "../HelperFunctions/sendEmail.js";
 import sendCert from "../HelperFunctions/sendCert.js";
+import { cloudinaryObj } from "../config/cloudinary.js";
 
 // ==================== helper functions====================
 
@@ -82,6 +83,39 @@ export const deleteUser = async (req, res) => {
   }
 };
 
+// ============ Login ============
+export const login = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      const isCorrect = await bcrypt.compare(password, user.password);
+      if (isCorrect) {
+        res.send({ message: "login success", username: user.username, userId: user._id });
+        console.log("login success");
+        /*
+                const payload = {name: user.name, userName: user.userName, email: user.email};
+                const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
+                const valid = jwt.verify(token, process.env.TOKEN_KEY);
+                if (valid) {
+                    res.send({message: "login success"});
+                } else {
+                    res.send({message: "invalid login"});
+                }
+                */
+      } else {
+        res.send({ message: "wrong credentials" });
+        console.log("wrong credentials");
+      }
+    } else {
+      res.send({ message: "not registered" });
+      console.log("not registered");
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 // ============= Register =============
 export const register = asyncHandler(async (req, res) => {
   try {
@@ -124,8 +158,98 @@ export const register = asyncHandler(async (req, res) => {
   }
 });
 
+// ================ change user details
+export const changeUserDetails = asyncHandler(async (req, res) => {
+  const { name, username, currentEmail, newEmail, password } = req.body;
+  //const { UserId } = req.params;
+  try {
+    //check if user exists
+    const currentUser = await User.findOne({ email: currentEmail });
+    if (!currentUser) {
+      res.send({ message: "no such user exists" });
+      console.log("no such user exists");
+    } else {
+      // check if email that is in current email fills is used by someone else
+      const user = await User.findOne({ email: newEmail });
+      if (user && currentUser.email !== user.email) {
+        res.send({ message: "email is already used by another user" });
+        console.log("email is already used by another user");
+      } else {
+        // changing password and email
+        const encryptedPass = await bcrypt.hash(password, 10);
+        //updating everything
+        var updatedUser = {};
+        updatedUser = {
+          name: name,
+          username: username,
+          email: newEmail,
+          password: encryptedPass,
+        };
+        await User.updateOne(
+          {
+            _id: currentUser.id,
+          },
+          updatedUser
+        ).then(() => {
+          res.send({ message: "update successful" });
+          console.log("update successful");
+        });
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+// ================ change user profile picture ================
+export const changeProfilePicture = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const { image } = req.body;
+  try {
+    //check if user exists
+    const currentUser = await User.findById(userId);
+    if (!currentUser) {
+      res.send({ message: "no such user exists" });
+      console.log("no such user exists");
+    } else {
+      if (currentUser.image && currentUser.image.id) {
+        await cloudinaryObj.v2.uploader.destroy(currentUser.image.id);
+      }
+      var updatedImage = null;
+      if (image) {
+        const uploadImage = await cloudinaryObj.v2.uploader.upload(image, {
+          folder: "Fun Language",
+        });
+
+        const { public_id: id, url } = uploadImage;
+        updatedImage = {
+          id,
+          url,
+        };
+      }
+
+      if (updatedImage) {
+        await User.updateOne(
+          {
+            _id: currentUser.id,
+          },
+          { image: updatedImage }
+        ).then(() => {
+          res.send({ message: "profile picture updated successfully" });
+          console.log("profile picture update successfully");
+        });
+      } else {
+        res.send({ message: "profile picture updated unsuccessful" });
+        console.log("profile picture updated unsuccessful");
+      }
+    }
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 // ============= Send certificate of achievement =============
-export const cert = asyncHandler(async(req, res) => {
+export const cert = asyncHandler(async (req, res) => {
   var filename = "";
   var filepath = "";
   const { email, testTitle } = req.body;

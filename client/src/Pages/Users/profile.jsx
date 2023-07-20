@@ -110,7 +110,7 @@ const Profile = () => {
     }
     
     const confirmProfile = async () => {
-        await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Profile/Pic/${localStorage.getItem("userId")}`,{
+        await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/profile/pic/${localStorage.getItem("userId")}`,{
             image: pic
         })
         .then( async (res)=>{
@@ -244,7 +244,7 @@ const Profile = () => {
             console.log("Please check that you are giving the correct email");
         }
         if (errors.length === 0) {
-            await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/Profile`, user)
+            await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/profile`, user)
             .then(res => {
                 console.log(res);
                 // alert(res.data.message);
