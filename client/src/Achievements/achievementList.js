@@ -12,22 +12,22 @@ export const AchievementList = {
   achievements: [
     {
       title: "English Master",
-      description: "You have completed all the assessments for English Language!",
+      description: "You have passed all the assessments for English Language!",
       image: master,
     },
     {
       title: "English Hero",
-      description: "You have completed the Advanced Assessment for English Language!",
+      description: "You have passed the Advanced Assessment for English Language!",
       image: hero,
     },
     {
       title: "English Veteran",
-      description: "You have completed the Intermediate Assessment for English Language!",
+      description: "You have passed the Intermediate Assessment for English Language!",
       image: survivor,
     },
     {
       title: "English Novice",
-      description: "You have completed the Basic Assessment for English Language!",
+      description: "You have passed the Basic Assessment for English Language!",
       image: tribute,
     },
     {
