@@ -4,7 +4,9 @@
 
 2. Enroll for courses on the language of choice varying in terms of difficulty (basic, intermediate, advanced)  
 
-3. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)  
+3. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)
+
+4. Achievements to be unlocked for completing courses and passing assessments
 
 ## Scope of Project:  
 The Fun Language App allows for users to have a fun experience learning a new language of interest.
@@ -48,6 +50,8 @@ The Fun Language App allows for users to have a fun experience learning a new la
 * Vercel (app deployment)
 
 * Chakra UI (app design)
+
+* Nodemailer (for sending email to user)
 
 * Jest (unit testing)
 
