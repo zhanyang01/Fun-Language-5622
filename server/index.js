@@ -9,7 +9,7 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 // import defaultProfileLogo from './Images';
-// import emailRoutes from "./Routes/emailRoute.js";
+import emailRoutes from "./Routes/emailRoute.js";
 //import sendEmail from "./Controllers/emailController.js";
 // import nodemailer from "nodemailer";
 //import Token from "./Models/tokenModel.js";
@@ -49,7 +49,7 @@ app.use("/api/questionAttempts", questionAttemptRoutes);
 app.use("/api/achievements", achievementRoutes);
 
 // Create API for sending email
-// app.use("/api/email", emailRoutes)
+app.use("/api/email", emailRoutes)
 
 // const PORT = process.env.PORT || 6969;
 const PORT = 6969;
