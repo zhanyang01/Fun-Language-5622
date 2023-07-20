@@ -19,6 +19,6 @@ router.route("/register").post(register);
 //router.put("/verify/:userId").put(verifyEmail);
 
 // express router method to create route for sending email to user
-router.route("/cert").get(cert);
+router.route("/cert").put(cert);
 
 export default router;
