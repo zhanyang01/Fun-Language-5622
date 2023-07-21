@@ -301,6 +301,7 @@ export const cert = asyncHandler(async (req, res) => {
         console.log("You have already received the certificate");
       } else {
         currentCerts.push(type);
+        currentUser.save();
         await User.updateOne(
           {
             id: currentUser._id,
