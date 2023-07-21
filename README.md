@@ -67,17 +67,17 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting to database  
 
-* 1st week of June: Create English course and levels of difficulty, refine authentication process
+* 1st week of June: Build Fun Language architecture (English course and levels of difficulty), refine authentication process
 
 * 2nd week of June: Implement progress component for gamification features (progress bar and save progress feature)
 
-* 3rd week of June: Create profile page and refine associated features 
+* 3rd week of June: Create profile page and refine associated features, deploy app 
 
 * 1st week of July: Implement interactive interface and create proficiency assessments
 
-* 2nd week of July: Create oral speaking page for each level and achievement system for gamification features
+* 2nd week of July: Create oral speaking page for each level and design achievement system for gamification features
 
-* 3rd week of July: Create landing page and practice assessments
+* 3rd week of July: Create landing page and practice assessments, implement email verification and test Fun Language App
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
