@@ -20,7 +20,7 @@
   ],
   "web_accessible_resources": [{
     "resources": ["*"],
-    "matches": ["<all_urls>"]
+    "matches": ["<URL>"]
   }],
   "start_url": ".",
   "display": "standalone",
