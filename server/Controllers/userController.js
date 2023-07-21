@@ -10,11 +10,37 @@ import { cloudinaryObj } from "../config/cloudinary.js";
 
 // ==================== helper functions====================
 
-//generate jwt token
+//====================generate jwt token====================
 const generateJWT = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: 5 * 60,
   });
+};
+
+//====================verify jwt token====================
+const verifyJWT = async (token) => {
+  if (token) {
+    try {
+      // verification
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+      // get user from token
+      const currUser = User.findById(decoded.id);
+      if (currUser) {
+        console.log("token verified");
+        return true;
+      } else {
+        console.log("token not verified");
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  } else {
+    console.log("token not verified");
+    return false;
+  }
 };
 
 // ==================== main functions====================
@@ -139,8 +165,10 @@ export const register = asyncHandler(async (req, res) => {
         email,
       });
       await User.create(newUser).then(async (result) => {
+        const token = generateJWT(newUser._id);
         const content = {
           user: newUser,
+          token: token,
           recipient: email,
         };
         await sendEmail("verification", content).then((result) => {
