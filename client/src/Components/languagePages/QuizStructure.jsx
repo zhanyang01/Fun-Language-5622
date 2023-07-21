@@ -115,8 +115,9 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         var fail = "Please try again!"
         var score = getScore();
         const email = localStorage.getItem("email");
+        const userId = localStorage.getItem("userId");
         const type = "English Course";
-        const info = {email, type};
+        const info = {userId, email, type};
         const courseDoneDictionary = {"ebcoursedone" : "English Baby", "eicoursedone" : "English Apprentice", "eacoursedone" : "English Sage"}
         if (score === allQuestions[questionLabel].length) {
             const updatedAnswer = formatAnswer();
@@ -124,7 +125,7 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
             if (Object.keys(courseDoneDictionary).includes(nextLevelRoute)) {
                 const title = courseDoneDictionary[nextLevelRoute]
                 await AchievementTriggerStructure(title, toast)
-                await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${localStorage.getItem("userId")}`)
+                await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${userId}`)
                     .then(async (res) => {
                         //console.log(res.data.data.achievements);
                         console.log(checkSubsetArray(res.data.data.achievements, Object.values(courseDoneDictionary)));
