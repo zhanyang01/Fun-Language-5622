@@ -8,7 +8,7 @@ const EICourseDone = () => {
             <CourseDoneStructure
             nextLevelRoute={"eiassessment"}
             courseDiff={"English Intemediate"}
-            courseRoute={"englishintemediate"}
+            courseRoute={"englishintermediate"}
             diffCourseDone={"EICourseDone"}
             headingContent={"Congratulations! You have completed the Intemediate Courrse for English Language :D"}
             />
