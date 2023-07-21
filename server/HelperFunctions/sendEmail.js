@@ -20,6 +20,7 @@ const sendEmail = async (emailType, content) => {
     var linkToClick = `${process.env.REACT_APP_FRONTEND_SERVER}/verify/${_id}/${token}`;
     var emailText = `Hello ${name},\n\nPlease click on the following link to verify your account:\n\n${linkToClick}\n\nIf you did not request this, please ignore this email.\n\nRegards,\n\nThe Fun Language Team`;
   }
+
   await transporter.sendMail({
     from: process.env.APP_EMAIL,
     to: recipient,
