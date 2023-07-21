@@ -1,5 +1,5 @@
 import React from 'react';
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { 
     Button, 
@@ -8,7 +8,6 @@ import {
     Progress 
 } from '@chakra-ui/react';
 import { AchievementTriggerStructure } from '../Profile/achievementTriggerStructure.js'
-// import List from '../../courselist';
 
 export const CourseDoneStructure = ({nextLevelRoute, courseDiff, courseRoute, diffCourseDone, headingContent}) => {
     const navigate = useNavigate();
@@ -64,7 +63,6 @@ export const CourseDoneStructure = ({nextLevelRoute, courseDiff, courseRoute, di
                 value={100}
             />
             <Container>
-                <Link to="/ebassessment">
                     <Button 
                         m="5px"
                         colorScheme = "teal" 
@@ -74,8 +72,6 @@ export const CourseDoneStructure = ({nextLevelRoute, courseDiff, courseRoute, di
                         onClick={nextLevel}>
                         Take assessment
                     </Button>
-                </Link>
-                <Link to="/englishbasic">
                     <Button 
                         m="5px"
                         colorScheme = "teal" 
@@ -85,7 +81,6 @@ export const CourseDoneStructure = ({nextLevelRoute, courseDiff, courseRoute, di
                         onClick={basic}>
                         Exit
                     </Button>
-                </Link>
             </Container>
         </>
     )
