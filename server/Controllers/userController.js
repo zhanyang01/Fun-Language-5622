@@ -280,8 +280,7 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
 export const cert = asyncHandler(async (req, res) => {
   var filename = "";
   var filepath = "";
-  const { email, type } = req.body;
-  // console.log(req.body);
+  const { email, userId, type } = req.body;
 
   // need to account for which assessment to attach the correct pdf
   if (type === "English Assessment") {
@@ -292,32 +291,32 @@ export const cert = asyncHandler(async (req, res) => {
     filename = "English Language Course.pdf";
     filepath = "./English Certificates/English Language Course.pdf";
   }
-
   try {
-    const user = User.findOne({ email: req.body.email });
-    if (user) {
-      const currentCerts = user.cert;
-      if (user.cert.includes(type)) {
+    const currentUser = await User.findById(userId);
+    if (currentUser) {
+      const currentCerts = currentUser.cert;
+      if (currentUser.cert.includes(type)) {
         res.send({ message: "you have already received the certificate" });
         console.log("You have already received the certificate");
       } else {
         currentCerts.push(type);
-        await User.updateOne({
-          email: email,
-        },
-        {cert: currentCerts}
+        await User.updateOne(
+          {
+            id: currentUser.id,
+          },
+          { cert: currentCerts }
         ).then(() => {
-          console.log("User updated")
-        })
+          console.log("User updated");
+        });
         await sendCert(filename, filepath, email).then((result) => {
-        res.send({ message: "An email has been sent to you" });
-        console.log("An email has been sent to you");
-      });
+          res.send({ message: "An email has been sent to you" });
+          console.log("An email has been sent to you");
+        });
+      }
+    } else {
+      res.send({ message: "Email does not exist" });
+      console.log("Email does not exist");
     }
-  } else {
-    res.send({ message: "Email does not exist" });
-    console.log("Email does not exist")
-  }
   } catch (e) {
     console.log(e);
   }
