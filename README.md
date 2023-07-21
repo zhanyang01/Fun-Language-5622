@@ -4,7 +4,9 @@
 
 2. Enroll for courses on the language of choice varying in terms of difficulty (basic, intermediate, advanced)  
 
-3. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)  
+3. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)
+
+4. Achievements to be unlocked for completing courses and passing assessments
 
 ## Scope of Project:  
 The Fun Language App allows for users to have a fun experience learning a new language of interest.
@@ -49,6 +51,8 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Chakra UI (app design)
 
+* Nodemailer (for sending email to user)
+
 * Jest (unit testing)
 
 ## Distinctive Features:
@@ -63,23 +67,23 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting to database  
 
-* 1st week of June: Create English course and levels of difficulty, refine authentication process
+* 1st week of June: Build Fun Language architecture (English course and levels of difficulty), refine authentication process
 
 * 2nd week of June: Implement progress component for gamification features (progress bar and save progress feature)
 
-* 3rd week of June: Create profile page and refine associated features 
+* 3rd week of June: Create profile page and refine associated features, deploy app 
 
 * 1st week of July: Implement interactive interface and create proficiency assessments
 
-* 2nd week of July: Create oral speaking page for each level and achievement system for gamification features
+* 2nd week of July: Create oral speaking page for each level and design achievement system for gamification features
 
-* 3rd week of July: Create landing page and practice assessments
+* 3rd week of July: Create landing page and practice assessments, implement email verification and test Fun Language App
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
 
 ## System Design:
-<img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/a13e91c5-8872-4bab-a316-d9c5c80b20b0">   
+<img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/43030dce-c9e6-434e-bff3-036da409fa27">   
 
 > Flow chart of how a user navigates the various components of the Fun Language App. 
 
