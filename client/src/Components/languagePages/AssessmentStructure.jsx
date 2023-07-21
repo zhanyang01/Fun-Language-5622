@@ -88,12 +88,13 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
             });
             //alert(pass + "\n" + score + maxScore);
             navigate(`/${nextLevelRoute}`);
+            const userId = localStorage.getItem("userId");
             const email = localStorage.getItem("email");
             const type = "English Assessment";
-            const info = {email, type};
+            const info = {email, userId, type};
             const achievement = assessmentDictionary[testTitle];
             await AchievementTriggerStructure(achievement, toast);
-            await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${localStorage.getItem("userId")}`)
+            await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${userId}`)
                     .then(async (res) => {
                         //console.log(res.data.data.achievements);
                         console.log(checkSubsetArray(res.data.data.achievements, Object.values(assessmentDictionary)));
