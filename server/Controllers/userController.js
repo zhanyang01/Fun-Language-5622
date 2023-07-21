@@ -293,19 +293,22 @@ export const cert = asyncHandler(async (req, res) => {
   }
   try {
     const currentUser = await User.findById(userId);
+    console.log(currentUser);
     if (currentUser) {
       const currentCerts = currentUser.cert;
-      if (currentUser.cert.includes(type)) {
+      if (currentCerts.includes(type)) {
         res.send({ message: "you have already received the certificate" });
         console.log("You have already received the certificate");
       } else {
         currentCerts.push(type);
+        currentUser.save();
         await User.updateOne(
           {
-            id: currentUser.id,
+            id: currentUser._id,
           },
           { cert: currentCerts }
         ).then(() => {
+          console.log(currentUser);
           console.log("User updated");
         });
         await sendCert(filename, filepath, email).then((result) => {
