@@ -32,8 +32,13 @@ const userSchema = mongoose.Schema(
     },
     cert: {
       type: Array,
-      required: false
-    }
+      required: false,
+    },
+    verified: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   {
     timeStamp: true,

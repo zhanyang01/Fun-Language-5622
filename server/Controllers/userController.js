@@ -25,7 +25,7 @@ const verifyJWT = async (token) => {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
       // get user from token
-      const currUser = User.findById(decoded.id);
+      const currUser = await User.findById(decoded.id);
       if (currUser) {
         console.log("token verified");
         return true;
@@ -80,7 +80,40 @@ export const getUserById = asyncHandler(async (req, res) => {
   }
 });
 
-// Delete user by id
+// ==================Verify email====================
+export const verifyEmail = asyncHandler(async (req, res) => {
+  const { userId } = req.params;
+  const currentUser = await User.findById(userId);
+  const currentToken = req.params.token;
+  const validToken = verifyJWT(currentToken);
+  if (!validToken) {
+    res.send({ message: "invalid token", success: false });
+  } else {
+    if (!currentUser) {
+      res.send({ message: "no such user exists", success: false });
+    } else {
+      if (!currentUser.verified) {
+        await User.updateOne(
+          {
+            _id: currentUser.id,
+          },
+          { verified: true }
+        )
+          .then(() => {
+            res.send({ message: "email verified", success: true });
+          })
+          .catch((err) => {
+            res.send({ message: "error", success: false });
+            console.log(err);
+          });
+      } else {
+        res.send({ message: "email already verified", success: false });
+      }
+    }
+  }
+});
+
+// ===============Delete user by id===============
 export const deleteUser = async (req, res) => {
   const { userId } = req.params;
   const currUser = await User.findById(userId);
@@ -114,7 +147,7 @@ export const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (user) {
+    if (user && user.verified) {
       const isCorrect = await bcrypt.compare(password, user.password);
       if (isCorrect) {
         res.send({ message: "login success", username: user.username, userId: user._id });
@@ -134,8 +167,13 @@ export const login = asyncHandler(async (req, res) => {
         console.log("wrong credentials");
       }
     } else {
-      res.send({ message: "not registered" });
-      console.log("not registered");
+      if (user && !user.verified) {
+        res.send({ message: "email not verified" });
+        console.log("email not verified");
+      } else {
+        res.send({ message: "not registered" });
+        console.log("not registered");
+      }
     }
   } catch (e) {
     console.log(e);

@@ -7,6 +7,7 @@ import {
   login,
   changeUserDetails,
   changeProfilePicture,
+  verifyEmail,
 } from "../Controllers/userController.js";
 import express from "express";
 
@@ -25,7 +26,7 @@ router.route("/:userId").delete(deleteUser);
 router.route("/register").post(register);
 
 // express router method to create route for verification of email
-//router.put("/verify/:userId").put(verifyEmail);
+router.route("/verify/:userId/:token").put(verifyEmail);
 
 // express router method to create route for sending email to user
 router.route("/cert").put(cert);
