@@ -21,7 +21,7 @@ const sendCert = async (filename, filepath, email) => {
     attachments: [
         {
             filename: filename,
-            filepath: filepath
+            path: filepath
         }
     ]
   }).then(() => {
