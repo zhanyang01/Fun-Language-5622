@@ -272,17 +272,21 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
   const { userId } = req.params;
   const { image } = req.body;
   try {
-    //check if user exists
+    // Check if user exists
     const currentUser = await User.findById(userId);
     if (!currentUser) {
       res.send({ message: "no such user exists" });
       console.log("no such user exists");
     } else {
       if (currentUser.image && currentUser.image.id) {
+        // Remove the previous profile picture from Cloudinary
         await cloudinaryObj.v2.uploader.destroy(currentUser.image.id);
       }
       var updatedImage = null;
-      if (image) {
+      if (!image) {
+        return res.send({ message: "no image uploaded" });
+      } else {
+        // Upload the new image to Cloudinary
         const uploadImage = await cloudinaryObj.v2.uploader.upload(image, {
           folder: "Fun Language",
         });
@@ -295,6 +299,7 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
       }
 
       if (updatedImage) {
+        // Update the user's profile picture in the database
         await User.updateOne(
           {
             _id: currentUser.id,
@@ -302,7 +307,7 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
           { image: updatedImage }
         ).then(() => {
           res.send({ message: "profile picture updated successfully" });
-          console.log("profile picture update successfully");
+          console.log("profile picture updated successfully");
         });
       } else {
         res.send({ message: "profile picture updated unsuccessful" });
@@ -310,7 +315,9 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
       }
     }
   } catch (e) {
+    // Handle any errors that might occur during the process
     console.log(e);
+    res.status(500).send({ message: "Internal Server Error" });
   }
 });
 

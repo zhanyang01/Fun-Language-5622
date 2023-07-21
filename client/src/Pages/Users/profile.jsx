@@ -116,16 +116,18 @@ const Profile = () => {
         .then( async (res)=>{
             console.log(res);
             // alert("profile picture confirmed");
-            toast({
-                title: 'Set Picture Success',
-                description: "profile picture confirmed",
-                duration: 5000,
-                isClosable: true,
-                status: 'success',
-                position: 'top',
-            });
-            await AchievementTriggerStructure(title, toast);
-            navigate("/profile");
+            if (imageChanged) {
+                toast({
+                    title: 'Set Picture Success',
+                    description: "profile picture confirmed",
+                    duration: 5000,
+                    isClosable: true,
+                    status: 'success',
+                    position: 'top',
+                });
+                await AchievementTriggerStructure(title, toast);
+                navigate("/profile");
+            }
         }).catch((err)=>{
             console.log(err);
             alert(err);
