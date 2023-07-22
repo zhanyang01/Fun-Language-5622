@@ -30,7 +30,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "npm start --prefix server",
-    "dev": "concurrently \"npm start\" \"npm run client\""
+    "dev": "concurrently \"npm start\" \"npm run client\"",
+    "testing" : "react-scripts test --watchAll --coverage"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +54,7 @@
   "type": "module",
   "proxy": "http://127.0.0.1:6969/",
   "devDependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "jest": "^27.5.1"
   }
 }
