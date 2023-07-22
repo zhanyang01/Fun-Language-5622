@@ -83,7 +83,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 * http://fun-language-5622-frontend-seven.vercel.app/
 
 ## System Design:
-<img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/43030dce-c9e6-434e-bff3-036da409fa27">   
+<img width="960" alt="run" src="https://github.com/zhanyang01/Fun-Language-5622/assets/110977266/6ef62f77-1c9e-493f-91b7-52c7135450b5">   
 
 > Flow chart of how a user navigates the various components of the Fun Language App. 
 
