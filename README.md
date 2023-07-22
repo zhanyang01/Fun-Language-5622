@@ -27,13 +27,11 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Achievement system
 
-* Oral speaking page for each level of difficulty
-
 * Proficiency assessments 
 
 * Landing page 
 
-* Practice assessment for each level of difficulty
+* Oral speaking page and practice assessment for each level of difficulty
 
 * Email verification feature  
 
