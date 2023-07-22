@@ -28,9 +28,6 @@ router.route("/register").post(register);
 // express router method to create route for verification of email
 router.route("/verify/:userId/:token").put(verifyEmail);
 
-// express router method to create route for sending email to user
-router.route("/cert").put(cert);
-
 // express router method to create route for login
 router.route("/login").post(login);
 

@@ -30,10 +30,6 @@ const userSchema = mongoose.Schema(
         required: false,
       },
     },
-    cert: {
-      type: Array,
-      required: false,
-    },
     verified: {
       type: Boolean,
       required: true,
