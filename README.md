@@ -33,7 +33,9 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Landing page 
 
-* Practice assessment for each level of difficulty  
+* Practice assessment for each level of difficulty
+
+* Email verification feature  
 
 ## Tech Stack:
 * MongoDB (Document Database)
