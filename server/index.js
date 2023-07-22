@@ -8,13 +8,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-// import defaultProfileLogo from './Images';
-// import emailRoutes from "./Routes/emailRoute.js";
-//import sendEmail from "./Controllers/emailController.js";
-// import nodemailer from "nodemailer";
-//import Token from "./Models/tokenModel.js";
-
-// import sendCert from "./HelperFunctions/sendCert.js";
 
 connectDB();
 
@@ -59,53 +52,6 @@ app.get("/", async (req, res) => {
     message: "Server is up",
   });
 });
-
-// ===================send email================================
-/*
-app.post("/AssessmentStructure", async (req, res) => {
-  var filename = "";
-  var filepath = "";
-  const { email, type } = req.body;
-  // console.log(req.body);
-
-  // need to account for which assessment to attach the correct pdf
-  if (type === "English Assessment") {
-    filename = "English Language Assessment.pdf";
-    filepath = "./English Certificates/English Language Assessment.pdf";
-  }
-
-  try {
-    await sendCert(filename, filepath, email).then((result) => {
-      res.send({ message: "An email has been sent to you" });
-      console.log("An email has been sent to you");
-    });
-  } catch (e) {
-    console.log(e);
-  }
-});
-
-app.post("/QuizStructure", async (req, res) => {
-  var filename = "";
-  var filepath = "";
-  const { email, type } = req.body;
-  // console.log(req.body);
-
-  // need to account for which assessment to attach the correct pdf
-  if (type === "English Course") {
-    filename = "English Language Course.pdf";
-    filepath = "./English Certificates/English Language Course.pdf";
-  }
-
-  try {
-    await sendCert(filename, filepath, email).then((result) => {
-      res.send({ message: "An email has been sent to you" });
-      console.log("An email has been sent to you");
-    });
-  } catch (e) {
-    console.log(e);
-  }
-});
-*/
 
 // Express js listen method to run project
 app.listen(PORT, console.log(`Server started `));

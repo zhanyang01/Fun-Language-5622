@@ -3,7 +3,6 @@ import {
   getUserById,
   deleteUser,
   register,
-  cert,
   login,
   changeUserDetails,
   changeProfilePicture,

@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 // import validator from "validator";
 import bcrypt from "bcrypt";
 import sendEmail from "../HelperFunctions/sendEmail.js";
-import sendCert from "../HelperFunctions/sendCert.js";
 import { cloudinaryObj } from "../config/cloudinary.js";
 
 // ==================== helper functions====================
