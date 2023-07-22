@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 // import validator from "validator";
 import bcrypt from "bcrypt";
 import sendEmail from "../HelperFunctions/sendEmail.js";
-import sendCert from "../HelperFunctions/sendCert.js";
 import { cloudinaryObj } from "../config/cloudinary.js";
 
 // ==================== helper functions====================
@@ -318,54 +317,5 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
     // Handle any errors that might occur during the process
     console.log(e);
     res.status(500).send({ message: "Internal Server Error" });
-  }
-});
-
-// ============= Send certificate of achievement =============
-export const cert = asyncHandler(async (req, res) => {
-  var filename = "";
-  var filepath = "";
-  const { email, userId, type } = req.body;
-
-  // need to account for which assessment to attach the correct pdf
-  if (type === "English Assessment") {
-    filename = "English Language Assessment.pdf";
-    filepath = "./English Certificates/English Language Assessment.pdf";
-  }
-  if (type === "English Course") {
-    filename = "English Language Course.pdf";
-    filepath = "./English Certificates/English Language Course.pdf";
-  }
-  try {
-    const currentUser = await User.findById(userId);
-    console.log(currentUser);
-    if (currentUser) {
-      const currentCerts = currentUser.cert;
-      if (currentCerts.includes(type)) {
-        res.send({ message: "you have already received the certificate" });
-        console.log("You have already received the certificate");
-      } else {
-        currentCerts.push(type);
-        currentUser.save();
-        await User.updateOne(
-          {
-            id: currentUser._id,
-          },
-          { cert: currentCerts }
-        ).then(() => {
-          console.log(currentUser);
-          console.log("User updated");
-        });
-        await sendCert(filename, filepath, email).then((result) => {
-          res.send({ message: "An email has been sent to you" });
-          console.log("An email has been sent to you");
-        });
-      }
-    } else {
-      res.send({ message: "Email does not exist" });
-      console.log("Email does not exist");
-    }
-  } catch (e) {
-    console.log(e);
   }
 });
