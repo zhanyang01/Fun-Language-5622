@@ -4,12 +4,12 @@
 
 2. Enroll for courses on the language of choice varying in terms of difficulty (basic, intermediate, advanced)  
 
-3. User can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)
+3. Users can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)
 
 4. Achievements to be unlocked for completing courses and passing assessments
 
 ## Scope of Project:  
-The Fun Language App allows for users to have a fun experience learning a new language of interest.
+The Fun Language App allows users to have a fun experience learning a new language of interest.
 
 ## Features to be completed by mid-June:
 * Authentication (login and registration)  
@@ -55,6 +55,8 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * Jest (unit testing)
 
+* Cypress (end to end testing) 
+
 ## Distinctive Features:
 * Gamification  
 
@@ -71,11 +73,11 @@ The Fun Language App allows for users to have a fun experience learning a new la
 
 * 2nd week of June: Implement progress component for gamification features (progress bar and save progress feature)
 
-* 3rd week of June: Create profile page and refine associated features, deploy app 
+* 3rd week of June: Create profile page and refine associated features, deploy application
 
 * 1st week of July: Implement interactive interface and create proficiency assessments
 
-* 2nd week of July: Create oral speaking page for each level and design achievement system for gamification features
+* 2nd week of July: Create oral-speaking page for each level and design achievement system for gamification features
 
 * 3rd week of July: Create landing page and practice assessments, implement email verification and test Fun Language App
 
