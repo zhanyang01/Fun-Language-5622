@@ -26,6 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
+    "cypress-start": "cypress open",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -54,6 +55,7 @@
   "proxy": "http://127.0.0.1:6969/",
   "devDependencies": {
     "concurrently": "^8.0.1",
+    "cypress": "^12.17.2",
     "jest": "^27.5.1"
   }
 }
