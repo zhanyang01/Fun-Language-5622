@@ -26,6 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
+    "cypress-start": "cypress open",
     "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
