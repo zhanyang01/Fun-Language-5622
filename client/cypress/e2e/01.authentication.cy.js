@@ -1,5 +1,5 @@
 describe("The landing page", () => {
-  it.only("Visit Fun Language Landing Page", function () {
-    cy.visit("/");
+  it("Visit Fun Language Landing Page", () => {
+    cy.visit("http://localhost:3000");
   });
 });
