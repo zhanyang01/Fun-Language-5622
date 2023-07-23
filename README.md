@@ -45,7 +45,7 @@ The Fun Language App allows for users to have a fun experience learning a new la
 * Node.js (JavaScript Server Platform)
 
 ## Other Supporting Tools:
-* Cloudinary (for uploading profile picture)
+* Cloudinary (for uploading and storing profile picture)
 
 * Vercel (app deployment)
 
