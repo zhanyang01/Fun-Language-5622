@@ -31,7 +31,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "npm start --prefix server",
-    "dev": "concurrently \"npm start\" \"npm run client\""
+    "dev": "concurrently \"npm start\" \"npm run client\"",
+    "testing": "react-scripts test --watchAll --coverage",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -54,8 +56,14 @@
   "type": "module",
   "proxy": "http://127.0.0.1:6969/",
   "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-react": "^7.22.5",
+    "babel-jest": "^29.6.1",
     "concurrently": "^8.0.1",
     "cypress": "^12.17.2",
-    "jest": "^27.5.1"
+    "eslint-plugin-cypress": "^2.13.3",
+    "jest": "^27.5.1",
+    "react-test-renderer": "^18.2.0"
   }
 }

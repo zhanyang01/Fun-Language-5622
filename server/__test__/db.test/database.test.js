@@ -1,6 +1,6 @@
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require("mongodb");
 
-describe('insert', () => {
+describe("insert", () => {
   let connection;
   let db;
 
@@ -16,13 +16,13 @@ describe('insert', () => {
     await connection.close();
   });
 
-  it('should insert a doc into collection', async () => {
-    const testSet = db.collection('testSet');
+  it("should insert a doc into collection", async () => {
+    const testSet = db.collection("testSet");
 
-    const mockUser = {_id: 'some-user-id', name: 'John'};
+    const mockUser = { _id: "some-user-id", name: "John" };
     await testSet.insertOne(mockUser);
 
-    const insertedUser = await testSet.findOne({_id: 'some-user-id'});
+    const insertedUser = await testSet.findOne({ _id: "some-user-id" });
     expect(insertedUser).toEqual(mockUser);
   });
 });
