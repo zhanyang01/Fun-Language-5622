@@ -55,7 +55,9 @@ The Fun Language App allows users to have a fun experience learning a new langua
 
 * Jest (unit testing)
 
-* Cypress (end to end testing) 
+* Cypress (end to end testing and integration testing)
+
+* Figma (prototyping landing page)
 
 ## Distinctive Features:
 * Gamification  
