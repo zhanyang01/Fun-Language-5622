@@ -1,3 +1,4 @@
+
 describe("visitng the landing page", () => {
   it("successfully loads", () => {
     cy.visit("/");
