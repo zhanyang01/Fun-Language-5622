@@ -19,5 +19,10 @@ describe("process of user deleting an account", () => {
     });
     cy.contains("ok").click();
     cy.wait(10000);
+
+    // ===================== user can test the deleted account =======================
+    cy.get("input[name=email]").type("tan.eesean@gmail.com");
+    cy.get("input[name=password]").type("esTan26*");
+    cy.contains("Login").should("be.enabled").click();
   });
 });
