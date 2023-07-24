@@ -13,9 +13,9 @@ describe("process of user deleting an account", () => {
       //stubbing prompt window
       cy.stub(p, "prompt").returns("y");
       // click on Click for JS Prompt button
-      cy.get("Delete Account").click();
+      cy.contains("Delete Account").click();
       // verify application message on clicking on OK
-      cy.get("#result").contains("You entered: y");
+      cy.get("#result").should("have.text", "You entered: y");
     });
     cy.contains("ok").click();
     cy.wait(10000);
