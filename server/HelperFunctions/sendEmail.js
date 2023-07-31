@@ -13,7 +13,6 @@ const sendEmail = async (emailType, content) => {
   const { _id, name } = user;
   var emailSubject = "";
   var emailText = "";
-  var route = "";
   if (emailType == "verification") {
     emailSubject = "Account Verification";
     console.log(emailSubject);

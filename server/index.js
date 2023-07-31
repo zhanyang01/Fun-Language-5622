@@ -3,24 +3,12 @@ import userRoutes from "./Routes/userRoute.js";
 import questionAttemptRoutes from "./Routes/questionAttemptRoute.js";
 import achievementRoutes from "./Routes/achievementRoute.js";
 import express from "express";
-import User from "./Models/userModel.js";
 import dotenv from "dotenv";
 import cors from "cors";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
 
 connectDB();
 
 dotenv.config();
-
-// ================= JWT =================
-/*
-const generateJWT = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: 5*60,
-  });
-};
-*/
 
 const app = express();
 

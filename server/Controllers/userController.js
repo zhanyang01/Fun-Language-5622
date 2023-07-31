@@ -42,23 +42,6 @@ const verifyJWT = async (token) => {
   }
 };
 
-// ==================== main functions====================
-
-//signup user
-/*
-const signupUser = async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const user = await User.signup(email, password);
-
-    res.status(200).json({ email, password });
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-};
-*/
-
 // Get all users
 export const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({});
@@ -151,16 +134,6 @@ export const login = asyncHandler(async (req, res) => {
       if (isCorrect) {
         res.send({ message: "login success", username: user.username, userId: user._id });
         console.log("login success");
-        /*
-                const payload = {name: user.name, userName: user.userName, email: user.email};
-                const token = jwt.sign(payload, process.env.TOKEN_KEY, {expiresIn: 86400});
-                const valid = jwt.verify(token, process.env.TOKEN_KEY);
-                if (valid) {
-                    res.send({message: "login success"});
-                } else {
-                    res.send({message: "invalid login"});
-                }
-                */
       } else {
         res.send({ message: "wrong credentials" });
         console.log("wrong credentials");
