@@ -1,37 +1,32 @@
 # Fun-Language-5622
 ## User Stories:  
-1. User selects which language they want to learn  
+1. As a user, I wish to learn a new language and hence I would like to be able to select a language that I want to learn.  
 
-2. Enroll for courses on the language of choice varying in terms of difficulty (basic, intermediate, advanced)  
+2. As a learner, I would like to learn a new language of interest at a pace that I am comfortable in. I would hence prefer to choose a level of difficulty (basic, intermediate and advanced) for the language course that I am enrolled in, depending on my confidence level.  
 
-3. Users can attempt the proficiency assessment found in each level once they feel confident (can do practice assessments before attempting the test)
+3. As a learner, I wish to test my proficiency in my enrolled language through proficiency assessments. I would also like to try out assessments for different levels to gauge my current competency for the enrolled language.
 
-4. Achievements to be unlocked for completing courses and passing assessments
+4. As a learner, I would feel motivated to continue learning if I can get incentives (achievements) during the course of my learning, be it completing courses and passing assessments.
 
 ## Scope of Project:  
 The Fun Language App allows users to have a fun experience learning a new language of interest.
 
-## Features to be completed by mid-June:
+## Features of Fun Language App:
 * Authentication (login and registration)  
 
-* Homepage and a page to select languages  
+* Homepage, Choose Language Page and Landing Page  
 
 * Profile page and associated features (update & delete account, upload profile picture) 
 
 * English Course and levels of difficulty
 
-* Progress component (save progress feature and progress bar)  
+* Gamification (progress component and achievement system)  
 
-## Features to be completed by mid-July:
-* Interactive interface to allow the users to be able to navigate between courses with ease
-
-* Achievement system
+* Interactive interface
 
 * Proficiency assessments 
 
-* Landing page 
-
-* Oral speaking page and practice assessment for each level of difficulty
+* Self practice components (oral speaking page and practice assessments)
 
 * Email verification feature  
 
@@ -57,31 +52,7 @@ The Fun Language App allows users to have a fun experience learning a new langua
 
 * Cypress (end to end testing and integration testing)
 
-* Figma (prototyping landing page)
-
-## Distinctive Features:
-* Gamification  
-
-* Interactive interface  
-
-## Development Plan:
-* 2nd week of May: Finalize project ideas and create poster and video for liftoff  
-
-* 3rd week of May: Pick up necessary technologies (MongoDB, ExpressJS, ReactJS, NodeJS)  
-
-* 4th week of May: Create login, registration and homepage files, integrate frontend with backend by connecting to database  
-
-* 1st week of June: Build Fun Language architecture (English course and levels of difficulty), refine authentication process
-
-* 2nd week of June: Implement progress component for gamification features (progress bar and save progress feature)
-
-* 3rd week of June: Create profile page and refine associated features, deploy application
-
-* 1st week of July: Implement interactive interface and create proficiency assessments
-
-* 2nd week of July: Create oral-speaking page for each level and design achievement system for gamification features
-
-* 3rd week of July: Create landing page and practice assessments, implement email verification and test Fun Language App
+* Figma (prototyping landing page) 
 
 ## Link to access Fun Language App:
 * http://fun-language-5622-frontend-seven.vercel.app/
