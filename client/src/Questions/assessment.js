@@ -17,7 +17,7 @@ export const testQuestions = {
       },
   
       {
-        description: "__ is this place?",
+        description: "__ is this place located?",
         answer: "Where"
       },
   
