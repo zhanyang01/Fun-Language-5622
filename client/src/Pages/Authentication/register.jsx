@@ -152,7 +152,6 @@ const Register = () => {
             Sign in
         </Link>
         </Container>    
-
         </>
         
     )
