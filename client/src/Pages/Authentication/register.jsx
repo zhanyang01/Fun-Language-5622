@@ -7,7 +7,6 @@ import {
     Button, 
     Input,
     Container,
-    Box, 
     useToast
 } from '@chakra-ui/react';
 
@@ -68,6 +67,14 @@ const Register = () => {
                     position: 'top',
                 });
                 navigate("/login");
+                toast({
+                    title: 'Email',
+                    description: "An email has been sent to you",
+                    duration: 5000,
+                    isClosable: true,
+                    status: 'info',
+                    position: 'top',
+                });
             } else {
                 toast({
                     title: 'Registration Error',
