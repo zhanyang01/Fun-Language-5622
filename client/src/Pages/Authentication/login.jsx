@@ -135,6 +135,13 @@ const Login = ({setLoginUser}) => {
                         }}>
                     Sign Up.
                 </Link>
+                <br/>
+                <Link to = "/fillemail"
+                    style = {{
+                        color:"teal"
+                    }}>
+                    Forgot Password?
+                </Link>
             </Container>
         </>
     )
