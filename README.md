@@ -4,9 +4,9 @@
 
 2. As a learner, I would like to learn a new language of interest at a pace that I am comfortable in. I would hence prefer to choose a level of difficulty (basic, intermediate and advanced) for the language course that I am enrolled in, depending on my confidence level.  
 
-3. As a learner, I wish to test my proficiency in my enrolled language through proficiency assessments. I would also like to try out assessments for different levels to gauge my current competency for the enrolled language.
+3. As a learner, I wish to test my level of understanding for my enrolled language through proficiency assessments. I would also like to try out assessments for different levels to gauge my current competency for the enrolled language.
 
-4. As a learner, I would feel motivated to continue learning if I can get incentives (achievements) during the course of my learning, be it completing courses and passing assessments.
+4. As a user, I would feel motivated to continue using the application if I can get incentives (achievements) during the course of my learning, such as completing courses and passing assessments.
 
 ## Scope of Project:  
 The Fun Language App allows users to have a fun experience learning a new language of interest.
@@ -26,9 +26,9 @@ The Fun Language App allows users to have a fun experience learning a new langua
 
 * Proficiency assessments 
 
-* Self practice components (oral speaking page and practice assessments)
+* Self-practice components (oral speaking page and practice assessments)
 
-* Email verification feature  
+* Email verification and forget password features  
 
 ## Tech Stack:
 * MongoDB (Document Database)
