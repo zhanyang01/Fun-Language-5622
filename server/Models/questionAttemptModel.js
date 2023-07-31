@@ -6,11 +6,6 @@ const questionAttemptSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    /*questionLabel : [
-        {questionNo,answerValue},
-        {questionNo,answerValue},
-      ]
-    */
     questions: {
       type: Array,
       required: false,
