@@ -7,6 +7,7 @@ import {
     Input,
     Container,
     useToast,
+    Text
 } from "@chakra-ui/react";
 
 const validEmail = (email) => {
@@ -71,7 +72,8 @@ const FillingEmail = () => {
         <Heading my={10} fontSize="3xl" textAlign="center" color="teal.500">
             Forget Password
         </Heading>
-        <Container border="1px" borderColor="gray.300" borderRadius="lg" p={10} maxW="lg">
+        <Container border="1px" borderColor="gray.300">
+        <Text fontSize = "lg" m="5px">Enter your email to change your password</Text>
             <Input 
                 type="text"
                 m="5px"
