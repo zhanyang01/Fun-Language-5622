@@ -7,6 +7,8 @@ import {
   changeUserDetails,
   changeProfilePicture,
   verifyEmail,
+  sendForgetPasswordEmail,
+  resetPassword,
 } from "../Controllers/userController.js";
 import express from "express";
 
@@ -35,5 +37,11 @@ router.route("/profile").put(changeUserDetails);
 
 // express router method to create route for changing profile picture
 router.route("/profile/pic/:userId").put(changeProfilePicture);
+
+// express router method to create route for sending a password reset email
+router.route("/forgetpassword").put(sendForgetPasswordEmail);
+
+// express router method to create route for resetting password
+router.route("/resetpassword").post(resetPassword);
 
 export default router;

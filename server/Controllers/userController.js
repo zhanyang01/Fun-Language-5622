@@ -292,3 +292,73 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
+
+// ================ send forget password email ================
+export const sendForgetPasswordEmail = asyncHandler(async (req, res) => {
+  const userEmail = req.body.email;
+  try {
+    await User.findOne({ email: userEmail }).then(async (result) => {
+      if (!result) {
+        res.send({ message: "no such user exists" });
+        console.log("no such user exists");
+      } else {
+        const token = generateJWT(result._id);
+        if (result.verified) {
+          const content = {
+            user: result,
+            token: token,
+            recipient: userEmail,
+          };
+          await sendEmail("forgetPassword", content).then((result) => {
+            res.send({
+              message: "email sent successfully",
+              success: true,
+            });
+            console.log("email sent successfully");
+          });
+        } else {
+          res.send({
+            message: "email not verified",
+            success: true,
+          });
+          console.log("email not verified");
+        }
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+// ==================== reset password =========================
+export const resetPassword = asyncHandler(async (req, res) => {
+  const { userId, token, newPassword } = req.body;
+  const validToken = verifyJWT(token);
+  if (!validToken) {
+    res.send({ message: "invalid token", success: false });
+  } else {
+    const currentUser = await User.findById(userId);
+    if (!currentUser) {
+      res.send({ message: "no such user exists", success: false });
+    } else {
+      if (newPassword.length < 8) {
+        res.send({ message: "password must be at least 8 characters long", success: false });
+      } else {
+        const encryptedPass = await bcrypt.hash(newPassword, 10);
+        await User.updateOne(
+          {
+            _id: currentUser.id,
+          },
+          { password: encryptedPass }
+        )
+          .then(() => {
+            res.send({ message: "password reset successful", success: true });
+          })
+          .catch((err) => {
+            res.send({ message: "error", success: false });
+            console.log(err);
+          });
+      }
+    }
+  }
+});

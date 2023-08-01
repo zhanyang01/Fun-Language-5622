@@ -7,6 +7,7 @@ import Login from "./Pages/Authentication/login.jsx";
 import Register from "./Pages/Authentication/register.jsx";
 import EmailVerificationForm from "./Pages/Authentication/emailVerificationForm.jsx";
 import FillingEmail from "./Pages/Authentication/ForgetPassword/fillingEmail.jsx";
+import ForgetPasswordForm from "./Pages/Authentication/ForgetPassword/changingPasswordPage.jsx";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Choosinglanguage from "./Pages/languages/choosingLanguage.jsx";
@@ -54,6 +55,7 @@ function App() {
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/verify/:userId/:token" element={<EmailVerificationForm />} />
         <Route exact path="/fillemail" element={<FillingEmail />} />
+        <Route exact path="/resetpassword/:userId/:token" element={<ForgetPasswordForm />} />
         {/* general pages */}
         <Route exact path="/homepage" element={<Homepage />} />
         <Route exact path="/choosinglanguage" element={<Choosinglanguage />} />

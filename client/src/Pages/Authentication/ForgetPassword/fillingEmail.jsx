@@ -33,34 +33,45 @@ const FillingEmail = () => {
             errors.push("Please fill up all fields");
             console.log("Please fill up all fields");
         }
-        if (!validEmail(email)) {
+        if (!validEmail(email) && !errors.includes("Please fill up all fields")) {
             errors.push("Invalid email");
             console.log("Invalid email");
         }
         if (errors.length === 0) {
             await axios
-                .post(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/fillEmail`, { email })
+                .put(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/forgetpassword`, { email })
                 .then((res) => {
-                    console.log(res);
-                    // alert(res.data.message);
-                    toast({
-                        title: "Email sent",
-                        description: "Please check your email to reset your password",
-                        status: "success",
-                        duration: 5000,
-                        isClosable: true,
-                    });
-                    navigate("/login");
+                    if (res.data.message === "email sent successfully") {
+                        console.log(res.data.message);
+                        toast({
+                            title: "Email sent",
+                            description: "Please check your email to reset your password",
+                            status: "success",
+                            duration: 5000,
+                            isClosable: true,
+                            position: "top",
+                        });
+                        navigate("/login");
+                    } else {
+                        console.log(res.data.message);
+                        toast({
+                            title: "Error",
+                            description: res.data.message,
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true,
+                            position: "top",
+                        });
+                    }
                 })
-                .catch((err) => {
-                    console.log(err);
-                    toast({
-                        title: "Error",
-                        description: "Error sending email",
-                        status: "error",
-                        duration: 5000,
-                        isClosable: true,
-                    });
+            } else {
+                toast({
+                    title: "Error",
+                    description: errors.join('\n'),
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                    position: "top",
                 });
             }
         }
