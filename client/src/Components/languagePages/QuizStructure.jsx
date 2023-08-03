@@ -3,7 +3,6 @@ import {useNavigate, Link} from 'react-router-dom';
 import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text, useToast } from '@chakra-ui/react';
 import { allQuestions } from '../../Questions/data';
 import axios from 'axios';
-import { useQuiz } from '../../Storage/UserStorage';
 import { AchievementTriggerStructure } from '../Profile/achievementTriggerStructure';
 import { checkSubsetArray } from '../../HelperFunctions/checkSubsetArray';
 
@@ -13,8 +12,6 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
     const toast = useToast();
     
     const navigate = useNavigate()
-
-    //const {quiz, saveQuiz} = useQuiz()
 
     const [currentAnswers,setCurrentAnswers] = useState([])
 
@@ -99,7 +96,6 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
     const formatAnswer = () =>{
         let quizAnswerArray = []
         for(var i = 0; i < currentAnswers.length; i ++){
-            //console.log(i,currentAnswers[i])
             quizAnswerArray.push({
                 questionNo:i,
                 answerValue: currentAnswers[i]
@@ -114,10 +110,7 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
         var pass = "Passed! Please proceed to next level";
         var fail = "Please try again!"
         var score = getScore();
-        const email = localStorage.getItem("email");
         const userId = localStorage.getItem("userId");
-        const type = "English Course";
-        const info = {userId, email, type};
         const courseDoneDictionary = {"ebcoursedone" : "English Baby", "eicoursedone" : "English Apprentice", "eacoursedone" : "English Sage"}
         if (score === allQuestions[questionLabel].length) {
             const updatedAnswer = formatAnswer();
@@ -127,7 +120,6 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
                 await AchievementTriggerStructure(title, toast)
                 await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${userId}`)
                     .then(async (res) => {
-                        //console.log(res.data.data.achievements);
                         console.log(checkSubsetArray(res.data.data.achievements, Object.values(courseDoneDictionary)));
                         if (checkSubsetArray(res.data.data.achievements, Object.values(courseDoneDictionary))) {
                             await AchievementTriggerStructure("English Finisher", toast)
@@ -145,7 +137,6 @@ export const QuizStructure = ({quizTitle,previousLevelRoute, nextLevelRoute, que
                 status: 'info',
                 position: 'top',
             });
-            //alert(fail + "\n" + score + maxScore);
         }
     }
 

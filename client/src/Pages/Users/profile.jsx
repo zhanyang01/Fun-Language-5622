@@ -4,13 +4,10 @@ import axios from 'axios';
 import defaultProfileLogo from '../../Images/profileLogo.png';
 import { AchievementTriggerStructure} from '../../Components/Profile/achievementTriggerStructure.js';
 
-// import List from '../languages/courselist';
 import {
     Avatar,
     Button, 
-    Container, 
-    Flex, 
-    Heading, 
+    Container,  
     Input, 
     SimpleGrid, 
     Text,
@@ -26,10 +23,6 @@ const Profile = () => {
     const fileReader = new FileReader();
 
     var usern = localStorage.getItem("username");
-
-    const margin = {
-        margin: 20
-    }
 
     const toast = useToast();
 
@@ -63,14 +56,12 @@ const Profile = () => {
     const fileOnChange = async (event) => {
         const file = event.target.files[0];
         if (file && file.type.substring(0, 5) === "image") {
-            // localStorage.setItem("pic", file);
             convert(file).then((res) => {
                 console.log(res);
                 setPic(res)
                 setPreviewPic(URL.createObjectURL(file));
                 setImageChanged(true);
             });
-            // alert(file.type.substring(0, 5) + " " + "upload successful");
             toast({
                 title: 'Upload Picture',
                 description: file.type.substring(0, 5) + " " + "upload successful",
@@ -80,9 +71,6 @@ const Profile = () => {
                 position: 'top',
             });
         } else {
-         //   setPic(defaultProfileLogo);
-         //   localStorage.setItem("pic", defaultProfileLogo);
-            // alert("invalid image");
             toast({
                 title: 'File Error',
                 description: "Invalid Image",
@@ -115,7 +103,6 @@ const Profile = () => {
         })
         .then( async (res)=>{
             console.log(res);
-            // alert("profile picture confirmed");
             if (imageChanged) {
                 toast({
                     title: 'Set Picture Success',
@@ -152,59 +139,8 @@ const Profile = () => {
                 } catch(e) {
                     console.log(e);
                 }
-                // other attributes
             } 
         }
-
-    //================eesean=========================
-    /*
-    const fileOnChange = (event) => {
-        const file = event.target.files[0];
-        // alert(file.type.substring(0, 5))
-        if (file && file.type.substring(0, 5) === "image") {
-            localStorage.setItem("pic", file);
-            setPic(URL.createObjectURL(file));
-            // alert(file.type.substring(0, 5));
-            alert("upload successful");
-        } else {
-            // setPic(defaultProfileLogo.URL);
-            localStorage.setItem("pic", defaultProfileLogo);
-            alert("invalid image");
-        }
-        // setPic(URL.createObjectURL(event.target.files[0]));
-    };
-    */
-
-    //=============temporary fix======================
-    /*const sendImage = (event) => {
-        let formData = new FormData();
-        formData.append("image", pic);
-        fetch("http://localhost:6969/uploadFile", {
-            method: "post",
-            body: formData
-        })
-            .then((res) => res.text())
-            .then((resBody) => {
-                console.log(resBody);
-            });
-        console.log(pic);
-    };*/
-
-    /*
-    const sendImage = async () => {
-        try {
-          setLoading(true);
-          const data = new FormData();
-          data.append("image", pic);
-          const res = await axios.post("http://localhost:6969/upload", data);
-          setRes(res.data);
-        } catch (error) {
-          alert(error.message);
-        } finally {
-          setLoading(false);
-        }
-    };
-    */
 
     //============== navigation ============== 
     const homepage = () => {
@@ -249,7 +185,6 @@ const Profile = () => {
             await axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/profile`, user)
             .then(res => {
                 console.log(res);
-                // alert(res.data.message);
                 if (res.data.message === "update successful") {
                     localStorage.setItem("username", username);
                     localStorage.setItem("email", newEmail);
@@ -274,7 +209,6 @@ const Profile = () => {
                 }
             })
         } else {
-            // var errorMessage = "Unable to update credentials";
             toast({
                 title: 'Unable to update credentials',
                 description: errors.join('\n'),
@@ -283,7 +217,6 @@ const Profile = () => {
                 status: 'error',
                 position: 'top',
             });
-            // alert(errorMessage + '\n' + errors.join('\n'));
         }
     }
 
@@ -303,33 +236,10 @@ const Profile = () => {
                     status: 'info',
                     position: 'top',
                 });
-                // alert(res.data.message);
-                const email = localStorage.getItem("email")
-                const course = email + " English Course";
-                const progress = email + " English Meter";
-                const basic = email + " English Basic";
-                const intermediate = email + " English Intermediate";
-                const advanced = email + " English Advanced";
                 localStorage.removeItem("userId");
                 localStorage.removeItem("username");
                 localStorage.removeItem("email");
-                localStorage.removeItem(course);
-                localStorage.removeItem(progress);
-                localStorage.removeItem(basic);
-                localStorage.removeItem(intermediate);
-                localStorage.removeItem(advanced);
-                // setLoginUser(res.data.user)
                 navigate("/login");
-                /*
-                if (res.data.message === "User deleted") {
-                    localStorage.removeItem("userId");
-                    localStorage.removeItem("username");
-                    // setLoginUser(res.data.user)
-                    navigate("/login");
-                } else {
-                    alert("Account failed to delete");
-                }
-                */
             }).catch((err)=>{
                 console.log(err);
                 alert(err);
@@ -343,54 +253,8 @@ const Profile = () => {
                 status: 'error',
                 position: 'top',
             });
-            // alert("Request unsuccessful, please press 'y' to delete if you wish to delete your account");
         }
     }
-
-    //============== Progress of Courses ==============  
-    const [list, setList] = useState([]);
-
-    var records = ["English Language"];
-    
-    function courseProgress() {
-        /*
-        var course = localStorage.getItem("course");
-        var meter = localStorage.getItem("meter");
-        for (var i = 0; i < list.length; i++) {
-            if (course in list[i]) {
-                list[i]["meter"] = meter;
-            } else {
-                setList([
-                    ...list,
-                    {course: course, meter: meter}
-                ]);
-            }
-        }
-        
-        /*
-        return ({list.map((task) => (
-            <div className="records">
-                <h4>task.course: task.meter</h4>
-            </div>
-        ))});
-        */
-       var course = localStorage.getItem("course");
-       if (!(course in list)) {
-        setList([
-            ...list, course
-        ]);
-        }
-        alert("list updated");
-        return (
-            <ol>
-                {list.map(task => (
-                    <li key = {task}>{task}</li>
-                ))}
-            </ol>
-        );      
-    }
-
-
 
     return (
         <>
@@ -411,14 +275,6 @@ const Profile = () => {
         <Text color="teal" fontSize="32px" fontWeight="bold"> 
             {usern} 
         </Text>
-        {/*
-        <Text size="24px"> 
-            Courses completed: 
-        </Text>
-        <Text size="24px"> 
-            Assessments completed: 
-        </Text>
-        */}
         <Container border="1px" borderColor="gray.300">
             <Text fontSize="20px" color="teal.500" fontWeight="bold">
                 Update Your Account
