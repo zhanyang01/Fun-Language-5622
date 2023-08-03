@@ -96,7 +96,7 @@ const ForgetPasswordForm = () => {
         </Heading>
         <Container border="1px" borderColor="gray.300">
             <Input
-                type="text"
+                type="password"
                 name="newPassword"
                 placeholder="New Password"
                 value={password.newPassword}
@@ -104,7 +104,7 @@ const ForgetPasswordForm = () => {
                 m="5px"
             />
             <Input
-                type="text"
+                type="password"
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 value={password.confirmPassword}
