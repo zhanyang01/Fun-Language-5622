@@ -1,13 +1,9 @@
 import User from "../Models/userModel.js";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
-
-// import validator from "validator";
 import bcrypt from "bcrypt";
 import sendEmail from "../HelperFunctions/sendEmail.js";
 import { cloudinaryObj } from "../config/cloudinary.js";
-
-// ==================== helper functions====================
 
 //====================generate jwt token====================
 const generateJWT = (id) => {
@@ -25,19 +21,16 @@ const verifyJWT = async (token) => {
 
       // get user from token
       const currUser = await User.findById(decoded.id);
+      // if currUser exist means token is valid else not valid
       if (currUser) {
-        console.log("token verified");
         return true;
       } else {
-        console.log("token not verified");
         return false;
       }
     } catch (error) {
-      console.log(error);
       return false;
     }
   } else {
-    console.log("token not verified");
     return false;
   }
 };
@@ -52,7 +45,6 @@ export const getUsers = asyncHandler(async (req, res) => {
 export const getUserById = asyncHandler(async (req, res) => {
   const { userId } = req.params;
   const user = await User.findById(userId);
-  console.log(user);
 
   // if user id match param id send user, else throw error
   if (user) {
@@ -99,8 +91,6 @@ export const verifyEmail = asyncHandler(async (req, res) => {
 export const deleteUser = async (req, res) => {
   const { userId } = req.params;
   const currUser = await User.findById(userId);
-  console.log(currUser);
-  console.log(userId);
   // if user does not exist throw error
   if (!currUser) {
     return res.status(404).json({
@@ -110,7 +100,6 @@ export const deleteUser = async (req, res) => {
   } else {
     await User.deleteOne(currUser)
       .then((deleteResult) => {
-        console.log(deleteResult);
         return res.status(200).json({
           message: "User deleted",
         });
@@ -133,18 +122,14 @@ export const login = asyncHandler(async (req, res) => {
       const isCorrect = await bcrypt.compare(password, user.password);
       if (isCorrect) {
         res.send({ message: "login success", username: user.username, userId: user._id });
-        console.log("login success");
       } else {
         res.send({ message: "wrong credentials" });
-        console.log("wrong credentials");
       }
     } else {
       if (user && !user.verified) {
         res.send({ message: "email not verified" });
-        console.log("email not verified");
       } else {
         res.send({ message: "not registered" });
-        console.log("not registered");
       }
     }
   } catch (e) {
@@ -164,7 +149,6 @@ export const register = asyncHandler(async (req, res) => {
     // check if user exist
     if (user) {
       res.send({ message: "user already exists" });
-      console.log("user already exists");
     } else {
       // encrypting password
       const encryptedPass = await bcrypt.hash(password, 10);
@@ -187,7 +171,6 @@ export const register = asyncHandler(async (req, res) => {
             userId: newUser._id,
             success: true,
           });
-          console.log("registration successful");
         });
       });
     }
@@ -205,13 +188,11 @@ export const changeUserDetails = asyncHandler(async (req, res) => {
     const currentUser = await User.findOne({ email: currentEmail });
     if (!currentUser) {
       res.send({ message: "no such user exists" });
-      console.log("no such user exists");
     } else {
       // check if email that is in current email fills is used by someone else
       const user = await User.findOne({ email: newEmail });
       if (user && currentUser.email !== user.email) {
         res.send({ message: "email is already used by another user" });
-        console.log("email is already used by another user");
       } else {
         // changing password and email
         const encryptedPass = await bcrypt.hash(password, 10);
@@ -230,7 +211,6 @@ export const changeUserDetails = asyncHandler(async (req, res) => {
           updatedUser
         ).then(() => {
           res.send({ message: "update successful" });
-          console.log("update successful");
         });
       }
     }
@@ -248,7 +228,6 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
     const currentUser = await User.findById(userId);
     if (!currentUser) {
       res.send({ message: "no such user exists" });
-      console.log("no such user exists");
     } else {
       if (currentUser.image && currentUser.image.id) {
         // Remove the previous profile picture from Cloudinary
@@ -279,11 +258,9 @@ export const changeProfilePicture = asyncHandler(async (req, res) => {
           { image: updatedImage }
         ).then(() => {
           res.send({ message: "profile picture updated successfully" });
-          console.log("profile picture updated successfully");
         });
       } else {
         res.send({ message: "profile picture updated unsuccessful" });
-        console.log("profile picture updated unsuccessful");
       }
     }
   } catch (e) {
@@ -300,7 +277,6 @@ export const sendForgetPasswordEmail = asyncHandler(async (req, res) => {
     await User.findOne({ email: userEmail }).then(async (result) => {
       if (!result) {
         res.send({ message: "no such user exists" });
-        console.log("no such user exists");
       } else {
         const token = generateJWT(result._id);
         if (result.verified) {
@@ -314,14 +290,12 @@ export const sendForgetPasswordEmail = asyncHandler(async (req, res) => {
               message: "email sent successfully",
               success: true,
             });
-            console.log("email sent successfully");
           });
         } else {
           res.send({
             message: "email not verified",
             success: true,
           });
-          console.log("email not verified");
         }
       }
     });
