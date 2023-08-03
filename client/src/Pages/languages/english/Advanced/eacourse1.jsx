@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react';
 import { QuizStructure } from '../../../../Components/languagePages/QuizStructure'
 import { allQuestions } from '../../../../Questions/data'
-import { useQuiz } from '../../../../Storage/UserStorage';
 
 const EACourse1 = () => {
     // to save the quiz attempt

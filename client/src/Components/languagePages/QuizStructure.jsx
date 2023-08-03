@@ -3,7 +3,6 @@ import {useNavigate, Link} from 'react-router-dom';
 import {Button, Container, Heading, Progress, Radio, RadioGroup, Stack, Text, useToast } from '@chakra-ui/react';
 import { allQuestions } from '../../Questions/data';
 import axios from 'axios';
-import { useQuiz } from '../../Storage/UserStorage';
 import { AchievementTriggerStructure } from '../Profile/achievementTriggerStructure';
 import { checkSubsetArray } from '../../HelperFunctions/checkSubsetArray';
 
