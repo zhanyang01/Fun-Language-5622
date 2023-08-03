@@ -12,17 +12,6 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
     const toast = useToast();
     
     const navigate = useNavigate();
-
-    // const {quiz, saveQuiz} = useQuiz()    
-    
-    // const [currentAnswers,setCurrentAnswers] = useState([])
-
-    /*
-    const handleAnswerChange = (newAnswer,questionNumber) =>{
-        currentAnswers[questionNumber] = newAnswer
-        setCurrentAnswers([...currentAnswers])
-    }
-    */
     
     function getScore() {
         var score  = 0;
@@ -37,35 +26,6 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
         }
         return score;
     }
-    
-    /*
-    useEffect(()=>{
-        console.log("ans",currentAnswers)
-    },[currentAnswers])
-
-    /*
-    useEffect(()=>{
-        console.log("quiz",quiz)
-        const currentAns = []
-        // check if there or no
-        if(quiz.hasOwnProperty(questionLabel)){
-            // have prior attempt
-            console.log("attempt exists =D")
-            for(var i = 0;i < quiz[questionLabel].length; i++){
-                const {questionNo,answerValue} = quiz[questionLabel][i]
-                currentAns.push(answerValue)
-            }
-        }
-        else{
-            // first attempt
-            for(var i = 0;i < testQuestions[questionLabel].length; i++){
-                currentAns.push("-1")
-            }
-        }
-        // quiz[questionLabel]
-        setCurrentAnswers(currentAns)
-    },[])
-    */
             
     const submitAnswer = async() => {
         var maxScore = "/" + testQuestions[questionLabel].length + " correct"
@@ -86,17 +46,12 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                 status: 'success',
                 position: 'top',
             });
-            //alert(pass + "\n" + score + maxScore);
             navigate(`/${nextLevelRoute}`);
             const userId = localStorage.getItem("userId");
-            const email = localStorage.getItem("email");
-            const type = "English Assessment";
-            const info = {email, userId, type};
             const achievement = assessmentDictionary[testTitle];
             await AchievementTriggerStructure(achievement, toast);
             await axios.get(`${process.env.REACT_APP_BACKEND_SERVER}/api/achievements/${userId}`)
                     .then(async (res) => {
-                        //console.log(res.data.data.achievements);
                         console.log(checkSubsetArray(res.data.data.achievements, Object.values(assessmentDictionary)));
                         if (checkSubsetArray(res.data.data.achievements, Object.values(assessmentDictionary))) {
                             await AchievementTriggerStructure("English Master", toast)
@@ -113,40 +68,12 @@ export const AssessmentStructure = ({testTitle, nextLevelRoute, questions,
                 status: 'info',
                 position: 'top',
             });
-            //alert(fail + "\n" + score + maxScore);
         }
     }
 
     const exit = () => {
         navigate(`/${nextLevelRoute}`);
     }
-    /*
-
-    const previousLevel = () => {
-        navigate(`/${previousLevelRoute}`)
-    }
-
-    const saveProgress = () => {
-        var email = localStorage.getItem("email");
-        const course = email + " English Course";
-        const meter = email + " English Meter";
-        localStorage.setItem(course, {courseDiff});
-        //console.log("Basic");
-        localStorage.setItem(meter, `${value}%`);
-        //console.log("0%");
-        // this is where the saveQuiz comes in
-        let quizAnswerArray = []
-        for(var i = 0; i < currentAnswers.length; i ++){
-            //console.log(i,currentAnswers[i])
-            quizAnswerArray.push({
-                questionNo:i,
-                answerValue: currentAnswers[i]
-            })
-        }
-        saveQuiz(questionLabel,quizAnswerArray)
-        navigate(`/${backToCourseRoute}`);
-    }
-    */
 
     return (
         <>

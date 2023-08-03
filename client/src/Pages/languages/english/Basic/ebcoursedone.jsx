@@ -1,5 +1,4 @@
 import React from 'react';
-// import List from '../../courselist';
 import {CourseDoneStructure} from '../../../../Components/languagePages/CourseDoneStructure'
 
 const EBCourseDone = () => {
@@ -7,9 +6,7 @@ const EBCourseDone = () => {
         <>
             <CourseDoneStructure
             nextLevelRoute={"ebassessment"}
-            courseDiff={"English Basic"}
             courseRoute={"englishbasic"}
-            diffCourseDone={"EBCourseDone"}
             headingContent={"Congratulations! You have completed the Basic Courrse for English Language :D"}
             />
         </>

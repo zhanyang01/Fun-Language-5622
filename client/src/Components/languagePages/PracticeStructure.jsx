@@ -38,7 +38,6 @@ export const PracticeStructure = ({practiceTitle, nextLevelRoute, questions,
                 status: 'success',
                 position: 'top',
             });
-            //alert(pass + "\n" + score + maxScore);
             navigate(`/${nextLevelRoute}`);
         } else {
             toast({
