@@ -6,12 +6,7 @@ const EnglishBasic = () => {
         <>
         <EnglishDiffStructure
             courseDiff={"Basic"}
-            differA ={"Intermediate"}
-            differB ={"Advanced"}
             part1 ={"ebcourse1"}
-            part2 ={"ebcourse2"}
-            part3 ={"ebcourse3"}
-            part4 ={"ebcourse4"}
             assess ={"ebassessment"}
             oral = {"eboral"}
             practice = {"ebpractice"}

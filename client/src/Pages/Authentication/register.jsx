@@ -56,7 +56,6 @@ const Register = () => {
         await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/register`, user)
         .then(res => {
             console.log(res);
-            // alert(res.data.message);
             if (res.data.message === "registration successful") {
                 toast({
                     title: 'Registered',
@@ -88,7 +87,6 @@ const Register = () => {
             }
         })
     } else {
-        // var errorMessage = "Registration failed";
         toast({
             title: 'Registration failed',
             description: errors.join('\n'),
@@ -97,7 +95,6 @@ const Register = () => {
             status: 'error',
             position: 'top',
         });
-        // alert(errorMessage + '\n' + errors.join('\n'));
     }
    }
 
