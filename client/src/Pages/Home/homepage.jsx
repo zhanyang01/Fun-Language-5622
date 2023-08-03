@@ -21,7 +21,6 @@ const Homepage = () => {
     const toast = useToast();
 
     const exit = () => {
-        // alert("Thank you and have a nice day ahead!");
         toast({
             title: 'Logged out',
             description: 'Thank you and have a nice day ahead!',

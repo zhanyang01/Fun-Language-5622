@@ -36,7 +36,6 @@ const Login = ({setLoginUser}) => {
     //login function
     const loginUser = async()=> {
         let errors = [];
-        // console.log("user",user);
         if (user.email && user.password) {
             if (!validEmail(user.email)) {
                 errors.push("Invalid email");
@@ -48,13 +47,11 @@ const Login = ({setLoginUser}) => {
                     status: 'error',
                     position: 'top',
                 });
-                // alert("invalid email");
                 console.log("Invalid email");
             } else {
                 await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/api/users/login`, user)
                 .then((res)=>{
                     console.log(res);
-                    // alert(res.data.message);
                     if (res.data.message === "login success") {
                         localStorage.setItem("username", res.data.username);
                         localStorage.setItem("userId", res.data.userId);
@@ -95,7 +92,6 @@ const Login = ({setLoginUser}) => {
                 status: 'error',
                 position: 'top',
             });
-            // alert("invalid input");
             errors.push("invalid input");
         }
     }
