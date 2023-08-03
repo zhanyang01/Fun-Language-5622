@@ -13,9 +13,3 @@ describe("visitng the landing page", () => {
     cy.contains("Sign Up").click();
   });
 });
-
-//describe("clicking login button", () => {
-//  it("passes", () => {
-//    cy.get(".login-button").click();
-//  });
-//});
