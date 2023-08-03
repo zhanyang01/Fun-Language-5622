@@ -30,7 +30,6 @@ export const saveQuizProgress = async (req, res) => {
       });
       await questionAttempt.create(newQuestionAttempt).then(() => {
         res.send({ message: "Attempt Created" });
-        console.log("Attempt Created");
       });
       //if existing attempt exists, update the attempt
     } else {
@@ -43,7 +42,6 @@ export const saveQuizProgress = async (req, res) => {
         )
         .then(() => {
           res.send({ message: "question attempt updated successfully" });
-          console.log("question attempt update successfully");
         });
     }
   } catch (e) {
